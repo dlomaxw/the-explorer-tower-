@@ -365,3 +365,61 @@ Following the spec's own delivery sequence:
 | A08 Approvals | Not built |
 | A09 Reporting | Not built |
 | A10 Recovery | Not built |
+
+---
+
+## Going live on www.explorertower.ug
+
+The domain is attached to the Vercel project and the apex-to-www redirect is in
+`next.config.ts`. Two things remain, in this order.
+
+### 1. Point DNS at Vercel
+
+At the `.ug` registrar, either set both records:
+
+| Type | Name | Value |
+|---|---|---|
+| A | `explorertower.ug` | `76.76.21.21` |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+or delegate the whole zone to `ns1.vercel-dns.com` and `ns2.vercel-dns.com`.
+
+A CNAME is preferred for `www` over the A record Vercel suggests: it follows
+Vercel's own address if that ever changes. The apex has to be an A record,
+because CNAME is not allowed at a zone apex.
+
+Vercel verifies automatically and issues the certificate. Check with:
+
+```bash
+npx vercel domains inspect www.explorertower.ug
+```
+
+### 2. Switch the canonical URL
+
+**Only once DNS resolves.** `SITE_URL` currently points at the Vercel address,
+deliberately: canonical tags and the sitemap must not advertise a host nobody
+can reach, which is what would happen if this were switched early.
+
+```bash
+npx vercel env rm SITE_URL production --yes
+printf 'https://www.explorertower.ug' | npx vercel env add SITE_URL production
+npx vercel deploy --prod
+```
+
+Then confirm the swap took:
+
+```bash
+curl -s https://www.explorertower.ug/robots.txt
+curl -sI https://explorertower.ug/ | grep -i location
+```
+
+The first should name the new sitemap host, the second should show a 308 to
+`https://www.explorertower.ug/`.
+
+### 3. Tell Google the site moved
+
+The Vercel address is already indexed. After the switch, add
+`www.explorertower.ug` in Google Search Console and submit
+`https://www.explorertower.ug/sitemap.xml`. The canonical tags will do most of
+the work, but the sooner the new host is submitted the less time the old one
+spends competing with it.

@@ -54,7 +54,12 @@ export const identity = {
    */
   developer: approved("969 Development Company Limited") as Publishable<string>,
   tagline: "Curved-balcony residences above Kampala",
-  domain: pending("Official domain to be confirmed") as Publishable<string>,
+  /*
+   * Confirmed by the client. Not yet the canonical URL: SITE_URL still
+   * points at the Vercel address until DNS for this domain resolves, so
+   * canonicals and the sitemap cannot advertise a host nobody can reach.
+   */
+  domain: approved("www.explorertower.ug") as Publishable<string>,
 };
 
 /**
