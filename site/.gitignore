@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Local lead store (Stage 2 storage; not for production)
 .data/
+
+.vercel

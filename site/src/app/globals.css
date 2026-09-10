@@ -49,6 +49,7 @@
   --tier-ink: var(--color-ink);
   --tier-line: var(--color-gold);
   --tier-muted: var(--color-stone-600);
+  --tier-rule: var(--color-stone-200);
 }
 
 [data-tier="three-bedroom"] {
@@ -56,6 +57,7 @@
   --tier-ink: var(--color-cream);
   --tier-line: var(--color-cream);
   --tier-muted: color-mix(in oklab, var(--color-cream) 72%, transparent);
+  --tier-rule: color-mix(in oklab, var(--color-cream) 24%, transparent);
 }
 
 [data-tier="penthouse"] {
@@ -63,6 +65,7 @@
   --tier-ink: var(--color-cream);
   --tier-line: var(--color-cream);
   --tier-muted: color-mix(in oklab, var(--color-cream) 72%, transparent);
+  --tier-rule: color-mix(in oklab, var(--color-cream) 24%, transparent);
 }
 
 :root {

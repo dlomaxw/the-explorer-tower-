@@ -386,7 +386,7 @@ export const residences: readonly ResidenceType[] = [
     bedrooms: 2,
     area: pending("Request the schedule of areas"),
     areaBasis: pending("Area basis to be confirmed"),
-    price: pending("Price on request"),
+    price: approved("From USD 300,000"),
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Floor plan available on request"),
@@ -418,7 +418,7 @@ export const residences: readonly ResidenceType[] = [
     bedrooms: 3,
     area: pending("Request the schedule of areas"),
     areaBasis: pending("Area basis to be confirmed"),
-    price: pending("Price on request"),
+    price: approved("From USD 400,000"),
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Floor plan available on request"),
@@ -451,7 +451,7 @@ export const residences: readonly ResidenceType[] = [
     bedrooms: 6,
     area: pending("Request the penthouse area schedule"),
     areaBasis: pending("Area basis to be confirmed"),
-    price: pending("Price on application"),
+    price: pending("Price on application — talk to us"),
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Penthouse plan available on request"),
@@ -1001,7 +1001,7 @@ export const faqs: readonly FaqSection[] = [
       {
         question: "What are the prices?",
         answer:
-          "Pricing is released by the developer and confirmed in writing. Send an inquiry and the sales team will share the current price list for the residences you are interested in.",
+          "Two-bedroom residences start at USD 300,000 and three-bedroom residences at USD 400,000. The penthouse is priced on application. Starting prices are a guide: the price for a particular residence depends on its floor and aspect, and is confirmed in writing by the developer.",
       },
       {
         question: "Can I reserve a residence through this website?",

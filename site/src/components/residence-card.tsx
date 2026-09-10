@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { LogoMark } from "@/components/logo";
-import { MediaKindBadge, Value } from "@/components/ui";
-import type { ResidenceType } from "@/content/types";
+import { MediaKindBadge } from "@/components/ui";
+import { isApproved, type ResidenceType } from "@/content/types";
 
 /**
  * One residence tier, in its own brand ground.
@@ -54,9 +54,23 @@ export function ResidenceCard({
             <p className="mt-3 leading-relaxed text-(--tier-muted) text-pretty">
               {residence.summary}
             </p>
-            <p className="mt-auto pt-6 text-sm text-(--tier-muted)">
-              <Value field={residence.price} className="not-italic" />
-            </p>
+            {/*
+              The price is the line most visitors are looking for, so it gets a
+              rule and the tier's own accent rather than sitting in the body
+              copy. An unreleased price stays deliberately quieter: it is an
+              invitation to ask, not a figure, and should not be mistaken for one.
+            */}
+            <div className="mt-auto border-t border-(--tier-rule) pt-5">
+              {isApproved(residence.price) ? (
+                <p className="font-display text-2xl leading-none text-(--tier-line) md:text-[1.75rem]">
+                  {residence.price.value}
+                </p>
+              ) : (
+                <p className="text-sm text-(--tier-muted)">
+                  {residence.price.prompt}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </Link>
