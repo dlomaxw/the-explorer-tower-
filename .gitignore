@@ -1,0 +1,37 @@
+# Local secrets, never committed
+/secrets/
+.env
+.env.*
+!.env.example
+
+# Supplied source masters — ~610 MB of 4K video and full-size renders.
+#
+# These are the originals the client handed over, not build inputs the site
+# needs at deploy time. `tools/` transcodes them into site/public/media/, and
+# only those delivery files are committed. Keep the masters in project storage
+# or R2; putting them in git would make every clone a 600 MB download for files
+# the build never reads.
+/content/
+/exterior video animation/
+/3bedroom render video/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+
+# Local lead store (development storage; production uses Cloudflare D1)
+.data/
+
+# Vercel
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db

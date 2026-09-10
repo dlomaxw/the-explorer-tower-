@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/*
+ * Brand palette, taken from the supplied Explorer logo artwork: gold line on
+ * white, cream line on forest green, cream line on clay brown. The three
+ * grounds also identify the three residence tiers — white for the
+ * two-bedroom, green for the three-bedroom, brown for the penthouse.
+ *
+ * The neutral stone/ink scale is the working canvas the marks sit on. The
+ * approved brand *typefaces* are still outstanding; the display serif below is
+ * a stand-in chosen to sit close to the wordmark.
+ */
+@theme {
+  --color-ink: #14100c;
+  --color-ink-soft: #2a2320;
+  --color-stone-50: #faf8f5;
+  --color-stone-100: #f2eee8;
+  --color-stone-200: #e4ded4;
+  --color-stone-300: #cfc6b8;
+  --color-stone-500: #8b8073;
+  --color-stone-600: #6b6156;
+  --color-stone-700: #4a423a;
+
+  /* Brand */
+  --color-gold: #8a5f1c;
+  --color-gold-soft: #b08434;
+  --color-cream: #f7d7a2;
+  --color-forest: #2f4a17;
+  --color-forest-soft: #40631f;
+  --color-clay: #7a3f10;
+  --color-clay-soft: #99511a;
+
+  /* Aliases kept so accent usage reads by role, not by hue. */
+  --color-brass: var(--color-gold);
+  --color-brass-soft: var(--color-gold-soft);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, "Times New Roman", serif;
+
+  --spacing-section: 6rem;
+}
+
+/*
+ * Residence tiers. A tier sets --tier-* on its container and every accent
+ * inside reads from those, so one attribute reskins a whole section.
+ */
+[data-tier="two-bedroom"] {
+  --tier-ground: var(--color-stone-50);
+  --tier-ink: var(--color-ink);
+  --tier-line: var(--color-gold);
+  --tier-muted: var(--color-stone-600);
+}
+
+[data-tier="three-bedroom"] {
+  --tier-ground: var(--color-forest);
+  --tier-ink: var(--color-cream);
+  --tier-line: var(--color-cream);
+  --tier-muted: color-mix(in oklab, var(--color-cream) 72%, transparent);
+}
+
+[data-tier="penthouse"] {
+  --tier-ground: var(--color-clay);
+  --tier-ink: var(--color-cream);
+  --tier-line: var(--color-cream);
+  --tier-muted: color-mix(in oklab, var(--color-cream) 72%, transparent);
+}
+
+:root {
+  --page: var(--color-stone-50);
+  --page-text: var(--color-ink);
+  color-scheme: light;
+}
+
+* {
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Sticky header clearance for in-page anchors. */
+  scroll-padding-top: 5rem;
+  /*
+   * Spec §13: no horizontal overflow at any width.
+   *
+   * `clip`, not `hidden`. `overflow-x: hidden` computes `overflow-y` to `auto`,
+   * which turns the element into a scroll container and silently breaks every
+   * `position: sticky` descendant — including the pinned opening sequence.
+   * `clip` trims the same overflow without creating a scroll container.
+   */
+  overflow-x: clip;
+}
+
+body {
+  background: var(--page);
+  color: var(--page-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Spec §13: a visible focus ring on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+@utility kicker {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Page gutter, shared by every section so content stays on one vertical line. */
+@utility shell {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+
+  @media (width >= 80rem) {
+    padding-inline: 3.5rem;
+  }
+}
+
+/* Wide content (tables, plan strips) scrolls inside its own box, never the page. */
+@utility scroll-x {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ---------------------------------------------------------------------------
+ * Logo draw-on
+ *
+ * The mark is one continuous line stored as a filled outline. The reveal
+ * strokes that outline with a dash offset that runs to zero, then settles into
+ * the solid fill — so it reads as the line being drawn, then inked.
+ * ------------------------------------------------------------------------ */
+
+@keyframes logo-draw {
+  from {
+    stroke-dashoffset: var(--logo-length);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes logo-ink {
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: 1;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
