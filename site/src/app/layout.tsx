@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 
 import { identity } from "@/content/site";
+import { SITE_INDEXABLE } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -35,12 +36,13 @@ export const metadata: Metadata = {
   },
   description:
     "Two- and three-bedroom residences and a six-bedroom penthouse on John Babiha (Acacia) Avenue, Kampala, designed around a continuous curved balcony.",
-  robots: {
-    // The site stays out of search indexes until the client approves the
-    // content and confirms the official domain (spec §14, open inputs).
-    index: false,
-    follow: false,
-  },
+  // Inherited by every page that does not build its own metadata, so this is
+  // the single switch for the whole public site. It follows SITE_INDEXABLE
+  // rather than being hard-coded: while the flag is off the site stays out of
+  // search entirely, and the admin area sets its own noindex regardless.
+  robots: SITE_INDEXABLE
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

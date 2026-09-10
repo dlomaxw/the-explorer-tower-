@@ -23,7 +23,22 @@ import { isApproved } from "@/content/types";
 export const SITE_URL =
   process.env.SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
 
-export const SITE_INDEXABLE = process.env.SITE_INDEXABLE === "true";
+/**
+ * Only the production deployment may ever be indexed.
+ *
+ * `SITE_INDEXABLE` is the deliberate switch, but it is not trusted on its own:
+ * preview deployments carry work in progress and would compete with the real
+ * site as duplicate content, so `VERCEL_ENV` has to agree. Setting the flag on
+ * a preview environment by mistake therefore cannot leak one into search.
+ *
+ * `VERCEL_ENV` is absent when running locally, which is why its absence is
+ * permitted here — a local build with the flag set can still be checked.
+ */
+const DEPLOY_ENV = process.env.VERCEL_ENV;
+
+export const SITE_INDEXABLE =
+  process.env.SITE_INDEXABLE === "true" &&
+  (DEPLOY_ENV === undefined || DEPLOY_ENV === "production");
 
 export interface SeoOverride {
   path: string;
