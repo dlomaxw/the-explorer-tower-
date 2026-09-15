@@ -3,6 +3,6 @@
 // Regenerate after changing anything in content/brand/:
 //   python tools/build-developer-lockup.py
 
-export const DEVELOPER_PARTIES = ["Shoal Group", "969 Development Company Limited"] as const;
+export const DEVELOPER_PARTIES = ["Shoal Group", "969 Development Company Limited", "Gabonn Associates"] as const;
 
-export const DEVELOPER_ALT = "Shoal Group and 969 Development Company Limited";
+export const DEVELOPER_ALT = "Shoal Group, 969 Development Company Limited and Gabonn Associates";
