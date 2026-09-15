@@ -41,7 +41,10 @@ def jobs() -> list[Job]:
     for index, source in enumerate(sorted(EXTERIOR_SRC.glob("*.mp4")), start=1):
         found.append((source, f"exterior/film-{index}", 2.5))
 
-    for index in range(1, 7):
+    # 1-5 only. Clip 6 is the dressing room, withdrawn from the site at the
+    # client's request; encoding it again would put a 3.4 MB file back into the
+    # deploy that nothing references. Restore 6 here if it is ever reinstated.
+    for index in range(1, 6):
         source = INTERIOR_SRC / f"3bedroom  ({index}).mp4"
         if source.exists():
             found.append((source, f"residences/3-bed/walkthrough-{index}", 2.6))

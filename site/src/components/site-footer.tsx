@@ -109,11 +109,15 @@ export async function SiteFooter() {
             recolouring supplied brand artwork is not ours to do.
           */}
           {/*
-            Aligned from the top so the two kickers sit on one line and the
-            plates below them line up, rather than being pushed around by
-            whichever block happens to carry more text.
+            Developer left, marketing agent right, pushed apart rather than sat
+            next to each other: they are two different parties and the gap says
+            so. Aligned from the top so the two kickers share a line and the
+            plates beneath them line up, whichever block carries more text.
+
+            `justify-between` only separates them once there is room, so on a
+            narrow screen they stack in reading order instead.
           */}
-          <div className="mb-10 flex flex-wrap items-start gap-x-14 gap-y-10">
+          <div className="mb-10 flex flex-wrap items-start justify-between gap-x-14 gap-y-10">
             <DeveloperCredit
               plate
               size="medium"
