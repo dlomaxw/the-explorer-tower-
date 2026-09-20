@@ -403,6 +403,7 @@ export const residences: readonly ResidenceType[] = [
     area: pending("Request the schedule of areas"),
     areaBasis: pending("Area basis to be confirmed"),
     price: approved("From USD 300,000"),
+    priceFrom: { amount: 300000, currency: "USD" },
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Floor plan available on request"),
@@ -435,6 +436,7 @@ export const residences: readonly ResidenceType[] = [
     area: pending("Request the schedule of areas"),
     areaBasis: pending("Area basis to be confirmed"),
     price: approved("From USD 400,000"),
+    priceFrom: { amount: 400000, currency: "USD" },
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Floor plan available on request"),
@@ -972,19 +974,93 @@ export const downloads: readonly Download[] = [
   },
 ];
 
+/**
+ * The questions buyers actually type.
+ *
+ * Written for search intent as much as for the page: someone looking for this
+ * building searches "3 bedroom apartment for sale in Kampala" or "penthouse
+ * Kololo", not "what sizes are available". The headings and wording follow
+ * those phrasings so the answer on this page is the answer to the question
+ * that was asked.
+ *
+ * Every answer stays inside what the developer has approved. Where a figure is
+ * not released — areas, completion, the penthouse price — the answer says so
+ * plainly rather than estimating, because a confident wrong number reaches a
+ * search engine and an AI assistant exactly as readily as a right one.
+ */
 export const faqs: readonly FaqSection[] = [
+  {
+    heading: "Buying in Kampala",
+    items: [
+      {
+        question: "Where can I buy an apartment in Kampala?",
+        answer:
+          "Explorer Towers is a residential tower on Plot 37 John Babiha (Acacia) Avenue in Kololo, Kampala's central diplomatic and residential neighbourhood. It offers two-bedroom and three-bedroom residences and a six-bedroom penthouse, all for sale directly from the developer, 969 Development Company Limited, with Shoal Group and Gabonn Associates.",
+      },
+      {
+        question: "How much does a three-bedroom apartment cost in Kampala?",
+        answer:
+          "At Explorer Towers, three-bedroom residences start at USD 400,000 and two-bedroom residences at USD 300,000. Those are starting prices: the figure for a particular residence depends on its floor and aspect, and the developer confirms it in writing. The six-bedroom penthouse is priced on application.",
+      },
+      {
+        question: "Can I buy a two-bedroom apartment in Kampala?",
+        answer:
+          "Yes. Two-bedroom residences at Explorer Towers start at USD 300,000. Each has an open living, dining and kitchen space along the curved glazing, two en-suite bedrooms, fitted walnut joinery and a private balcony off the principal suite.",
+      },
+      {
+        question: "Is there a luxury penthouse for sale in Kololo?",
+        answer:
+          "Yes. The six-bedroom penthouse at Explorer Towers occupies the top of the building on John Babiha (Acacia) Avenue, Kololo. It has a swimming pool suspended in the facade and a private cinema room, both belonging to that residence alone. It is priced on application — contact the sales team.",
+      },
+      {
+        question: "Can foreigners and Ugandans in the diaspora buy here?",
+        answer:
+          "Yes. Buyers outside Uganda are welcome. Tell us your time zone in the inquiry form and a meeting will be arranged to suit it. Sales documents and payment terms are issued by the developer and confirmed in writing.",
+      },
+      {
+        question: "Can I reserve a residence through this website?",
+        answer:
+          "No. The website records your interest and passes it to the sales team. A reservation exists only once the developer confirms it in writing under the sales process in force at the time.",
+      },
+    ],
+  },
+  {
+    heading: "The location",
+    items: [
+      {
+        question: "Where exactly is Explorer Towers?",
+        answer:
+          "Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala, Uganda. John Babiha Avenue is the road still widely known as Acacia Avenue. Uganda Golf Club is addressed on Kitante Road at the same avenue, with its fairways immediately south-west of the site, and Kololo Independence Park is nearby.",
+      },
+      {
+        question: "What is Kololo like as a place to live?",
+        answer:
+          "Kololo is the central Kampala neighbourhood on the hill above the city, long established as its diplomatic and embassy quarter. John Babiha (Acacia) Avenue runs through it. The Location page shows the approved map and the nearby destinations the developer has confirmed.",
+      },
+    ],
+  },
   {
     heading: "The residences",
     items: [
       {
-        question: "What sizes are available?",
+        question: "What sizes and layouts are available?",
         answer:
-          "Two-bedroom and three-bedroom residences. The dimensioned schedule of areas is issued with the brochure — ask the sales team for the current version.",
+          "Two-bedroom residences, three-bedroom residences and one six-bedroom penthouse. Every residence opens along floor-to-ceiling curved glazing onto a private balcony. The dimensioned schedule of areas is issued with the brochure — ask the sales team for the current version.",
+      },
+      {
+        question: "What amenities does the building have?",
+        answer:
+          "A sky pool cantilevered between floors at the centre of the building, a glazed fitness room on the podium level, a covered arrival beneath the podium, resident parking within the gated boundary, planting carried up the full height of the facade and solar site lighting. The penthouse additionally has its own suspended pool and private cinema room.",
+      },
+      {
+        question: "When will Explorer Towers be completed?",
+        answer:
+          "The completion date has not been released for publication. The Progress page carries dated construction updates as they are issued, and the sales team can give you the current programme.",
       },
       {
         question: "Are the images photographs of the finished building?",
         answer:
-          "No. Every image on this site is an architectural render and is labelled as one. Site photography will appear on the Progress page as construction proceeds.",
+          "No. Every image on this site is an architectural render and is labelled as one. Site photography will appear on the Progress page as construction proceeds, kept separate from the renders.",
       },
       {
         question: "Is the furniture included?",
@@ -994,37 +1070,22 @@ export const faqs: readonly FaqSection[] = [
     ],
   },
   {
-    heading: "Buying",
-    items: [
-      {
-        question: "What are the prices?",
-        answer:
-          "Two-bedroom residences start at USD 300,000 and three-bedroom residences at USD 400,000. The penthouse is priced on application. Starting prices are a guide: the price for a particular residence depends on its floor and aspect, and is confirmed in writing by the developer.",
-      },
-      {
-        question: "Can I reserve a residence through this website?",
-        answer:
-          "No. The website records your interest and passes it to the sales team. A reservation is made only once the developer confirms it in writing.",
-      },
-      {
-        question: "Do you work with buyers outside Uganda?",
-        answer:
-          "Yes. Tell us your time zone in the inquiry form and a meeting will be arranged to suit it.",
-      },
-    ],
-  },
-  {
-    heading: "Visiting",
+    heading: "Visiting and next steps",
     items: [
       {
         question: "Can I visit the site?",
         answer:
-          "Site visits are arranged with a representative. Request one from the Contact page and the team will confirm a time and what to bring.",
+          "Yes. Site visits are accompanied by a representative. Request one from the Contact page and the team will confirm the time, the access route and what to bring.",
       },
       {
         question: "How quickly will someone reply?",
         answer:
           "Inquiries are assigned to a named person as soon as they arrive and answered within the sales team's published working hours.",
+      },
+      {
+        question: "How do I get the brochure and floor plans?",
+        answer:
+          "Request them from the Downloads or Contact page. The brochure carries the full specification, the schedule of areas with its area basis, and payment information.",
       },
     ],
   },

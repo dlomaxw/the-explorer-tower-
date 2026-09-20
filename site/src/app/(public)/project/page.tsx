@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/project",
     title: "The project",
     description:
-      "Explorer Towers on Acacia Avenue, Kampala: the design idea, the facade, and the facts confirmed so far.",
+      "Explorer Towers, a residential tower on John Babiha (Acacia) Avenue in Kololo, Kampala, built around one continuous curved balcony. The design, the facade and the confirmed facts.",
   });
 }
 

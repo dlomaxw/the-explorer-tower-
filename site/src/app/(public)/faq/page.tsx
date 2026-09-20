@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, faqJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { Reveal } from "@/components/reveal";
 import { ButtonLink, PageHeader, Section } from "@/components/ui";
@@ -17,6 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function FaqPage() {
   return (
+    <>
+      <JsonLd data={faqJsonLd()} />
     <>
       <PageHeader
         kicker="Questions"
@@ -54,6 +57,7 @@ export default function FaqPage() {
           <ButtonLink href="/contact#inquiry">Ask a question</ButtonLink>
         </div>
       </Section>
+    </>
     </>
   );
 }

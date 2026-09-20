@@ -86,6 +86,15 @@ export interface ResidenceType {
   readonly area: Publishable<string>;
   readonly areaBasis: Publishable<string>;
   readonly price: Publishable<string>;
+  /**
+   * The same figure as a number, for structured data.
+   *
+   * schema.org wants a bare numeric price and a separate currency; "From USD
+   * 300,000" is not valid there and gets the offer ignored. Kept beside the
+   * display string rather than parsed out of it, because parsing a string
+   * written for humans is how a price ends up wrong in a search result.
+   */
+  readonly priceFrom?: { amount: number; currency: string };
   readonly availability: Publishable<string>;
   readonly paymentPlan: Publishable<string>;
   readonly floorPlan: Publishable<Media>;

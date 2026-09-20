@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/amenities",
     title: "Amenities",
     description:
-      "The fitness room, covered arrival, parking and shared spaces at Explorer Towers, shown as designed.",
+      "A sky pool cantilevered between floors, a glazed fitness room, covered arrival and gated parking at Explorer Towers, Kololo, Kampala.",
   });
 }
 

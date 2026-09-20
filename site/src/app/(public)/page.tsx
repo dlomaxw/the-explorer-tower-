@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, projectJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { FilmStrip } from "@/components/film-strip";
 import { InquiryForm } from "@/components/inquiry-form";
@@ -40,6 +41,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function HomePage() {
   return (
+    <>
+      <JsonLd data={projectJsonLd()} />
     <>
       <OpeningSequence scenes={animationScenes} />
 
@@ -185,6 +188,7 @@ export default function HomePage() {
           </Reveal>
         </div>
       </Section>
+    </>
     </>
   );
 }

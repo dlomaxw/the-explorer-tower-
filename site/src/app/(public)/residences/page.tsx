@@ -9,9 +9,9 @@ import { residences } from "@/content/site";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/residences",
-    title: "Residences",
+    title: "Apartments for sale in Kololo, Kampala",
     description:
-      "Two-bedroom, three-bedroom and penthouse residences at Explorer Towers, each opening along curved floor-to-ceiling glazing onto a private balcony.",
+      "Apartments for sale in Kololo, Kampala. Two-bedroom from USD 300,000, three-bedroom from USD 400,000, and a six-bedroom penthouse with its own suspended pool and private cinema.",
   });
 }
 

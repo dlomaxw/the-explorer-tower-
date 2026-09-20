@@ -24,9 +24,9 @@ import { isApproved } from "@/content/types";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/location",
-    title: "Location",
+    title: "Location — Kololo, Kampala",
     description:
-      "Explorer Towers stands on Acacia Avenue, Kampala. Directions and the verified address.",
+      "Explorer Towers stands on Plot 37 John Babiha (Acacia) Avenue in Kololo, Kampala, beside Uganda Golf Club. Directions and the verified address.",
   });
 }
 

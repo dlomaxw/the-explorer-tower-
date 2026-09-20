@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { data } from "./data";
 import { resolveSiteUrl } from "./site-config";
-import { identity, contact, residences } from "@/content/site";
+import { faqs, identity, contact, residences } from "@/content/site";
 import { isApproved } from "@/content/types";
 
 /**
@@ -134,8 +134,9 @@ export function projectJsonLd(): Record<string, unknown> {
   const address = isApproved(contact.address)
     ? {
         "@type": "PostalAddress",
-        streetAddress: "Acacia Avenue",
+        streetAddress: "Plot 37 John Babiha (Acacia) Avenue, Kololo",
         addressLocality: "Kampala",
+        addressRegion: "Central Region",
         addressCountry: "UG",
       }
     : undefined;
@@ -147,7 +148,12 @@ export function projectJsonLd(): Record<string, unknown> {
     url: SITE_URL,
     description:
       "Two- and three-bedroom residences and a six-bedroom penthouse on John Babiha (Acacia) Avenue, Kampala, designed around a continuous curved balcony.",
-    numberOfAccommodationUnits: undefined,
+    // Kololo is how people in Kampala name this address, and it is the term
+    // they search. It belongs in the graph as well as in the prose.
+    areaServed: [
+      { "@type": "City", name: "Kampala" },
+      { "@type": "Country", name: "Uganda" },
+    ],
     image: `${SITE_URL}/media/exterior/street-golden-hour.png`,
   };
   if (address) project.address = address;
@@ -164,12 +170,23 @@ export function projectJsonLd(): Record<string, unknown> {
       image: `${SITE_URL}${residence.hero.src}`,
     };
 
-    // Only publish an offer once a price is actually approved.
-    if (isApproved(residence.price)) {
+    /*
+     * Only publish an offer once there is a real number behind it, and express
+     * a "from" price as a minimum rather than as the price — otherwise the
+     * cheapest residence's figure is advertised as the price of every one.
+     *
+     * No `availability`: the developer has not released stock figures, and
+     * claiming InStock to a search engine is as much a false statement as
+     * printing it on the page would be.
+     */
+    if (isApproved(residence.price) && residence.priceFrom) {
       entry.offers = {
         "@type": "Offer",
-        price: residence.price.value,
-        availability: "https://schema.org/InStock",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: residence.priceFrom.amount,
+          priceCurrency: residence.priceFrom.currency,
+        },
       };
     }
     if (isApproved(residence.area)) {
@@ -202,3 +219,49 @@ export const PUBLIC_PATHS: readonly string[] = [
   "/privacy",
   "/terms",
 ];
+
+/**
+ * FAQ structured data.
+ *
+ * This is the piece that puts the site's own answers in front of someone who
+ * asked Google or an assistant "where can I buy a three-bedroom apartment in
+ * Kampala". Without it the answers are just paragraphs; with it they are a
+ * machine-readable question-and-answer set that can be quoted directly.
+ *
+ * Every question on the page is included, because Google's guidance is that
+ * the markup must match the visible content — a set that differs from what a
+ * visitor can read is grounds for the rich result being dropped entirely.
+ */
+export function faqJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/faq#faq`,
+    mainEntity: faqs.flatMap((section) =>
+      section.items.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    ),
+  };
+}
+
+/**
+ * Breadcrumbs for a page below the top level, so a search result shows the
+ * path through the site rather than a bare URL.
+ */
+export function breadcrumbJsonLd(
+  trail: readonly { name: string; path: string }[],
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: `${SITE_URL}${crumb.path}`,
+    })),
+  };
+}
