@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { InquiryForm } from "@/components/inquiry-form";
 import { Reveal } from "@/components/reveal";
 import { ButtonLink, PageHeader, Section, SectionHeading } from "@/components/ui";
 import { downloads, residences } from "@/content/site";
 import { isApproved } from "@/content/types";
 
-export const metadata: Metadata = {
-  title: "Downloads",
-  description:
-    "Brochure, floor plans and the schedule of areas for Explorer Towers.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/downloads",
+    title: "Downloads",
+    description:
+      "Brochure, floor plans and the schedule of areas for Explorer Towers.",
+  });
+}
 
 export default function DownloadsPage() {
   const anyReady = downloads.some((item) => isApproved(item.file));

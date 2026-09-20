@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { PageHeader, Section } from "@/components/ui";
 import { legal } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Terms",
-  description: "Terms on which the Explorer Towers website is published.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/terms",
+    title: "Terms",
+    description: "Terms on which the Explorer Towers website is published.",
+  });
+}
 
 const SECTIONS = [
   {

@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+import { buildMetadata } from "@/lib/seo";
 
 import { FilmStrip } from "@/components/film-strip";
 import { InquiryForm } from "@/components/inquiry-form";
@@ -25,6 +28,15 @@ import {
   projectSummary,
   residences,
 } from "@/content/site";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/",
+    title: "Explorer Towers — Curved-balcony residences above Kampala",
+    description:
+      "Two- and three-bedroom residences and a six-bedroom penthouse on John Babiha (Acacia) Avenue, Kampala. Two bedroom from USD 300,000.",
+  });
+}
 
 export default function HomePage() {
   return (

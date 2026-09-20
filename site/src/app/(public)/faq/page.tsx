@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { Reveal } from "@/components/reveal";
 import { ButtonLink, PageHeader, Section } from "@/components/ui";
 import { faqs } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Questions",
-  description:
-    "Common questions about the residences, buying and visiting Explorer Towers.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/faq",
+    title: "Questions",
+    description:
+      "Common questions about the residences, buying and visiting Explorer Towers.",
+  });
+}
 
 export default function FaqPage() {
   return (

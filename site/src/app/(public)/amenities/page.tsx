@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 
 import {
@@ -10,11 +12,14 @@ import {
 } from "@/components/ui";
 import { amenities, amenitiesNote, media } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Amenities",
-  description:
-    "The fitness room, covered arrival, parking and shared spaces at Explorer Towers, shown as designed.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/amenities",
+    title: "Amenities",
+    description:
+      "The fitness room, covered arrival, parking and shared spaces at Explorer Towers, shown as designed.",
+  });
+}
 
 export default function AmenitiesPage() {
   const featured = amenities.filter((amenity) => amenity.media);

@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { ResidenceCard } from "@/components/residence-card";
 import { PageHeader, Section } from "@/components/ui";
 import { residences } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Residences",
-  description:
-    "Two-bedroom, three-bedroom and penthouse residences at Explorer Towers, each opening along curved floor-to-ceiling glazing onto a private balcony.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/residences",
+    title: "Residences",
+    description:
+      "Two-bedroom, three-bedroom and penthouse residences at Explorer Towers, each opening along curved floor-to-ceiling glazing onto a private balcony.",
+  });
+}
 
 export default function ResidencesPage() {
   return (

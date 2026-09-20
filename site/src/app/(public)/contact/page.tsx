@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { InquiryForm } from "@/components/inquiry-form";
 import { Reveal } from "@/components/reveal";
 import {
@@ -13,11 +15,14 @@ import { residences } from "@/content/site";
 import { siteContent } from "@/lib/content";
 import { isApproved } from "@/content/types";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Register interest, request a callback, arrange a meeting or book a site visit at Explorer Towers.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/contact",
+    title: "Contact",
+    description:
+      "Register interest, request a callback, arrange a meeting or book a site visit at Explorer Towers.",
+  });
+}
 
 const unitOptions = residences.map((residence) => ({
   value: residence.slug,

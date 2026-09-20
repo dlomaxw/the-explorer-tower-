@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { PageHeader, Section } from "@/components/ui";
 import { CONSENT_NOTICE_VERSION } from "@/lib/inquiry-schema";
 
-export const metadata: Metadata = {
-  title: "Privacy notice",
-  description: "How Explorer Towers handles the details you send through this site.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/privacy",
+    title: "Privacy notice",
+    description: "How Explorer Towers handles the details you send through this site.",
+  });
+}
 
 /**
  * Working draft. Spec §12 requires the client to review the wording and set

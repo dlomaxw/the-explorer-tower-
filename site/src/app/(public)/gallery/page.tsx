@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { FilmStrip } from "@/components/film-strip";
 import { MediaGallery } from "@/components/media-gallery";
 import { PageHeader, Section } from "@/components/ui";
 import { films, galleryItems, legal } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description:
-    "Exterior, interior and amenity images of Explorer Towers, filterable by category.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/gallery",
+    title: "Gallery",
+    description:
+      "Exterior, interior and amenity images of Explorer Towers, filterable by category.",
+  });
+}
 
 export default function GalleryPage() {
   return (

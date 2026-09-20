@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 
+import { buildMetadata } from "@/lib/seo";
+
 import { MediaGallery } from "@/components/media-gallery";
 import { ButtonLink, EmptyState, PageHeader, Section } from "@/components/ui";
 import { progressUpdates } from "@/content/site";
 
-export const metadata: Metadata = {
-  title: "Construction progress",
-  description:
-    "Dated construction updates and site photography from Explorer Towers.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/progress",
+    title: "Construction progress",
+    description:
+      "Dated construction updates and site photography from Explorer Towers.",
+  });
+}
 
 export default function ProgressPage() {
   return (

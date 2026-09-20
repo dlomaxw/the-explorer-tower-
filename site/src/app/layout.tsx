@@ -3,6 +3,10 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 
 import { identity } from "@/content/site";
 import { SITE_INDEXABLE } from "@/lib/seo";
+import {
+  GoogleTagManager,
+  GoogleTagManagerNoScript,
+} from "@/components/google-tag-manager";
 
 import "./globals.css";
 
@@ -55,7 +59,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${body.variable} ${display.variable}`}>
-      <body>{children}</body>
+      <body>
+        {/* Must be the first node in the body, per GTM's own install. */}
+        <GoogleTagManagerNoScript />
+        {children}
+        <GoogleTagManager />
+      </body>
     </html>
   );
 }

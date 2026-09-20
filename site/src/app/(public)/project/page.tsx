@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 
 import {
@@ -20,11 +22,14 @@ import {
 import { DeveloperCredit } from "@/components/developer-credit";
 import { isApproved } from "@/content/types";
 
-export const metadata: Metadata = {
-  title: "The project",
-  description:
-    "Explorer Towers on Acacia Avenue, Kampala: the design idea, the facade, and the facts confirmed so far.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/project",
+    title: "The project",
+    description:
+      "Explorer Towers on Acacia Avenue, Kampala: the design idea, the facade, and the facts confirmed so far.",
+  });
+}
 
 const DESIGN_NOTES = [
   {

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -27,7 +29,13 @@ export async function generateMetadata(
   const residence = residences.find((item) => item.slug === slug);
   if (!residence) return {};
 
-  return { title: residence.name, description: residence.summary };
+  return buildMetadata({
+    path: `/residences/${residence.slug}`,
+    title: residence.name,
+    description: residence.summary,
+    // Each residence shares as itself rather than as the building exterior.
+    image: residence.hero.src,
+  });
 }
 
 export default async function ResidencePage(

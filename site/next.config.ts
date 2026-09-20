@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { APEX_HOST, CANONICAL_HOST } from "./src/lib/site-config";
 
 /**
  * The canonical host is www.explorertower.ug.
@@ -11,8 +12,6 @@ import type { NextConfig } from "next";
  * The rule is inert until DNS exists: `has: host` cannot match a hostname
  * nobody can resolve, so this is safe to ship before the domain is live.
  */
-const CANONICAL_HOST = "www.explorertower.ug";
-const APEX_HOST = "explorertower.ug";
 
 const nextConfig: NextConfig = {
   async redirects() {

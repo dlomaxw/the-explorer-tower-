@@ -3,6 +3,7 @@ import "server-only";
 import type { Metadata } from "next";
 
 import { data } from "./data";
+import { resolveSiteUrl } from "./site-config";
 import { identity, contact, residences } from "@/content/site";
 import { isApproved } from "@/content/types";
 
@@ -14,14 +15,13 @@ import { isApproved } from "@/content/types";
  * deploy. Defaults stay in version control so an empty database still produces a
  * complete, reviewable set of tags.
  *
- * Site-wide indexing is gated on two things the client still owes us: the
- * confirmed public developer name and the official domain. Until
- * `SITE_INDEXABLE=true` and `SITE_URL` are set, every page ships `noindex` —
- * a staging deploy must not be indexed carrying unapproved prices.
+ * The canonical origin comes from `site-config.ts`, not from an environment
+ * variable, so canonical tags and the sitemap cannot be pointed at the wrong
+ * host by a stale setting. Indexing is still a deliberate switch, and still
+ * refuses to apply anywhere but production.
  */
 
-export const SITE_URL =
-  process.env.SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
+export const SITE_URL = resolveSiteUrl();
 
 /**
  * Only the production deployment may ever be indexed.
@@ -92,7 +92,12 @@ export async function buildMetadata(input: {
   const blocked = !SITE_INDEXABLE || override?.noindex === 1;
 
   return {
-    title,
+    /*
+     * The root layout appends " — Explorer Towers" to every title. The home
+     * page already ends with the project name, so it opts out of the template
+     * rather than announcing the project twice in one tab.
+     */
+    title: input.path === "/" ? { absolute: title } : title,
     description,
     alternates: { canonical },
     robots: blocked

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 
 import {
@@ -19,11 +21,14 @@ import {
 } from "@/content/site";
 import { isApproved } from "@/content/types";
 
-export const metadata: Metadata = {
-  title: "Location",
-  description:
-    "Explorer Towers stands on Acacia Avenue, Kampala. Directions and the verified address.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    path: "/location",
+    title: "Location",
+    description:
+      "Explorer Towers stands on Acacia Avenue, Kampala. Directions and the verified address.",
+  });
+}
 
 /**
  * Spec §11: both the address and the pin are now confirmed by the client, so
