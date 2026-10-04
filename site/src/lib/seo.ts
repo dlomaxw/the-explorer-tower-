@@ -148,6 +148,8 @@ export function projectJsonLd(): Record<string, unknown> {
     url: SITE_URL,
     description:
       "Two- and three-bedroom residences and a six-bedroom penthouse on John Babiha (Acacia) Avenue, Kampala, designed around a continuous curved balcony.",
+    numberOfAccommodationUnits: 26,
+    numberOfFloors: 12,
     // Kololo is how people in Kampala name this address, and it is the term
     // they search. It belongs in the graph as well as in the prose.
     areaServed: [

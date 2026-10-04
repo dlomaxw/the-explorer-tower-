@@ -304,39 +304,84 @@ export const media = {
     kind: "render",
     category: "amenities",
   },
-  coworkingLounge: {
-    src: "/media/amenities/coworking-lounge.webp",
+  lobbyLounge: {
+    src: "/media/amenities/lobby-lounge.webp",
     width: 1672,
     height: 941,
-    alt: "A long shared work table running beside full-height glazing, set with screens and chairs, looking out over open country.",
-    caption: "Residents' work lounge",
+    alt: "The ground-floor lobby lounge at golden hour, a curved sofa beneath a brass ring light, glazed on two sides to the garden.",
+    caption: "Lobby lounge",
     kind: "render",
     category: "amenities",
   },
-  screeningRoom: {
-    src: "/media/amenities/screening-room.webp",
+  reception: {
+    src: "/media/amenities/reception.webp",
     width: 1672,
     height: 941,
-    alt: "A screening and meeting room with a large wall-mounted display, walnut table and upholstered chairs, glazed to one side.",
-    caption: "Screening and meeting room",
+    alt: "The reception desk in ivory travertine, with the sunken lounge beyond it.",
+    caption: "Reception",
     kind: "render",
     category: "amenities",
   },
-  loungeAndBoardroom: {
-    src: "/media/amenities/lounge-and-boardroom.webp",
+  mediaRoom: {
+    src: "/media/amenities/media-room.webp",
     width: 1672,
     height: 941,
-    alt: "A residents' lounge of soft armchairs beside a glazed boardroom, the two separated by a full-height glass wall.",
-    caption: "Lounge beside the boardroom",
+    alt: "A media room with a long walnut table, wall-mounted display and slatted timber walls, glazed to the garden.",
+    caption: "Media room",
     kind: "render",
     category: "amenities",
   },
-  boardroom: {
-    src: "/media/amenities/boardroom-wide.webp",
+  conferenceRoom: {
+    src: "/media/amenities/conference-room.webp",
     width: 1672,
     height: 941,
-    alt: "A boardroom seating sixteen at a walnut table, with a wall display, slatted timber walls and glazing to the landscape.",
+    alt: "The conference room, seating fourteen at a walnut table with a wall display and full-height glazing alongside.",
     caption: "Conference room",
+    kind: "render",
+    category: "amenities",
+  },
+  residentsLounge: {
+    src: "/media/amenities/residents-lounge.webp",
+    width: 1672,
+    height: 941,
+    alt: "The residents' lounge, armchairs gathered on a rug with the dining hall and bar beyond.",
+    caption: "Residents' lounge",
+    kind: "render",
+    category: "amenities",
+  },
+  meetingRoom: {
+    src: "/media/amenities/meeting-room.webp",
+    width: 1672,
+    height: 941,
+    alt: "A meeting room with a long walnut table under brass pendants, travertine columns down one side.",
+    caption: "Meeting room",
+    kind: "render",
+    category: "amenities",
+  },
+  diningHall: {
+    src: "/media/amenities/dining-hall.webp",
+    width: 1672,
+    height: 941,
+    alt: "The dining hall, a long walnut table beneath a line of brass globe pendants, lit from the glazing at the far end.",
+    caption: "Dining hall",
+    kind: "render",
+    category: "amenities",
+  },
+  sauna: {
+    src: "/media/amenities/sauna.webp",
+    width: 1800,
+    height: 1012,
+    alt: "The sauna, lined and benched in pale travertine.",
+    caption: "Sauna",
+    kind: "render",
+    category: "amenities",
+  },
+  playground: {
+    src: "/media/amenities/playground.webp",
+    width: 1800,
+    height: 1012,
+    alt: "The children's play area in the garden, shaded and fenced, with the building's columns rising behind it.",
+    caption: "Children's play area",
     kind: "render",
     category: "amenities",
   },
@@ -851,6 +896,7 @@ export const amenities: readonly Amenity[] = [
     name: "Sauna and steam room",
     description:
       "Separate sauna and steam rooms off the pool lobby, beside the shower and restroom area.",
+    media: media.sauna,
   },
   {
     name: "Yoga and floor exercise studio",
@@ -861,35 +907,43 @@ export const amenities: readonly Amenity[] = [
     name: "Bar and lounge",
     description:
       "A residents' bar and lounge on the first floor, with its own kitchenette.",
-    media: media.loungeAndBoardroom,
+    media: media.residentsLounge,
   },
   {
     name: "Work lounge",
     description:
       "A shared work table along the glazing, for working from the building rather than from the flat.",
-    media: media.coworkingLounge,
+    media: media.mediaRoom,
   },
   {
     name: "Conference room",
     description:
       "A conference room on the first floor, with a media and IT room attached.",
-    media: media.boardroom,
+    media: media.conferenceRoom,
   },
   {
     name: "Two meeting rooms",
     description:
       "Two further meeting rooms on the same level, one set up for screening as well as for meetings.",
-    media: media.screeningRoom,
+    media: media.meetingRoom,
   },
   {
     name: "Garden and children's play area",
     description:
       "A planted garden at ground level off the lobby lounge, with a children's play area within the gated boundary.",
+    media: media.playground,
   },
   {
     name: "Reception and lobby",
     description:
       "A staffed reception and lift lobby at ground level, with a security office and commercial space on the same floor.",
+    media: media.reception,
+  },
+  {
+    name: "Lobby lounge",
+    description:
+      "A lounge off the lobby, glazed on two sides to the garden.",
+    media: media.lobbyLounge,
   },
   {
     name: "On-site facilities management",
@@ -1092,17 +1146,32 @@ export const amenitiesExclusion =
 // ---------------------------------------------------------------------------
 
 export const projectFacts: readonly ProjectFact[] = [
-  { label: "Location", value: approved("Acacia Avenue, Kampala") },
+  { label: "Location", value: approved("Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala") },
   {
     label: "Residence types",
-    value: approved("Two bedroom, three bedroom, and a six-bedroom penthouse"),
+    value: approved("Two bedroom, three bedroom, and six-bedroom duplex penthouses"),
   },
-  { label: "Total residences", value: pending("Request current availability") },
+  /*
+   * Counted from the issued drawings: floors two to nine each carry three
+   * apartments (sheets A-104 to A-111, each with three living areas of 109.2,
+   * 89.6 and 113.2 m²), plus the two penthouses on ten and eleven. The
+   * two-and-one split per floor is the client's confirmed mix. This is the
+   * number built, not the number still for sale — availability is a
+   * separate figure the developer has not released.
+   */
+  {
+    label: "Total residences",
+    value: approved("26 — 24 apartments and 2 penthouses"),
+  },
+  {
+    label: "Apartments",
+    value: approved("16 three-bedroom and 8 two-bedroom, three to a floor on floors two to nine"),
+  },
   {
     label: "Storeys",
-    value: approved("Ground floor plus eleven upper floors, over a basement"),
+    value: approved("Basement, ground floor and eleven upper floors"),
   },
-  { label: "Tenure", value: pending("To be confirmed") },
+  { label: "Tenure", value: pending("Confirmed in the sale agreement — ask the sales team") },
   { label: "Expected completion", value: pending("To be confirmed") },
 ];
 
@@ -1244,6 +1313,11 @@ export const faqs: readonly FaqSection[] = [
         question: "What sizes and layouts are available?",
         answer:
           "Two-bedroom residences, three-bedroom residences and two six-bedroom duplex penthouses. Every residence opens along floor-to-ceiling curved glazing onto a private balcony. The full dimensioned floor plan set is on the Downloads page, with room sizes in metres for every level. The sale schedule of areas, which states how balconies and terraces are counted, is issued with the brochure.",
+      },
+      {
+        question: "How many apartments and floors are there?",
+        answer:
+          "Explorer Towers has 26 residences: 24 apartments and 2 penthouses. The apartments are on floors two to nine, three to a floor — two three-bedroom residences and one two-bedroom — which makes 16 three-bedroom and 8 two-bedroom apartments. The two six-bedroom duplex penthouses are on floors ten and eleven. The building is a basement, a ground floor and eleven upper floors.",
       },
       {
         question: "What amenities does the building have?",
