@@ -4,13 +4,11 @@ import Image from "next/image";
 import { buildMetadata, projectJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
 
-import { FilmStrip } from "@/components/film-strip";
 import { InquiryForm } from "@/components/inquiry-form";
 import { InteriorShowcase } from "@/components/interior-showcase";
 import { OpeningSequence } from "@/components/opening-sequence";
 import { Reveal } from "@/components/reveal";
 import { ResidenceCard } from "@/components/residence-card";
-import { ScrollJourney } from "@/components/scroll-journey";
 import {
   ButtonLink,
   DefinitionRow,
@@ -22,7 +20,6 @@ import {
 import {
   amenities,
   animationScenes,
-  films,
   interiorRooms,
   media,
   projectFacts,
@@ -43,10 +40,16 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={projectJsonLd()} />
-    <>
       <OpeningSequence scenes={animationScenes} />
 
-      <ScrollJourney />
+      {/*
+        The scroll journey is withdrawn, not deleted. Its reel is cut from the
+        earlier exterior footage, which shows a facade the design has since
+        moved on from — a smooth, convincing sequence of the wrong building is
+        worse than no sequence at all. tools/build-scrub-reel.py and the
+        component are intact: supply exterior clips of the current facade, run
+        the script, and put <ScrollJourney /> back here.
+      */}
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
@@ -79,27 +82,11 @@ export default function HomePage() {
         </Reveal>
       </Section>
 
-      {/* Exterior films, on the dark ground so the frame reads as a screen. */}
-      <section className="bg-ink py-20 text-stone-100 md:py-28">
-        <div className="shell">
-          <Reveal>
-            <div className="max-w-2xl">
-              <p className="kicker text-cream">Film</p>
-              <h2 className="display-lg mt-4 text-balance">
-                Five seconds at a time
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-stone-300 text-pretty">
-                Short exterior passes — the approach from the street, the drive
-                in under the podium, and the descent down the facade past the
-                pool. Nothing plays until you press it.
-              </p>
-            </div>
-          </Reveal>
-          <div className="mt-10">
-            <FilmStrip films={films} />
-          </div>
-        </div>
-      </section>
+      {/*
+        The exterior film strip is withdrawn for the same reason as the journey
+        above: every clip is of the superseded facade. The interior walkthroughs
+        below are unaffected and stay.
+      */}
 
       <Section tone="muted">
         <Reveal>
@@ -188,7 +175,6 @@ export default function HomePage() {
           </Reveal>
         </div>
       </Section>
-    </>
     </>
   );
 }
