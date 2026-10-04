@@ -209,6 +209,51 @@ export const media = {
     category: "amenities",
     focal: "45% 50%",
   },
+  penthousePool: {
+    src: "/media/amenities/sky-pool-penthouse.webp",
+    width: 1614,
+    height: 975,
+    alt: "A penthouse pool suspended in the facade at sunset, its glass edge looking out over the city, with the residence behind it.",
+    caption: "Penthouse pool, suspended in the facade",
+    kind: "render",
+    category: "amenities",
+  },
+  coworkingLounge: {
+    src: "/media/amenities/coworking-lounge.webp",
+    width: 1672,
+    height: 941,
+    alt: "A long shared work table running beside full-height glazing, set with screens and chairs, looking out over open country.",
+    caption: "Residents' work lounge",
+    kind: "render",
+    category: "amenities",
+  },
+  screeningRoom: {
+    src: "/media/amenities/screening-room.webp",
+    width: 1672,
+    height: 941,
+    alt: "A screening and meeting room with a large wall-mounted display, walnut table and upholstered chairs, glazed to one side.",
+    caption: "Screening and meeting room",
+    kind: "render",
+    category: "amenities",
+  },
+  loungeAndBoardroom: {
+    src: "/media/amenities/lounge-and-boardroom.webp",
+    width: 1672,
+    height: 941,
+    alt: "A residents' lounge of soft armchairs beside a glazed boardroom, the two separated by a full-height glass wall.",
+    caption: "Lounge beside the boardroom",
+    kind: "render",
+    category: "amenities",
+  },
+  boardroom: {
+    src: "/media/amenities/boardroom-wide.webp",
+    width: 1672,
+    height: 941,
+    alt: "A boardroom seating sixteen at a walnut table, with a wall display, slatted timber walls and glazing to the landscape.",
+    caption: "Conference room",
+    kind: "render",
+    category: "amenities",
+  },
   skyPoolFacade: {
     src: "/media/amenities/sky-pool-facade.png",
     ...INT,
@@ -464,8 +509,8 @@ export const residences: readonly ResidenceType[] = [
   },
   {
     slug: "penthouse",
-    name: "Six-bedroom penthouse",
-    shortName: "Penthouse",
+    name: "Six-bedroom duplex penthouses",
+    shortName: "Penthouses",
     bedrooms: 6,
     area: pending("Request the penthouse area schedule"),
     areaBasis: pending("Area basis to be confirmed"),
@@ -474,18 +519,22 @@ export const residences: readonly ResidenceType[] = [
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Penthouse plan available on request"),
     summary:
-      "Six bedrooms at the top of the building, with a swimming pool suspended in the facade and a private cinema room. The pool and the cinema belong to this residence alone.",
+      "Two duplex penthouses crown the building, a mirrored pair across the tenth and eleventh floors. Each has six bedrooms over two levels, its own swimming pool and pool deck suspended in the facade, a private cinema room and a sunken lounge — all belonging to that residence alone.",
     /**
      * The pool and cinema are confirmed by the client. Everything else here is
      * what the approved renders actually show — the room-by-room schedule
      * follows once penthouse drawings are handed over.
      */
     features: [
-      "Six bedrooms",
-      "Private suspended swimming pool, cantilevered in the facade",
+      "Two penthouses only, a mirrored pair over the tenth and eleventh floors",
+      "Six bedrooms arranged across two levels",
+      "Private swimming pool and pool deck, suspended in the facade",
       "Private cinema room",
-      "Full-width curved glazing to the principal rooms",
-      "Views across Kampala on three sides",
+      "Sunken lounge beside the pool deck",
+      "Principal suite with walk-in dressing room and study",
+      "Private lounge on the upper level",
+      "Staff quarters, pantry and laundry to each residence",
+      "Terraces on both levels",
     ],
     hero: media.skyPoolTerrace,
     gallery: [media.skyPoolTerrace, media.skyPoolFacade, media.sectionCutawayDusk],
@@ -495,7 +544,7 @@ export const residences: readonly ResidenceType[] = [
      * the cinema room has no render at all, so it is described, not pictured.
      */
     mediaNote:
-      "Penthouse interiors have not yet been released. These images show the suspended pool and the sectional study; there is no render of the cinema room yet.",
+      "Penthouse interiors have not yet been released. These images show the suspended pool and the sectional study. The dimensioned plans for both penthouse levels are in the floor plan set on the Downloads page.",
   },
 ];
 
@@ -701,10 +750,65 @@ export const interiorRooms: readonly InteriorRoom[] = [
 
 export const amenities: readonly Amenity[] = [
   {
-    name: "Fitness room",
+    name: "Swimming pool and sunken lounge",
     description:
-      "A glazed fitness room on the podium level, overlooking the arrival court.",
+      "A pool on the first-floor wellness level with a sunken lounge beside it, shared by every residence. The pools suspended higher in the facade are private to the two penthouses.",
+    media: media.skyPoolTerrace,
+  },
+  {
+    name: "Gym",
+    description:
+      "A fitted gym on the first-floor wellness level, with its own lobby, showers and changing area.",
     media: media.arrivalPodium,
+  },
+  {
+    name: "Sauna and steam room",
+    description:
+      "Separate sauna and steam rooms off the pool lobby, beside the shower and restroom area.",
+  },
+  {
+    name: "Yoga and floor exercise studio",
+    description:
+      "A dedicated studio for yoga and floor work, apart from the main gym floor.",
+  },
+  {
+    name: "Bar and lounge",
+    description:
+      "A residents' bar and lounge on the first floor, with its own kitchenette.",
+    media: media.loungeAndBoardroom,
+  },
+  {
+    name: "Work lounge",
+    description:
+      "A shared work table along the glazing, for working from the building rather than from the flat.",
+    media: media.coworkingLounge,
+  },
+  {
+    name: "Conference room",
+    description:
+      "A conference room on the first floor, with a media and IT room attached.",
+    media: media.boardroom,
+  },
+  {
+    name: "Two meeting rooms",
+    description:
+      "Two further meeting rooms on the same level, one set up for screening as well as for meetings.",
+    media: media.screeningRoom,
+  },
+  {
+    name: "Garden and children's play area",
+    description:
+      "A planted garden at ground level off the lobby lounge, with a children's play area within the gated boundary.",
+  },
+  {
+    name: "Reception and lobby",
+    description:
+      "A staffed reception and lift lobby at ground level, with a security office and commercial space on the same floor.",
+  },
+  {
+    name: "On-site facilities management",
+    description:
+      "Facilities management offices, laundry and plant on the first floor, so the building is run from within it.",
   },
   {
     name: "Covered arrival",
@@ -908,7 +1012,10 @@ export const projectFacts: readonly ProjectFact[] = [
     value: approved("Two bedroom, three bedroom, and a six-bedroom penthouse"),
   },
   { label: "Total residences", value: pending("Request current availability") },
-  { label: "Storeys", value: pending("To be confirmed") },
+  {
+    label: "Storeys",
+    value: approved("Ground floor plus eleven upper floors, over a basement"),
+  },
   { label: "Tenure", value: pending("To be confirmed") },
   { label: "Expected completion", value: pending("To be confirmed") },
 ];
@@ -964,8 +1071,13 @@ export const downloads: readonly Download[] = [
   },
   {
     title: "Floor plans",
-    description: "Dimensioned plans for each residence type.",
-    file: pending("Request floor plans"),
+    description:
+      "The full dimensioned set: basement, ground, the first-floor wellness level, every typical floor, and both penthouse levels. Room sizes and structural grid in metres.",
+    file: approved({
+      href: "/documents/explorer-towers-floor-plans.pdf",
+      revised: "25 September 2026",
+      sizeLabel: "439 KB PDF, 14 sheets",
+    }),
   },
   {
     title: "Schedule of areas",
@@ -1010,7 +1122,7 @@ export const faqs: readonly FaqSection[] = [
       {
         question: "Is there a luxury penthouse for sale in Kololo?",
         answer:
-          "Yes. The six-bedroom penthouse at Explorer Towers occupies the top of the building on John Babiha (Acacia) Avenue, Kololo. It has a swimming pool suspended in the facade and a private cinema room, both belonging to that residence alone. It is priced on application — contact the sales team.",
+          "Yes — two of them. Explorer Towers has a mirrored pair of six-bedroom duplex penthouses across its tenth and eleventh floors, on John Babiha (Acacia) Avenue, Kololo. Each has its own swimming pool and pool deck suspended in the facade, a private cinema room and a sunken lounge, belonging to that residence alone. Both are priced on application — contact the sales team.",
       },
       {
         question: "Can foreigners and Ugandans in the diaspora buy here?",
@@ -1045,12 +1157,12 @@ export const faqs: readonly FaqSection[] = [
       {
         question: "What sizes and layouts are available?",
         answer:
-          "Two-bedroom residences, three-bedroom residences and one six-bedroom penthouse. Every residence opens along floor-to-ceiling curved glazing onto a private balcony. The dimensioned schedule of areas is issued with the brochure — ask the sales team for the current version.",
+          "Two-bedroom residences, three-bedroom residences and two six-bedroom duplex penthouses. Every residence opens along floor-to-ceiling curved glazing onto a private balcony. The full dimensioned floor plan set is on the Downloads page, with room sizes in metres for every level. The sale schedule of areas, which states how balconies and terraces are counted, is issued with the brochure.",
       },
       {
         question: "What amenities does the building have?",
         answer:
-          "A sky pool cantilevered between floors at the centre of the building, a glazed fitness room on the podium level, a covered arrival beneath the podium, resident parking within the gated boundary, planting carried up the full height of the facade and solar site lighting. The penthouse additionally has its own suspended pool and private cinema room.",
+          "The whole first floor is given over to wellness and work: a swimming pool with a sunken lounge, a gym, a sauna and steam room, a yoga and floor exercise studio, a bar and lounge, a conference room with a media room attached, and two further meeting rooms. At ground level there is a staffed reception and lobby, a garden with a children's play area, and commercial space. Parking is at grade and in the basement within the gated boundary, and facilities management is on site. Each of the two penthouses additionally has its own suspended pool, pool deck and private cinema room.",
       },
       {
         question: "When will Explorer Towers be completed?",
@@ -1085,7 +1197,7 @@ export const faqs: readonly FaqSection[] = [
       {
         question: "How do I get the brochure and floor plans?",
         answer:
-          "Request them from the Downloads or Contact page. The brochure carries the full specification, the schedule of areas with its area basis, and payment information.",
+          "The dimensioned floor plans download directly from the Downloads page. The brochure, which carries the full specification, the sale schedule of areas with its area basis, and payment information, is requested from the same page.",
       },
     ],
   },
