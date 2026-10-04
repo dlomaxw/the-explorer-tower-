@@ -88,7 +88,7 @@ export async function buildMetadata(input: {
   const title = override?.title || input.title;
   const description = override?.description || input.description;
   const canonical = override?.canonical || `${SITE_URL}${input.path}`;
-  const image = input.image ?? "/media/exterior/street-golden-hour.png";
+  const image = input.image ?? "/media/exterior/aerial-night.webp";
   const blocked = !SITE_INDEXABLE || override?.noindex === 1;
 
   return {
@@ -110,7 +110,7 @@ export async function buildMetadata(input: {
       url: canonical,
       siteName: identity.projectName,
       locale: "en_GB",
-      images: [{ url: `${SITE_URL}${image}`, width: 1834, height: 1024 }],
+      images: [{ url: `${SITE_URL}${image}`, width: 2400, height: 1350 }],
     },
     twitter: {
       card: "summary_large_image",
@@ -154,7 +154,7 @@ export function projectJsonLd(): Record<string, unknown> {
       { "@type": "City", name: "Kampala" },
       { "@type": "Country", name: "Uganda" },
     ],
-    image: `${SITE_URL}/media/exterior/street-golden-hour.png`,
+    image: `${SITE_URL}/media/exterior/aerial-night.webp`,
   };
   if (address) project.address = address;
   graph.push(project);
