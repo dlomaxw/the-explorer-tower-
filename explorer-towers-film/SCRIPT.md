@@ -26,7 +26,7 @@ Format proposed: 16:9, about 45 s, English voice-over, ~125 words.
 | 4 | Offer | Three doors: 2-bed, 3-bed, penthouse | Two-bedroom homes from three hundred thousand dollars. Three-bedroom from four hundred thousand. And two six-bedroom penthouses, each with its own pool, priced on application. |
 | 5 | Amenities | Pool, gym, lounge, garden, covered arrival | A gym, a sauna, a garden, a lounge, covered parking and a team that manages it all. |
 | 6 | Pivot (on black) | Black, one line of text | Come and see it. |
-| 7 | Contact / CTA | Tower at dusk, contact card | Call or WhatsApp plus two five zero, four two one, two two four. Viewings, nine thirty to seven. Explorer Towers. Curved-balcony residences above Kampala. |
+| 7 | Contact / CTA | Tower at dusk, contact card | Call or WhatsApp plus two five six, seven five zero, four two one, two two four. Viewings, nine thirty to seven. Explorer Towers. Curved-balcony residences above Kampala. |
 
 ### To paste in ElevenLabs (no staging)
 
@@ -42,7 +42,7 @@ A gym. A sauna. A garden. A lounge. Covered parking, and a team that looks after
 
 Come and see it.
 
-Call or WhatsApp, plus two five zero, four two one, two two four. Viewings, nine thirty to seven.
+Call or WhatsApp, plus two five six, seven five zero, four two one, two two four. Viewings, nine thirty to seven.
 
 Explorer Towers. Curved-balcony residences above Kampala.
 
