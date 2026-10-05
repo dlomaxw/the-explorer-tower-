@@ -186,6 +186,17 @@ print("orchestrator layer patched:", ", ".join(k for k, v in (("audio", env.get(
       ("iris", iris_at is not None), ("paper bed", "paperbed" in s)) if v) or "nothing")
 EOF
 
+# GSAP is vendored in assets/vendor/ so the build and the render never depend on the jsDelivr CDN (blocked in some
+# environments). Rewrites the CDN tag in the fresh index.html and in the frame files, idempotent.
+python3 - <<'PYEOF'
+import glob, re
+for f in ["index.html"] + sorted(glob.glob("compositions/frames/*.html")):
+    s = open(f, encoding="utf-8").read()
+    t = re.sub(r'<script src="https://cdn\.jsdelivr\.net/npm/gsap@[0-9.]+/dist/gsap\.min\.js"[^>]*>', '<script src="assets/vendor/gsap.min.js">', s)
+    if t != s:
+        open(f, "w", encoding="utf-8").write(t)
+PYEOF
+
 if [ "$RUN_LINT" = "1" ]; then
   npx hyperframes lint 2>&1 | grep -E "✗|error\(s\)|warning\(s\)" || echo "lint: no error reported"
 fi

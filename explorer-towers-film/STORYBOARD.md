@@ -54,7 +54,7 @@ patterns: ../patterns/STORYBOARD-CRAFT.md, ../patterns/PATTERNS.md
 - scene: The real facade, one yellow line climbs the balconies, then the day turns to night over Kololo
 - duration: 5.40s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-curve.html
 - voiceover: "one curve from the street to the roof"
 - type: hook
