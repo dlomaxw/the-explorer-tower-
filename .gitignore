@@ -45,3 +45,6 @@ examples/*/*/renders/
 examples/*/*/snapshots/
 .hyperframes/
 _references/
+
+# generated audio intermediates
+explorer-towers-film/assets/audio/*.wav
