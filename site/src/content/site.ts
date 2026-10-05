@@ -521,11 +521,11 @@ const twoBed = {
 export const animationScenes: readonly AnimationScene[] = [
   {
     id: "arrival",
-    media: media.aerialNight,
-    mobileFocal: "50% 48%",
-    kicker: "Kololo, Kampala",
+    media: media.streetGoldenHour,
+    mobileFocal: "50% 38%",
+    kicker: "Acacia Avenue, Kampala",
     heading: "Explorer Towers",
-    body: "Curved-balcony residences above the city.",
+    body: "Curved-balcony residences with the city on every horizon.",
     zoomTo: 1.06,
   },
   {
