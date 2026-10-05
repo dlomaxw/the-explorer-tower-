@@ -1,71 +1,61 @@
-# {{TITRE_DU_FILM}} : trois directions de storyboard (à choisir avant d'écrire le storyboard complet)
+# Explorer Towers — three storyboard directions (choose one before the full storyboard)
 
-<!--
-Modèle de l'étape 4 de la méthode (premier prompt : « Propose-moi 3 directions de storyboard vraiment différentes pour
-ce script, avec 3 images de style chacune »). Copie-le en <projet>/DIRECTIONS.md, remplace chaque {{...}}
-(grep -n "{{" DIRECTIONS.md ne doit rien afficher), puis supprime ce commentaire.
+Same voice, same timing, same music and sound effects for all three. Only the staging changes. Voice timings come from
+`onsets.json` (montage, 49.8 s). Real renders from the website are used for every image; accent is Bright yellow `#FFD60A`.
+Fonts: Montserrat (UI/subtitles), Cormorant Garamond (display, directions A and C).
 
-- Lis d'abord patterns/STORYBOARD-CRAFT.md (les 10 lois) et patterns/PATTERNS.md (quoi montrer).
-- Trois directions VRAIMENT différentes : trois lieux, trois façons de faire le pont entre les idées, pas trois
-  habillages du même film. Même script, même voix, même minutage pour les trois (chaque musique ira avec chaque image).
-- Une image de style = une image figée du futur film, en qualité finale (vraies interfaces, vraie typographie, vraie
-  lumière), avec le mouvement suggéré dans l'image elle-même (flou de mouvement, flou de profondeur, élément qui arrive
-  trop grand et flou). Une page HTML autonome de 1920 × 1080 par image, dans <projet>/styleframes/<A1 à C3>.html, rendue
-  en PNG par : python3 .claude/skills/motion-design/scripts/render-styleframes.py <projet>
-- Choisis les trois moments de chaque direction là où elle se joue : l'accroche, le cœur de la douleur, le retournement
-  ou la preuve. Donne leur temps exact dans la voix.
-- Montre les 9 images côte à côte, direction par direction, et attends le choix. Corriger une image coûte dix fois
-  moins cher que corriger une vidéo.
-Exemple rempli : examples/C-le-devis-v7a/DIRECTIONS.md.
--->
+## Voice timeline (film seconds)
 
-Même voix, même musique, mêmes bruitages pour les trois directions : l'horloge ne bouge pas, seule la mise en scène
-change. Grammaire visée : `patterns/STORYBOARD-CRAFT.md` (un monde, une caméra qui s'y déplace, un objet-pont à chaque
-transition, deux vitesses, un événement toutes les 0,5 à 1 s, rien d'immobile). Vraies interfaces, épurées et
-actuelles : {{INTERFACES_ET_CAPTURES_DE_REFERENCE}}.
+one 0.05 · curve 0.40 · from 1.50 … roof 2.57 · **[silent gag 3.0 to 5.7]** · plot 5.69 · thirty-seven 6.00 · john babiha 7.16 ·
+also called acacia avenue 8.39 · kololo 10.75 · kampala 11.55 · two-bedroom homes 12.71 · three hundred thousand dollars 14.04 ·
+three-bedroom 15.97 · four hundred thousand 17.15 · two six-bedroom penthouses 19.09 · each with its own pool 21.25 ·
+priced on application 22.72 · a gym 24.42 · a sauna 25.38 · a garden 26.40 · a lounge 27.40 · covered parking 28.48 ·
+a team that looks after it all 29.58 · **[pivot, black, 31.35 to 32.44]** · come and see it 32.44 · call or whatsapp 33.53 ·
+plus two five six 34.90 · seven five zero 36.37 · four two one 37.70 · two two four 38.68 · viewings 39.89 ·
+nine thirty to seven 40.58 · explorer towers 42.26 · curved-balcony residences above kampala 43.98 · end card to 49.8.
 
-## Minutage global de la voix (secondes du film)
+## A. "The Curve" (recommended) — daylight, a yellow line that never breaks
 
-{{MOT TEMPS · MOT TEMPS · … (depuis onsets.json ; marque le pivot, par exemple [Stop. 14.02, musique coupée])}}
+**Concept.** The camera climbs the real facade while one yellow line traces the balcony curve from the street to the roof.
+The line is the bridge object: it becomes the road to Plot 37, the underline of each price, the progress bar of opening
+hours, and finally the phone number's underline. Bright, warm, white-card world for the offer.
 
-## A. « {{NOM_A}} » {{(recommandée)}}
+**Bridge thread.** curve: line draws up the facade → roof: line leaves the frame and the screen goes quiet (the gag) →
+plot thirty-seven: line comes back as the avenue → prices: line drops under each price box → amenities: line
+slides through four rooms → pivot: black, one line → contact: line draws the card border.
 
-**Concept.** {{En deux ou trois phrases : le lieu du film (le décor que la caméra parcourt), ce qu'il dit du message,
-pourquoi il sert cette voix. Ce qui change entre le monde de la douleur et celui de la solution.}}
+**Styleframes** (`styleframes/png/A1..A3.png`)
+- A1 (0.4 s, "curve"): facade full-bleed, big type, yellow line on the curve.
+- A2 (15 s, "dollars"): three residence cards, 2-bed price highlighted.
+- A3 (35 s, "plus two five six"): contact card with phone, hours, email on screen, address.
 
-**Fil des objets-ponts.** {{Le parcours de la caméra et, à chaque idée de la voix, l'objet qui survit et change de rôle :
-« mot ou temps : objet → nouveau rôle ». Par exemple : le prix arrive trop grand et se pose dans sa case ; la case
-grandit et devient le téléphone ; le devis rétrécit en notification. Nomme les 1 ou 2 mécanismes signature qui
-reviendront 4 à 8 fois, et la rime (le geste de la fin qui rejoue le début).}}
+## B. "Pin to Door" — a dark map that opens into doors
 
-**Images de style à dessiner.**
-- A1 ({{t}} s) : {{cadrage, sujet net, avant-plan flou, fond, lumière, ce qui est en mouvement, texte à l'écran}}
-- A2 ({{t}} s) : {{…}}
-- A3 ({{t}} s) : {{…}}
+**Concept.** The film starts from the map pin in Kololo, then zooms into three arched doors (2-bed, 3-bed, penthouse);
+the penthouse door opens last. Ends on a clock bar and call/WhatsApp buttons. Dark, graphic, fastest to read.
 
-## B. « {{NOM_B}} »
+**Bridge thread.** pin → door arch (the pin's shape becomes the arch) → arch becomes the pool → pool surface becomes the
+9:30 to 7:00 bar → bar becomes the call button.
 
-**Concept.** {{…}}
+**Styleframes** (`styleframes/png/B1..B3.png`)
+- B1 (6 s, "seven"): map, pin, Plot 37 label with coordinates.
+- B2 (20 s, "penthouses"): three doors, penthouse highlighted.
+- B3 (40.6 s, "thirty"): hours bar with call, WhatsApp and email.
 
-**Fil des objets-ponts.** {{…}}
+## C. "Above Kampala" — cinematic dusk, serif type
 
-**Images de style à dessiner.**
-- B1 ({{t}} s) : {{…}}
-- B2 ({{t}} s) : {{…}}
-- B3 ({{t}} s) : {{…}}
+**Concept.** Aerial night/dusk over Kololo, camera descends onto the tower, then slides across four amenity slats.
+Large italic serif words arrive too big and blurred, then settle. End card with every logo and the render disclaimer.
 
-## C. « {{NOM_C}} »
+**Bridge thread.** city lights → window lights of the tower → slat edges (each amenity slides in as a vertical slice) →
+slice becomes the end-card logo plate.
 
-**Concept.** {{…}}
+**Styleframes** (`styleframes/png/C1..C3.png`)
+- C1 (0.4 s, "curve"): aerial with huge serif "One curve."
+- C2 (24.4 s, "gym"): four amenity slats with italic labels.
+- C3 (44 s): end card: name, tagline, phone, developer lockup, Bright Properties, disclaimer.
 
-**Fil des objets-ponts.** {{…}}
+## What I need from you
 
-**Images de style à dessiner.**
-- C1 ({{t}} s) : {{…}}
-- C2 ({{t}} s) : {{…}}
-- C3 ({{t}} s) : {{…}}
-
-## Choix
-
-Direction retenue : {{lettre}}, {{avec ses emprunts éventuels aux deux autres, par exemple un objet-pont de B}}.
-Images de style de référence pour la charte et le storyboard : {{styleframes/A1.png, A2.png, A3.png}}.
+Pick A, B or C (or "A's offer + C's end card" and so on). Then I write `frame.md`, the shot-by-shot `STORYBOARD.md`
+on these word timings, and its check grid. Nothing is animated before you approve the storyboard.

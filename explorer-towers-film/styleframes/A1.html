@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><title>A1 hook</title><style>
+@font-face{font-family:M;font-weight:400;src:url(../assets/fonts/montserrat-latin-400-normal.woff2)}
+@font-face{font-family:M;font-weight:600;src:url(../assets/fonts/montserrat-latin-600-normal.woff2)}
+@font-face{font-family:M;font-weight:800;src:url(../assets/fonts/montserrat-latin-800-normal.woff2)}
+@font-face{font-family:C;font-weight:500;src:url(../assets/fonts/cormorant-garamond-latin-500-normal.woff2)}
+@font-face{font-family:C;font-weight:500;font-style:italic;src:url(../assets/fonts/cormorant-garamond-latin-500-italic.woff2)}
+@font-face{font-family:C;font-weight:600;src:url(../assets/fonts/cormorant-garamond-latin-600-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0c0c0e;font-family:M,sans-serif}
+.abs{position:absolute}
+.img{position:absolute;background-size:cover;background-position:center}
+.sub{position:absolute;left:0;right:0;bottom:64px;text-align:center;font-size:44px;font-weight:600;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55);letter-spacing:.2px}
+.sub.dk{color:#111;text-shadow:none}
+.sub b{background:#FFD60A;color:#111;padding:2px 16px;border-radius:6px;font-weight:800;text-shadow:none}
+.disc{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:15px;color:rgba(255,255,255,.55)}
+
+.bg{inset:-60px;background-image:url(../assets/img/street-golden-hour.png);filter:blur(0);transform:scale(1.35) translate(-9%,6%);transform-origin:30% 40%}
+.mb{inset:-60px;background-image:url(../assets/img/street-golden-hour.png);transform:scale(1.4) translate(-9%,6%);transform-origin:30% 40%;filter:blur(22px);opacity:.55;-webkit-mask-image:linear-gradient(90deg,#000 0%,transparent 35%,transparent 70%,#000 100%)}
+.h{left:120px;top:150px;font-size:210px;font-weight:800;color:#fff;line-height:.9;letter-spacing:-6px;text-shadow:0 8px 60px rgba(0,0,0,.35)}
+.h i{font-family:C;font-weight:500;font-style:italic;color:#FFD60A;letter-spacing:0}
+.vig{inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45))}
+
+</style></head><body><div class="img bg abs"></div><div class="img mb abs"></div><div class="abs vig"></div>
+<svg class="abs" style="left:0;top:0" width="1920" height="1080"><path d="M 760 1000 C 560 760, 1180 640, 930 420 S 1040 160, 980 40" fill="none" stroke="#FFD60A" stroke-width="14" stroke-linecap="round" style="filter:drop-shadow(0 0 18px #FFD60A)"/></svg>
+<div class="abs h">One<br><i>curve.</i></div><div class="sub">one <b>curve</b></div></body></html>

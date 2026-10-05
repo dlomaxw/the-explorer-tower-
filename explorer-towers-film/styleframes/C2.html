@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>C2 amenities</title><style>
+@font-face{font-family:M;font-weight:400;src:url(../assets/fonts/montserrat-latin-400-normal.woff2)}
+@font-face{font-family:M;font-weight:600;src:url(../assets/fonts/montserrat-latin-600-normal.woff2)}
+@font-face{font-family:M;font-weight:800;src:url(../assets/fonts/montserrat-latin-800-normal.woff2)}
+@font-face{font-family:C;font-weight:500;src:url(../assets/fonts/cormorant-garamond-latin-500-normal.woff2)}
+@font-face{font-family:C;font-weight:500;font-style:italic;src:url(../assets/fonts/cormorant-garamond-latin-500-italic.woff2)}
+@font-face{font-family:C;font-weight:600;src:url(../assets/fonts/cormorant-garamond-latin-600-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#0c0c0e;font-family:M,sans-serif}
+.abs{position:absolute}
+.img{position:absolute;background-size:cover;background-position:center}
+.sub{position:absolute;left:0;right:0;bottom:64px;text-align:center;font-size:44px;font-weight:600;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55);letter-spacing:.2px}
+.sub.dk{color:#111;text-shadow:none}
+.sub b{background:#FFD60A;color:#111;padding:2px 16px;border-radius:6px;font-weight:800;text-shadow:none}
+.disc{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:15px;color:rgba(255,255,255,.55)}
+
+.bg{inset:0;background:#0b0b0d}
+.s{position:absolute;top:0;height:1080px;background-size:cover;background-position:center;overflow:hidden}
+.s:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.65))}
+.s span{position:absolute;z-index:2;left:50px;bottom:200px;font-family:C;font-style:italic;font-weight:500;font-size:150px;color:#fff;writing-mode:horizontal-tb;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+
+</style></head><body><div class="abs bg"></div>
+<div class="s" style="left:0;width:700px;background-image:url(../assets/img/pool-and-gym.webp)"><span>A gym.</span></div>
+<div class="s" style="left:700px;width:520px;background-image:url(../assets/img/sauna.webp);filter:blur(1px)"><span style="font-size:110px">A sauna.</span></div>
+<div class="s" style="left:1220px;width:380px;background-image:url(../assets/img/playground.webp);filter:blur(2px)"><span style="font-size:80px">A garden.</span></div>
+<div class="s" style="left:1600px;width:320px;background-image:url(../assets/img/residents-lounge.webp);filter:blur(3px)"><span style="font-size:60px">A lounge.</span></div>
+<div class="sub">a <b>gym</b>. a sauna. a garden.</div></body></html>
