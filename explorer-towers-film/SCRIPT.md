@@ -1,4 +1,4 @@
-# Explorer Towers — launch film script (step 1, awaiting choice)
+# Explorer Towers — launch film script (step 1, APPROVED: version A)
 
 Source of every fact below: `site/src/content/site.ts` (approved entries only). Nothing about completion date,
 penthouse price, or floor areas is claimed: the site marks those as not yet released.
@@ -72,3 +72,11 @@ Explorer Towers.
 - **Email:** the site's sales email is a gmail address (`brightthoughtsservices@gmail.com`). Say it aloud, or show it on screen only?
 - **Developer name:** site lists 969 Development Company Limited with Shoal Group and Gabonn Associates. Left out of the voice; show the approved lockup (`site/public/media/brand/developers.png`) on the end card?
 - **Disclaimer:** all imagery is renders; the end card should carry "Images are architectural renders" from the site.
+
+## Decisions (approved)
+
+- **Version A, "The Curve"**, English, 16:9, about 45 s.
+- **Email:** on screen only, never spoken (`brightthoughtsservices@gmail.com` on the contact card).
+- **End card logos:** the approved developer lockup (`site/public/media/brand/developers.png`) and the Bright Properties logo (`site/public/media/brand/bright-properties.png`, "Marketing by").
+- **Disclaimer on the end card:** "Images are architectural renders."
+- Version B is dropped.
