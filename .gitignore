@@ -35,3 +35,13 @@ out/
 # OS
 .DS_Store
 Thumbs.db
+
+# Motion design (HyperFrames) renders and caches
+*/renders/
+*/snapshots/
+examples/*/renders/
+examples/*/snapshots/
+examples/*/*/renders/
+examples/*/*/snapshots/
+.hyperframes/
+_references/
