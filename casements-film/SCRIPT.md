@@ -1,4 +1,4 @@
-# Casements Africa — whole-website film: script (step 1, awaiting your choice)
+# Casements Africa — whole-website film: script (step 1, APPROVED: version A)
 
 Source of every fact: the website source you shared (`dlomaxw/casements`: `lib/site.ts`, `lib/products.ts`,
 `lib/content.ts`, `prisma/*.json`, `scripts/seed-*.mjs`). The live site could not be opened from here.
@@ -65,7 +65,7 @@ Casements. Plot eighty-six, Fifth Street, Industrial Area. Call plus two five si
 |---|------|-----------|
 | 1 | Hook | The four materials, one per word: aluminium profile, glass, steel gate, wood. Silent gag after: the logo mark draws itself as a window frame. |
 | 2 | Since 1965 | "Since 1965" and the four materials on the factory floor. |
-| 3 | Doors, windows, curtain wall, facade | Real renders and projects (Crested Towers, Petroleum House). |
+| 3 | Doors, windows, curtain wall, facade | The products themselves, close up: profiles, glazing, cladding, fins, sun shading (no client buildings, no client names). |
 | 4 | Glass, partitions, railings | Glass skylight, frameless partition, glass staircase. |
 | 5 | Steel | Gates, trellidor, roller shutters. |
 | 6 | Last five lines | Ceiling, door hardware, roller blinds, mini homes, with the mini home setting up in one hour. |
@@ -105,3 +105,10 @@ Call plus two five six, seven five two, seven zero zero, seven zero zero. Caseme
 - Pick **A** or **B** (or edits).
 - **Voice**: make it in ElevenLabs (Eleven v4, English, Stability 40 to 50%, Similarity 80 to 90%, 2 or 3 takes) and send me the mp3. Which phone number do you want said aloud: +256 752 700 700 only?
 - **Format**: 16:9 first, then 9:16?
+
+## Decisions (approved)
+
+- **Version A**, "From blueprint to building". Version B is dropped.
+- **Home-page claims are approved** (60+ years, ISO certified, 500+ projects, 100% genuine materials, guaranteed since 1965).
+- **Show the products and their quality, not the clients.** No client buildings, no client names or logos, no project captions. The project photos were removed from `assets/img/`. Product close-ups, profiles, glass, steel, hardware and the factory floor carry the film.
+- Still open: the voice file, the spoken phone number (+256 752 700 700 assumed), the format (16:9 first assumed), and which gallery photos look like manufacturer images (to swap for your own product photos if you have them).
