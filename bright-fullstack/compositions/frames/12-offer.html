@@ -7,12 +7,14 @@
 #f12-cam .abs{position:absolute}
 
 /* incoming seam layers (end of frame 11) */
-#f12-inplate{left:190px;top:330px;width:700px;height:340px;display:flex;align-items:center;justify-content:center}
-#f12-inplate img{width:560px;height:auto;display:block}
-#f12-inaddr{left:110px;top:720px;width:860px;height:280px;padding:42px 56px;display:flex;align-items:center;gap:40px}
-#f12-inaddr .t{font-size:44px;font-weight:800;line-height:1.25}
-#f12-inaddr .t span{display:block;font-size:34px;font-weight:600;color:var(--mk-ink-soft)}
-#f12-inaddr .ic{color:var(--mk-primary);width:96px;height:96px;flex:none}
+#f12-inplate{left:35px;top:290px;width:965px;height:365px;display:flex;align-items:center;justify-content:center;overflow:visible}
+#f12-inplate img{width:840px;height:auto;display:block;flex:none}
+#f12-inaddr{left:80px;top:760px;width:960px;height:430px;padding:0 60px;display:block}
+#f12-inaddr .lab{position:absolute;left:60px;top:40px;font-size:22px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);opacity:.5}
+#f12-inaddr .t{position:absolute;left:60px;top:96px;font-size:60px;font-weight:800;line-height:85px;letter-spacing:-.02em}
+#f12-inaddr .ic{position:absolute;right:90px;top:150px;color:var(--mk-primary);width:110px;height:110px}
+#f12-inline{left:100px;top:735px;width:930px;height:8px;border-radius:4px;background:var(--mk-primary)}
+#f12-inring{left:0;top:0;width:1080px;height:1920px}
 
 /* proposal */
 #f12-stage{left:0;top:0;width:1080px;height:1000px}
@@ -69,11 +71,14 @@
     <div id="f12-numw" class="abs"><span id="f12-num">0</span><span id="f12-numu">h</span></div>
 
     <!-- incoming seam layers -->
+    <svg id="f12-inring" class="abs" width="1080" height="1920" viewBox="0 0 1080 1920" fill="none"><circle cx="540" cy="815" r="495" stroke-width="8" style="stroke:var(--mk-line)"></circle><circle id="f12-inarc" cx="540" cy="815" r="495" stroke-width="12" stroke-linecap="round" transform="rotate(90 540 815)" style="stroke:var(--mk-primary)"></circle></svg>
     <div id="f12-inplate" class="abs mk-card"><img src="assets/img/logo-full.png" alt=""></div>
     <div id="f12-inaddr" class="abs mk-card">
+      <div class="lab">Address</div>
       <div class="ic" id="f12-inpin"></div>
-      <div class="t">The Square<span>Third Street</span><span>Kampala, Uganda</span></div>
+      <div class="t">The Square<br>Third Street<br>Kampala, Uganda</div>
     </div>
+    <div id="f12-inline" class="abs"></div>
 
     <!-- proposal -->
     <div id="f12-stage" class="abs">
@@ -124,12 +129,15 @@
   var qs = MK.qs;
   var D = 6.18;
 
-  MK.putIcon("#f12-inpin", "pin", { size: 96, stroke: 1.8 });
+  MK.putIcon("#f12-inpin", "pin", { size: 110, stroke: 1.8 });
+  var ia = qs("#f12-inarc"); ia.setAttribute("pathLength", "1"); ia.style.strokeDasharray = "1"; ia.style.strokeDashoffset = "0.86";
   MK.stage3d("#f12-stage", 1800, "50%", "40%");
 
   // ---------- opening image = handoff_out of frame 11 ----------
-  gsap.set("#f12-inplate,#f12-inaddr", { filter: "blur(8px)" });
-  gsap.set("#f12-ringw", { opacity: 0.6, filter: "blur(8px)" });
+  gsap.set("#f12-inplate,#f12-inaddr,#f12-inline,#f12-inring", { filter: "blur(8px)" });
+  gsap.set("#f12-inplate", { rotation: 1.7 });
+  gsap.set("#f12-inaddr,#f12-inline", { rotation: 1.3 });
+  gsap.set("#f12-ringw", { opacity: 0, filter: "blur(8px)" });
   var rf = qs("#f12-ringfill");
   rf.setAttribute("pathLength", "1"); rf.style.strokeDasharray = "1"; rf.style.strokeDashoffset = "0.95";
   gsap.set("#f12-numw", { opacity: 0 });
@@ -141,9 +149,11 @@
   MK.camera(tl, "#f12-cam", 0, D, { scale: 1.05 });
 
   // ---------- 0.00 plate and address slide away; ring resolves ----------
-  tl.to("#f12-inplate", { y: -110, opacity: 0, filter: "blur(16px)", duration: 0.45, ease: "power2.in" }, 0);
-  tl.to("#f12-inaddr", { y: -80, opacity: 0, filter: "blur(16px)", duration: 0.4, ease: "power2.in" }, 0.04);
-  tl.to("#f12-ringw", { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.out" }, 0);
+  tl.to("#f12-inplate", { y: -110, rotation: 0, opacity: 0, filter: "blur(16px)", duration: 0.45, ease: "power2.in" }, 0.05);
+  tl.to("#f12-inaddr", { y: -80, rotation: 0, opacity: 0, filter: "blur(16px)", duration: 0.4, ease: "power2.in" }, 0.08);
+  tl.to("#f12-inline", { y: -80, opacity: 0, duration: 0.3, ease: "power2.in" }, 0.08);
+  tl.to("#f12-inring", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 0.05);
+  tl.to("#f12-ringw", { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 0.25);
 
   // ---------- 0.20 proposal card drops in (3D) ----------
   tl.fromTo("#f12-card", { opacity: 0, y: -130, filter: "blur(12px)", rotationX: -20, rotationY: 16, z: -260, transformPerspective: 1800 },

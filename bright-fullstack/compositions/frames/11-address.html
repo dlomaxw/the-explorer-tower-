@@ -10,14 +10,25 @@
 #f11-ringsvg{position:absolute;left:40px;top:330px;width:1000px;height:1000px;opacity:0}
 #f11-ringsvg circle{fill:none;stroke-linecap:round}
 
-/* contact card (incoming handoff from frame 10) */
-#f11-contact{position:absolute;left:60px;top:560px;width:960px;height:470px;padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:26px;filter:blur(6px)}
+/* contact card = last image of frame 10 */
+#f11-rings{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f11-rings circle{fill:none;stroke:var(--mk-line);stroke-width:3}
+#f11-contact{position:absolute;left:90px;top:340px;width:900px;height:800px}
+#f11-ccard{position:absolute;left:0;top:0;width:900px;height:800px;background:var(--mk-surface);border:3px solid var(--mk-primary);border-radius:var(--mk-radius);box-shadow:var(--mk-shadow);overflow:hidden;filter:blur(6px)}
+#f11-head{position:absolute;left:0;top:56px;width:900px;height:70px;display:flex;align-items:center;justify-content:center;gap:28px}
+#f11-head .f11-lab{font-weight:700;font-size:26px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);white-space:nowrap}
+#f11-head svg{color:var(--mk-primary);flex:none}
+#f11-number{position:absolute;left:0;top:200px;width:900px;height:330px}
+.f11-line{position:absolute;left:0;width:900px;height:150px;display:flex;justify-content:center;align-items:center;font-family:var(--mk-font-display);font-weight:800;font-size:136px;line-height:150px;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:var(--mk-ink)}
+#f11-line1{top:0;color:var(--mk-on-accent)}
+#f11-line2{top:180px}
+#f11-box{position:absolute;left:80px;top:-4px;width:740px;height:158px;background:var(--mk-accent);border-radius:26px}
+.f11-in{position:relative;white-space:nowrap}
+#f11-crule{position:absolute;left:60px;top:604px;width:780px;height:2px;background:var(--mk-line)}
+#f11-mail{position:absolute;left:0;top:648px;width:900px;height:110px;display:flex;align-items:center;justify-content:center;gap:24px;font-weight:600;font-size:40px;color:var(--mk-ink);white-space:nowrap}
+#f11-mail svg{color:var(--mk-primary);flex:none}
+#f11-csweep{position:absolute;left:0;top:-60px;width:170px;height:940px;background:rgba(255,255,255,.07)}
 .f11-micro{font-weight:700;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft)}
-#f11-num{font-weight:800;font-size:76px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
-#f11-numbox{display:inline-block;background:var(--mk-accent);color:var(--mk-on-accent);border-radius:12px;padding:0 .14em;margin-left:-.14em}
-#f11-rule{height:2px;background:var(--mk-line)}
-#f11-mail{display:flex;align-items:center;gap:20px;font-weight:600;font-size:34px;color:var(--mk-ink-soft)}
-#f11-mail svg{color:var(--mk-primary)}
 
 /* stack: plate, connector, address card */
 #f11-stack{position:absolute;left:0;top:0;width:1080px;height:1920px}
@@ -56,11 +67,20 @@
       <circle id="f11-ringfill" cx="500" cy="500" r="440" transform="rotate(90 500 500)" style="stroke:var(--mk-primary);stroke-width:14"/>
     </svg>
 
-    <div id="f11-contact" class="mk-card">
-      <div class="f11-micro">Call or WhatsApp</div>
-      <div id="f11-num"><span id="f11-numbox">+256 750</span> 421 224</div>
-      <div id="f11-rule"></div>
-      <div id="f11-mail"><span id="f11-mailic"></span><span>shine@brightilluminated.com</span></div>
+    <svg id="f11-rings" viewBox="0 0 1080 1920">
+      <circle cx="540" cy="740" r="470"/><circle cx="540" cy="740" r="640"/><circle cx="540" cy="740" r="820"/>
+    </svg>
+    <div id="f11-contact" class="mk-root">
+      <div id="f11-ccard">
+        <div id="f11-head"><span id="f11-ic1"></span><span class="f11-lab">Call or WhatsApp</span><span id="f11-ic2"></span></div>
+        <div id="f11-number">
+          <div id="f11-line1" class="f11-line"><div id="f11-box"></div><div class="f11-in">+256 750</div></div>
+          <div id="f11-line2" class="f11-line"><div class="f11-in">421 224</div></div>
+        </div>
+        <div id="f11-crule"></div>
+        <div id="f11-mail"><span id="f11-ic3"></span><span>shine@brightilluminated.com</span></div>
+        <div id="f11-csweep"></div>
+      </div>
     </div>
 
     <div id="f11-stack">
@@ -113,11 +133,16 @@
   var tl = gsap.timeline({ paused: true });
   var qs = MK.qs;
 
-  MK.putIcon("#f11-mailic", "mail", { size: 40, stroke: 1.8 });
+  MK.putIcon("#f11-ic1", "phone", { size: 56, stroke: 2 });
+  MK.putIcon("#f11-ic2", "send", { size: 56, stroke: 2 });
+  MK.putIcon("#f11-ic3", "mail", { size: 52, stroke: 2 });
+  gsap.set("#f11-ccard", { transformPerspective: 1400, rotationX: 3, rotationY: -5 });
+  gsap.set("#f11-csweep", { skewX: -20, x: 700 });
+  gsap.set("#f11-rings", { scale: 1.08, transformOrigin: "540px 740px" });
   MK.putIcon("#f11-pin", "pin", { size: 110, stroke: 1.5 });
 
   // initial state: the incoming image = contact card (blur 6 px) under a camera at 1.05
-  gsap.set("#f11-cam", { scale: 1.05, transformOrigin: "50% 50%" });
+  gsap.set("#f11-cam", { scale: 1.05, transformOrigin: "50% 42%" });
   MK.hide(["#f11-plate", "#f11-addr", "#f11-conn", "#f11-edge", "#f11-ringsvg", "#f11-pinring", "#f11-l1", "#f11-l2", "#f11-l3"]);
   MK.stage3d("#f11-stack", 1600, "50%", "45%");
   gsap.set("#f11-pin", { opacity: 0 });
@@ -125,7 +150,8 @@
   MK.prep("#f11-trace");
 
   // camera drift (living layer for the whole frame)
-  MK.camera(tl, "#f11-cam", 0, 4.63, { scale: 1.12 });
+  MK.camera(tl, "#f11-cam", 0, 4.63, { scale: 1.12, y: -18.4 });
+  tl.to("#f11-rings", { opacity: 0, duration: 0.45, ease: "power2.in" }, 0.05);
 
   // 0.00 contact card slides down and out, plate rises in its place
   tl.to("#f11-contact", { y: 380, opacity: 0, filter: "blur(14px)", scale: 0.96, duration: 0.4, ease: "power2.in" }, 0.0);

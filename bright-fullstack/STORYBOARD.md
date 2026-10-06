@@ -62,7 +62,7 @@ Scene 1 (0.00 à 2.93 s) : P1, the terminal that opens the page
 - id: 02-range
 - duration: 3.73s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/02-range.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -92,7 +92,7 @@ Scene 1 (0.00 à 3.73 s) : P2, a landing page that grows into a system
 - id: 03-layers
 - duration: 3.89s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/03-layers.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -122,7 +122,7 @@ Scene 1 (0.00 à 3.89 s) : P3, three layers drawn one per phrase
 - id: 04-crm-erp
 - duration: 1.45s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/04-crm-erp.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -152,7 +152,7 @@ Scene 1 (0.00 à 1.45 s) : P4, the CRM numbers (short beat)
 - id: 05-automation
 - duration: 3.14s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/05-automation.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -182,7 +182,7 @@ Scene 1 (0.00 à 3.14 s) : P5, the deployment pipeline runs
 - id: 06-not-template
 - duration: 4.82s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/06-not-template.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -212,7 +212,7 @@ Scene 1 (0.00 à 4.82 s) : P6, a template card is replaced by a custom board
 - id: 07-one-team
 - duration: 2.52s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/07-one-team.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -242,7 +242,7 @@ Scene 1 (0.00 à 2.52 s) : P7, three roles become one team, the code is yours
 - id: 08-sprints
 - duration: 3.12s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/08-sprints.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -272,7 +272,7 @@ Scene 1 (0.00 à 3.12 s) : P8, sprint cycle then post-launch support
 - id: 09-ready
 - duration: 2.55s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/09-ready.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -302,7 +302,7 @@ Scene 1 (0.00 à 2.55 s) : P9, the question, then the two ways to reach us
 - id: 10-number
 - duration: 4.94s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/10-number.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -332,7 +332,7 @@ Scene 1 (0.00 à 4.94 s) : P10, the number rolls digit by digit
 - id: 11-address
 - duration: 4.63s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/11-address.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
@@ -362,7 +362,7 @@ Scene 1 (0.00 à 4.63 s) : P11, the logo and the address
 - id: 12-offer
 - duration: 6.18s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/12-offer.html
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)

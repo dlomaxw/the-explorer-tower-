@@ -129,8 +129,8 @@
   MK.pulse(tl, "#f05-p4", 2.29, { count: 1, scale: 1.9, dur: 0.8 });
 
   // handoff_out: toast, toggle and nodes leave upward blurred 10 px, the rail continues out of the top, the dashboard card edge enters
-  tl.to(["#f05-midX", "#f05-frontX"], { y: -260, opacity: 0, filter: "blur(10px)", duration: 0.5, ease: "power2.in" }, 2.64);
-  tl.fromTo("#f05-rail", { clipPath: "inset(23.3% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power2.in", immediateRender: false }, 2.64);
+  tl.to(["#f05-midX", "#f05-frontX"], { y: -260, opacity: 0, filter: "blur(10px)", duration: 0.5, ease: "power2.in" }, 2.45);
+  tl.to(["#f05-rail", "#f05-rail2"], { y: -1900, duration: 0.6, ease: "power2.in" }, 2.5);
   tl.fromTo("#f05-card", { y: 260, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.64, ease: "expo.out", immediateRender: false }, 2.5);
 
   // subtitle

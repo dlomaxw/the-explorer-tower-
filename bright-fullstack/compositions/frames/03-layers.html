@@ -5,6 +5,18 @@
 #f03-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
 #f03-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
 #f03-stage{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f03-web{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f03-web>*{position:absolute}
+.f03-wl{border-radius:3px}
+.f03-wm{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:32px;font-weight:700;color:var(--mk-ink)}
+.f03-wm .mk-icon{width:54px;height:54px}
+.f03-wn{width:112px;height:112px;border-radius:30px;display:flex;align-items:center;justify-content:center;color:var(--mk-ink-soft)}
+.f03-wn .mk-icon{width:56px;height:56px}
+.f03-wn.hi,.f03-wm.hi{color:var(--mk-primary);border:4px solid var(--mk-primary)}
+.f03-wm.hi{color:var(--mk-ink)}
+.f03-wm.hi .mk-icon{color:var(--mk-primary)}
+.f03-hub{border-radius:18px;background:var(--mk-surface);border:2px solid var(--mk-line)}
+.f03-hub i{position:absolute;display:block;border-radius:8px;border:2px solid var(--mk-line)}
 .f03-tw{position:absolute;top:170px;width:300px;display:flex;justify-content:center}
 .f03-tw .mk-tile{position:relative}
 .f03-tw .mk-tile-l{opacity:0;white-space:nowrap}
@@ -53,6 +65,7 @@
   <div id="f03-ground" class="clip" data-start="0" data-duration="3.89" data-track-index="0"></div>
   <div id="f03-cam">
     <div id="f03-line"></div>
+    <div id="f03-web"></div>
     <div id="f03-tiles"></div>
     <div id="f03-stage">
       <div id="f03-brW" class="f03-m"></div>
@@ -115,17 +128,40 @@
   qs("#f03-apiW").innerHTML = '<div class="mk-card" id="f03-api"><div class="f03-ah"><i></i><i></i><i></i><span>API</span></div>' + ah +
     '<div id="f03-apiFlash"></div></div>';
 
+
+  // frame 2 closing image (connected system web), rebuilt flat in screen coordinates
+  var wh = '<div style="left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse 900px 700px at 540px 800px,color-mix(in srgb,var(--mk-primary) 6%,transparent),transparent 70%)"></div>';
+  function wline(x, y, w, h, sec) { return '<div class="f03-wl" style="left:' + x + 'px;top:' + y + 'px;width:' + w + 'px;height:' + h + 'px;background:var(--mk-' + (sec ? 'secondary' : 'primary') + ')"></div>'; }
+  wh += wline(537, 325, 6, 115) + wline(537, 525, 6, 165) + wline(537, 885, 6, 175) + wline(537, 1215, 4, 70, 1);
+  wh += wline(320, 788, 92, 6) + wline(672, 788, 92, 6);
+  wh += wline(181, 540, 4, 175, 1) + wline(181, 865, 4, 210, 1) + wline(883, 520, 4, 195, 1) + wline(883, 865, 4, 210, 1);
+  function wmod(x, y, w, h, ic, lab, hi) {
+    return '<div class="mk-card f03-wm' + (hi ? ' hi' : '') + '" style="left:' + x + 'px;top:' + y + 'px;width:' + w + 'px;height:' + h + 'px">' + MK.icon(ic, { size: 54, stroke: 1.8 }) + '<span>' + lab + '</span></div>';
+  }
+  function wnode(cx, cy, ic, hi, id) {
+    return '<div class="mk-card f03-wn' + (hi ? ' hi' : '') + '"' + (id ? ' id="' + id + '"' : '') + ' style="left:' + (cx - 56) + 'px;top:' + (cy - 56) + 'px">' + MK.icon(ic, { size: 56, stroke: 1.8 }) + '</div>';
+  }
+  wh += '<div class="f03-hub" style="left:412px;top:690px;width:260px;height:195px"><i style="left:12px;top:14px;width:234px;height:76px"></i><i style="left:12px;top:104px;width:70px;height:76px"></i><i style="left:95px;top:104px;width:70px;height:76px"></i><i style="left:178px;top:104px;width:70px;height:76px"></i></div>';
+  wh += wmod(30, 712, 290, 153, "lock", "Auth") + wmod(765, 712, 273, 153, "chart", "Reports") + wmod(385, 1060, 315, 155, "layers", "Database");
+  wh += wmod(380, 360, 325, 167, "bolt", "API", 1);
+  wh += wnode(538, 278, "globe", 1, "f03-wn1") + wnode(187, 485, "phone", 1, "f03-wn2");
+  wh += wnode(880, 490, "bell") + wnode(187, 1095, "users") + wnode(880, 1085, "gear") + wnode(538, 1305, "cube");
+  qs("#f03-web").innerHTML = wh;
+  gsap.set("#f03-web", { filter: "blur(10px)", y: 0, opacity: 1 });
+
   var stage = "#f03-stage";
   MK.stage3d(stage, 2200, "50%", "50%");
   MK.prep("#f03-tiles svg");
 
   /* ---------- opening state (handoff_in: rising camera, blur 10, nodes centred) ---------- */
-  var cols = [ { x: 350 }, { x: 0 }, { x: -350 } ];
+  // the web rises and leaves; the lit nodes hand over to the icon tiles (same positions, 112 px nodes = tile x0.75)
+  tl.to("#f03-web", { y: -150, opacity: 0, filter: "blur(14px)", duration: 0.55, ease: "power1.in" }, 0);
+  var tfrom = [ { x: 348, y: 33 }, { x: -353, y: 240 }, { x: -350, y: 200 } ];
   tdefs.forEach(function (d, i) {
-    tl.fromTo("#f03-tw" + d.n, { x: cols[i].x, y: d.y0 - 170 + 60, scale: 0.85, filter: "blur(10px)", opacity: 1 },
+    tl.fromTo("#f03-tw" + d.n, { x: tfrom[i].x, y: tfrom[i].y, scale: 0.75, filter: "blur(10px)", opacity: 0 },
       { x: 0, y: 0, scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.7, ease: "expo.out" }, i * 0.05);
   });
-
+  tl.fromTo("#f03-tw1", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none", immediateRender: false }, 0);
   /* ---------- tiles draw on at their word ---------- */
   var cues = [0.20, 1.05, 2.00];
   tdefs.forEach(function (d, i) {

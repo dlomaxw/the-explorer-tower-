@@ -5,8 +5,10 @@
 #f07-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
 #f07-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 45%}
 .f07-abs{position:absolute}
-#f07-ghost{left:210px;top:330px;width:660px;height:400px;opacity:.9;filter:blur(10px);padding:26px;display:flex;gap:18px}
-#f07-ghost i{flex:1;border-radius:16px;background:var(--mk-bg);border:1px solid var(--mk-line)}
+#f07-ghost{left:255px;top:195px;width:570px;height:520px;opacity:1;filter:blur(10px);padding:70px 16px 16px;display:flex;gap:10px;background:var(--mk-surface);border-radius:14px}
+#f07-ghost i{flex:1;border-radius:10px;background:var(--mk-bg);border:1px solid var(--mk-line);display:block}
+#f07-ghost i:last-child{background:linear-gradient(var(--mk-primary) 0 20%,var(--mk-bg) 20% 100%);border:0}
+#f07-ghost b{position:absolute;left:18px;top:44px;width:150px;height:22px;border-radius:6px;background:var(--mk-ink-soft)}
 #f07-team{left:0;top:0;width:1080px;height:1400px}
 #f07-ring{left:260px;top:450px;width:560px;height:500px}
 #f07-pulse{left:290px;top:480px;width:500px;height:440px;border-radius:50%;border:8px solid var(--mk-primary);opacity:0}
@@ -32,7 +34,7 @@
 <div id="root" data-composition-id="07-one-team" data-start="0" data-duration="2.52" data-width="1080" data-height="1920">
   <div id="f07-ground" class="clip" data-start="0" data-duration="2.52" data-track-index="0"></div>
   <div id="f07-cam">
-    <div id="f07-ghost" class="f07-abs mk-card"><i></i><i></i><i></i></div>
+    <div id="f07-ghost" class="f07-abs mk-card"><b></b><i></i><i></i><i></i><i></i></div>
     <div id="f07-team" class="f07-abs">
       <div id="f07-pulse" class="f07-abs"></div>
       <svg id="f07-ring" class="f07-abs" viewBox="0 0 560 500" fill="none"><circle id="f07-ringc" cx="280" cy="250" r="236" style="stroke:var(--mk-primary)" stroke-width="18" stroke-linecap="round"/></svg>
@@ -87,12 +89,14 @@
 
   // incoming image = handoff_out of frame 6: ghost board (60 %, blurred) and three small avatars at the bottom
   gsap.set("#f07-ghost", { y: 0, scale: 1 });
-  gsap.set("#f07-d1", { x: -200, y: 550, scale: 0.41 });
-  gsap.set("#f07-d2", { x: 0, y: 550, scale: 0.41 });
-  gsap.set("#f07-d3", { x: 200, y: 550, scale: 0.41 });
+  gsap.set("#f07-d1", { x: -190, y: 1000, scale: 0.545 });
+  gsap.set("#f07-d2", { x: 0, y: 1000, scale: 0.545 });
+  gsap.set("#f07-d3", { x: 190, y: 1000, scale: 0.545 });
+  gsap.set(".f07-disc", { color: "var(--mk-primary)" });
+  tl.to(".f07-disc", { color: "var(--mk-ink)", duration: 0.3, ease: "none" }, 0.1);
 
   // ghost board leaves upward
-  tl.to("#f07-ghost", { y: -260, opacity: 0, filter: "blur(16px)", duration: 0.32, ease: MK.ease.exit }, 0);
+  tl.to("#f07-ghost", { y: -260, opacity: 0, filter: "blur(16px)", duration: 0.34, ease: MK.ease.exit }, 0);
 
   // 0.04 beat: avatars rise into a row of three role discs
   tl.to("#f07-d1", { x: -290, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.04);

@@ -158,6 +158,7 @@
   };
   // word-by-word subtitle with ONE yellow/brand key-word box. words = [["Built", 0.2], ["to", 0.4], ["last", 0.6, true]]
   // cues are composition-local seconds; each word appears 0-2 frames BEFORE its spoken time.
+  // o.out = the time by which this subtitle is FULLY GONE (the fade runs 0.14 s before it): use frameDuration - 0.12 for the last chunk.
   MK.subtitle = function (tl, sel, words, o) {
     o = o || {};
     var host = qs(sel); host.textContent = "";
@@ -176,7 +177,7 @@
         tl.to(t, { color: "var(--mk-on-accent)", duration: 0.1, ease: "none" }, cue + 0.1);
       }
     });
-    if (o.out !== undefined) tl.to(p, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "none" }, o.out);
+    if (o.out !== undefined) tl.to(p, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "none" }, Math.max(0, o.out - 0.14)); // out = the time by which the subtitle is fully gone
     return p;
   };
 

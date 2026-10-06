@@ -16,10 +16,10 @@
 #f06-top b{font-weight:800;font-size:38px;letter-spacing:-.01em}
 .f06-col{position:absolute;left:0;top:100px;width:214px;height:650px;border-radius:20px;background:var(--mk-bg);border:1px solid var(--mk-line)}
 .f06-hd{position:absolute;left:10px;top:10px;width:192px;height:112px;border-radius:14px;padding:12px 14px;background:var(--mk-surface)}
-.f06-hd.f06-on{background:var(--mk-primary);color:var(--mk-on-primary);opacity:0}
+.f06-bg{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:14px;background:var(--mk-primary);opacity:0}
+.f06-nm,.f06-num{position:relative}
 .f06-nm{font-weight:700;font-size:26px;line-height:30px;white-space:nowrap}
 .f06-hd .f06-nm{color:var(--mk-ink-soft)}
-.f06-hd.f06-on .f06-nm{color:var(--mk-on-primary)}
 .f06-num{font-weight:800;font-size:56px;line-height:64px;font-variant-numeric:tabular-nums;margin-top:4px}
 .f06-card{position:absolute;left:10px;width:192px;height:104px;border-radius:14px;background:var(--mk-surface);border:1px solid var(--mk-line)}
 .f06-card i{position:absolute;left:16px;display:block;border-radius:6px;background:var(--mk-ink-soft)}
@@ -94,8 +94,7 @@
   var inner = '<div id="f06-top"><img src="assets/img/mark.png" alt=""/><b>Bright CRM</b></div>';
   cols.forEach(function (c, i) {
     var h = '<div class="f06-col" id="f06-col' + i + '">' +
-      '<div class="f06-hd"><div class="f06-nm">' + c.n + '</div><div class="f06-num" id="f06-n' + i + '">0</div></div>' +
-      '<div class="f06-hd f06-on" id="f06-hl' + i + '"><div class="f06-nm">' + c.n + '</div><div class="f06-num" id="f06-m' + i + '">0</div></div>';
+      '<div class="f06-hd"><i class="f06-bg" id="f06-hl' + i + '"></i><div class="f06-nm" id="f06-t' + i + '">' + c.n + '</div><div class="f06-num" id="f06-n' + i + '">0</div></div>';
     for (var k = 0; k < c.cards; k++) {
       h += '<div class="f06-card" style="top:' + (134 + k * 118) + 'px"><i class="a"></i><i class="b"></i><i class="c"></i></div>';
     }
@@ -115,7 +114,21 @@
   cols.forEach(function (c, i) {
     gsap.set("#f06-col" + i, { x: SX(layouts[0].slot[i]), y: layouts[0].dy[i] });
   });
+  var cs = getComputedStyle(document.documentElement);
+  var C_SOFT = cs.getPropertyValue("--mk-ink-soft").trim(), C_INK = cs.getPropertyValue("--mk-ink").trim(), C_ON = cs.getPropertyValue("--mk-on-primary").trim();
+  function hiOn(T, i, d) {
+    tl.to("#f06-hl" + i, { opacity: 1, duration: d, ease: "none" }, T);
+    tl.to("#f06-t" + i, { color: C_ON, duration: d, ease: "none" }, T);
+    tl.to("#f06-n" + i, { color: C_ON, duration: d, ease: "none" }, T);
+  }
+  function hiOff(T, i, d) {
+    tl.to("#f06-hl" + i, { opacity: 0, duration: d, ease: "none" }, T);
+    tl.to("#f06-t" + i, { color: C_SOFT, duration: d, ease: "none" }, T);
+    tl.to("#f06-n" + i, { color: C_INK, duration: d, ease: "none" }, T);
+  }
   gsap.set("#f06-hl0", { opacity: 1 });
+  gsap.set("#f06-t0", { color: C_ON });
+  gsap.set("#f06-n0", { color: C_ON });
   MK.hide(".f06-card");
 
   /* team discs */
@@ -150,7 +163,6 @@
   MK.reveal(tl, ".f06-card", 0.29, { dir: "up", dist: 46, blur: 8, dur: 0.55, stagger: 0.085 });
   cols.forEach(function (c, i) {
     MK.count(tl, "#f06-n" + i, 0.45 + i * 0.1, 0.9, 0, c.v);
-    MK.count(tl, "#f06-m" + i, 0.45 + i * 0.1, 0.9, 0, c.v);
   });
 
   /* ---------- 1.10 industries chips scroll (linear, finite) ---------- */
@@ -166,8 +178,8 @@
     cols.forEach(function (c, i) {
       tl.to("#f06-col" + i, { x: SX(L.slot[i]), y: L.dy[i], duration: 0.5, ease: MK.ease.out }, T + i * 0.04);
     });
-    tl.to("#f06-hl" + P.hi, { opacity: 0, duration: 0.22, ease: "none" }, T);
-    tl.to("#f06-hl" + L.hi, { opacity: 1, duration: 0.22, ease: "none" }, T + 0.06);
+    hiOff(T, P.hi, 0.22);
+    hiOn(T + 0.06, L.hi, 0.22);
   });
 
   /* ---------- 3.45 grey template card drops in, board dims; 4.00 shoved out ---------- */
@@ -177,6 +189,8 @@
   tl.to("#f06-tpl", { rotationZ: 2, duration: 0.28, ease: "none" }, 3.72);
   tl.to("#f06-tpl", { x: 1300, rotationZ: 14, filter: "blur(10px)", opacity: 0, duration: 0.36, ease: "power4.in" }, 4.0);
   tl.to("#f06-browser", { opacity: 1, scale: 1, duration: 0.4, ease: MK.ease.out }, 4.0);
+  tl.to(".f06-nm, .f06-num", { opacity: 0, duration: 0.12, ease: "none" }, 3.40);
+  tl.to(".f06-nm, .f06-num", { opacity: 1, duration: 0.2, ease: "none" }, 4.32);
 
   /* ---------- 4.29 light sweep, then handoff_out (board 60 %, up, blur 10, avatars at the bottom) ---------- */
   MK.sweep(tl, "#f06-sweep", 4.29, 0.55, -300, 1100);

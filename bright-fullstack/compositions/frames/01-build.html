@@ -119,7 +119,7 @@
   tl.set("#f01-caret1", { opacity: 1 }, 0.1);
   var T0 = 0.12, STEP = 0.03;
   for (var k = 1; k <= r1.length; k++) {
-    tl.set("#f01-caret1", { x: k * CW }, T0 + k * STEP);
+    tl.set("#f01-caret1", { x: k * CW }, T0 + (k - 1) * STEP + 0.02);
   }
   tl.fromTo(r1, { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none", stagger: STEP, immediateRender: false }, T0);
   tl.set("#f01-caret1", { opacity: 0 }, 0.98);

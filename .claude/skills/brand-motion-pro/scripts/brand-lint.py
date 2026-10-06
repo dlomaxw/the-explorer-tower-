@@ -70,7 +70,7 @@ def main():
         t2 = re.sub(r'url\("data:[^"]*"\)', "", t)
         t2 = re.sub(r"url\('data:[^']*'\)", "", t2)
         # colours only in colour contexts (after ":" "(" "," "=" or a colour property): `#cf0` as an id selector is not a colour
-        ctx = re.compile(r"(?:(?::|\(|,)\s*|=\s*[\"']|(?:fill|stroke|color|backgroundColor|background|borderColor|stopColor)\s*:\s*[\"'])(#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b)")
+        ctx = re.compile(r"(?:(?::|\(|,)\s*|=\s*[\"']|(?:fill|stroke|color|backgroundColor|background|borderColor|stopColor)\s*:\s*[\"'])(#[0-9a-fA-F]{6}(?![\w-])|#[0-9a-fA-F]{3}(?![\w-]))")
         for m in set(ctx.findall(t2)):
             h = normalize(m)
             r, g, b = bi.hex_rgb(h)

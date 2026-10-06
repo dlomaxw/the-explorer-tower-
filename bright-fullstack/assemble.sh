@@ -16,7 +16,7 @@ export HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1 HYPERFRAMES_SKIP_SKILLS=1 HYPER
 FIRST_FRAME="01-build"
 END_CARD="12-offer"
 TOTAL="43.9"
-AUDIO="assets/audio/${MIX:-mix.wav}"   # mix from build-audio.sh or build-music-options.py (MIX=mix-M2.wav bash assemble.sh); empty = silent
+AUDIO="assets/audio/${MIX:-mix.wav}"
 
 # Light flash, dark world -> light world (empty LEAK_AT = no flash). The flash covers the screen from
 # LEAK_AT+0.15 to LEAK_AT+0.30: put the cut between the last dark frame and the first light frame at LEAK_AT+0.25.

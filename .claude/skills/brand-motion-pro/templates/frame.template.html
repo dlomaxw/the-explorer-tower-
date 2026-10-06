@@ -26,7 +26,7 @@
   var qs = MK.qs;
   // 1) hide what is not on screen at t=0:  MK.hide("#fNN-x");   (never tl.set at 0)
   // 2) the opening image must equal handoff_in of the storyboard
-  // 3) build the steps at their times with MK.*; subtitle: MK.subtitle(tl, "#fNN-sub", [["word", cue, true?]...], {out: D - 0.12})
+  // 3) build the steps at their times with MK.*; subtitle: MK.subtitle(tl, "#fNN-sub", [["word", cue, true?]...], {out: D - 0.12}  /* out = time by which the subtitle is fully gone */)
   // 4) the closing image must equal handoff_out; subtitle gone 0.1 s before the end
   window.__timelines["NN-name"] = tl;
 })();
