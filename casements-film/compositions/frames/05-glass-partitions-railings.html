@@ -19,7 +19,16 @@
 .gpr-fr path{fill:none;stroke:#1f7a3d;stroke-width:22;stroke-linejoin:miter}
 .gpr-link{position:absolute;left:529px;width:22px;height:50px;background:#1f7a3d;transform-origin:50% 0}
 .gpr-node{position:absolute;left:525px;width:30px;height:30px;border-radius:15px;background:#101010;opacity:0}
-#gpr-ghost{position:absolute;left:60px;top:351px;width:960px;height:1000px;border:22px solid #1f7a3d;background:#fff url("assets/img/g-facade-sun-shading.jpg") center/cover no-repeat;box-shadow:0 30px 70px rgba(16,16,16,.22);filter:blur(12px)}
+#gpr-prev{position:absolute;left:0;top:-675px;width:1080px;height:1920px}
+#gpr-cw{position:absolute;left:60px;top:-540px;width:960px;height:1000px;border:22px solid #1f7a3d;background:#1f7a3d url("assets/img/g-curtain-wall-modern-high-rise.jpg") center/cover no-repeat;border-bottom-width:22px}
+#gpr-cwph{position:absolute;left:0;top:0;width:916px;height:767px;background:url("assets/img/g-curtain-wall-modern-high-rise.jpg") center/cover no-repeat}
+.gpr-bar2{position:absolute;left:0;bottom:0;width:916px;height:111px;background:#1f7a3d;color:#fff;font-weight:800;font-size:52px;line-height:111px;letter-spacing:-0.01em;padding-left:36px}
+.gpr-bar2 i{font-style:normal;color:#f5b800}
+.gpr-chip{position:absolute;top:210px;height:56px;border:3px solid #14572c;background:#fff;border-radius:30px;font-weight:600;font-size:30px;line-height:50px;text-align:center;color:#14572c}
+#gpr-ghost{position:absolute;left:60px;top:460px;width:960px;height:980px;border:22px solid #1f7a3d;background:#1f7a3d;box-shadow:0 30px 70px rgba(16,16,16,.22);filter:blur(7px)}
+#gpr-ghostph{position:absolute;left:0;top:0;width:916px;height:824px;background:url("assets/img/g-facade-sun-shading-2.jpg") center/cover no-repeat}
+#gpr-glink{position:absolute;left:527px;top:1440px;width:26px;height:75px;background:#1f7a3d;filter:blur(7px)}
+.gpr-pnode{position:absolute;width:30px;height:30px;border-radius:15px;background:#101010}
 #gpr-bar{position:absolute;left:60px;top:0;width:960px;height:22px;background:#1f7a3d;opacity:0}
 .gpr-sw{position:absolute;left:60px;width:960px;top:1380px;height:68px;text-align:center;font-weight:600;font-size:56px;line-height:68px;color:#101010;white-space:nowrap}
 .gpr-sk{position:relative;display:inline-block}
@@ -29,12 +38,18 @@
 
 <div id="gpr-ground" class="clip" data-start="0" data-duration="3.04" data-track-index="0"></div>
 
-<div id="gpr-ghost"></div>
-
 <div id="gpr-world">
+  <div id="gpr-prev">
+    <div id="gpr-cw"><div id="gpr-cwph"></div>
+      <div class="gpr-chip" style="left:24px;width:178px">Unitized</div><div class="gpr-chip" style="left:214px;width:268px">Semi-unitized</div><div class="gpr-chip" style="left:490px;width:130px">Stick</div>
+      <div class="gpr-bar2" style="top:767px;height:111px;bottom:auto;">Curtain wall<i>.</i></div></div>
+    <div id="gpr-ghost"><div id="gpr-ghostph"></div><div class="gpr-bar2" style="top:824px;bottom:auto;height:112px;line-height:112px">Facade<i>.</i></div></div>
+    <div id="gpr-glink"></div>
+    <div class="gpr-pnode" style="left:55px;top:435px"></div><div class="gpr-pnode" style="left:995px;top:435px"></div>
+  </div>
   <div id="gpr-p1" class="gpr-pane" style="top:840px">
     <div class="gpr-pbg"></div>
-    <div class="gpr-ph"><img id="gpr-i1" class="gpr-img" src="assets/img/product-glass-laminated.jpg" alt=""></div>
+    <div class="gpr-ph"><img id="gpr-i1" class="gpr-img" src="assets/img/g-glass-products-a-green-and-clear.jpg" alt=""></div>
     <div id="gpr-l1" class="gpr-lb">Glass<i>.</i></div>
     <svg class="gpr-fr" viewBox="0 0 960 420"><path id="gpr-f1" d="M11 11 H949 V409 H11 Z"/></svg>
   </div>
@@ -82,11 +97,11 @@
   gsap.set(["#gpr-bx1", "#gpr-bx2", "#gpr-bx3"], { scaleX: 0 });
   gsap.set(["#gpr-k1", "#gpr-k2"], { scaleY: 0 });
   gsap.set(["#gpr-n1", "#gpr-n2"], { scale: 0 });
-  gsap.set("#gpr-world", { y: 560 });
+  gsap.set("#gpr-world", { y: 675 });
 
   /* ---------- camera track (one world layer) ---------- */
-  tl.fromTo("#gpr-world", { y: 560 }, { y: 0, duration: 0.5, ease: "power3.out" }, 0);
-  tl.fromTo("#gpr-world", { y: 0 }, { y: -38, duration: 0.4, ease: "none", immediateRender: false }, 0.5);
+  tl.fromTo("#gpr-world", { y: 675 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
+  tl.fromTo("#gpr-world", { y: 0 }, { y: -38, duration: 0.45, ease: "none", immediateRender: false }, 0.45);
   tl.fromTo("#gpr-world", { y: -38 }, { y: -508, duration: 0.4, ease: "expo.inOut", immediateRender: false }, 0.9);
   tl.fromTo("#gpr-world", { y: -508 }, { y: -575, duration: 0.7, ease: "none", immediateRender: false }, 1.3);
   tl.fromTo("#gpr-world", { y: -575 }, { y: -1045, duration: 0.4, ease: "expo.inOut", immediateRender: false }, 2.0);
@@ -94,8 +109,9 @@
   tl.fromTo("#gpr-world", { y: -1064 }, { y: -1964, duration: 0.44, ease: "power1.in", immediateRender: false }, 2.6);
 
   /* ---------- handoff in: facade leaves through the top, pane 1 sharpens ---------- */
-  tl.fromTo("#gpr-ghost", { y: 0 }, { y: -1500, duration: 0.45, ease: "none" }, 0);
-  tl.fromTo("#gpr-p1", { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.5, ease: "power2.out" }, 0);
+  tl.fromTo("#gpr-prev", { y: 0 }, { y: -1000, duration: 0.5, ease: "power1.in" }, 0);
+  tl.fromTo("#gpr-cw", { filter: "blur(0px)" }, { filter: "blur(8px)", duration: 0.3, ease: "power2.out" }, 0);
+  tl.fromTo("#gpr-p1", { filter: "blur(8px)" }, { filter: "blur(0px)", duration: 0.5, ease: "power2.out" }, 0);
 
   /* ---------- pane 1: label on the word glass ---------- */
   tl.fromTo("#gpr-l1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.15, ease: "power3.out", immediateRender: false }, 0.25);

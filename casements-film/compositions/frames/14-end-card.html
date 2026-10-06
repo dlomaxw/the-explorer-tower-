@@ -49,6 +49,14 @@
       #end14-sub .end14-bx { position: absolute; left: -0.14em; right: -0.14em; top: 0.04em; bottom: 0.02em; background: #f5b800; border-radius: 6px; transform-origin: 0 50%; transform: scaleX(0); }
       #end14-sub .end14-ln { display: block; }
 
+
+      #end14-hand { left: 0; top: 0; width: 1080px; height: 1920px; filter: blur(4px); pointer-events: none; }
+      #end14-handcard { left: 40px; top: 607px; width: 1000px; height: 625px; background: #fff; border: 14px solid #1f7a3d; box-shadow: 0 40px 90px rgba(16,16,16,.25); }
+      #end14-handprev { left: 40px; top: -90px; width: 1000px; height: 130px; background: #fff; border: 14px solid #1f7a3d; box-shadow: 0 40px 90px rgba(16,16,16,.25); }
+      .end14-hc { position: absolute; left: 40px; width: 1000px; text-align: center; white-space: nowrap; }
+      #end14-handsub { left: 60px; top: 1358px; width: 960px; text-align: center; font-size: 56px; font-weight: 600; line-height: 68px; color: rgba(16,16,16,.4); }
+      #end14-handsub b { font-weight: 600; background: rgba(245,184,0,.55); border-radius: 6px; padding: 0 .14em; margin: 0 -.14em; }
+      #end14-card { opacity: 0; }
       #end14-cut { left: 0; top: 0; width: 1080px; height: 1920px; background: #f4f6f2; opacity: 0; }
     </style>
 
@@ -82,6 +90,19 @@
       <svg id="end14-cursor" class="end14-abs" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 2 L2 34 L10 27 L16 40 L22 37 L16 25 L27 25 Z" fill="#ffffff" stroke="#101010" stroke-width="2.5" stroke-linejoin="round"></path>
       </svg>
+    </div>
+
+    <div id="end14-hand" class="end14-abs">
+      <div id="end14-handprev" class="end14-abs"></div>
+      <div id="end14-handcardwrap" class="end14-abs" style="left:0;top:0;width:1080px;height:1920px">
+        <div id="end14-handcard" class="end14-abs"></div>
+        <div class="end14-hc end14-k" style="top:704px">Call</div>
+        <div class="end14-hc end14-v" style="top:783px;font-size:80px;line-height:90px"><span class="end14-yb" style="display:inline-block;line-height:82px;padding:0 12px">+256 752</span> 700 700</div>
+        <div class="end14-abs" style="left:136px;top:906px;width:808px;height:8px;background:#f5b800"></div>
+        <div class="end14-hc end14-k" style="top:1002px">Open</div>
+        <div class="end14-hc end14-h" style="top:1053px">Mon–Fri 8:00–5:30 · Sat 8:00–1:00</div>
+      </div>
+      <div id="end14-handsub" class="end14-abs">seven five <b>two,</b> seven<br>zero <b>zero,</b> seven zero <b>zero</b></div>
     </div>
 
     <svg id="end14-fg" class="end14-abs" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
@@ -126,6 +147,13 @@
         // Camera: slow push 3 %/s throughout, no stop; foreground corners push faster (parallax)
         tl.fromTo("#end14-cam", { scale: 1 }, { scale: 1.2, duration: 6.87, ease: "none" }, 0);
         tl.fromTo("#end14-fg", { scale: 1 }, { scale: 1.45, duration: 6.87, ease: "none" }, 0);
+
+        // Handoff_in replica of frame 13's last image, dissolving into the real layout
+        tl.fromTo("#end14-handsub", { opacity: 1 }, { opacity: 0, duration: 0.07, ease: "power2.in", immediateRender: false }, 0.03);
+        tl.fromTo(["#end14-handcardwrap", "#end14-handprev"], { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, 0.05);
+        tl.fromTo("#end14-card", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out", immediateRender: false }, 0.05);
+        tl.fromTo("#end14-mark", { x: 0, y: -85.5, scale: 1.387 }, { x: 0, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 0);
+        tl.fromTo("#end14-fg", { opacity: 0 }, { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 0);
 
         // Handoff_in: card blurred 4px resolves to sharp
         tl.fromTo("#end14-card", { filter: "blur(4px)" }, { filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0);

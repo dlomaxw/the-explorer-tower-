@@ -18,8 +18,11 @@
 #mh8-barclip{position:absolute;left:22px;top:888px;width:916px;height:112px;overflow:hidden}
 #mh8-label{position:absolute;left:30px;top:0;line-height:112px;font-size:52px;font-weight:800;letter-spacing:-0.01em;color:#fff;white-space:nowrap;opacity:0}
 #mh8-label i{font-style:normal;color:#f5b800}
-#mh8-mull{position:absolute;left:60px;top:99px;width:960px;height:22px}
-#mh8-mullline{position:absolute;left:0;top:0;width:960px;height:22px;background:#1f7a3d}
+#mh8-prev{position:absolute;left:0;top:0;width:1080px;height:1920px;filter:blur(12px)}
+.mh8-pp{position:absolute;left:60px;width:960px;height:1000px;box-sizing:border-box;border:22px solid #1f7a3d;background-size:cover;background-position:center;box-shadow:0 30px 70px rgba(16,16,16,.22)}
+.mh8-pb{position:absolute;left:0;right:0;bottom:0;height:112px;background:#1f7a3d;color:#fff;font-size:52px;font-weight:800;line-height:112px;padding-left:34px;letter-spacing:-0.01em;white-space:nowrap}
+.mh8-pb i{font-style:normal;color:#f5b800}
+.mh8-ml{position:absolute;left:60px;width:960px;height:22px;background:#1f7a3d}
 .mh8-node{position:absolute;top:-4px;width:30px;height:30px;border-radius:50%;background:#101010}
 #mh8-clock{position:absolute;left:740px;top:200px;width:260px;height:260px;opacity:0;transform-origin:130px 130px}
 #mh8-clock svg{position:absolute;left:0;top:0;overflow:visible}
@@ -37,8 +40,13 @@
   <div id="mh8-ground" class="clip" data-start="0" data-duration="2.51" data-track-index="0">
     <div id="mh8-radial"></div><div id="mh8-grain"></div>
   </div>
+  <div id="mh8-prev">
+    <div class="mh8-pp" style="top:-695px;background-image:url(assets/img/g-door-hardware-handles-and-accessories-board.jpg)"><div class="mh8-pb">Door hardware<i>.</i></div></div>
+    <div class="mh8-ml" style="top:327px"><div class="mh8-node" style="left:-15px"></div><div class="mh8-node" style="right:-15px"></div></div>
+    <div class="mh8-pp" style="top:410px;background-image:url(assets/img/g-roller-blinds-zebra-blind-natural.jpg)"><div class="mh8-pb" style="opacity:.6">Roller blinds<i>.</i></div></div>
+    <div class="mh8-ml" style="top:1427px;opacity:.8"><div class="mh8-node" style="left:-15px"></div><div class="mh8-node" style="right:-15px"></div></div>
+  </div>
   <div id="mh8-cam"><div id="mh8-world" data-layout-allow-overflow>
-    <div id="mh8-mull"><div id="mh8-mullline"></div><div class="mh8-node" style="left:-15px"></div><div class="mh8-node" style="right:-15px"></div></div>
     <svg class="mh8-cell" id="mh8-cell0" style="left:390px;top:330px" width="300" height="360" viewBox="0 0 300 360"><rect x="11" y="11" width="278" height="338" fill="none" stroke="#1f7a3d" stroke-width="22" stroke-linejoin="miter"/></svg>
 <svg class="mh8-cell" id="mh8-cell1" style="left:720px;top:330px" width="300" height="360" viewBox="0 0 300 360"><rect x="11" y="11" width="278" height="338" fill="none" stroke="#1f7a3d" stroke-width="22" stroke-linejoin="miter"/></svg>
 <svg class="mh8-cell" id="mh8-cell2" style="left:60px;top:720px" width="300" height="290" viewBox="0 0 300 290"><rect x="11" y="11" width="278" height="268" fill="none" stroke="#1f7a3d" stroke-width="22" stroke-linejoin="miter"/></svg>
@@ -76,13 +84,13 @@
     var tl=gsap.timeline({paused:true});
     var CUES=[.19,.44,.76,1.20,1.34,1.57,1.70,1.80,1.90];
     // camera: single writer on the cam wrapper
-    tl.fromTo("#mh8-world",{y:1225,filter:"blur(12px)"},{y:0,filter:"blur(0px)",duration:1.4,ease:"power2.out"},0);
+    tl.fromTo("#mh8-world",{y:1280,filter:"blur(12px)"},{y:0,filter:"blur(0px)",duration:1.4,ease:"power2.out"},0);
     tl.fromTo("#mh8-cam",{scale:1.1},{scale:1,duration:0.9,ease:"power2.out"},0);
     tl.to("#mh8-cam",{scale:1.06,duration:1.2,ease:"none"},0.9);
     tl.to("#mh8-cam",{scale:1,duration:0.41,ease:"expo.inOut"},2.10);
     tl.to("#mh8-world",{filter:"blur(8px)",duration:0.41,ease:"power2.in"},2.10);
-    // mullion leaves through the top
-    tl.fromTo("#mh8-mull",{y:0},{y:-260,duration:0.9,ease:"power2.in"},0.2);
+    // previous panes (handoff_in) leave through the top
+    tl.fromTo("#mh8-prev",{y:0},{y:-1750,duration:0.85,ease:"none"},0);
     // label
     tl.fromTo("#mh8-label",{y:20,opacity:0},{y:0,opacity:1,duration:0.2,ease:"power3.out",immediateRender:false},0.40);
     // clock + thin ring
