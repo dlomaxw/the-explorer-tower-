@@ -9,31 +9,31 @@
     #root .c10-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     #c10-ground { background: #0c0c0e; }
 
-    #c10-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
-    #c10-bgcam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    #c10-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
     #c10-bgwrap { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
     .c10-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; }
-    #c10-bg1 { object-position: 52% 50%; filter: brightness(.45) blur(3px); }
+    #c10-bg1 { filter: brightness(.45) blur(3px); }
     #c10-bg2 { object-position: 50% 46%; filter: brightness(.35) blur(6px); opacity: 0; }
 
-    #c10-title { position: absolute; left: 90px; top: 228px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 140px; line-height: .8; letter-spacing: -3px; color: #fff; }
-    #c10-title i { font-family: "Cormorant Garamond", serif; font-weight: 500; font-style: italic; color: #FFD60A; letter-spacing: 0; }
+    #c10-title { position: absolute; left: 0; top: 0; width: 1080px; height: 700px; }
+    .c10-tl { position: absolute; left: 90px; height: 130px; line-height: 130px; white-space: nowrap; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 128px; letter-spacing: -3px; color: #fff; }
+    #c10-tl3 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-style: italic; font-size: 150px; letter-spacing: 0; color: #FFD60A; }
+    #c10-tstroke { position: absolute; left: 90px; top: 612px; width: 300px; height: 5px; border-radius: 3px; background: #FFD60A; }
 
-    #c10-cardcam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
-    #c10-card { position: absolute; left: 60px; top: 560px; width: 960px; height: 800px; padding: 64px; box-sizing: border-box;
+    #c10-card { font-family: "Montserrat", sans-serif; position: absolute; left: 60px; top: 640px; width: 960px; padding: 56px 56px 52px; box-sizing: border-box;
       background: rgba(255,255,255,.96); border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,.5); overflow: hidden; }
-    #c10-cc { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-    .c10-k { font-family: "Montserrat", sans-serif; font-size: 24px; line-height: 29px; font-weight: 600; letter-spacing: 5px; color: #7a7466; text-transform: uppercase; margin-bottom: 8px; }
-    .c10-m { font-family: "Montserrat", sans-serif; font-size: 34px; line-height: 41px; font-weight: 600; color: #111; }
+    .c10-k { font-family: "Montserrat", sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 5px; color: #7a7466; text-transform: uppercase; margin-bottom: 8px; }
+    .c10-m { font-family: "Montserrat", sans-serif; font-size: 34px; line-height: 44px; font-weight: 600; color: #111; margin-bottom: 30px; }
     .c10-v { opacity: 0; }
-    #c10-big { display: flex; align-items: center; height: 112px; }
-    #c10-box { display: flex; align-items: center; height: 112px; padding: 0 18px; background: #FFD60A; border-radius: 8px; }
-    #c10-rest { display: flex; align-items: center; height: 112px; margin-left: 24px; }
-    .c10-slot { position: relative; height: 112px; flex: none; }
-    .c10-cell { height: 112px; line-height: 112px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 92px; letter-spacing: -1px; color: #111; font-variant-numeric: tabular-nums; }
+    #c10-cc { position: relative; }
+    #c10-big { display: flex; align-items: center; height: 110px; margin-bottom: 38px; }
+    #c10-box { display: flex; align-items: center; height: 110px; padding: 0 12px; background: #FFD60A; border-radius: 8px; }
+    #c10-rest { display: flex; align-items: center; height: 110px; margin-left: 14px; }
+    .c10-slot { position: relative; height: 110px; flex: none; }
+    .c10-cell { height: 110px; line-height: 110px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 92px; letter-spacing: -3px; color: #111; font-variant-numeric: tabular-nums; }
 
-    #c10-hrow { display: flex; align-items: center; height: 41px; font-family: "Montserrat", sans-serif; }
-    .c10-t { font-family: "Montserrat", sans-serif; font-size: 34px; line-height: 41px; font-weight: 800; color: #111; opacity: 0; white-space: nowrap; font-variant-numeric: tabular-nums; flex: none; }
+    #c10-hrow { display: flex; align-items: center; height: 44px; margin-bottom: 30px; font-family: "Montserrat", sans-serif; }
+    .c10-t { font-family: "Montserrat", sans-serif; font-size: 34px; line-height: 44px; font-weight: 800; color: #111; opacity: 0; white-space: nowrap; font-variant-numeric: tabular-nums; flex: none; }
     #c10-barwrap { position: relative; flex: 1; height: 26px; margin: 0 22px; }
     #c10-glow { position: absolute; left: 0; top: 0; width: 100%; height: 26px; border-radius: 13px; background: #FFD60A; filter: blur(12px); opacity: 0; }
     #c10-track { position: absolute; left: 0; top: 0; width: 100%; height: 26px; border-radius: 13px; background: #e9e4d6; overflow: hidden; opacity: 0; transform-origin: 0 50%; }
@@ -63,43 +63,34 @@
       <div id="c10-ground" class="c10-fill"></div>
     </div>
 
-    <div id="c10-stage" data-layout-allow-overflow>
-      <div id="c10-bgcam" data-layout-allow-overflow>
-        <div id="c10-bgwrap">
-          <img id="c10-bg1" class="c10-bg" src="assets/img/front-elevation-dusk.png" alt="">
-          <img id="c10-bg2" class="c10-bg" src="assets/img/aerial-night.webp" alt="">
-        </div>
+    <div id="c10-cam" data-layout-allow-overflow>
+      <div id="c10-bgwrap">
+        <img id="c10-bg1" class="c10-bg" src="assets/img/front-elevation-dusk.png" alt="">
+        <img id="c10-bg2" class="c10-bg" src="assets/img/aerial-night.webp" alt="">
       </div>
-      <div id="c10-title">Come<br>and<br><i>see it.</i></div>
-      <div id="c10-cardcam" data-layout-allow-overflow>
-        <div id="c10-card">
-          <div id="c10-cc">
-            <div>
-              <div class="c10-k">Call or WhatsApp</div>
-              <div id="c10-big"><div id="c10-box"></div><div id="c10-rest"></div></div>
+      <div id="c10-title" data-layout-allow-overflow>
+        <div id="c10-tl1" class="c10-tl" style="top:230px">Come</div>
+        <div id="c10-tl2" class="c10-tl" style="top:360px">and</div>
+        <div id="c10-tl3" class="c10-tl" style="top:490px">see it.</div>
+        <div id="c10-tstroke"></div>
+      </div>
+      <div id="c10-card">
+        <div id="c10-cc">
+          <div class="c10-k">Call or WhatsApp</div>
+          <div id="c10-big"><div id="c10-box"></div><div id="c10-rest"></div></div>
+          <div id="c10-kview" class="c10-k">Viewings</div>
+          <div id="c10-hrow">
+            <div id="c10-t1" class="c10-t">9:30am</div>
+            <div id="c10-barwrap">
+              <div id="c10-glow"></div>
+              <div id="c10-track"><div id="c10-fill"></div></div>
+              <div id="c10-tick1" class="c10-tick"></div>
+              <div id="c10-tick2" class="c10-tick"></div>
             </div>
-            <div>
-              <div id="c10-kview" class="c10-k">Viewings</div>
-              <div id="c10-hrow">
-                <div id="c10-t1" class="c10-t">9:30am</div>
-                <div id="c10-barwrap">
-                  <div id="c10-glow"></div>
-                  <div id="c10-track"><div id="c10-fill"></div></div>
-                  <div id="c10-tick1" class="c10-tick"></div>
-                  <div id="c10-tick2" class="c10-tick"></div>
-                </div>
-                <div id="c10-t2" class="c10-t">7:00pm</div>
-              </div>
-            </div>
-            <div>
-              <div class="c10-k">Email</div>
-              <div id="c10-vmail" class="c10-m c10-v">brightthoughtsservices@gmail.com</div>
-            </div>
-            <div>
-              <div class="c10-k">Visit</div>
-              <div id="c10-vvisit" class="c10-m c10-v">Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala</div>
-            </div>
+            <div id="c10-t2" class="c10-t">7:00pm</div>
           </div>
+          <div class="c10-k">Email</div><div id="c10-vmail" class="c10-m c10-v">brightthoughtsservices@gmail.com</div>
+          <div class="c10-k">Visit</div><div id="c10-vvisit" class="c10-m c10-v">Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala</div>
         </div>
       </div>
     </div>
@@ -132,11 +123,11 @@
 
       /* ---------- phone number, complete (same slots as frames 8/9) ---------- */
       var chars = [
-        ["+", "c10-box", 58], ["2", "c10-box", 54], ["5", "c10-box", 54], ["6", "c10-box", 54],
-        [" ", "c10-box", 29],
-        ["7", "c10-box", 54], ["5", "c10-box", 54], ["0", "c10-box", 54],
-        ["4", "c10-rest", 54], ["2", "c10-rest", 54], ["1", "c10-rest", 54],
-        ["2", "c10-rest", 54], ["2", "c10-rest", 54], ["4", "c10-rest", 54]
+        ["+", "c10-box", 52], ["2", "c10-box", 58], ["5", "c10-box", 58], ["6", "c10-box", 58],
+        [" ", "c10-box", 24],
+        ["7", "c10-box", 58], ["5", "c10-box", 58], ["0", "c10-box", 58],
+        ["4", "c10-rest", 58], ["2", "c10-rest", 58], ["1", "c10-rest", 58],
+        ["2", "c10-rest", 58], ["2", "c10-rest", 58], ["4", "c10-rest", 58]
       ];
       chars.forEach(function (c) {
         var slot = document.createElement("div");
@@ -151,34 +142,24 @@
         $(c[1]).appendChild(slot);
       });
 
-      /* ---------- camera geometry ---------- */
-      /* card sits at its FINAL place (top 560, 800 tall, center y 960); the camera wrapper moves it.
-         map(p) = 960 + s * (p - 960) + y   (origin 540,960) */
-      var H = 800;
-      var hrow = $("c10-hrow"), cc = $("c10-cc");
-      var rowNat = 560 + (cc.offsetTop || 64) + (hrow.offsetTop || 300) + 20;
-      if (rowNat < 700 || rowNat > 1300) rowNat = 912;
-      var cardcam = $("c10-cardcam"), bgcam = $("c10-bgcam"), stage = $("c10-stage"), card = $("c10-card");
-
-      var S0 = 1.12, Y0 = 128;                 /* handoff_in: card top at 640, push 1.12 */
-      var S1 = 1.06, Y1 = (900 - 960) - S1 * (rowNat - 960); /* Viewings row near y 900 */
+      /* ---------- camera: start = frame 9 last image (cam 1.12, y -120, blur 8, origin 540/960) ---------- */
+      var card = $("c10-card"), cam = $("c10-cam"), hrow = $("c10-hrow");
+      var H = card.offsetHeight || 662;
+      var rowNat = 640 + (hrow.offsetTop || 274) + 22;      /* Viewings row center, natural coordinates */
+      if (rowNat < 700 || rowNat > 1300) rowNat = 936;
+      var cardEndY = 960 - (640 + H / 2);                   /* card centered on y 960 at the end */
+      var S1 = 1.06, Y1 = (900 - 960) - S1 * (rowNat - 960);
       var Y2 = Y1 / 2;
 
-      gsap.set(cardcam, { transformOrigin: "540px 960px", scale: S0, y: Y0 });
-      gsap.set(bgcam, { transformOrigin: "540px 960px", scale: S0 });
-      gsap.set(stage, { filter: "blur(8px)" });
+      gsap.set(cam, { transformOrigin: "540px 960px", scale: 1.12, y: -120, filter: "blur(8px)" });
 
-      /* push toward the Viewings row, blur clears */
-      tl.to(cardcam, { scale: S1, y: Y1, duration: 0.5, ease: "expo.out" }, 0);
-      tl.to(bgcam, { scale: S1, duration: 0.5, ease: "expo.out" }, 0);
-      tl.to(stage, { filter: "blur(0px)", duration: 0.4, ease: "power2.out" }, 0);
+      tl.to(cam, { scale: S1, y: Y1, duration: 0.5, ease: "expo.out" }, 0);
+      tl.to(cam, { filter: "blur(0px)", duration: 0.4, ease: "power2.out" }, 0);
       fT($("c10-title"), { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power2.in" }, 0);
 
-      /* drift, then pull-out to 1.0 with the card centered on y 960 */
-      tl.to(cardcam, { scale: 1.02, y: Y2, duration: 1.2, ease: "none" }, 0.5);
-      tl.to(bgcam, { scale: 1.02, duration: 1.2, ease: "none" }, 0.5);
-      tl.to(cardcam, { scale: 1.0, y: 0, duration: 0.74, ease: "expo.in" }, 1.7);
-      tl.to(bgcam, { scale: 1.0, duration: 0.74, ease: "expo.in" }, 1.7);
+      tl.to(cam, { scale: 1.02, y: Y2, duration: 1.2, ease: "none" }, 0.5);
+      tl.to(cam, { scale: 1.0, y: 0, duration: 0.74, ease: "expo.in" }, 1.7);
+      tl.to(card, { y: cardEndY, duration: 0.74, ease: "expo.in" }, 1.7);
       fT(card, { filter: "blur(0px)" }, { filter: "blur(6px)", duration: 0.38, ease: "power2.in" }, 1.7);
 
       /* ---------- Scene 1: the Viewings row ---------- */
@@ -203,9 +184,9 @@
 
       /* ---------- backgrounds: dusk tower drifting up, then night aerial ---------- */
       var bg1 = $("c10-bg1"), bg2 = $("c10-bg2");
-      gsap.set(bg1, { scale: 1.15, y: -50, transformOrigin: "50% 50%" });
+      gsap.set(bg1, { scale: 1.15, y: -142, transformOrigin: "50% 50%" });
       gsap.set(bg2, { scale: 2100 / 1920, transformOrigin: "50% 46%" });
-      tl.to(bg1, { y: -100, duration: 2.44, ease: "none" }, 0);
+      tl.to(bg1, { y: -185, scale: 1.2, duration: 2.44, ease: "none" }, 0);
       fT(bg1, { filter: "brightness(.45) blur(3px)" }, { filter: "brightness(.4) blur(5px)", duration: 0.6, ease: "power2.out" }, 1.7);
       fT(bg2, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.inOut" }, 1.7);
 

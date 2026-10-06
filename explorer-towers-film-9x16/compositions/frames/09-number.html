@@ -13,11 +13,12 @@
     #c09-bgwrap { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
     #c09-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; filter: brightness(.45) blur(3px); }
 
-    .c09-ln { position: absolute; left: 90px; white-space: nowrap; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 140px; line-height: 108px; height: 108px; letter-spacing: -3px; color: #fff; text-shadow: 0 8px 60px rgba(0,0,0,.4); }
+    .c09-ln { position: absolute; left: 90px; white-space: nowrap; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 140px; line-height: 120px; height: 120px; display: block; letter-spacing: -3px; color: #fff; text-shadow: 0 8px 60px rgba(0,0,0,.4); }
     #c09-l1 { top: 230px; }
-    #c09-l2 { top: 338px; }
-    #c09-l3 { top: 446px; }
-    #c09-seeit { position: relative; display: inline-block; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: #FFD60A; letter-spacing: 0; }
+    #c09-l2 { top: 360px; }
+    #c09-l3 { top: 490px; }
+    .c09-tw { display: inline-block; vertical-align: top; height: 120px; line-height: 120px; }
+    #c09-seeit { position: relative; display: inline-block; height: 120px; line-height: 120px; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: #FFD60A; letter-spacing: 0; }
     #c09-trait { position: absolute; left: 4px; right: 4px; bottom: -4px; height: 5px; border-radius: 3px; background: #FFD60A; box-shadow: 0 0 14px rgba(255,214,10,.7); }
     #c09-card { font-family: "Montserrat", sans-serif; position: absolute; left: 60px; top: 640px; width: 960px; padding: 56px 56px 52px; box-sizing: border-box;
       background: rgba(255,255,255,.96); border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,.5); overflow: hidden; }
@@ -52,9 +53,9 @@
 
     <div id="c09-cam" data-layout-allow-overflow>
       <div id="c09-bgwrap"><img id="c09-bg" src="assets/img/front-elevation-dusk.png" alt=""></div>
-      <div id="c09-l1" class="c09-ln">Come</div>
-      <div id="c09-l2" class="c09-ln">and</div>
-      <div id="c09-l3" class="c09-ln"><span id="c09-seeit">see it.<i id="c09-trait"></i></span></div>
+      <div id="c09-l1" class="c09-ln"><span class="c09-tw">Come</span></div>
+      <div id="c09-l2" class="c09-ln"><span class="c09-tw">and</span></div>
+      <div id="c09-l3" class="c09-ln"><span id="c09-seeit"><span class="c09-tw">see</span> <span class="c09-tw">it.</span><i id="c09-trait"></i></span></div>
       <div id="c09-card">
         <div class="c09-k">Call or WhatsApp</div>
         <div id="c09-big"><div id="c09-box"></div><div id="c09-rest"></div></div>
