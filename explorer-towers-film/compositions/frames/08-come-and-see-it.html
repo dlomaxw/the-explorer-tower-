@@ -1,0 +1,179 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c08-fill { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+
+    #c08-ground { background: #000000; }
+
+    /* tower behind: dimmed 45%, blurred 3px, camera layer (x + scale) */
+    #c08-bgwrap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; opacity: 0; }
+    #c08-bgcam { position: absolute; left: -120px; top: -120px; width: 2160px; height: 1320px; transform-origin: 50% 50%; }
+    #c08-bgimg { position: absolute; left: 0; top: 0; width: 2160px; height: 1320px; background-image: url("assets/img/front-elevation-dusk.png"); background-size: cover; background-position: center; filter: brightness(.45) blur(3px); }
+    #c08-vign { background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,.5) 100%); }
+
+    #c08-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    /* the hairline handed over from the previous frame */
+    #c08-hair { position: absolute; left: 750px; top: 538px; width: 420px; height: 4px; border-radius: 2px; background: #FFD60A;
+      box-shadow: 0 0 18px rgba(255,214,10,.75); }
+
+    /* display words */
+    .c08-ln { position: absolute; left: 120px; white-space: nowrap; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 120px; line-height: 114px; letter-spacing: -3px; color: #fff;
+      text-shadow: 0 8px 60px rgba(0,0,0,.4); }
+    #c08-l1 { top: 180px; }
+    #c08-l2 { top: 294px; }
+    #c08-l3 { top: 408px; }
+    .c08-w { display: inline-block; opacity: 0; transform-origin: 0 50%; }
+    #c08-seeit { position: relative; display: inline-block; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: #FFD60A; letter-spacing: 0; }
+    #c08-trait { position: absolute; left: 4px; right: 4px; bottom: -2px; height: 5px; border-radius: 3px; background: #FFD60A; opacity: 0;
+      box-shadow: 0 0 14px rgba(255,214,10,.7); transform-origin: 0 50%; }
+
+    /* card border path + card (contact-card look from A3, verbatim) */
+    #c08-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    #c08-border { fill: none; stroke: #FFD60A; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0; filter: drop-shadow(0 0 10px #FFD60A); }
+    #c08-card { position: absolute; left: 1000px; top: 150px; width: 800px; height: 640px; padding: 60px 64px; border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,.5); background: rgba(255,255,255,.96); opacity: 0; }
+    .c08-k { font-size: 20px; line-height: 24px; font-weight: 600; letter-spacing: 5px; color: #7a7466; text-transform: uppercase; margin-bottom: 8px; }
+    .c08-big { height: 86px; margin-bottom: 34px; display: flex; align-items: center; opacity: 0; }
+    .c08-hi { display: inline-flex; align-items: center; gap: 28px; height: 78px; padding: 0 22px; background: #FFD60A; border-radius: 8px; }
+    .c08-slot { height: 8px; border-radius: 4px; background: rgba(17,17,17,.3); transform-origin: 0 50%; }
+    .c08-m { font-size: 34px; line-height: 44px; font-weight: 600; color: #111; min-height: 44px; margin-bottom: 28px; }
+    .c08-m2 { min-height: 88px; }
+    .c08-row { opacity: 0; }
+    .c08-ch { opacity: 0; }
+
+    /* subtitle */
+    .c08-sub { position: absolute; left: 0; top: 896px; width: 1920px; height: 64px; display: flex; justify-content: center; gap: 16px;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 52px; line-height: 64px; color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .c08-sw { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); }
+    .c08-box { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c08-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="08-come-and-see-it" data-width="1920" data-height="1080" data-duration="2.42">
+    <div id="c08-groundclip" class="clip" data-start="0" data-duration="2.42" data-track-index="0" data-layout-ignore>
+      <div id="c08-ground" class="c08-fill"></div>
+    </div>
+
+    <div id="c08-bgwrap">
+      <div id="c08-bgcam" data-layout-allow-overflow>
+        <div id="c08-bgimg"></div>
+      </div>
+      <div id="c08-vign" class="c08-fill"></div>
+    </div>
+
+    <div id="c08-l1" class="c08-ln"><span id="c08-w1" class="c08-w">Come</span></div>
+    <div id="c08-l2" class="c08-ln"><span id="c08-w2" class="c08-w">and</span></div>
+    <div id="c08-l3" class="c08-ln"><span id="c08-seeit"><span id="c08-w3" class="c08-w">see</span> <span id="c08-w4" class="c08-w">it.</span><i id="c08-trait"></i></span></div>
+
+    <div id="c08-card">
+      <div id="c08-klabel" class="c08-k"></div>
+      <div id="c08-big" class="c08-big"><span class="c08-hi"><i id="c08-s0" class="c08-slot" style="width:130px"></i><i id="c08-s1" class="c08-slot" style="width:110px"></i><i id="c08-s2" class="c08-slot" style="width:210px"></i></span></div>
+      <div id="c08-r1" class="c08-row"><div class="c08-k">Viewings</div><div class="c08-m"></div></div>
+      <div id="c08-r2" class="c08-row"><div class="c08-k">Email</div><div class="c08-m"></div></div>
+      <div id="c08-r3" class="c08-row"><div class="c08-k">Visit</div><div class="c08-m c08-m2"></div></div>
+    </div>
+
+    <svg id="c08-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <path id="c08-border" d="M 1000 540 V 182 A 32 32 0 0 1 1032 150 H 1768 A 32 32 0 0 1 1800 182 V 758 A 32 32 0 0 1 1768 790 H 1032 A 32 32 0 0 1 1000 758 Z"/>
+    </svg>
+
+    <div id="c08-hair"></div>
+    <div id="c08-grain" class="c08-fill"></div>
+
+    <div id="c08-sub" class="c08-sub">
+      <span id="c08-sw0" class="c08-sw">call</span>
+      <span id="c08-sw1" class="c08-sw">or</span>
+      <span id="c08-sw2" class="c08-sw"><i id="c08-sbox" class="c08-box"></i><span id="c08-sbt" class="c08-bt">whatsapp</span></span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "08-come-and-see-it";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* label characters (type-on) */
+      var kl = $("c08-klabel"), chars = [];
+      "Call or WhatsApp".split("").forEach(function (c, i) {
+        var s = document.createElement("span");
+        s.id = "c08-ch" + i;
+        s.className = "c08-ch";
+        s.textContent = c;
+        kl.appendChild(s);
+        chars.push(s);
+      });
+
+      /* border path */
+      var border = $("c08-border");
+      var BL = border.getTotalLength();
+      border.style.strokeDasharray = BL + " " + BL;
+      border.style.strokeDashoffset = BL;
+
+      /* ---------- camera on the tower (bg only) ---------- */
+      fT($("c08-bgwrap"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+      fT($("c08-bgcam"), { x: 0 }, { x: -70, duration: 2.42, ease: "none" }, 0);
+      fT($("c08-bgcam"), { scale: 1.15 }, { scale: 1.05, duration: 2.42, ease: "power2.out" }, 0);
+
+      /* ---------- hairline: drift right 20 px/s, then lands on the card border start ---------- */
+      fT($("c08-hair"), { x: 0 }, { x: 18, duration: 0.9, ease: "none" }, 0);
+      fT($("c08-hair"), { x: 18, scaleX: 1 }, { x: 40, scaleX: 0.02, duration: 0.2, ease: "expo.out" }, 0.9);
+      fT($("c08-hair"), { opacity: 1 }, { opacity: 0, duration: 0.08, ease: "power1.in" }, 1.07);
+
+      /* ---------- display words ---------- */
+      fT($("c08-w1"), { opacity: 0, scale: 1.5, filter: "blur(18px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 0.12);
+      fT($("c08-w2"), { opacity: 0, x: -120, filter: "blur(10px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 0.28);
+      fT($("c08-w3"), { opacity: 0, y: 70, rotation: 5, filter: "blur(10px)" }, { opacity: 1, y: 0, rotation: 0, filter: "blur(0px)", duration: 0.22, ease: "power3.out" }, 0.40);
+      fT($("c08-w4"), { opacity: 0, scale: 1.6, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 0.59);
+      fT($("c08-trait"), { opacity: 1, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.49, ease: "power2.out" }, 0.61);
+
+      /* ---------- card border draws from the hairline, card fills white ---------- */
+      fT(border, { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, 0.9);
+      tl.to(border, { strokeDashoffset: 0, duration: 0.4, ease: "expo.out" }, 0.9);
+      fT($("c08-card"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.10);
+      fT(border, { opacity: 1 }, { opacity: 0, duration: 0.3, ease: "power1.inOut" }, 1.45);
+
+      /* ---------- card content ---------- */
+      chars.forEach(function (c, i) {
+        fT(c, { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none" }, 1.30 + i * 0.012);
+      });
+      fT($("c08-big"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }, 1.50);
+      ["c08-s0", "c08-s1", "c08-s2"].forEach(function (id, i) {
+        fT($(id), { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power3.out" }, 1.55 + i * 0.07);
+      });
+      [["c08-r1", 2.00], ["c08-r2", 2.15], ["c08-r3", 2.30]].forEach(function (p) {
+        fT($(p[0]), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.12, ease: "expo.out" }, p[1]);
+      });
+
+      /* ---------- subtitle ---------- */
+      function word(id, cue) {
+        var el = $(id);
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, cue + 0.14);
+      }
+      word("c08-sw0", 1.21);
+      word("c08-sw1", 1.60);
+      word("c08-sw2", 1.75);
+      fT($("c08-sbox"), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, 1.70);
+      fT($("c08-sbt"), { color: "#ffffff" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, 1.77);
+      fT($("c08-sub"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 2.28);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>

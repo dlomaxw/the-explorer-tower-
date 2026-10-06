@@ -1,0 +1,238 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c11-fill { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+
+    #c11-ground { background: #0c0c0e; }
+    #c11-aw { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; transform-origin: 0 0; filter: blur(6px); }
+    #c11-aimg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; display: block; }
+    #c11-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; background: #000; opacity: .65; }
+    .c11-win { position: absolute; width: 64px; height: 36px; margin-left: -32px; margin-top: -18px; opacity: 0; mix-blend-mode: screen;
+      background: radial-gradient(closest-side, rgba(255,200,110,.95), rgba(255,170,70,.45) 55%, rgba(255,160,60,0) 100%); }
+    #c11-asvg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; overflow: visible; }
+    #c11-trace { fill: none; stroke: #FFD60A; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; filter: drop-shadow(0 0 8px #FFD60A); }
+
+    #c11-shade { background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.8)); opacity: 0; }
+    #c11-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    #c11-line { position: absolute; left: 510px; top: 537px; width: 900px; height: 5px; border-radius: 3px; background: #FFD60A;
+      box-shadow: 0 0 18px 2px rgba(255,214,10,.75); transform-origin: 50% 50%; }
+
+    #c11-word { position: absolute; left: 0; top: 150px; width: 1920px; height: 180px; display: flex; justify-content: center; gap: 46px;
+      font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 170px; line-height: 180px; color: #fff; white-space: nowrap;
+      text-shadow: 0 8px 50px rgba(0,0,0,.45); }
+    .c11-w2 { position: relative; display: inline-block; }
+    .c11-l { display: inline-block; opacity: 0; }
+    #c11-stroke { position: absolute; left: 0; right: 0; bottom: 2px; height: 5px; border-radius: 3px; background: #FFD60A;
+      box-shadow: 0 0 14px rgba(255,214,10,.7); transform-origin: 0 50%; transform: scaleX(0); }
+
+    #c11-tag { position: absolute; left: 0; top: 368px; width: 1920px; text-align: center; padding-left: 10px; white-space: nowrap;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 30px; line-height: 40px; letter-spacing: 10px; text-transform: uppercase; color: #FFD60A; }
+    .c11-tw { position: relative; display: inline-block; opacity: 0; }
+    .c11-sp { display: inline-block; width: 0.6em; }
+    #c11-box { position: absolute; left: -0.14em; right: -0.04em; top: 0; bottom: 0; border-radius: 6px; background: #FFD60A; transform-origin: 0 50%; transform: scaleX(0); }
+    #c11-kt { position: relative; display: inline-block; }
+
+    #c11-phone { position: absolute; left: 0; top: 440px; width: 1920px; display: flex; justify-content: center; gap: 22px;
+      font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 76px; line-height: 92px; letter-spacing: -1px; color: #fff; font-variant-numeric: tabular-nums;
+      text-shadow: 0 4px 30px rgba(0,0,0,.5); }
+    .c11-pg { display: inline-block; opacity: 0; }
+
+    #c11-btn { position: absolute; left: 610px; top: 590px; width: 700px; height: 96px; border-radius: 48px; overflow: hidden; opacity: 0;
+      border: 2px solid #FFD60A; background: rgba(12,12,14,.62); box-shadow: 0 0 30px rgba(255,214,10,.18); }
+    #c11-fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #FFD60A; opacity: 0; }
+    #c11-lab { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 34px; line-height: 44px; color: #fff; }
+
+    #c11-url { position: absolute; left: 0; top: 712px; width: 1920px; text-align: center; opacity: 0;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 22px; line-height: 30px; letter-spacing: 2px; color: #d9dbe0; }
+
+    .c11-lg { position: absolute; top: 780px; height: 110px; background: #fff; border-radius: 18px; padding: 14px 26px; display: flex; align-items: center; gap: 22px;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 20px; color: #555; opacity: 0; }
+    .c11-lg img { display: block; height: 80px; }
+    #c11-lg1 { left: 330px; }
+    #c11-lg1 img { height: 70px; }
+    #c11-lg2 { right: 330px; }
+
+    #c11-disc { position: absolute; left: 0; top: 1030px; width: 1920px; text-align: center; opacity: 0;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 15px; line-height: 20px; color: rgba(255,255,255,.55); }
+
+    .c11-rip { position: absolute; left: 950px; top: 600px; width: 100px; height: 100px; border-radius: 50%; border: 3px solid #FFD60A; opacity: 0; transform: scale(0); pointer-events: none; }
+    #c11-cur { position: absolute; left: 0; top: 0; width: 34px; height: 44px; opacity: 0; transform-origin: 0 0; pointer-events: none;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,.55)); }
+    #c11-black { background: #000; opacity: 0; }
+  </style>
+
+  <div id="root" data-composition-id="11-end-card" data-width="1920" data-height="1080" data-duration="7.7">
+    <div id="c11-groundclip" class="clip" data-start="0" data-duration="7.7" data-track-index="0" data-layout-ignore>
+      <div id="c11-ground" class="c11-fill"></div>
+      <div id="c11-aw" data-layout-allow-overflow>
+        <img id="c11-aimg" src="assets/img/aerial-night.webp" alt="">
+        <div id="c11-dim"></div>
+        <div id="c11-wins"></div>
+        <svg id="c11-asvg" viewBox="0 0 2000 1125" xmlns="http://www.w3.org/2000/svg">
+          <path id="c11-trace" d="M 1110 845 C 1280 880 1430 820 1448 740 L 1445 520 C 1440 420 1420 380 1350 345 C 1250 330 1150 340 1000 345"/>
+        </svg>
+      </div>
+    </div>
+    <div id="c11-shade" class="c11-fill"></div>
+    <div id="c11-grain" class="c11-fill"></div>
+
+    <div id="c11-line"></div>
+
+    <div id="c11-word"><span id="c11-w-a" class="c11-w2"></span><span id="c11-w-b" class="c11-w2"><span id="c11-w-bt"></span><i id="c11-stroke"></i></span></div>
+    <div id="c11-tag"><span id="c11-t0" class="c11-tw">Curved-</span><span id="c11-t1" class="c11-tw">balcony</span><span class="c11-sp"></span><span id="c11-t2" class="c11-tw">residences</span><span class="c11-sp"></span><span id="c11-t3" class="c11-tw">above</span><span class="c11-sp"></span><span id="c11-t4" class="c11-tw"><i id="c11-box"></i><span id="c11-kt">Kampala</span></span></div>
+    <div id="c11-phone"><span id="c11-p0" class="c11-pg">+256</span><span id="c11-p1" class="c11-pg">750</span><span id="c11-p2" class="c11-pg">421224</span></div>
+
+    <div id="c11-btn"><div id="c11-fill"></div><div id="c11-lab">WhatsApp +256 750 421224</div></div>
+    <div id="c11-url">www.explorertower.ug</div>
+
+    <div id="c11-lg1" class="c11-lg"><img src="assets/img/developers.png" alt=""></div>
+    <div id="c11-lg2" class="c11-lg">Marketing by <img src="assets/img/bright-properties.png" alt=""></div>
+    <div id="c11-disc">Images are architectural renders prepared for marketing. Dimensions, finishes and landscaping are indicative.</div>
+
+    <div id="c11-rip1" class="c11-rip"></div>
+    <div id="c11-rip2" class="c11-rip"></div>
+    <svg id="c11-cur" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg"><path d="M 2 2 L 2 33 L 10 26 L 16 40 L 22 37.5 L 16 24 L 27 24 Z" fill="#fff" stroke="#111" stroke-width="2.4" stroke-linejoin="round"/></svg>
+    <div id="c11-black" class="c11-fill"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "11-end-card";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+      function fT(el, from, to, t) { to.immediateRender = false; return tl.fromTo(el, from, to, t); }
+
+      /* ---- split wordmark into letters ---- */
+      function split(host, text, prefix) {
+        var out = [];
+        for (var i = 0; i < text.length; i++) {
+          var s = document.createElement("span");
+          s.className = "c11-l"; s.id = prefix + i; s.textContent = text.charAt(i);
+          host.appendChild(s); out.push(s);
+        }
+        return out;
+      }
+      var lA = split($("c11-w-a"), "Explorer", "c11-la");
+      var lB = split($("c11-w-bt"), "Towers", "c11-lb");
+
+      /* ---- windows ---- */
+      var WP = [[1195,745],[935,700],[640,615],[1195,660],[940,630],[640,525],[1195,580],[935,545],[640,430],[1195,490],[935,455],[1195,400]];
+      var winHost = $("c11-wins"), wins = [];
+      WP.forEach(function (p, k) {
+        var d = document.createElement("div");
+        d.id = "c11-win" + k; d.className = "c11-win";
+        d.style.left = p[0] + "px"; d.style.top = p[1] + "px";
+        winHost.appendChild(d); wins.push(d);
+      });
+
+      /* ---- camera on the aerial (single writer) ---- */
+      var aw = $("c11-aw");
+      var cam = { dx: 0, dy: 0, s: 1.12 };
+      function applyCam() {
+        aw.style.transform = "translate(" + (960 - 1000 * cam.s + cam.dx).toFixed(2) + "px," + (540 - 562.5 * cam.s + cam.dy).toFixed(2) + "px) scale(" + cam.s.toFixed(4) + ")";
+      }
+      applyCam();
+      tl.to(cam, { dx: 70, dy: -40, duration: 6.1, ease: "none", onUpdate: applyCam }, 1.6);
+      tl.to(cam, { s: 1.18, duration: 1.5, ease: "none", onUpdate: applyCam }, 6.2);
+
+      /* ---- Scene 1: the line opens into the aerial, wordmark ---- */
+      var line = $("c11-line");
+      tl.to(line, { scaleX: 0.733, duration: 0.4, ease: "none" }, 0);
+      tl.to(line, { opacity: 0, y: -30, duration: 0.25, ease: "power2.in" }, 0.15);
+      tl.to(aw, { filter: "blur(0px)", duration: 0.8, ease: "power2.out" }, 0);
+      tl.to($("c11-dim"), { opacity: 0.45, duration: 0.6, ease: "power2.out" }, 0);
+      tl.to($("c11-shade"), { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+
+      lA.forEach(function (el, i) {
+        fT(el, { opacity: 0, y: -70, scale: 1.4, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.16, ease: "power3.out" }, 0.16 + i * 0.05);
+      });
+      lB.forEach(function (el, i) {
+        fT(el, { opacity: 0, y: -70, scale: 1.4, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.16, ease: "power3.out" }, 0.60 + i * 0.035);
+      });
+      tl.to($("c11-stroke"), { scaleX: 1, duration: 0.49, ease: "expo.out" }, 0.81);
+
+      /* windows flicker on */
+      wins.forEach(function (w, k) {
+        var t = 1.20 + k * 0.03;
+        fT(w, { opacity: 0 }, { opacity: 0.6, duration: 0.06, ease: "power2.out" }, t);
+        tl.to(w, { opacity: 0.15, duration: 0.06, ease: "power2.in" }, t + 0.06);
+        tl.to(w, { opacity: 0.75, duration: 0.08, ease: "power2.out" }, t + 0.14);
+        tl.to(w, { opacity: 0.45, duration: 0.2, ease: "power2.out" }, t + 0.24);
+      });
+
+      /* ---- Scene 2: tagline, phone, plates, disclaimer, url ---- */
+      function tagWord(id, cue) {
+        fT($(id), { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+      }
+      tagWord("c11-t0", 1.88);
+      tagWord("c11-t1", 2.23);
+      tagWord("c11-t2", 2.68);
+      tagWord("c11-t3", 3.50);
+      tagWord("c11-t4", 3.83);
+      fT($("c11-box"), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, 3.78);
+      fT($("c11-kt"), { color: "#FFD60A" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, 3.85);
+
+      ["c11-p0", "c11-p1", "c11-p2"].forEach(function (id, i) {
+        fT($(id), { opacity: 0, y: 46, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 3.20 + i * 0.08);
+      });
+
+      fT($("c11-lg1"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, ease: "expo.out" }, 3.50);
+      fT($("c11-lg2"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, ease: "expo.out" }, 3.60);
+      fT($("c11-disc"), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 3.90);
+      fT($("c11-url"), { opacity: 0, y: 8, filter: "blur(4px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.25, ease: "power3.out" }, 4.10);
+
+      /* ---- Scene 3: button, cursor click, hold ---- */
+      var btn = $("c11-btn");
+      fT(btn, { opacity: 0, y: 36, scale: 1.1, filter: "blur(6px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 4.30);
+
+      var TX = 1000, TY = 650, MOVE = 4.45, CLICK = 4.92;
+      var cur = $("c11-cur");
+      fT(cur, { opacity: 0, x: 1500, y: 860, scale: 1 }, { opacity: 1, duration: 0.08, ease: "none" }, MOVE);
+      tl.to(cur, { x: TX, duration: 0.45, ease: "expo.out" }, MOVE);
+      tl.to(cur, { y: TY, duration: 0.45, ease: "power2.inOut" }, MOVE);
+      tl.to(cur, { scale: 0.85, duration: 0.06, ease: "power2.in" }, CLICK);
+      tl.to(cur, { scale: 1, duration: 0.06, ease: "power2.out" }, CLICK + 0.06);
+      tl.to(btn, { scale: 0.95, duration: 0.06, ease: "power2.in" }, CLICK);
+      tl.to(btn, { scale: 1, duration: 0.06, ease: "power2.out" }, CLICK + 0.06);
+
+      var r1 = $("c11-rip1"), r2 = $("c11-rip2");
+      r1.style.left = (TX - 50) + "px"; r1.style.top = (TY - 50) + "px";
+      r2.style.left = (TX - 50) + "px"; r2.style.top = (TY - 50) + "px";
+      fT(r1, { scale: 0, opacity: 0.9 }, { scale: 6, opacity: 0, duration: 0.8, ease: "power3.out" }, CLICK + 0.02);
+      fT(r2, { scale: 0, opacity: 0.7 }, { scale: 6, opacity: 0, duration: 0.8, ease: "power3.out" }, CLICK + 0.10);
+
+      fT($("c11-fill"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, CLICK + 0.04);
+      fT($("c11-lab"), { color: "#ffffff" }, { color: "#111111", duration: 0.2, ease: "power2.out" }, CLICK + 0.04);
+
+      /* windows twinkle in sequence */
+      wins.forEach(function (w, k) {
+        var t = 5.50 + k * 0.1;
+        tl.to(w, { opacity: 0.95, duration: 0.15, ease: "power2.out" }, t);
+        tl.to(w, { opacity: 0.45, duration: 0.25, ease: "power2.in" }, t + 0.15);
+      });
+
+      /* the line traces the tower's curve once more */
+      var tr = $("c11-trace");
+      var TL = tr.getTotalLength();
+      tr.style.strokeDasharray = TL + " " + TL;
+      tr.style.strokeDashoffset = TL;
+      tl.set(tr, { opacity: 1 }, 6.2);
+      tl.to(tr, { strokeDashoffset: 0, duration: 1.0, ease: "none" }, 6.2);
+
+      /* final black */
+      fT($("c11-black"), { opacity: 0 }, { opacity: 1, duration: 0.27, ease: "power2.in" }, 7.35);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
