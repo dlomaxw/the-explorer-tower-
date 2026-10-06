@@ -1,0 +1,209 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 400; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c09-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #c09-ground { background: #0c0c0e; }
+
+    #c09-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+    #c09-bgwrap { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #c09-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; filter: brightness(.45) blur(3px); }
+
+    #c09-title { position: absolute; left: 90px; top: 240px; width: 900px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 128px; line-height: 1; letter-spacing: -3px; color: #fff; }
+    #c09-title i { font-family: "Cormorant Garamond", serif; font-weight: 500; font-style: italic; font-size: 150px; letter-spacing: 0; color: #FFD60A; }
+
+    #c09-card { font-family: "Montserrat", sans-serif; position: absolute; left: 60px; top: 640px; width: 960px; padding: 56px 56px 52px; box-sizing: border-box;
+      background: rgba(255,255,255,.96); border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,.5); overflow: hidden; }
+    .c09-k { font-family: "Montserrat", sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 5px; color: #7a7466; text-transform: uppercase; margin-bottom: 8px; }
+    .c09-m { font-family: "Montserrat", sans-serif; font-size: 34px; line-height: 44px; font-weight: 600; color: #111; margin-bottom: 30px; opacity: 0; }
+    #c09-big { display: flex; align-items: center; height: 110px; margin-bottom: 38px; transform-origin: 0 50%; }
+    #c09-box { display: flex; align-items: center; height: 110px; padding: 0 12px; background: #FFD60A; border-radius: 8px; }
+    #c09-rest { display: flex; align-items: center; height: 110px; margin-left: 14px; }
+    .c09-slot { position: relative; height: 110px; overflow: hidden; flex: none; }
+    .c09-strip { position: absolute; left: 0; top: 0; width: 100%; }
+    .c09-cell { height: 110px; line-height: 110px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 92px; letter-spacing: -3px; color: #111; font-variant-numeric: tabular-nums; opacity: 0; }
+    .c09-ph { position: absolute; left: 50%; top: 51px; width: 28px; height: 8px; margin-left: -14px; border-radius: 4px; background: #6a6458; opacity: 1; }
+    #c09-box .c09-ph { background: #111; }
+    #c09-sweep { position: absolute; left: -300px; top: -100px; width: 220px; height: 1100px; opacity: 0;
+      background: linear-gradient(90deg, rgba(255,240,160,0) 0%, rgba(255,240,160,.55) 50%, rgba(255,240,160,0) 100%); }
+
+    #c09-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    .c09-sub { position: absolute; left: 0; top: 1330px; width: 1080px; height: 190px; display: flex; justify-content: center; align-items: center; gap: 18px; opacity: 0;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 56px; line-height: 68px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .c09-w { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); }
+    .c09-bx { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A; transform-origin: 0 50%; transform: scaleX(0); }
+    .c09-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="09-number" data-width="1080" data-height="1920" data-duration="4.94">
+    <div id="c09-groundclip" class="clip" data-start="0" data-duration="4.94" data-track-index="0" data-layout-ignore>
+      <div id="c09-ground" class="c09-fill"></div>
+    </div>
+
+    <div id="c09-cam" data-layout-allow-overflow>
+      <div id="c09-bgwrap"><img id="c09-bg" src="assets/img/front-elevation-dusk.png" alt=""></div>
+      <div id="c09-title">Come and<br><i>see it.</i></div>
+      <div id="c09-card">
+        <div class="c09-k">Call or WhatsApp</div>
+        <div id="c09-big"><div id="c09-box"></div><div id="c09-rest"></div></div>
+        <div class="c09-k">Viewings</div><div class="c09-m">9:30am to 7:00pm</div>
+        <div class="c09-k">Email</div><div class="c09-m">brightthoughtsservices@gmail.com</div>
+        <div class="c09-k">Visit</div><div class="c09-m">Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala</div>
+        <div id="c09-sweep"></div>
+      </div>
+    </div>
+
+    <div id="c09-grain" class="c09-fill"></div>
+
+    <div id="c09-sub1" class="c09-sub">
+      <span id="c09-s1w0" class="c09-w">plus</span>
+      <span id="c09-s1w1" class="c09-w">two</span>
+      <span id="c09-s1w2" class="c09-w">five</span>
+      <span id="c09-s1w3" class="c09-w"><i id="c09-s1box" class="c09-bx"></i><span id="c09-s1bt" class="c09-bt">six,</span></span>
+    </div>
+    <div id="c09-sub2" class="c09-sub">
+      <span id="c09-s2w0" class="c09-w">seven</span>
+      <span id="c09-s2w1" class="c09-w">five</span>
+      <span id="c09-s2w2" class="c09-w"><i id="c09-s2box" class="c09-bx"></i><span id="c09-s2bt" class="c09-bt">zero</span></span>
+    </div>
+    <div id="c09-sub3" class="c09-sub">
+      <span id="c09-s3w0" class="c09-w">four</span>
+      <span id="c09-s3w1" class="c09-w">two</span>
+      <span id="c09-s3w2" class="c09-w"><i id="c09-s3box" class="c09-bx"></i><span id="c09-s3bt" class="c09-bt">one,</span></span>
+    </div>
+    <div id="c09-sub4" class="c09-sub">
+      <span id="c09-s4w0" class="c09-w">two</span>
+      <span id="c09-s4w1" class="c09-w">two</span>
+      <span id="c09-s4w2" class="c09-w"><i id="c09-s4box" class="c09-bx"></i><span id="c09-s4bt" class="c09-bt">four.</span></span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "09-number";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+      var H = 110;
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- phone number: slots with rolling strips ---------- */
+      var chars = [
+        ["+", 0.18, "c09-box", 52], ["2", 0.49, "c09-box", 58], ["5", 0.69, "c09-box", 58], ["6", 0.94, "c09-box", 58],
+        [" ", 0, "c09-box", 24],
+        ["7", 1.65, "c09-box", 58], ["5", 1.95, "c09-box", 58], ["0", 2.21, "c09-box", 58],
+        ["4", 2.98, "c09-rest", 58], ["2", 3.12, "c09-rest", 58], ["1", 3.35, "c09-rest", 58],
+        ["2", 3.96, "c09-rest", 58], ["2", 4.13, "c09-rest", 58], ["4", 4.34, "c09-rest", 58]
+      ];
+      var slotIdx = 0;
+      chars.forEach(function (c) {
+        var host = $(c[2]);
+        var slot = document.createElement("div");
+        slot.className = "c09-slot";
+        slot.style.width = c[3] + "px";
+        if (c[0] === " ") { host.appendChild(slot); return; }
+        var id = "c09-d" + slotIdx++;
+        slot.id = id;
+        var strip = document.createElement("div");
+        strip.className = "c09-strip";
+        strip.id = id + "s";
+        var cells, target = 1;
+        cells = [c[0]];
+        cells.forEach(function (t) {
+          var cell = document.createElement("div");
+          cell.className = "c09-cell";
+          cell.textContent = t;
+          strip.appendChild(cell);
+        });
+        var ph = document.createElement("div");
+        ph.className = "c09-ph";
+        ph.id = id + "p";
+        slot.appendChild(strip);
+        slot.appendChild(ph);
+        host.appendChild(slot);
+
+        var t0 = Math.max(0, c[1] - 0.05);
+        var dur = 0.34;
+        strip.style.top = "0px";
+        fT(strip.firstChild, { y: H * 0.8, opacity: 0 }, { y: 0, opacity: 1, duration: dur, ease: "power3.out" }, t0);
+        fT(ph, { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "power2.out" }, t0);
+      });
+
+      /* settle: the full number gets one soft beat */
+      var big = $("c09-big");
+      tl.to(big, { scale: 1.035, duration: 0.12, ease: "power2.out" }, 4.50);
+      tl.to(big, { scale: 1, duration: 0.3, ease: "expo.out" }, 4.62);
+
+      /* ---------- card: tilt and glow sweep ---------- */
+      var card = $("c09-card");
+      gsap.set(card, { transformPerspective: 1400, transformOrigin: "50% 50%" });
+      fT(card, { rotationX: 0 }, { rotationX: 2, duration: 0.6, ease: "power3.out" }, 0.60);
+      fT(card, { rotationX: 2 }, { rotationX: 0, duration: 0.44, ease: "power2.inOut" }, 4.50);
+
+      var sweep = $("c09-sweep");
+      gsap.set(sweep, { skewX: -14 });
+      fT(sweep, { x: 0, opacity: 0 }, { x: 0, opacity: 1, duration: 0.01 }, 1.30);
+      tl.to(sweep, { x: 1400, duration: 0.8, ease: "power2.inOut" }, 1.30);
+      tl.to(sweep, { opacity: 0, duration: 0.01 }, 2.10);
+
+      /* ---------- background drift (tower, left at 1.5 %/s) ---------- */
+      var bg = $("c09-bg");
+      gsap.set(bg, { scale: 1.15, transformOrigin: "50% 50%", y: 0 });
+      fT(bg, { y: 0 }, { y: -142, duration: 4.94, ease: "none" }, 0);
+
+      /* ---------- camera ---------- */
+      var cam = $("c09-cam");
+      gsap.set(cam, { scale: 1.05, y: 0 });
+      tl.to(cam, { scale: 1.065, duration: 1.6, ease: "none" }, 0);
+      tl.to(cam, { scale: 1.08, duration: 0.78, ease: "expo.inOut" }, 1.6);
+      tl.to(cam, { scale: 1.095, duration: 2.12, ease: "none" }, 2.38);
+      tl.to(cam, { scale: 1.12, y: -120, duration: 0.44, ease: "expo.inOut" }, 4.50);
+      fT(cam, { filter: "blur(0px)" }, { filter: "blur(8px)", duration: 0.44, ease: "power2.in" }, 4.50);
+
+      /* ---------- subtitles ---------- */
+      function word(id, cue) {
+        var el = $(id), t = Math.max(0, cue - 0.03);
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, t);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, t + 0.14);
+      }
+      function keybox(wid, boxId, txtId, cue) {
+        word(wid, cue);
+        fT($(boxId), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, cue - 0.08);
+        fT($(txtId), { color: "#ffffff" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, cue - 0.01);
+      }
+      function chunk(id, start, end) {
+        tl.set($(id), { opacity: 1 }, start);
+        if (end) fT($(id), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, end);
+      }
+      chunk("c09-sub1", 0.14, 1.46);
+      word("c09-s1w0", 0.18); word("c09-s1w1", 0.49); word("c09-s1w2", 0.69);
+      keybox("c09-s1w3", "c09-s1box", "c09-s1bt", 0.94);
+
+      chunk("c09-sub2", 1.60, 2.78);
+      word("c09-s2w0", 1.65); word("c09-s2w1", 1.95);
+      keybox("c09-s2w2", "c09-s2box", "c09-s2bt", 2.21);
+
+      chunk("c09-sub3", 2.93, 3.78);
+      word("c09-s3w0", 2.98); word("c09-s3w1", 3.12);
+      keybox("c09-s3w2", "c09-s3box", "c09-s3bt", 3.35);
+
+      chunk("c09-sub4", 3.91, 4.76);
+      word("c09-s4w0", 3.96); word("c09-s4w1", 4.13);
+      keybox("c09-s4w2", "c09-s4box", "c09-s4bt", 4.34);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>

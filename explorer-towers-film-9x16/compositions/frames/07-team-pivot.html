@@ -1,0 +1,172 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c07-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+    #c07-ground { background: #000000; }
+
+    #c07-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #c07-world { position: absolute; left: 0; top: 0; width: 3413px; height: 1920px; transform-origin: 0 0; }
+    #c07-img { position: absolute; left: 0; top: 0; width: 3413px; height: 1920px; display: block; }
+    #c07-sl { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #c07-sw { position: absolute; left: 0; top: 0; width: 1080px; height: 2880px; transform-origin: 0 0; }
+    .c07-slat { position: absolute; left: 0; width: 1080px; height: 960px; overflow: hidden; }
+    .c07-simg { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; background-repeat: no-repeat; }
+    .c07-sgrad { position: absolute; left: 0; top: 0; width: 1080px; height: 960px;
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.72) 100%); }
+    #c07-s3 { top: 0px; filter: blur(3px) brightness(.5); }
+    #c07-s4 { top: 960px; filter: blur(12px) brightness(.82); }
+    #c07-sp { top: 1920px; filter: blur(3px) brightness(.5); }
+    #c07-i3 { background-image: url("assets/img/residents-lounge.webp"); background-size: cover; background-position: 50% 50%; }
+    #c07-i4 { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1100px; background-position: -200px -70px; }
+    #c07-ip { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1100px; background-position: -200px -70px; }
+    #c07-dim { background: #000; opacity: 0; }
+    #c07-vign { background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,.5) 100%); }
+    #c07-warm { position: absolute; left: 0; top: 0; width: 1080px; height: 640px; opacity: 0; mix-blend-mode: screen;
+      background: linear-gradient(180deg, rgba(255,190,110,0) 0%, rgba(255,190,110,.38) 50%, rgba(255,190,110,0) 100%); }
+    #c07-cut { background: #000; opacity: 0; }
+
+    #c07-hair { position: absolute; left: 330px; top: 958px; width: 420px; height: 4px; border-radius: 2px; background: #FFD60A; opacity: 0;
+      box-shadow: 0 0 10px 2px rgba(255,214,10,.65); }
+    #c07-glow { position: absolute; left: 330px; top: 958px; width: 420px; height: 4px; border-radius: 2px; opacity: 0; background: #FFF0A0;
+      box-shadow: 0 0 28px 8px rgba(255,214,10,.55), 0 0 70px 18px rgba(255,214,10,.25); }
+
+    #c07-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    .c07-sub { position: absolute; left: 60px; top: 1330px; width: 960px; height: 190px; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; column-gap: 16px; row-gap: 4px;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 56px; line-height: 68px; color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .c07-br { flex-basis: 100%; height: 0; }
+    .c07-w { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); }
+    .c07-box { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c07-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="07-team-pivot" data-width="1080" data-height="1920" data-duration="2.83">
+    <div id="c07-groundclip" class="clip" data-start="0" data-duration="2.83" data-track-index="0" data-layout-ignore>
+      <div id="c07-ground" class="c07-fill"></div>
+    </div>
+
+    <div id="c07-stage">
+      <div id="c07-world" data-layout-allow-overflow>
+        <img id="c07-img" src="assets/img/reception.webp" alt="">
+      </div>
+      <div id="c07-warm"></div>
+      <div id="c07-dim" class="c07-fill"></div>
+      <div id="c07-vign" class="c07-fill"></div>
+      <div id="c07-cut" class="c07-fill"></div>
+    </div>
+    <div id="c07-sl">
+      <div id="c07-sw" data-layout-allow-overflow>
+        <div id="c07-s3" class="c07-slat"><div id="c07-i3" class="c07-simg"></div><div class="c07-sgrad"></div></div>
+        <div id="c07-s4" class="c07-slat"><div id="c07-i4" class="c07-simg"></div><div class="c07-sgrad"></div></div>
+        <div id="c07-sp" class="c07-slat"><div id="c07-ip" class="c07-simg"></div><div class="c07-sgrad"></div></div>
+      </div>
+    </div>
+
+    <div id="c07-glow"></div>
+    <div id="c07-hair"></div>
+    <div id="c07-grain" class="c07-fill"></div>
+
+    <div id="c07-sub" class="c07-sub">
+      <span id="c07-w0" class="c07-w">and</span>
+      <span id="c07-w1" class="c07-w">a</span>
+      <span id="c07-w2" class="c07-w"><i id="c07-box" class="c07-box"></i><span id="c07-bt" class="c07-bt">team</span></span>
+      <span id="c07-w3" class="c07-w">that</span>
+      <span class="c07-br"></span>
+      <span id="c07-w4" class="c07-w">looks</span>
+      <span id="c07-w5" class="c07-w">after</span>
+      <span id="c07-w6" class="c07-w">it</span>
+      <span id="c07-w7" class="c07-w">all.</span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "07-team-pivot";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- camera on the reception render (single writer) ---------- */
+      /* cover 3413x1920; the pan travels DOWN (v grows), slows at 0.40, then a calm push toward the desk */
+      var world = $("c07-world");
+      var cam = { v: 0.52, s: 1.30 };
+      var CU = 0.55;
+      function applyCam() {
+        world.style.transform = "translate(" + (540 - CU * 3413 * cam.s).toFixed(2) + "px," + (960 - cam.v * 1920 * cam.s).toFixed(2) + "px) scale(" + cam.s.toFixed(4) + ")";
+      }
+      applyCam();
+      tl.to(cam, { v: 0.575, duration: 0.40, ease: "power2.out", onUpdate: applyCam }, 0);
+      tl.to(cam, { v: 0.61, duration: 1.48, ease: "power1.out", onUpdate: applyCam }, 0.40);
+      tl.to(cam, { s: 1.42, duration: 1.88, ease: "none", onUpdate: applyCam }, 0);
+
+      /* ---------- seam from frame 6: its last image, then the slats grow and dissolve into the render ---------- */
+      var sw = $("c07-sw");
+      var cs = { v: 1440, s: 1.03 };
+      function applySw() {
+        sw.style.transform = "translate(" + (540 - 540 * cs.s).toFixed(2) + "px," + (960 - cs.v * cs.s).toFixed(2) + "px) scale(" + cs.s.toFixed(4) + ")";
+      }
+      applySw();
+      tl.to(cs, { v: 1800, duration: 0.40, ease: "power2.out", onUpdate: applySw }, 0);
+      tl.to(cs, { s: 1.25, duration: 0.50, ease: "power2.out", onUpdate: applySw }, 0);
+      fT($("c07-sl"), { opacity: 1 }, { opacity: 0, duration: 0.40, ease: "power2.inOut" }, 0.12);
+
+      /* camera blur 12 px resolves (handoff_in) */
+      fT($("c07-stage"), { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0);
+
+      /* warm light sweeps the reception desk, top to bottom */
+      fT($("c07-warm"), { opacity: 0, y: -700 }, { opacity: 1, y: 500, duration: 0.35, ease: "power2.out" }, 0.80);
+      tl.to($("c07-warm"), { y: 1500, duration: 0.65, ease: "power1.inOut" }, 1.15);
+      tl.to($("c07-warm"), { opacity: 0, duration: 0.3, ease: "power1.in" }, 1.50);
+
+      /* render darkens to 60% */
+      fT($("c07-dim"), { opacity: 0 }, { opacity: 0.4, duration: 0.5, ease: "power2.out" }, 1.20);
+
+      /* ---------- subtitle ---------- */
+      function word(id, cue) {
+        var el = $(id);
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, cue + 0.14);
+      }
+      word("c07-w0", 0.09);
+      word("c07-w1", 0.21);
+      word("c07-w2", 0.28);
+      fT($("c07-box"), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, 0.23);
+      fT($("c07-bt"), { color: "#ffffff" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, 0.30);
+      word("c07-w3", 0.76);
+      word("c07-w4", 0.88);
+      word("c07-w5", 1.20);
+      word("c07-w6", 1.56);
+      word("c07-w7", 1.65);
+      /* the subtitle leaves with the cut */
+      fT($("c07-sub"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.12, ease: "power2.in" }, 1.86);
+
+      /* ---------- the pivot: cut to black in 0.10 s ---------- */
+      fT($("c07-cut"), { opacity: 0 }, { opacity: 1, duration: 0.10, ease: "none" }, 1.88);
+      tl.set($("c07-stage"), { opacity: 0 }, 1.98);
+
+      /* ---------- the hairline: only living layer in the black ---------- */
+      /* drifts right at 20 px/s, back-solved so it sits at the exact center (540, 960) at 2.83 */
+      fT($("c07-hair"), { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power3.out" }, 2.10);
+      tl.fromTo($("c07-hair"), { x: -14.6 }, { x: 0, duration: 0.73, ease: "none", immediateRender: false }, 2.10);
+      tl.fromTo($("c07-glow"), { x: -14.6 }, { x: 0, duration: 0.73, ease: "none", immediateRender: false }, 2.10);
+      fT($("c07-glow"), { opacity: 0 }, { opacity: 0.55, duration: 0.30, ease: "power2.out" }, 2.40);
+      tl.to($("c07-glow"), { opacity: 1, duration: 0.07, ease: "power2.out" }, 2.70);
+      tl.to($("c07-glow"), { opacity: 0.7, duration: 0.06, ease: "power2.in" }, 2.77);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
