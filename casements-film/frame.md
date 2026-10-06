@@ -1,116 +1,91 @@
 ---
 version: 2
-name: "{{BRAND}}: launch frame"
+name: "Casements Africa: Twelve Frames (9:16)"
 description: >
-  Video-first frame spec for the {{BRAND}} launch motion design, built on ../patterns/PATTERNS.md. {{METAPHOR_IN_ONE_SENTENCE}}.
-  Two worlds: the PROBLEM lives on a warm near-black stage, the SOLUTION on a light ground; the end card returns to the
-  dark stage. One accent only, {{ACCENT_NAME}}, kept for what matters: the key-word box of each subtitle and 3 or 4
-  peak strokes. The sentence of the voice is a subtitle at the bottom center that arrives word by word.
-  Complete film written this way: examples/ligne-du-temps-v8/frame.md.
-  Template of the motion-design skill: replace every {{...}} placeholder (grep -n "{{" frame.md must print nothing).
-  Reference values in the comments are those of the Entrepreneurs 2.0 example films (terracotta on warm black and paper).
-unit: 1920×1080
-principle: readable without sound · one thing to look at at a time · one accent, one highlight mechanism · the voice cues every reveal
+  Frame spec for the Casements Africa whole-website film, direction A "Twelve Frames", PORTRAIT 9:16 (1080x1920).
+  One metaphor, taken from the logo (a window drawn as overlapping green frames): every product line lives in a green
+  window frame ("pane") on a light steel ground, the camera travels down a tall wall of panes, and the green frame lines
+  are the thread: they draw a pane, extend into the next pane's edge (the mullion bridge) and at the end join into the
+  logo. Quality is shown by large, clean, close-up photos of the products. One accent only, the brand yellow, for the
+  key-word box of each subtitle and the periods of the labels. No client buildings, no client names or logos.
+unit: 1080×1920
+principle: readable without sound · one thing to look at at a time · one accent, one highlight mechanism · the voice cues every reveal · products, not clients
 
 colors:
-  canvas: "{{CANVAS}}"                # dark world (problem + end card), ref "#0d0b0a"
-  canvas-2: "{{CANVAS_2}}"            # ref "#141010"
-  paper: "{{PAPER}}"                  # light world (solution) full-bleed ground, ref "#f6f1e9"
-  paper-2: "{{PAPER_2}}"              # secondary light surface, ref "#efe7dc"
-  card-light: "{{CARD_LIGHT}}"        # cards on the light world, ref "#fffdf9"
-  ink: "{{INK}}"                      # text on dark, ref "#f5efe7"
-  ink-soft: "{{INK_SOFT}}"            # ref "#cdbfb2"
-  ink-mute: "{{INK_MUTE}}"            # ref "#9b9289"
-  ink-dark: "{{INK_DARK}}"            # text on light, ref "#1a1612"
-  ink-dark-soft: "{{INK_DARK_SOFT}}"  # ref "#5a5348"
-  hairline-light: "{{HAIRLINE}}"      # ref "#e2d9cc"
-  accent: "{{ACCENT}}"                # THE brand accent, ref "#c25b28"
-  accent-light: "{{ACCENT_LIGHT}}"    # ref "#d4703f"
-  accent-deep: "{{ACCENT_DEEP}}"      # ref "#a84d22"
-  accent-glow: "{{ACCENT_GLOW}}"      # ref "#e08a5c"
+  ground: "#f4f6f2"            # light steel ground of the whole film
+  ground-2: "#e8ede6"
+  card: "#ffffff"
+  green: "#1f7a3d"             # brand green: the frames
+  green-dark: "#14572c"
+  green-deep: "#0f2f1b"
+  green-pale: "#e8f4ec"
+  ink: "#101010"               # text on the light ground (brand black)
+  ink-soft: "#2a2f29"
+  ink-mute: "#6a6458"
+  accent: "#f5b800"            # THE accent: brand yellow
+  accent-deep: "#d99f00"
+  on-green: "#ffffff"
 
-# Local woff2 files only, never a network @import (fetch commands: references/method.md, step 2).
-# Default trio of the method (all SIL Open Font License): swap only if the brand has its own fonts.
 fonts:
-  Instrument Sans: { files: ["assets/fonts/InstrumentSans-400.woff2 (400)", "assets/fonts/InstrumentSans-500.woff2 (500)", "assets/fonts/InstrumentSans-600.woff2 (600)", "assets/fonts/InstrumentSans-700.woff2 (700)"] }
-  Space Mono: { files: ["assets/fonts/SpaceMono-400.woff2 (400)", "assets/fonts/SpaceMono-700.woff2 (700)"] }
-  Big Shoulders: { files: ["assets/fonts/BigShoulders-800.woff2 (800)"] }
+  Montserrat: { files: ["assets/fonts/montserrat-latin-400-normal.woff2 (400)", "assets/fonts/montserrat-latin-600-normal.woff2 (600)", "assets/fonts/montserrat-latin-800-normal.woff2 (800)"] }
 
 typography:
-  subtitle:   { fontFamily: "Instrument Sans", px: 62, weight: 600, lineHeight: 74, tracking: "-0.015em", note: "the sentence of the voice at the BOTTOM CENTER (top at y 896, inside the band y 890 to 980 that carries nothing else), 60 to 64 px, 45 characters at most per chunk (a longer sentence splits into chunks that replace each other), word by word on its timestamps; a light shadow detaches it from the ground; ink on the light world, ink on dark on the dark world. Never at the top left" }
-  type:       { fontFamily: "Instrument Sans", px: 84, weight: 600, lineHeight: 1.12, tracking: "-0.025em", note: "ONLY the 2 or 3 typographic moments named in the storyboard (the diagnosis, the pivot): the sentence IS the image, centered, never bigger than 84 px, no subtitle at the bottom meanwhile" }
-  numeral-jumbo: { fontFamily: "Instrument Sans", px: 300, weight: 600, lineHeight: 0.9, tracking: "-0.02em", tabularNums: true }
-  ui:         { fontFamily: "Instrument Sans", px: 28, weight: 500, lineHeight: 1.3 }
-  title:      { fontFamily: "Instrument Sans", px: 44, weight: 600, lineHeight: 1.1, tracking: "-0.02em" }
-  code:       { fontFamily: "Space Mono", px: 26, weight: 400, lineHeight: 1.5, note: "only if the film shows code; keywords in accent-light" }
-  price:      { fontFamily: "Space Mono", px: 30, weight: 700, tabularNums: true }
-  micro:      { fontFamily: "Space Mono", px: 18, weight: 400, tracking: "0.2em", upper: true }
-  wordmark:   { fontFamily: "Big Shoulders", px: 64, weight: 800, upper: true, note: "{{WORDMARK_RULE}}, e.g. 'BRAND' in ink + ' 2.0' in accent-light" }
-  cta:        { fontFamily: "Big Shoulders", px: 34, weight: 800, upper: true }
+  subtitle:   { fontFamily: "Montserrat", px: 56, weight: 600, lineHeight: 68, note: "the sentence of the voice, centered in the portrait band y 1330 to 1520 (up to 2 lines, 45 characters at most per chunk), word by word on its timestamps; ink on the light ground; a pane or photo that sits behind the band gets a pale scrim so the contrast stays at 4.5:1" }
+  label:      { fontFamily: "Montserrat", px: 52, weight: 800, lineHeight: 1.05, tracking: "-0.01em", note: "product-line labels in the green bar of a pane, white on green, followed by a yellow period" }
+  display:    { fontFamily: "Montserrat", px: 120, weight: 800, lineHeight: 1.0, tracking: "-0.04em", note: "the hook words, « Built to last. » and « Delivered as promised. » and the end-card name; the sentence IS the image, no subtitle meanwhile" }
+  numeral:    { fontFamily: "Montserrat", px: 96, weight: 800, tabularNums: true, note: "every number rolls: 60+, 500+, 12, the phone digits" }
+  micro:      { fontFamily: "Montserrat", px: 24, weight: 600, tracking: "0.25em", upper: true }
+  chip:       { fontFamily: "Montserrat", px: 30, weight: 600 }
 
 components:
-  ground-dark:
-    background: "solid canvas + 1-2 soft radial accent halos (14-28% opacity, blur 100px+) behind the focal element + static film grain 4-6%. Painted as a full-duration class=\"clip\" layer, never on #root."
-  ground-light:
-    background: "solid paper + one very soft warm radial (accent at 6-10%) behind the focal element + grain 3%. Text is ink-dark. Full-duration class=\"clip\" layer."
-  word-by-word:
-    rule: "Each word of the subtitle appears ON its voice timestamp, grey (ink at 35 %): fromTo {opacity:0, y:8, filter:blur(6px)} → {opacity:1, y:0, blur(0)} in 0.14 s, immediateRender:false, then it turns to full ink in 0.2 s. Never the whole sentence at once. Before a seam the subtitle leaves: opacity 1 → 0 and blur 0 → 6 px in 0.14 s."
+  ground:
+    background: "solid ground + one very soft green radial (6%) behind the focal pane + grain 3%. Full-duration class=\"clip\" layer."
+  pane:
+    look: "a green frame (22 px stroke, color green), the photo inside (cover-fit), a label bar at the foot (green background, white label text 52 px, yellow period), soft shadow 0 30px 70px rgba(16,16,16,.22). Sizes: pane-large 960x1000, pane-half 450x560 (2x2 grid), pane-strip 960x420."
+    motion: "the frame lines DRAW first (svg-path-draw, 0.3 s expo.out), then the photo arrives from x1.15 and blurred 14 px to sharp inside the frame (0.2 s expo.out), then the label bar slides up 20 px (0.15 s). Never faded in at final size."
+  mullion:
+    look: "a 22 px green line (the shared edge between two panes) with a black round node (30 px) at each crossing, like the logo."
+    motion: "extends from the edge of the current pane into the edge of the next one (the bridge), svg-path-draw, 0.4 s expo.out"
   key-word-box (THE highlight mechanism, one per sentence):
-    look: "a small rectangle in the accent color, sharp corners (radius 3px), overflowing the word by 0.14em on each side; the word turns to the paper color inside. Never a black box."
-    motion: "the box traces from the left (scaleX 0 → 1, transform-origin left, 0.16 s power3.out), 0 to 2 frames before the word is spoken; the word changes color as the box passes (0.1 s)."
-    rule: "ONE box per sentence, on the word the storyboard names as [boîte : …]. No other colored text anywhere."
-  peak-stroke (the 3 or 4 peaks of the film):
-    look: "a thin accent stroke (4 px, round caps) or a tapered brush stroke (round attack, thin exit, slight rising curve) under THE key word only, never under the whole sentence."
-    motion: "draws from the left (scaleX 0 → 1, 0.3 to 0.5 s power2.out) while the word is spoken."
-    rule: "named [trait : …] in the storyboard. Never a big box, never a giant word, never a line of the decor crossing the sentence."
-  letters-converge (only if a typographic moment needs it):
-    motion: "enters with its letters converging + opacity 0→1 + blur 12px→0 over 0.5 s expo.out; may sit behind a card or object (z-order) for depth. NEVER tween letterSpacing (it snaps to device pixels under seek capture and the lint blocks it): keep letter-spacing -0.05em static, split the word into inline-block letters and tween each letter's x from (i - (n-1)/2) × 0.4em to 0. A counting number keeps only scale + blur."
-  glass-card-dark:
-    background: "linear-gradient(160deg, rgba(40,33,28,.92), rgba(24,20,17,.9) 45%, rgba(20,16,14,.9) 80%, rgba(30,24,20,.92)); 1px rgba(245,239,231,.10) border; inset 0 1px 0 rgba(255,255,255,.14); shadow 0 50px 120px rgba(0,0,0,.7); radius 14px (retint to canvas)"
-  card-light:
-    background: "card-light, 1px hairline-light border, radius 14px, shadow 0 30px 80px rgba(60,40,20,.14), 0 2px 6px rgba(60,40,20,.08)"
-  counter:
-    description: "numeral-jumbo number that rolls to its value (tabular digits, grows slightly with the value), with a micro unit label under it. Every number on screen rolls, none is simply posed."
-  tool-tiles:
-    description: "Real tool logos from assets/icons/*.svg (Simple Icons, CC0): inline SVG path in an 88px white rounded tile (radius 20px, soft shadow), filled with the tool's own brand color ({{TOOL_COLORS}}, e.g. Gmail #EA4335, Stripe #635BFF). Brand colors are the ONLY exception to the one-accent rule, only inside tool tiles."
-  persona:
-    description: "{{PERSONA}}: a flat vector character in inline SVG, head + shoulders, simple hair, NO detailed face (two small dot eyes max), ~340px tall, friendly and simple, not childish. The same drawing in every frame where it appears."
-  pain-pills:
-    description: "Small dark pills (Space Mono 20px, white text on a dark warm grey, radius 999px) that pop around the persona one by one (≈0.12 s apart), slight deterministic rotation from the index, each with a tiny ✕ in accent."
-  chat-input:
-    description: "Large card with micro label '{{CHAT_LABEL}}', prompt typed char by char behind an accent caret, square accent send button with a white up-arrow. card-light on the light world."
-  caret:
-    description: "the text caret: a 4px × 58px accent-light bar, blinks as finite on/off steps (0.5 s period, NEVER a repeat:-1 loop)."
-  product-mock:
-    description: "{{PRODUCT_MOCK}}: the product or the user's own tool as it looks TODAY, from a recent screenshot the user gives (never drawn from memory: that is last year's interface), placed as an image or rebuilt in HTML; the whole device, small and uncluttered, only the elements that tell the story. It sits where it makes sense: a change request on a site is an annotation linked to the selected element, not a bubble dropped on the page. Accent elements only for the thing the voice points at."
+    look: "a rectangle in the accent color, radius 6px, overflowing the word by 0.14em on each side; the word turns ink (#101010) inside."
+    motion: "scaleX 0 → 1 from the left (0.16 s power3.out), 0 to 2 frames before the word is spoken."
+  word-by-word:
+    rule: "each subtitle word appears ON its cue, grey (ink at 40%): fromTo {opacity:0, y:8, blur 6px} → full in 0.14 s, immediateRender:false, then full ink in 0.2 s. Before a seam the subtitle leaves: opacity 1 → 0 and blur 0 → 6 px in 0.14 s."
+  stat-chip:
+    look: "white chip, 3 px green border, numeral 96 px + micro label: « 60+ Years of Experience », « ISO Certified », « 500+ Projects Delivered », « 100% Genuine Materials ». Numbers roll to their value."
+  logo-plate:
+    look: "white plate, 14 px green border, assets/img/logo-full.png (the real logo), shadow 0 40px 90px rgba(16,16,16,.25)."
+  contact-card:
+    look: "white card 960 px wide, 14 px green border; micro labels (CALL, VISIT, WEB, OPEN) over 44 px values; the phone number « +256 752 » in a yellow box then « 700 700 »; hours « Mon–Fri 8:00–5:30 · Sat 8:00–1:00 »."
   cursor:
-    description: "White macOS arrow with dark outline + drop shadow; it arrives in ONE curved move (0.4 to 0.5 s power3.out) and clicks directly: press (scale .85, 0.06 s) + accent ripple ring that expands and fades. Never a hesitation."
-  light-point:
-    description: "a white-hot point (radial #fff3ea → accent-glow → transparent) used where the orchestrator's light flash starts."
+    description: "white macOS arrow with dark outline and shadow; arrives in ONE curved move (0.4 to 0.5 s power3.out) and clicks directly: press (scale .85, 0.06 s) + yellow ripple ring."
   end-card:
-    description: "dark stage, wordmark assembled letter by letter, one-line promise in type size with its peak stroke, ONE CTA button '{{CTA_LABEL}}' (paper fill, accent-deep Big Shoulders text, soft accent glow), mono URL '{{URL}}' in small, a cursor that arrives and clicks the button directly, then 2 to 3 s of living hold (drift, a texture that moves) before the iris or the black."
+    description: "light ground, logo plate, « Built to last. Delivered as promised. », contact card, button « casements.co.ug » clicked by the cursor, 2 to 3 s of living hold (slow drift, a light sweep along the frame lines), then a cut to the ground color / black in the last frame."
 
 negative:
-  - "No second highlight mechanism: the key-word box is the ONLY way a word of a subtitle is emphasized, the peak stroke marks the 3 or 4 peaks (no colored text, no glow text)."
-  - "No big sentence: the subtitle is 60 to 64 px, a typographic moment 84 px at most; no giant word, no big box. Nothing but the subtitle in the band y 890 to 980; never a subtitle at the top left."
-  - "One thing to look at at a time: the camera isolates the subject of the sentence. Side-by-side layouts keep equal left and right margins."
-  - "No camera back-and-forth on the decor (a clear zoom in one direction is welcome). No cursor hesitation."
-  - "No decor without meaning (grey bars 'to fill', abstract symbols, counters that say nothing); no line of the decor crossing a sentence."
-  - "No hue other than the accent, except real brand colors inside tool tiles."
-  - "No Inter, Space Grotesk, Geist, system-ui. No emoji. No icons in round pills."
-  - "No bouncy/elastic/back.out eases. No breathing loops, no slow push on every scene, no repeat:-1."
-  - "No visible text that is not listed in the frame's Scene lines (component labels above are allowed)."
-  - "Never tween letterSpacing."
+  - "No client buildings, no client names, logos or project captions anywhere. Only the products, the factory and the Casements logo."
+  - "No second highlight mechanism: the key-word box is the ONLY way a word of a subtitle is emphasized."
+  - "No invented facts: no prices, no certifications beyond « ISO Certified », no counts other than 60+, 500+, 12 product lines."
+  - "No customer reviews (the source marks them as placeholders)."
+  - "No hue other than green, yellow, black, white and the product photos."
+  - "No Inter, Space Grotesk, Geist, system-ui. No emoji."
+  - "No bouncy/elastic/back.out eases. No repeat:-1, no CSS animation."
+  - "No decor without meaning; nothing in the subtitle band but the subtitle."
+  - "Never tween letterSpacing. Never show a photo at final size without its arrival (x1.15 + blur)."
 ---
 
-# {{BRAND}}: frame spec
+# Casements Africa: frame spec
 
-The film has two worlds. **The problem** plays on the warm black stage: {{PROBLEM_WORLD_IN_TWO_SENTENCES}}. A single
-**pivot** ({{PIVOT}}, a word alone or a caret in the dark) freezes everything, then light floods the screen and we land
-on **the solution**, on the light ground: {{SOLUTION_WORLD_IN_TWO_SENTENCES}}. The iris from {{IRIS_OBJECT}} takes us
-back to the dark stage for the **end card**.
+A light film built on one idea from the logo. The ground is pale steel. Every product line is a **pane**: a green
+frame that draws itself, a clean close-up of the product inside, a green label bar with the line's name and a yellow
+period. The camera travels DOWN a tall wall of panes (portrait), station to station, one product line per sentence.
+The shared edge between two panes is a **mullion**: the green line that leaves one pane becomes the edge of the next
+(the bridge), so the film never cuts, it hands over.
 
-Everything the viewer reads is Instrument Sans: the sentence of the voice as a subtitle at the bottom center, word by
-word, with exactly one key word per sentence in a small accent box that traces itself first. A thin accent stroke
-under the key word marks the 3 or 4 peaks.
-Numbers, labels and code are Space Mono; the wordmark and the CTA are Big Shoulders.
+The film opens on four panes (Aluminium. Glass. Steel. Wood.) in total silence, then the voice carries it through
+the twelve product lines, the four-step process (the panes turn into a drawing, a build, an installation), the
+promise « Built to last. Delivered as promised. » on the real figures (60+ years, ISO certified, 500+ projects,
+100% genuine materials), and ends on the logo, the contact card and the website.
+
+Everything the viewer reads is Montserrat. The sentence of the voice is a subtitle in the portrait band
+(y 1330 to 1520), word by word, with exactly one key word per sentence in a small yellow box that traces itself first.
