@@ -59,10 +59,10 @@
     <div id="hook01-node"></div>
   </div></div>
   <script src="assets/vendor/gsap.min.js"></script>
-  <script>
+<script>
   (function(){
     var tl=gsap.timeline({paused:true});
-    var P=["al",0.0,0.3],["gl",0.15,0.75],["st",0.3,1.2],["wd",0.45,1.65];
+    var P=[["al",0.0,0.3],["gl",0.15,0.75],["st",0.3,1.2],["wd",0.45,1.65]];
     P.forEach(function(p){
       var k=p[0],d=p[1],a=p[2];
       var path=document.getElementById("hook01-path-"+k);

@@ -1,0 +1,155 @@
+<template>
+<style>
+@font-face{font-family:"Montserrat";font-weight:400;src:url("assets/fonts/montserrat-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:600;src:url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:800;src:url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2")}
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:"Montserrat",sans-serif;color:#101010}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#c13-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse 900px 800px at 540px 930px,rgba(31,122,61,.06),rgba(31,122,61,0) 70%),#f4f6f2}
+#c13-grain{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+#c13-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 930px}
+#c13-prev{position:absolute;left:0;top:0;width:1080px;height:1920px;filter:blur(6px)}
+#c13-plate{position:absolute;left:60px;top:220px;width:960px;height:680px;background:#fff;border:14px solid #1f7a3d;box-shadow:0 40px 90px rgba(16,16,16,.25)}
+#c13-plate img{position:absolute;left:198px;top:56px;width:526px;height:467px}
+#c13-addr{position:absolute;left:60px;top:930px;width:960px;height:300px;background:#fff;border:14px solid #1f7a3d;box-shadow:0 30px 70px rgba(16,16,16,.2);text-align:center}
+.c13-micro{position:absolute;left:0;width:932px;text-align:center;font-size:24px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#6a6458;white-space:nowrap}
+#c13-addr .c13-micro{top:56px}
+#c13-addrv{position:absolute;left:0;width:932px;top:110px;text-align:center;font-size:40px;font-weight:800;line-height:1.2;color:#101010}
+#c13-addrv small{display:block;font-size:30px;font-weight:600;color:#14572c}
+#c13-mark{position:absolute;left:440px;top:380px;width:200px;height:199px;opacity:0}
+#c13-card{position:absolute;left:60px;top:620px;width:960px;height:600px;background:#fff;border:14px solid #1f7a3d;box-shadow:0 40px 90px rgba(16,16,16,.25);filter:blur(10px)}
+#c13-call{top:80px}
+#c13-open{top:365px}
+#c13-row{position:absolute;left:79px;top:150px;width:774px;height:100px;font-size:80px;font-weight:800;line-height:100px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#c13-box{position:absolute;left:-8px;top:10px;width:416px;height:80px;background:#f5b800;border-radius:6px;transform-origin:0 50%;transform:scaleX(0)}
+.c13-s{position:absolute;top:0;height:100px;text-align:center;opacity:0}
+#c13-line{position:absolute;left:79px;top:272px;width:774px;height:8px;background:#f5b800;border-radius:4px;transform-origin:0 50%;transform:scaleX(0)}
+#c13-hours{position:absolute;left:0;top:415px;width:932px;text-align:center;font-size:36px;font-weight:600;color:#101010;opacity:0;white-space:nowrap}
+.c13-l{opacity:0}
+#c13-sub{position:absolute;left:0;top:1330px;width:1080px;height:190px}
+.c13-chunk{position:absolute;left:40px;top:0;width:1000px;height:190px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:56px;font-weight:600;line-height:68px;text-wrap:balance}
+.c13-chunk p{width:1000px;text-align:center}
+.c13-wd{position:relative;display:inline-block;white-space:pre}
+.c13-w{position:relative;display:inline-block;opacity:0;color:rgba(16,16,16,.4)}
+.c13-k{position:absolute;left:-.14em;right:-.14em;top:.08em;bottom:.02em;background:#f5b800;border-radius:6px;transform-origin:0 50%;transform:scaleX(0)}
+</style>
+
+<div id="root" data-composition-id="13-call" data-start="0" data-duration="5.51" data-width="1080" data-height="1920">
+  <div id="c13-ground" class="clip" data-start="0" data-duration="5.51" data-track-index="0"></div>
+  <div id="c13-cam">
+    <img id="c13-mark" src="assets/img/mark.png" alt="">
+    <div id="c13-prev">
+      <div id="c13-plate"><img src="assets/img/logo-full.png" alt=""></div>
+      <div id="c13-addr"><div class="c13-micro">Visit</div><div id="c13-addrv">Plot 86, 5th Street,<small>Industrial Area, Kampala</small></div></div>
+    </div>
+    <div id="c13-card">
+      <div id="c13-call" class="c13-micro"></div>
+      <div id="c13-row"><div id="c13-box"></div></div>
+      <div id="c13-line"></div>
+      <div id="c13-open" class="c13-micro"></div>
+      <div id="c13-hours">Mon–Fri 8:00–5:30 · Sat 8:00–1:00</div>
+    </div>
+  </div>
+  <div id="c13-grain"></div>
+  <div id="c13-sub">
+    <div id="c13-ch1" class="c13-chunk"><p></p></div>
+    <div id="c13-ch2" class="c13-chunk"><p></p></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script>
+(function(){
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var FE = 1/30;
+
+  // ---- number slots ----
+  var row = document.getElementById("c13-row");
+  var chars = "+256 752 700 700";
+  // cue (frame-local s) per digit, + at plus cue
+  var cues = [0.46, 0.84, 1.03, 1.28, null, 1.91, 2.23, 2.54, null, 3.05, 3.45, 3.73, null, 4.25, 4.66, 4.94];
+  var X = 0, slots = [];
+  for (var i = 0; i < chars.length; i++) {
+    var ch = chars[i], w;
+    if (ch === " ") { X += 0.3 * 80; continue; }
+    w = (ch === "+" ? 0.62 : 0.68) * 80;
+    var s = document.createElement("span");
+    s.className = "c13-s"; s.id = "c13-s" + i;
+    s.style.left = X + "px"; s.style.width = w + "px";
+    s.textContent = ch;
+    row.appendChild(s);
+    slots.push({ el: s, ch: ch, cue: cues[i] });
+    X += w;
+  }
+  slots.forEach(function (o) {
+    var el = o.el, t = o.cue;
+    tl.fromTo(el, { opacity: 0, x: -18, y: 22, filter: "blur(5px)" },
+      { opacity: 1, x: 0, y: 0, filter: "blur(0px)", duration: 0.2, ease: "expo.out", immediateRender: false }, t);
+    if (o.ch !== "+") {
+      var fin = +o.ch, p = { v: 0 };
+      tl.fromTo(p, { v: 0 }, { v: 1, duration: 0.3, ease: "power3.out", immediateRender: false,
+        onUpdate: function () {
+          var k = Math.floor((1 - p.v) * 12);
+          el.textContent = String((fin + k * 3) % 10);
+        } }, t);
+    }
+  });
+
+  // yellow box behind "+256 752": closes around +256 first, then 752
+  tl.fromTo("#c13-box", { scaleX: 0 }, { scaleX: 0.53, duration: 0.25, ease: "expo.out", immediateRender: false }, 1.6);
+  tl.to("#c13-box", { scaleX: 1, duration: 0.3, ease: "expo.out" }, 2.5);
+
+  // labels typed
+  function typed(id, text, at) {
+    var host = document.getElementById(id);
+    for (var i = 0; i < text.length; i++) {
+      var sp = document.createElement("span"); sp.className = "c13-l"; sp.textContent = text[i]; host.appendChild(sp);
+    }
+    tl.fromTo("#" + id + " .c13-l", { opacity: 0 }, { opacity: 1, duration: 0.04, ease: "none", stagger: 0.06, immediateRender: false }, at);
+  }
+  typed("c13-call", "CALL", 0.2 - FE);
+  typed("c13-open", "OPEN", 4.2);
+
+  // hours + underline
+  tl.fromTo("#c13-hours", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.35, ease: "expo.out", immediateRender: false }, 4.3 - FE);
+  tl.fromTo("#c13-line", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 5.0 - FE);
+
+  // ---- handoff in: previous cards slide up, contact card rises ----
+  tl.fromTo("#c13-prev", { y: 0, filter: "blur(6px)" }, { y: -45, filter: "blur(7px)", duration: 0.15, ease: "none" }, 0);
+  tl.to("#c13-prev", { y: -1150, filter: "blur(10px)", duration: 0.5, ease: "power2.in" }, 0.15);
+  tl.fromTo("#c13-card", { y: 830, filter: "blur(10px)" }, { y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, 0);
+  // mark settles above the card at 40% (handoff out)
+  tl.fromTo("#c13-mark", { opacity: 0, y: 30 }, { opacity: 0.4, y: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 0.5);
+
+  // ---- camera: slow push, then push toward 1.05 with blur 4 at the seam ----
+  tl.fromTo("#c13-cam", { scale: 1 }, { scale: 1.035, duration: 5.1, ease: "none" }, 0);
+  tl.to("#c13-cam", { scale: 1.05, duration: 0.41, ease: "power2.in" }, 5.1);
+  tl.to("#c13-card", { filter: "blur(4px)", duration: 0.41, ease: "power2.in" }, 5.1);
+
+  // ---- subtitle ----
+  function build(chId, words, boxes) {
+    var p = document.querySelector("#" + chId + " p");
+    words.forEach(function (w, i) {
+      var wd = document.createElement("span"); wd.className = "c13-wd";
+      if (boxes[i] !== undefined) { var k = document.createElement("i"); k.className = "c13-k"; k.id = chId + "-k" + i; wd.appendChild(k); }
+      var t = document.createElement("span"); t.className = "c13-w"; t.id = chId + "-w" + i; t.textContent = w[0];
+      wd.appendChild(t); p.appendChild(wd);
+      if (i < words.length - 1) p.appendChild(document.createTextNode(" "));
+      var cue = w[1];
+      if (boxes[i] !== undefined) tl.fromTo("#" + chId + "-k" + i, { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out", immediateRender: false }, Math.max(0, cue - 2 * FE));
+      tl.fromTo(t, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out", immediateRender: false }, cue - FE);
+      tl.to(t, { color: "#101010", duration: 0.2, ease: "power2.out" }, cue - FE + 0.14);
+    });
+  }
+  build("c13-ch1", [["call",0.20],["plus",0.46],["two",0.86],["five",1.05],["six",1.30]], {4:1});
+  build("c13-ch2", [["seven",1.93],["five",2.25],["two,",2.56],["seven",3.07],["zero",3.47],["zero,",3.75],["seven",4.27],["zero",4.68],["zero",4.96]], {2:1,5:1,8:1});
+  // key words' box text turns ink via color tween above; chunk 1 leaves before chunk 2, chunk 2 leaves before the seam
+  tl.to("#c13-ch1", { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 1.75);
+  tl.fromTo("#c13-ch2", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in", immediateRender: false }, 5.34);
+
+  window.__timelines["13-call"] = tl;
+})();
+</script>
+</template>
