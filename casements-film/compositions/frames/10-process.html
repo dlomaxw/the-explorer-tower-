@@ -1,0 +1,243 @@
+<template id="p10-template">
+<div id="root" data-composition-id="10-process" data-start="0" data-duration="4.39" data-width="1080" data-height="1920">
+  <style>
+    @font-face{font-family:"Montserrat";font-weight:600;src:url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2")}
+    @font-face{font-family:"Montserrat";font-weight:800;src:url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2")}
+    #root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:"Montserrat",sans-serif;color:#101010}
+    #root *{box-sizing:border-box;margin:0;padding:0}
+    #p10-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:#f4f6f2}
+    #p10-bgw{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 960px;overflow:hidden}
+    .p10-tile{position:absolute;left:-40px;width:1160px;height:1040px;background-image:url("assets/img/about-factory-2.jpg");background-size:2934px 1960px;background-repeat:no-repeat;--dof:10px;filter:blur(var(--dof));will-change:filter}
+    #p10-tileA{top:-40px;background-position:-887px 0}
+    #p10-tileB{top:920px;background-position:-887px -960px}
+    #p10-scrim{position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse 620px 760px at 540px 760px,rgba(31,122,61,.06),rgba(31,122,61,0) 100%),rgba(244,246,242,.62)}
+    #p10-grain{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:.03;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+    #p10-tag{position:absolute;left:60px;top:150px;font-size:24px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#101010}
+    #p10-fg{position:absolute;left:-60px;top:60px;width:1200px;height:1400px;filter:blur(14px);opacity:.3;transform-origin:600px 700px}
+    #p10-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+    #p10-pane{position:absolute;left:60px;top:260px;width:960px;height:1000px}
+    #p10-paper{position:absolute;left:22px;top:22px;width:916px;height:956px;background:#ffffff;opacity:0;box-shadow:0 30px 70px rgba(16,16,16,.22)}
+    #p10-in{position:absolute;left:22px;top:22px;width:916px;height:956px;overflow:hidden}
+    #p10-pale{position:absolute;left:0;top:0;width:916px;height:956px;background:#e8f4ec;opacity:0}
+    #p10-photoA{position:absolute;left:160px;top:170px;width:596px;height:620px;overflow:hidden;opacity:0}
+    #p10-photoA img{position:absolute;left:0;top:0;width:596px;height:620px;object-fit:cover;transform-origin:50% 50%}
+    #p10-photoB{position:absolute;left:0;top:0;width:916px;height:956px;overflow:hidden;opacity:0}
+    #p10-photoB img{position:absolute;left:0;top:0;width:916px;height:956px;object-fit:cover;transform-origin:50% 50%}
+    #p10-in svg,#p10-outline{position:absolute;left:0;top:0;overflow:visible}
+    #p10-outline{left:0;top:0}
+    .p10-sk{fill:none;stroke:#f5b800;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+    .p10-dr{fill:none;stroke:#1f7a3d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+    .p10-dim{fill:none;stroke:#14572c;stroke-width:4;stroke-linecap:round}
+    #p10-dimtxt{font-family:"Montserrat",sans-serif;font-weight:800;font-size:38px;fill:#14572c;text-anchor:middle;opacity:0}
+    #p10-badge{position:absolute;left:-22px;top:-22px;width:150px;height:150px;background:#1f7a3d;overflow:hidden;opacity:0;box-shadow:0 20px 40px rgba(16,16,16,.25)}
+    .p10-n{position:absolute;left:0;top:0;width:150px;height:150px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:96px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+    #p10-col{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 650px}
+    .p10-mini{position:absolute;left:320px;width:440px;height:270px;border:12px solid #1f7a3d;background:#fff;overflow:hidden;opacity:0;box-shadow:0 20px 50px rgba(16,16,16,.22)}
+    .p10-mini svg{position:absolute;left:0;top:0}
+    .p10-mini .p10-bg{position:absolute;left:0;top:0;width:416px;height:246px;background-size:cover;background-position:center}
+    .p10-mb{position:absolute;left:0;top:0;width:64px;height:64px;background:#1f7a3d;color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center;line-height:1}
+    #p10-m1{top:70px}#p10-m2{top:350px}#p10-m3{top:630px}#p10-m4{top:910px}
+    #p10-logo{position:absolute;left:390px;top:810px;width:300px;height:299px;opacity:0;transform-origin:50% 50%}
+    #p10-subscrim{position:absolute;left:0;top:1310px;width:1080px;height:230px;background:linear-gradient(rgba(244,246,242,0),rgba(244,246,242,.88) 30%,rgba(244,246,242,.88) 80%,rgba(244,246,242,0))}
+    #p10-sub{position:absolute;left:60px;top:1380px;width:960px;height:68px}
+    .p10-ch{position:absolute;left:0;top:0;width:960px;height:68px;display:flex;justify-content:center;gap:16px;font-size:56px;font-weight:600;line-height:68px;white-space:nowrap}
+    .p10-w{position:relative;display:inline-block}
+    .p10-w em{position:relative;z-index:2;font-style:normal;color:#101010;opacity:0;display:inline-block}
+    .p10-kb{position:absolute;z-index:1;left:-.14em;right:-.14em;top:4px;bottom:4px;background:#f5b800;border-radius:6px;transform:scaleX(0);transform-origin:0 50%}
+    .p10-w.k em{font-weight:800}
+  </style>
+
+  <div id="p10-ground" class="clip" data-start="0" data-duration="4.39" data-track-index="0"></div>
+  <div id="p10-bgw">
+    <div class="p10-tile" id="p10-tileA"></div>
+    <div class="p10-tile" id="p10-tileB"></div>
+  </div>
+  <div id="p10-scrim"></div>
+  <div id="p10-tag">Kampala</div>
+
+  <div id="p10-cam">
+    <div id="p10-pane">
+      <div id="p10-paper"></div>
+      <div id="p10-in">
+        <div id="p10-pale"></div>
+        <div id="p10-photoA"><img src="assets/img/hero-img8.png" alt=""></div>
+        <svg id="p10-sksvg" width="916" height="956" viewBox="0 0 916 956">
+          <path id="p10-sk1" class="p10-sk" d="M163 176 L752 168 L759 788 L158 794 Z"/>
+          <path id="p10-sk2" class="p10-sk" d="M458 172 L462 790"/>
+          <path id="p10-sk3" class="p10-sk" d="M160 432 L757 424"/>
+          <path id="p10-sk4" class="p10-sk" d="M192 206 L722 200 L726 758 L186 764 Z"/>
+        </svg>
+        <svg id="p10-drsvg" width="916" height="956" viewBox="0 0 916 956">
+          <path id="p10-dr1" class="p10-dr" d="M160 170 H756 V790 H160 Z"/>
+          <path id="p10-dr2" class="p10-dr" d="M190 200 H726 V760 H190 Z"/>
+          <path id="p10-dr3" class="p10-dr" d="M458 170 V790"/>
+          <path id="p10-dr4" class="p10-dr" d="M160 430 H756"/>
+          <path id="p10-dm1" class="p10-dim" d="M160 850 H756"/>
+          <path id="p10-dm2" class="p10-dim" d="M160 832 V868"/>
+          <path id="p10-dm3" class="p10-dim" d="M756 832 V868"/>
+          <path id="p10-dm4" class="p10-dim" d="M100 170 V790"/>
+          <path id="p10-dm5" class="p10-dim" d="M82 170 H118"/>
+          <path id="p10-dm6" class="p10-dim" d="M82 790 H118"/>
+          <text id="p10-dimtxt" x="458" y="916">1800 mm</text>
+        </svg>
+        <div id="p10-photoB"><img src="assets/img/g-aluminium-doors-and-windows-sliding-doors-2.jpg" alt=""></div>
+      </div>
+      <svg id="p10-outline" width="960" height="1000" viewBox="0 0 960 1000"><path id="p10-ol" d="M11 11 H949 V989 H11 Z" fill="none" stroke="#1f7a3d" stroke-width="22" stroke-linejoin="miter"/></svg>
+      <div id="p10-badge">
+        <div class="p10-n" id="p10-n1">1</div>
+        <div class="p10-n" id="p10-n2">2</div>
+        <div class="p10-n" id="p10-n3">3</div>
+        <div class="p10-n" id="p10-n4">4</div>
+      </div>
+    </div>
+  </div>
+
+  <svg id="p10-fg" viewBox="0 0 1200 1400"><rect x="20" y="20" width="1160" height="1360" fill="none" stroke="#1f7a3d" stroke-width="34"/></svg>
+
+  <div id="p10-col">
+    <div class="p10-mini" id="p10-m1"><div class="p10-bg" style="background:#fff"></div>
+      <svg width="416" height="246" viewBox="0 0 416 246"><path d="M118 40 L300 36 L304 214 L114 218 Z M208 38 L210 216 M116 120 L303 117" fill="none" stroke="#f5b800" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="p10-mb">1</div></div>
+    <div class="p10-mini" id="p10-m2"><div class="p10-bg" style="background:#e8f4ec"></div>
+      <svg width="416" height="246" viewBox="0 0 416 246"><path d="M118 36 H300 V206 H118 Z M130 48 H288 V194 H130 Z M209 36 V206 M118 120 H300 M118 226 H300" fill="none" stroke="#1f7a3d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="p10-mb">2</div></div>
+    <div class="p10-mini" id="p10-m3"><div class="p10-bg" style="background-image:url('assets/img/hero-img8.png')"></div><div class="p10-mb">3</div></div>
+    <div class="p10-mini" id="p10-m4"><div class="p10-bg" style="background-image:url('assets/img/g-aluminium-doors-and-windows-sliding-doors-2.jpg')"></div><div class="p10-mb">4</div></div>
+  </div>
+
+  <img id="p10-logo" src="assets/img/mark.png" alt="">
+
+  <div id="p10-subscrim"></div>
+  <div id="p10-sub">
+    <div class="p10-ch" id="p10-s1">
+      <span class="p10-w"><em>share</em></span><span class="p10-w"><em>your</em></span><span class="p10-w k" id="p10-k1"><i class="p10-kb"></i><em>idea</em></span>
+    </div>
+    <div class="p10-ch" id="p10-s2">
+      <span class="p10-w"><em>we</em></span><span class="p10-w k" id="p10-k2"><i class="p10-kb"></i><em>draw</em></span><span class="p10-w"><em>it</em></span>
+    </div>
+    <div class="p10-ch" id="p10-s3">
+      <span class="p10-w"><em>we</em></span><span class="p10-w k" id="p10-k3"><i class="p10-kb"></i><em>build</em></span><span class="p10-w"><em>it</em></span>
+    </div>
+    <div class="p10-ch" id="p10-s4">
+      <span class="p10-w"><em>we</em></span><span class="p10-w k" id="p10-k4"><i class="p10-kb"></i><em>install</em></span><span class="p10-w"><em>it</em></span>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+  (function(){
+    var tl = gsap.timeline({ paused: true });
+    var $ = function(s){ return document.querySelector(s); };
+    gsap.set(".p10-n", {yPercent:100});
+    function ft(sel, a, b, pos){ b.immediateRender = false; tl.fromTo(sel, a, b, pos); }
+
+    // ---- setup: measure every path once, set its dash pattern ----
+    var dashed = {};
+    function prep(id, startFrac){
+      var p = $(id); var len = p.getTotalLength() * 1.02;
+      p.style.strokeDasharray = len; p.style.strokeDashoffset = len * (startFrac === undefined ? 1 : startFrac);
+      dashed[id] = len;
+    }
+    ["#p10-sk1","#p10-sk2","#p10-sk3","#p10-sk4","#p10-dr1","#p10-dr2","#p10-dr3","#p10-dr4",
+     "#p10-dm1","#p10-dm2","#p10-dm3","#p10-dm4","#p10-dm5","#p10-dm6"].forEach(function(id){ prep(id); });
+    prep("#p10-ol", 0.22); // outline is still finishing its draw at t=0 (handoff_in)
+    function draw(id, dur, pos){ tl.to(id, {strokeDashoffset:0, duration:dur, ease:"power2.out"}, pos); }
+
+    // ---- handoff_in settle: outline completes, foreground frame passes the lens ----
+    draw("#p10-ol", 0.3, 0);
+    tl.to("#p10-fg", {scale:1.35, opacity:0, duration:0.9, ease:"power2.out"}, 0);
+    tl.to("#p10-tag", {opacity:0, duration:0.2, ease:"power3.in"}, 0.4);
+
+    // ---- background: factory photo x1.15 -> 1.0, DoF deepens as we push in ----
+    tl.fromTo("#p10-bgw", {scale:1.15}, {scale:1.0, duration:4.39, ease:"none"}, 0);
+    tl.to(".p10-tile", {"--dof":"16px", duration:3.8, ease:"power2.inOut"}, 0.3);
+
+    // ---- camera: drift down 3 %/s, a push on each step, descent to 1.0 at the end ----
+    tl.fromTo("#p10-cam", {y:0}, {y:-48, duration:3.9, ease:"none"}, 0);
+    tl.fromTo("#p10-cam", {scale:1}, {scale:1.016, duration:0.8, ease:"power2.out", immediateRender:false}, 0.24);
+    tl.to("#p10-cam", {scale:1.032, duration:0.8, ease:"power2.out"}, 1.62);
+    tl.to("#p10-cam", {scale:1.048, duration:0.8, ease:"power2.out"}, 2.50);
+    tl.to("#p10-cam", {scale:1.064, duration:0.5, ease:"power2.out"}, 3.37);
+    tl.to("#p10-cam", {scale:1.0, y:0, duration:0.49, ease:"power2.inOut"}, 3.90);
+
+    // ---- step 1 @0.24 : numeral 1, paper, rough yellow sketch ----
+    ft("#p10-badge", {opacity:0, scale:0.6}, {opacity:1, scale:1, duration:0.2, ease:"power3.out", transformOrigin:"0% 0%"}, 0.24);
+    tl.fromTo("#p10-n1", {yPercent:100}, {yPercent:0, duration:0.25, ease:"power3.out", immediateRender:false}, 0.24);
+    ft("#p10-paper", {opacity:0}, {opacity:0.96, duration:0.25, ease:"power3.out"}, 0.24);
+    draw("#p10-sk1", 0.5, 0.24);
+    draw("#p10-sk2", 0.32, 0.50);
+    draw("#p10-sk3", 0.32, 0.68);
+    draw("#p10-sk4", 0.45, 0.82);
+    ft("#p10-sksvg", {y:6}, {y:-6, duration:1.3, ease:"none"}, 0.24);
+
+    // ---- step 2 @1.62 : numeral 2, sketch becomes the precise green drawing ----
+    tl.to("#p10-n1", {yPercent:-100, duration:0.18, ease:"power3.in"}, 1.52);
+    tl.fromTo("#p10-n2", {yPercent:100}, {yPercent:0, duration:0.25, ease:"power3.out", immediateRender:false}, 1.62);
+    ft("#p10-pale", {opacity:0}, {opacity:1, duration:0.25, ease:"power3.out"}, 1.62);
+    tl.to("#p10-sksvg", {opacity:0, duration:0.3, ease:"power2.in"}, 1.66);
+    draw("#p10-dr1", 0.4, 1.62);
+    draw("#p10-dr2", 0.35, 1.74);
+    draw("#p10-dr3", 0.3, 1.84);
+    draw("#p10-dr4", 0.3, 1.9);
+    draw("#p10-dm1", 0.3, 2.0);
+    draw("#p10-dm2", 0.12, 2.0);
+    draw("#p10-dm3", 0.12, 2.1);
+    draw("#p10-dm4", 0.3, 2.06);
+    draw("#p10-dm5", 0.12, 2.06);
+    draw("#p10-dm6", 0.12, 2.18);
+    ft("#p10-dimtxt", {opacity:0, y:10}, {opacity:1, y:0, duration:0.25, ease:"power3.out"}, 2.2);
+
+    // ---- step 3 @2.50 : numeral 3, drawing fills with the aluminium profile photo ----
+    tl.to("#p10-n2", {yPercent:-100, duration:0.18, ease:"power3.in"}, 2.40);
+    tl.fromTo("#p10-n3", {yPercent:100}, {yPercent:0, duration:0.25, ease:"power3.out", immediateRender:false}, 2.50);
+    ft("#p10-photoA", {opacity:0}, {opacity:1, duration:0.2, ease:"expo.out"}, 2.50);
+    ft("#p10-photoA img", {scale:1.15, filter:"blur(14px)"}, {scale:1, filter:"blur(0px)", duration:0.2, ease:"expo.out"}, 2.50);
+    tl.to("#p10-dimtxt", {opacity:0, duration:0.2, ease:"power2.in"}, 2.55);
+
+    // ---- step 4 @3.37 : numeral 4, the frame installed in a wall ----
+    tl.to("#p10-n3", {yPercent:-100, duration:0.18, ease:"power3.in"}, 3.27);
+    tl.fromTo("#p10-n4", {yPercent:100}, {yPercent:0, duration:0.25, ease:"power3.out", immediateRender:false}, 3.37);
+    ft("#p10-photoB", {opacity:0}, {opacity:1, duration:0.2, ease:"expo.out"}, 3.37);
+    ft("#p10-photoB img", {scale:1.15, filter:"blur(14px)"}, {scale:1, filter:"blur(0px)", duration:0.2, ease:"expo.out"}, 3.37);
+
+    // ---- 3.90 : the pane becomes the column of four numbered panes, which lifts out through the top ----
+    var mids = ["#p10-m1","#p10-m2","#p10-m3","#p10-m4"];
+    var slotY = [205, 485, 765, 1045];
+    mids.forEach(function(id, i){
+      var at = 3.88 + i * 0.03;
+      ft(id, {opacity:0, scale:2.1, y:(760 - slotY[i]) * 0.6}, {opacity:1, scale:1, y:0, duration:0.22, ease:"expo.out"}, at);
+    });
+    tl.to("#p10-pane", {opacity:0, duration:0.1, ease:"power3.in"}, 3.97);
+    // column rides up through the top edge at ~600 px/s, scaling down, blur 12 px
+    tl.fromTo("#p10-col", {y:0}, {y:-185, duration:0.29, ease:"none", immediateRender:false}, 4.10);
+    tl.fromTo("#p10-col", {scale:1}, {scale:0.86, duration:0.29, ease:"power2.in", immediateRender:false}, 4.10);
+    tl.fromTo("#p10-col", {filter:"blur(0px)"}, {filter:"blur(12px)", duration:0.29, ease:"power2.in", immediateRender:false}, 4.10);
+
+    // logo mark grows from its frame lines: up and out, 0.4 s expo.in
+    ft("#p10-logo", {opacity:0, scale:0.15}, {opacity:1, scale:1, duration:0.4, ease:"expo.in"}, 3.99);
+
+    // ---- subtitle, word by word on the cues; key-word box 2 frames early ----
+    var chunks = [
+      {id:"#p10-s1", words:[0.24,0.54,0.83], key:0.83, out:1.46},
+      {id:"#p10-s2", words:[1.62,1.76,2.12], key:1.76, out:2.35},
+      {id:"#p10-s3", words:[2.51,2.63,2.97], key:2.63, out:3.20},
+      {id:"#p10-s4", words:[3.36,3.50,4.05], key:3.50, out:4.22}
+    ];
+    ft("#p10-subscrim", {opacity:0}, {opacity:1, duration:0.2, ease:"power3.out"}, 0.1);
+    chunks.forEach(function(c){
+      var ems = document.querySelectorAll(c.id + " em");
+      for (var i = 0; i < ems.length; i++) {
+        var t = c.words[i] - 0.03;
+        tl.fromTo(ems[i], {opacity:0, y:8, filter:"blur(6px)"}, {opacity:0.4, y:0, filter:"blur(0px)", duration:0.14, ease:"power3.out", immediateRender:false}, t);
+        tl.to(ems[i], {opacity:1, duration:0.2, ease:"power2.out"}, t + 0.14);
+      }
+      var kb = $(c.id + " .p10-kb");
+      tl.fromTo(kb, {scaleX:0}, {scaleX:1, duration:0.16, ease:"power3.out", immediateRender:false}, c.key - 0.067);
+      tl.to(c.id, {opacity:0, filter:"blur(6px)", duration:0.14, ease:"power3.in"}, c.out);
+    });
+    tl.to("#p10-subscrim", {opacity:0, duration:0.14, ease:"power3.in"}, 4.22);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["10-process"] = tl;
+  })();
+  </script>
+</div>
+</template>
