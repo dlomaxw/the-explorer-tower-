@@ -10,9 +10,9 @@
 .f03-tw .mk-tile-l{opacity:0;white-space:nowrap}
 .f03-ring{position:absolute;left:75px;top:0;width:150px;height:150px;border-radius:38px;border:4px solid var(--mk-primary);opacity:0;pointer-events:none}
 .f03-m{position:absolute;opacity:0}
-#f03-brW{left:-150px;top:483px;width:1100px}
-#f03-phW{left:580px;top:430px;width:460px;height:940px}
-#f03-apiW{left:170px;top:990px;width:740px}
+#f03-brW{left:-90px;top:453px;width:1100px}
+#f03-phW{left:580px;top:330px;width:460px;height:940px}
+#f03-apiW{left:170px;top:1040px;width:740px}
 .f03-body{display:flex;gap:28px;height:430px;padding:34px;background:var(--mk-surface)}
 .f03-chart{flex:1;display:flex;flex-direction:column;justify-content:flex-end}
 .f03-cap{font-size:24px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);margin-bottom:22px}
@@ -36,13 +36,13 @@
 .f03-ah{display:flex;align-items:center;gap:14px;height:44px;margin-bottom:12px}
 .f03-ah span{font-size:24px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft)}
 .f03-ah i{display:block;width:14px;height:14px;border-radius:50%;background:var(--mk-line)}
-.f03-er{height:80px;display:flex;align-items:center;gap:20px;border-top:1px solid var(--mk-line);font-family:var(--mk-font-mono);font-size:38px;font-weight:500;color:var(--mk-ink)}
+.f03-er{height:72px;display:flex;align-items:center;gap:20px;border-top:1px solid var(--mk-line);font-family:var(--mk-font-mono);font-size:36px;font-weight:500;color:var(--mk-ink)}
 .f03-er .f03-t{flex:1;white-space:pre}
 .f03-dot{position:relative;width:26px;height:26px;flex:none}
 .f03-dot i{position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%}
 .f03-dot i.g{background:var(--mk-line)}
 .f03-dot i.y{background:var(--mk-primary);opacity:0}
-.f03-caret{display:inline-block;width:16px;height:38px;background:var(--mk-primary);opacity:0;vertical-align:middle;margin-left:4px}
+.f03-caret{display:inline-block;width:16px;height:36px;background:var(--mk-primary);opacity:0;vertical-align:middle;margin-left:4px}
 #f03-apiFlash{position:absolute;left:-3px;top:-3px;right:-3px;bottom:-3px;border-radius:calc(var(--mk-radius) + 3px);border:4px solid var(--mk-primary);opacity:0;pointer-events:none}
 #f03-line{position:absolute;left:537px;top:0;width:6px;height:170px;background:var(--mk-primary);border-radius:3px;transform-origin:50% 0;opacity:0}
 .f03-sub{position:absolute;left:0;width:1080px;top:1450px;height:190px;padding-top:61px;font-size:56px;line-height:68px;text-align:center}
@@ -140,18 +140,18 @@
 
   /* ---------- 1. web: browser in 3D + growing bars ---------- */
   var P = 2200;
-  tl.fromTo("#f03-brW", { x: 140, y: 190, scale: 0.85, rotationY: 36, rotationX: -8, z: -500, opacity: 0, filter: "blur(12px)", transformPerspective: P },
-    { x: 140, y: 170, scale: 0.85, rotationY: -8, rotationX: 4, z: 0, opacity: 1, filter: "blur(0px)", transformPerspective: P, duration: 0.9, ease: "expo.out", immediateRender: false }, 0.2);
+  tl.fromTo("#f03-brW", { x: 80, y: 220, scale: 0.85, rotationY: 36, rotationX: -8, z: -500, opacity: 0, filter: "blur(12px)", transformPerspective: P },
+    { x: 80, y: 200, scale: 0.85, rotationY: -8, rotationX: 4, z: 0, opacity: 1, filter: "blur(0px)", transformPerspective: P, duration: 0.8, ease: "expo.out", immediateRender: false }, 0.2);
   MK.rows(tl, "#f03-br .f03-kpi", 0.55, { x: 40, stagger: 0.09 });
   MK.bars(tl, "#f03-bars i", 0.77, { stagger: 0.08, dur: 0.8 });
 
   /* ---------- 2. mobile: phone swings in 3D, browser steps back ---------- */
-  tl.to("#f03-brW", { x: 0, y: 0, scale: 0.72, rotationY: 12, rotationX: 4, z: -80, opacity: 0.62, duration: 0.8, ease: "power3.inOut" }, 1.0);
-  tl.fromTo("#f03-phW", { x: -210, y: 30, scale: 0.8, rotationY: -30, rotationX: 0, z: -400, opacity: 0, filter: "blur(12px)", transformPerspective: P },
-    { x: -210, y: 0, scale: 0.8, rotationY: -12, rotationX: 0, z: 0, opacity: 1, filter: "blur(0px)", transformPerspective: P, duration: 0.8, ease: "expo.out", immediateRender: false }, 0.95);
+  tl.to("#f03-brW", { x: 0, y: 0, scale: 0.72, rotationY: 12, rotationX: 4, z: -80, opacity: 0.7, duration: 0.8, ease: "power3.inOut" }, 1.0);
+  tl.fromTo("#f03-phW", { x: -210, y: 130, scale: 0.8, rotationY: -30, rotationX: 0, z: -400, opacity: 0, filter: "blur(12px)", transformPerspective: P },
+    { x: -210, y: 100, scale: 0.8, rotationY: -12, rotationX: 0, z: 0, opacity: 1, filter: "blur(0px)", transformPerspective: P, duration: 0.8, ease: "expo.out", immediateRender: false }, 0.95);
   MK.rows(tl, "#f03-ph .f03-row", 1.34, { x: 50, stagger: 0.1, dur: 0.5 });
   // phone settles into the fan as the API card arrives
-  tl.to("#f03-phW", { x: 0, y: 0, scale: 0.6, rotationY: -12, z: 0, opacity: 1, duration: 0.7, ease: "power3.inOut" }, 2.0);
+  tl.to("#f03-phW", { x: 0, y: 0, scale: 0.66, rotationY: -12, z: 0, opacity: 1, duration: 0.7, ease: "power3.inOut" }, 2.0);
   tl.to("#f03-phW", { rotationY: -17, duration: 0.5, ease: "none" }, 2.7);
   tl.to("#f03-brW", { rotationY: 7, duration: 1.3, ease: "none" }, 1.85);
 

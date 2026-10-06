@@ -1,0 +1,174 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f02-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse 900px 700px at 540px 740px,color-mix(in srgb,var(--mk-primary) 6%,transparent),transparent 70%),var(--mk-bg)}
+#f02-cam,#f02-world,#f02-push{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f02-cam{transform-origin:540px 740px}
+#f02-push{transform-origin:540px 1482px}
+#f02-sys{position:absolute;left:0;top:742px;width:1080px;height:1500px}
+#f02-spin{position:absolute;left:0;top:0;width:1080px;height:1500px;transform-style:preserve-3d}
+#f02-lines{position:absolute;left:0;top:0;width:1080px;height:1500px;overflow:visible}
+#f02-lines path{fill:none;stroke-linecap:round}
+.f02-main{stroke:var(--mk-primary);stroke-width:6}
+.f02-sec{stroke:var(--mk-secondary);stroke-width:4}
+#f02-page{position:absolute;left:140px;top:448px;width:800px;height:584px}
+#f02-page .mk-browser{position:absolute;left:0;top:0;width:800px}
+#f02-page .mk-body{height:520px}
+#f02-bar{position:absolute;left:393px;top:-57px;width:14px;height:120px;background:var(--mk-primary);border-radius:2px;z-index:5}
+#f02-label{position:absolute;left:0;top:384px;width:1080px;text-align:center;font-size:24px;font-weight:700;letter-spacing:.22em;color:var(--mk-ink-soft);text-transform:uppercase}
+.f02-mod{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;height:150px;color:var(--mk-ink);font-size:32px;font-weight:700}
+.f02-mod .mk-icon{width:54px;height:54px}
+.f02-node{position:absolute;width:112px;height:112px;border-radius:30px;display:flex;align-items:center;justify-content:center;color:var(--mk-ink-soft)}
+.f02-node .mk-icon{width:56px;height:56px}
+.f02-ic{position:relative;display:flex;align-items:center;justify-content:center}
+.f02-hi{position:absolute;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--mk-primary);opacity:0}
+.f02-ring{position:absolute;left:-2px;top:-2px;right:-2px;bottom:-2px;border:4px solid var(--mk-primary);border-radius:inherit;opacity:0;pointer-events:none}
+.f02-dot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--mk-primary);opacity:0}
+.f02-sub{position:absolute;left:60px;top:1470px;width:960px;height:136px;font-size:56px;line-height:68px}
+</style>
+
+<div id="root" data-composition-id="02-range" data-start="0" data-duration="3.73" data-width="1080" data-height="1920">
+  <div id="f02-ground" class="clip" data-start="0" data-duration="3.73" data-track-index="0"></div>
+  <div id="f02-cam"><div id="f02-world"><div id="f02-push"><div id="f02-sys"><div id="f02-spin">
+    <svg id="f02-lines" viewBox="0 0 1080 1500" width="1080" height="1500">
+      <path class="f02-main" id="f02-l0" d="M540 740V410"/>
+      <path class="f02-main" id="f02-l1" d="M540 740H885"/>
+      <path class="f02-main" id="f02-l2" d="M540 740V1070"/>
+      <path class="f02-main" id="f02-l3" d="M540 740H195"/>
+      <path class="f02-sec" id="f02-r0" d="M540 410V230"/>
+      <path class="f02-sec" id="f02-r1" d="M885 740V440"/>
+      <path class="f02-sec" id="f02-r2" d="M885 740V1040"/>
+      <path class="f02-sec" id="f02-r3" d="M540 1070V1250"/>
+      <path class="f02-sec" id="f02-r4" d="M195 740V1040"/>
+      <path class="f02-sec" id="f02-r5" d="M195 740V440"/>
+    </svg>
+    <div id="f02-label">Landing page</div>
+    <div id="f02-page"></div>
+    <div id="f02-mods"></div>
+    <div id="f02-nodes"></div>
+    <div id="f02-dots"><i class="f02-dot" id="f02-d0"></i><i class="f02-dot" id="f02-d1"></i><i class="f02-dot" id="f02-d2"></i></div>
+  </div></div></div></div></div>
+  <div id="f02-sub1" class="f02-sub mk-root"></div>
+  <div id="f02-sub2" class="f02-sub mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+
+  /* ---------- build ---------- */
+  var S = 'fill="none" style="stroke:var(--mk-ink-soft)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"';
+  var W = 'fill="none" style="stroke:var(--mk-ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"';
+  var wire =
+    '<svg width="800" height="520" viewBox="0 0 800 520">' +
+    '<rect class="f02-h" x="32" y="28" width="736" height="236" rx="18" ' + S + '/>' +
+    '<path class="f02-h" d="M76 100H430" ' + W + '/><path class="f02-h" d="M76 150H340" ' + S + '/>' +
+    '<rect class="f02-h" x="76" y="192" width="170" height="44" rx="12" ' + W + '/>' +
+    '<rect class="f02-f" x="32" y="300" width="224" height="180" rx="18" ' + S + '/>' +
+    '<rect class="f02-f" x="288" y="300" width="224" height="180" rx="18" ' + S + '/>' +
+    '<rect class="f02-f" x="544" y="300" width="224" height="180" rx="18" ' + S + '/>' +
+    '<path class="f02-f" d="M64 350H200M320 350H456M576 350H712" ' + W + '/>' +
+    '</svg>';
+  qs("#f02-page").innerHTML = MK.browser("f02-brw", "Landing page", wire) + '<div id="f02-bar"></div>';
+
+  var mods = [["bolt", "API", 390, 335, 300], ["layers", "Database", 390, 995, 300], ["lock", "Auth", 60, 665, 270], ["chart", "Reports", 750, 665, 270]];
+  qs("#f02-mods").innerHTML = mods.map(function (m, i) {
+    return '<div class="mk-card f02-mod" id="f02-m' + i + '" style="left:' + m[2] + 'px;top:' + m[3] + 'px;width:' + m[4] + 'px">' +
+      '<div class="f02-ic" id="f02-mi' + i + '">' + MK.icon(m[0], { size: 54, stroke: 1.8 }) + '<div class="f02-hi" id="f02-mh' + i + '">' + MK.icon(m[0], { size: 54, stroke: 1.8 }) + '</div></div>' +
+      '<span>' + m[1] + '</span><i class="f02-ring" id="f02-mr' + i + '"></i></div>';
+  }).join("");
+
+  var nodes = [["globe", 540, 230], ["phone", 195, 440], ["bell", 885, 440], ["users", 195, 1040], ["gear", 885, 1040], ["cube", 540, 1250]];
+  qs("#f02-nodes").innerHTML = nodes.map(function (n, i) {
+    return '<div class="mk-card f02-node" id="f02-n' + i + '" style="left:' + (n[1] - 56) + 'px;top:' + (n[2] - 56) + 'px">' +
+      '<div class="f02-ic" id="f02-ni' + i + '">' + MK.icon(n[0], { size: 56, stroke: 1.8 }) + '<div class="f02-hi" id="f02-nh' + i + '">' + MK.icon(n[0], { size: 56, stroke: 1.8 }) + '</div></div>' +
+      '<i class="f02-ring" id="f02-nr' + i + '"></i></div>';
+  }).join("");
+
+  MK.stage3d("#f02-sys", 1800, "50%", "50%");
+  gsap.set("#f02-spin", { transformStyle: "preserve-3d" });
+  ["#f02-dots", "#f02-mods", "#f02-nodes", "#f02-page"].forEach(function (s) { qs(s).style.transformStyle = "preserve-3d"; });
+  qs("#f02-dots").style.position = "absolute"; qs("#f02-mods").style.position = "absolute"; qs("#f02-nodes").style.position = "absolute";
+  qs("#f02-dots").style.left = "0px"; qs("#f02-mods").style.left = "0px"; qs("#f02-nodes").style.left = "0px";
+
+  /* ---------- t=0 state: handoff_out of frame 1 ---------- */
+  gsap.set("#f02-world", { y: 0, filter: "blur(10px)" });
+  gsap.set("#f02-bar", { y: -43 });
+  gsap.set("#f02-brw", { opacity: 0, scaleY: 0.02, transformOrigin: "50% 0%" });
+  gsap.set("#f02-label", { opacity: 0 });
+  gsap.set("#f02-page", { z: 20 });
+  gsap.set(".f02-mod", { opacity: 0, z: 50 });
+  gsap.set(".f02-node", { opacity: 0, z: -30 });
+  gsap.set(".f02-dot", { opacity: 0, z: 60, left: 529, top: 729 });
+
+  /* ---------- camera: descent resolves, push drift, final rise ---------- */
+  tl.to("#f02-world", { y: -742, duration: 1.3, ease: "power2.out" }, 0);
+  tl.to("#f02-world", { filter: "blur(0px)", duration: 0.55, ease: "power2.out" }, 0);
+  tl.to("#f02-push", { scale: 1.05, duration: 2.9, ease: "none" }, 0.4);
+  tl.to("#f02-spin", { rotationY: 4, duration: 3.0, ease: "none" }, 0.7);
+  tl.to("#f02-cam", { scale: 0.96, y: 80, filter: "blur(10px)", duration: 0.43, ease: "power2.in" }, 3.30);
+
+  /* ---------- 0.00 caret bar falls, lands, becomes the top edge ---------- */
+  tl.to("#f02-bar", { y: 0, duration: 0.3, ease: "power2.in" }, 0);
+  tl.to("#f02-bar", { scaleX: 57.14, scaleY: 0.05, duration: 0.45, ease: MK.ease.out }, 0.3);
+  tl.fromTo("#f02-brw", { opacity: 0, scaleY: 0.02 }, { opacity: 1, scaleY: 1, duration: 0.6, ease: MK.ease.out, immediateRender: false }, 0.34);
+  MK.tilt(tl, "#f02-page", 0.3, 1.1, { from: { rx: 0, ry: 0, z: 20 }, rx: 4, ry: -8, z: 20, persp: 1800, ease: MK.ease.out });
+  tl.fromTo("#f02-label", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: MK.ease.out, immediateRender: false }, 0.6);
+
+  /* 0.50 hero, title, button draw (beat) ; 1.07 feature cards draw (beat) */
+  MK.draw(tl, "#f02-page .f02-h", 0.5, { dur: 0.45, stagger: 0.08 });
+  MK.draw(tl, "#f02-page .f02-f", 1.07, { dur: 0.4, stagger: 0.1 });
+  tl.to("#f02-page", { rotationY: -5, rotationX: 3, duration: 0.35, ease: "none" }, 1.05);
+  MK.exit(tl, "#f02-label", 1.28, { y: -20, dur: 0.18 });
+
+  /* ---------- 1.40 page shrinks to the hub, modules arrive from depth ---------- */
+  tl.to("#f02-page", { scale: 0.32, rotationY: -6, rotationX: 2, duration: 0.75, ease: MK.ease.out }, 1.4);
+  [0, 1, 2, 3].forEach(function (i) {
+    var at = 1.4 + i * 0.12;
+    tl.fromTo("#f02-m" + i, { opacity: 0, z: -420, scale: 0.92, filter: "blur(12px)" },
+      { opacity: 1, z: 50, scale: 1, filter: "blur(0px)", duration: 0.6, ease: MK.ease.out, immediateRender: false }, at);
+    MK.drawIcon(tl, "#f02-mi" + i + " > .mk-icon", at + 0.2, { dur: 0.5 });
+  });
+  [0, 1, 2, 3].forEach(function (i) { MK.draw(tl, "#f02-l" + i, 1.6 + i * 0.15, { dur: 0.45 }); });
+
+  /* ---------- 2.21 second ring of six nodes ---------- */
+  [0, 1, 2, 3, 4, 5].forEach(function (i) { MK.draw(tl, "#f02-r" + i, 2.21 + i * 0.07, { dur: 0.45 }); });
+  [0, 1, 2, 3, 4, 5].forEach(function (i) {
+    var at = 2.4 + i * 0.07;
+    tl.fromTo("#f02-n" + i, { opacity: 0, z: -260, scale: 0.8, filter: "blur(10px)" },
+      { opacity: 1, z: -30, scale: 1, filter: "blur(0px)", duration: 0.5, ease: MK.ease.out, immediateRender: false }, at);
+    MK.drawIcon(tl, "#f02-ni" + i + " > .mk-icon", at + 0.15, { dur: 0.45 });
+  });
+
+  /* ---------- 2.35 - 3.2 data packets travel the yellow lines ---------- */
+  function packet(id, at, dx, dy) {
+    tl.fromTo(id, { opacity: 0, x: 0, y: 0 }, { opacity: 1, x: 0, y: 0, duration: 0.05, ease: "none", immediateRender: false }, at);
+    tl.to(id, { x: dx, y: dy, duration: 0.5, ease: "power2.inOut" }, at);
+    tl.to(id, { opacity: 0, duration: 0.1, ease: "none" }, at + 0.46);
+  }
+  packet("#f02-d0", 2.35, 0, -330);
+  packet("#f02-d1", 2.78, 345, 0);
+  packet("#f02-d2", 3.0, -345, 0);
+
+  /* ---------- 3.36 web, phone and api light up yellow ---------- */
+  [["#f02-nh0", "#f02-nr0"], ["#f02-nh1", "#f02-nr1"], ["#f02-mh0", "#f02-mr0"]].forEach(function (p, i) {
+    var at = 3.2 + i * 0.08;
+    tl.fromTo(p[0], { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none", immediateRender: false }, at);
+    tl.fromTo(p[1], { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.3, ease: MK.ease.out, immediateRender: false }, at);
+  });
+
+  /* ---------- subtitle ---------- */
+  MK.subtitle(tl, "#f02-sub1", [["From", 0.20], ["simple", 0.39], ["landing", 0.81], ["pages", 1.15]], { out: 1.42 });
+  MK.subtitle(tl, "#f02-sub2", [["to", 1.60], ["complex", 1.73, true], ["enterprise", 2.43], ["systems.", 2.96]], { out: 3.61 });
+
+  tl.to({}, { duration: 3.73 }, 0);
+  window.__timelines["02-range"] = tl;
+})();
+</script>
+</template>

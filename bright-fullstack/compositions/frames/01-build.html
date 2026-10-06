@@ -142,6 +142,7 @@
 
   // ---- 1.71 title rises word by word (beat) ----
   MK.headline(tl, "#f01-title", 1.71, { stagger: 0.09, dur: 0.7 });
+  gsap.set("#f01-title .mk-mw", { opacity: 0, yPercent: 115 });
 
   // ---- 1.90 new prompt appears, caret 2 blinks (the object-bridge) ----
   tl.fromTo(r4, { opacity: 0 }, { opacity: 1, duration: 0.02, ease: "none", stagger: 0.012, immediateRender: false }, 1.86);
@@ -167,7 +168,7 @@
 
   // ---- subtitles (the voice) ----
   MK.subtitle(tl, "#f01-sub1", [["Bright", 0], ["Illuminated.", 0.45, true]], { out: 0.9 });
-  var p2 = MK.subtitle(tl, "#f01-sub2", [["Full", 1.07, true], ["-stack", 1.35], ["software", 1.72], ["development.", 2.19]], { out: D - 0.12 });
+  var p2 = MK.subtitle(tl, "#f01-sub2", [["Full", 1.07, true], ["-stack", 1.35], ["software", 1.72], ["development.", 2.19]], { out: D - 0.2 });
   // glue "Full" and "-stack" into one word (no space node between them)
   var kids = p2.childNodes;
   if (kids[1] && kids[1].nodeType === 3) p2.removeChild(kids[1]);

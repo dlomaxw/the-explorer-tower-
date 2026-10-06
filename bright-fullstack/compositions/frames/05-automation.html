@@ -4,7 +4,8 @@
 #root *{box-sizing:border-box;margin:0;padding:0}
 #f05-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
 #f05-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
-#f05-rail{position:absolute;left:537px;top:0;width:6px;height:1920px;border-radius:3px;background:var(--mk-primary);clip-path:inset(88.54% 0 0 0)}
+#f05-rail{position:absolute;left:537px;top:0;width:6px;height:1440px;background:var(--mk-primary);clip-path:inset(100% 0 0 0)}
+#f05-rail2{position:absolute;left:537px;top:1650px;width:6px;height:270px;background:var(--mk-primary)}
 .f05-layer{position:absolute;left:0;top:0;width:1080px;height:1920px}
 .f05-node{position:absolute;left:430px;width:220px;height:220px;opacity:0}
 .f05-node svg.f05-ringsvg{position:absolute;left:0;top:0;width:220px;height:220px}
@@ -35,7 +36,7 @@
 <div id="root" data-composition-id="05-automation" data-start="0" data-duration="3.14" data-width="1080" data-height="1920">
   <div id="f05-ground" class="clip" data-start="0" data-duration="3.14" data-track-index="0"></div>
   <div id="f05-cam" class="mk-root">
-    <div id="f05-rail"></div>
+    <div id="f05-rail"></div><div id="f05-rail2"></div>
     <div id="f05-midD" class="f05-layer"><div id="f05-midX" class="f05-layer">
       <div class="f05-node" id="f05-n1" style="top:290px"><svg class="f05-ringsvg" viewBox="0 0 220 220"><circle class="f05-ringtrack" cx="110" cy="110" r="98"/><circle id="f05-r1" class="f05-ringfill" cx="110" cy="110" r="98" transform="rotate(-90 110 110)"/></svg><div class="f05-pulse" id="f05-p1"></div><div class="f05-tile" id="f05-t1"></div></div>
       <div class="f05-node" id="f05-n2" style="top:580px"><svg class="f05-ringsvg" viewBox="0 0 220 220"><circle class="f05-ringtrack" cx="110" cy="110" r="98"/><circle id="f05-r2" class="f05-ringfill" cx="110" cy="110" r="98" transform="rotate(-90 110 110)"/></svg><div class="f05-pulse" id="f05-p2"></div><div class="f05-tile" id="f05-t2"></div></div>
@@ -85,7 +86,7 @@
   gsap.set("#f05-midD", { transformOrigin: "540px 835px" });
 
   // 0 : the rail rises to the first node, then drifts (camera descent)
-  tl.fromTo("#f05-rail", { clipPath: "inset(88.54% 0% 0% 0%)" }, { clipPath: "inset(17.5% 0% 0% 0%)", duration: 0.6, ease: "expo.out", immediateRender: false }, 0);
+  tl.fromTo("#f05-rail", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(23.3% 0% 0% 0%)", duration: 0.6, ease: "expo.out", immediateRender: false }, 0);
   tl.fromTo("#f05-midD", { scale: 1, y: 0 }, { scale: 1.07, y: -40, duration: 2.4, ease: "none", immediateRender: false }, 0.2);
   tl.fromTo("#f05-frontD", { y: 0 }, { y: -70, duration: 2.4, ease: "none", immediateRender: false }, 0.2);
 
@@ -129,11 +130,11 @@
 
   // handoff_out: toast, toggle and nodes leave upward blurred 10 px, the rail continues out of the top, the dashboard card edge enters
   tl.to(["#f05-midX", "#f05-frontX"], { y: -260, opacity: 0, filter: "blur(10px)", duration: 0.5, ease: "power2.in" }, 2.64);
-  tl.fromTo("#f05-rail", { clipPath: "inset(17.5% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power2.in", immediateRender: false }, 2.64);
+  tl.fromTo("#f05-rail", { clipPath: "inset(23.3% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power2.in", immediateRender: false }, 2.64);
   tl.fromTo("#f05-card", { y: 260, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.64, ease: "expo.out", immediateRender: false }, 2.5);
 
   // subtitle
-  MK.subtitle(tl, "#f05-sub", [["Automation", 0.13], ["tools", 0.73], ["and", 1.42], ["DevOps.", 1.75, true]], { out: D - 0.12 });
+  MK.subtitle(tl, "#f05-sub", [["Automation", 0.13], ["tools", 0.73], ["and", 1.42], ["DevOps.", 1.75, true]], { out: D - 0.26 });
 
   window.__timelines["05-automation"] = tl;
 })();

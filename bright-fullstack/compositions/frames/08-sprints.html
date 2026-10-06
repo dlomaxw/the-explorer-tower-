@@ -98,7 +98,7 @@
   MK.hide("#f08-sub1"); MK.hide("#f08-sub2");
   MK.prep("#f08-orbitc");
   gsap.set("#f08-track", { opacity: 1 });
-  MK.stage3d("#f08-cam", 2200, "50%", "55%");
+  MK.stage3d("#f08-cam", 2200, "50%", "55%"); qs("#f08-cam").style.transformStyle = "flat";
 
   /* incoming state: ring small, low, partially drawn (calendar ring starting to draw at the bottom) */
   gsap.set("#f08-ringpos", { y: 380, scale: 0.5, transformOrigin: "50% 50%" });
@@ -143,7 +143,7 @@
   tl.fromTo("#f08-disc", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out", immediateRender: false }, 1.52);
   MK.tilt(tl, "#f08-shield", 1.52, 0.8, { from: { rx: 18, ry: 22, z: -300 }, rx: 5, ry: -6, z: 0, persp: 2200, ease: "expo.out" });
   tl.fromTo("#f08-shield", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 1.52);
-  MK.drawIcon(tl, "#f08-shield svg", 1.55, { dur: 0.55, stagger: 0.15 });
+  var shp = MK.draw(tl, "#f08-shield svg", 1.55, { dur: 0.5, ease: "power2.inOut", stagger: 0.12 });
   tl.to("#f08-shield", { rotationY: 8, rotationX: 2, duration: 1.2, ease: "none" }, 2.32);
   tl.fromTo("#f08-orbit", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 1.8);
   MK.draw(tl, "#f08-orbitc", 1.8, { dur: 0.6, ease: "power2.inOut" });

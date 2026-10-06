@@ -53,7 +53,7 @@
   <div id="f11-cam">
     <svg id="f11-ringsvg" viewBox="0 0 1000 1000">
       <circle id="f11-ringtrack" cx="500" cy="500" r="440" style="stroke:var(--mk-line);stroke-width:10"/>
-      <circle id="f11-ringfill" cx="500" cy="500" r="440" transform="rotate(-90 500 500)" style="stroke:var(--mk-primary);stroke-width:14"/>
+      <circle id="f11-ringfill" cx="500" cy="500" r="440" transform="rotate(90 500 500)" style="stroke:var(--mk-primary);stroke-width:14"/>
     </svg>
 
     <div id="f11-contact" class="mk-card">
@@ -128,7 +128,7 @@
   MK.camera(tl, "#f11-cam", 0, 4.63, { scale: 1.12 });
 
   // 0.00 contact card slides down and out, plate rises in its place
-  tl.to("#f11-contact", { y: 380, opacity: 0, filter: "blur(14px)", scale: 0.96, duration: 0.5, ease: "power2.in" }, 0.0);
+  tl.to("#f11-contact", { y: 380, opacity: 0, filter: "blur(14px)", scale: 0.96, duration: 0.4, ease: "power2.in" }, 0.0);
   MK.reveal(tl, "#f11-plate", 0.05, { dir: "up", dist: 260, blur: 12, scale: 0.96, dur: 0.6 });
 
   // 0.30 yellow mark draws on (outline trace), then fills in; 0.62 white wordmark revealed
@@ -166,7 +166,7 @@
 
   // 3.90 the 48 h ring starts to draw behind, stack blurs to 8 px (handoff_out)
   tl.fromTo("#f11-ringsvg", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "none", immediateRender: false }, 3.85);
-  MK.ring(tl, "#f11-ringfill", 3.9, 0.73, 0.1);
+  MK.ring(tl, "#f11-ringfill", 3.9, 0.73, 0.12);
   tl.to("#f11-stack", { filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, 4.08);
 
   // subtitle: three chunks, box on Kampala
