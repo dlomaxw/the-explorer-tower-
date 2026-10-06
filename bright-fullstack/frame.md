@@ -54,3 +54,12 @@ negative:
 
 Write one paragraph here after the brand intake: the single metaphor of the film, the worlds (light/dark), how the
 logo shape becomes the transition object, and what the camera does. Keep it under 150 words.
+A dark film (ground #0A0A0A) that starts where the client's own page starts: a terminal. The blinking yellow caret
+« _ » of the page hero is the object-bridge of the whole film: it types the build command, falls and lands as the edge of a
+landing page, becomes the pipeline, the sprint ring and the 48-hour ring, turns into the question mark of « Ready to ship? »
+and blinks again on the end card. Everything the viewer reads is Montserrat (IBM Plex Mono only inside the terminal and the
+API card, to confirm); yellow #FAE104 is the only accent and the only highlight (key-word boxes, the caret, the CTA).
+Products are shown as real UI built from kit parts: browser and phone mockups tilting in 3D, icon tiles that draw on,
+charts and numbers that roll, a board that re-lays itself out around the team. The dark logo (yellow mark, white word) is the
+only logo; the camera descends through the stack from landing page to enterprise system and ends on the contact card,
+the address and the 48-hour offer.

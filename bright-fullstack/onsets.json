@@ -1,0 +1,432 @@
+[
+{
+"w": "bright",
+"start": 0.0,
+"end": 0.44
+},
+{
+"w": "illuminated",
+"start": 0.45,
+"end": 0.79
+},
+{
+"w": "full",
+"start": 1.07,
+"end": 1.34
+},
+{
+"w": "stack",
+"start": 1.35,
+"end": 1.71
+},
+{
+"w": "software",
+"start": 1.72,
+"end": 2.18
+},
+{
+"w": "development",
+"start": 2.19,
+"end": 2.75
+},
+{
+"w": "from",
+"start": 3.13,
+"end": 3.31
+},
+{
+"w": "simple",
+"start": 3.32,
+"end": 3.73
+},
+{
+"w": "landing",
+"start": 3.74,
+"end": 4.07
+},
+{
+"w": "pages",
+"start": 4.08,
+"end": 4.52
+},
+{
+"w": "to",
+"start": 4.53,
+"end": 4.65
+},
+{
+"w": "complex",
+"start": 4.66,
+"end": 5.35
+},
+{
+"w": "enterprise",
+"start": 5.36,
+"end": 5.88
+},
+{
+"w": "systems",
+"start": 5.89,
+"end": 6.48
+},
+{
+"w": "web",
+"start": 6.85,
+"end": 7.1
+},
+{
+"w": "apps",
+"start": 7.11,
+"end": 7.51
+},
+{
+"w": "mobile",
+"start": 7.72,
+"end": 8.11
+},
+{
+"w": "apps",
+"start": 8.12,
+"end": 8.49
+},
+{
+"w": "backend",
+"start": 8.71,
+"end": 9.38
+},
+{
+"w": "and",
+"start": 9.39,
+"end": 9.56
+},
+{
+"w": "apis",
+"start": 9.57,
+"end": 10.4
+},
+{
+"w": "custom",
+"start": 10.67,
+"end": 11.06
+},
+{
+"w": "crm",
+"start": 11.07,
+"end": 11.68
+},
+{
+"w": "automation",
+"start": 12.13,
+"end": 12.72
+},
+{
+"w": "tools",
+"start": 12.73,
+"end": 13.18
+},
+{
+"w": "and",
+"start": 13.42,
+"end": 13.74
+},
+{
+"w": "devops",
+"start": 13.75,
+"end": 14.26
+},
+{
+"w": "custom",
+"start": 15.43,
+"end": 15.8
+},
+{
+"w": "crm",
+"start": 15.81,
+"end": 16.45
+},
+{
+"w": "solutions",
+"start": 16.46,
+"end": 16.85
+},
+{
+"w": "built",
+"start": 16.86,
+"end": 17.13
+},
+{
+"w": "around",
+"start": 17.14,
+"end": 17.4
+},
+{
+"w": "how",
+"start": 17.41,
+"end": 17.56
+},
+{
+"w": "your",
+"start": 17.57,
+"end": 17.89
+},
+{
+"w": "team",
+"start": 17.9,
+"end": 18.2
+},
+{
+"w": "works",
+"start": 18.21,
+"end": 18.66
+},
+{
+"w": "not",
+"start": 18.83,
+"end": 19.17
+},
+{
+"w": "a",
+"start": 19.18,
+"end": 19.23
+},
+{
+"w": "template",
+"start": 19.24,
+"end": 19.7
+},
+{
+"w": "one",
+"start": 20.24,
+"end": 20.56
+},
+{
+"w": "team",
+"start": 20.57,
+"end": 21.0
+},
+{
+"w": "you",
+"start": 21.27,
+"end": 21.58
+},
+{
+"w": "own",
+"start": 21.59,
+"end": 21.74
+},
+{
+"w": "the",
+"start": 21.75,
+"end": 21.83
+},
+{
+"w": "code",
+"start": 21.84,
+"end": 22.27
+},
+{
+"w": "two",
+"start": 22.7,
+"end": 22.91
+},
+{
+"w": "week",
+"start": 22.92,
+"end": 23.13
+},
+{
+"w": "sprints",
+"start": 23.14,
+"end": 23.73
+},
+{
+"w": "support",
+"start": 23.94,
+"end": 24.52
+},
+{
+"w": "after",
+"start": 24.53,
+"end": 24.84
+},
+{
+"w": "launch",
+"start": 24.85,
+"end": 25.34
+},
+{
+"w": "ready",
+"start": 25.89,
+"end": 26.12
+},
+{
+"w": "to",
+"start": 26.13,
+"end": 26.2
+},
+{
+"w": "ship",
+"start": 26.21,
+"end": 26.56
+},
+{
+"w": "call",
+"start": 26.94,
+"end": 27.3
+},
+{
+"w": "or",
+"start": 27.31,
+"end": 27.45
+},
+{
+"w": "whatsapp",
+"start": 27.46,
+"end": 28.01
+},
+{
+"w": "plus",
+"start": 28.34,
+"end": 28.6
+},
+{
+"w": "two",
+"start": 28.61,
+"end": 28.79
+},
+{
+"w": "five",
+"start": 28.8,
+"end": 29.05
+},
+{
+"w": "six",
+"start": 29.06,
+"end": 29.51
+},
+{
+"w": "seven",
+"start": 29.67,
+"end": 30.04
+},
+{
+"w": "five",
+"start": 30.05,
+"end": 30.28
+},
+{
+"w": "zero",
+"start": 30.29,
+"end": 30.77
+},
+{
+"w": "four",
+"start": 30.95,
+"end": 31.24
+},
+{
+"w": "two",
+"start": 31.25,
+"end": 31.46
+},
+{
+"w": "one",
+"start": 31.47,
+"end": 31.87
+},
+{
+"w": "two",
+"start": 32.02,
+"end": 32.23
+},
+{
+"w": "two",
+"start": 32.24,
+"end": 32.43
+},
+{
+"w": "four",
+"start": 32.44,
+"end": 32.84
+},
+{
+"w": "bright",
+"start": 33.38,
+"end": 33.65
+},
+{
+"w": "illuminated",
+"start": 33.66,
+"end": 34.33
+},
+{
+"w": "the",
+"start": 34.54,
+"end": 34.63
+},
+{
+"w": "square",
+"start": 34.64,
+"end": 35.2
+},
+{
+"w": "third",
+"start": 35.42,
+"end": 35.68
+},
+{
+"w": "street",
+"start": 35.69,
+"end": 36.19
+},
+{
+"w": "kampala",
+"start": 36.2,
+"end": 36.81
+},
+{
+"w": "uganda",
+"start": 36.82,
+"end": 37.41
+},
+{
+"w": "a",
+"start": 38.04,
+"end": 38.12
+},
+{
+"w": "fixed",
+"start": 38.13,
+"end": 38.51
+},
+{
+"w": "price",
+"start": 38.52,
+"end": 38.76
+},
+{
+"w": "proposal",
+"start": 38.77,
+"end": 39.31
+},
+{
+"w": "within",
+"start": 39.32,
+"end": 39.6
+},
+{
+"w": "forty",
+"start": 39.61,
+"end": 40.04
+},
+{
+"w": "eight",
+"start": 40.05,
+"end": 40.24
+},
+{
+"w": "hours",
+"start": 40.25,
+"end": 40.9
+}
+]
