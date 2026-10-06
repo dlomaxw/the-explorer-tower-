@@ -6,7 +6,7 @@ Fonts: Montserrat (UI/subtitles), Cormorant Garamond (display, directions A and 
 
 ## Voice timeline (film seconds)
 
-one 0.05 · curve 0.40 · from 1.50 … roof 2.57 · **[silent gag 3.0 to 5.7]** · plot 5.69 · fifty-five 6.00 · john babiha 7.16 ·
+one 0.05 · curve 0.40 · from 1.50 … roof 2.57 · **[silent gag 3.0 to 5.7]** · plot 5.69 · thirty-five 6.00 · john babiha 7.16 ·
 also called acacia avenue 8.39 · kololo 10.75 · kampala 11.55 · two-bedroom homes 12.71 · three hundred thousand dollars 14.04 ·
 three-bedroom 15.97 · four hundred thousand 17.15 · two six-bedroom penthouses 19.09 · each with its own pool 21.25 ·
 priced on application 22.72 · a gym 24.42 · a sauna 25.38 · a garden 26.40 · a lounge 27.40 · covered parking 28.48 ·
@@ -17,11 +17,11 @@ nine thirty to seven 40.58 · explorer towers 42.26 · curved-balcony residences
 ## A. "The Curve" (recommended) — daylight, a yellow line that never breaks
 
 **Concept.** The camera climbs the real facade while one yellow line traces the balcony curve from the street to the roof.
-The line is the bridge object: it becomes the road to Plot 55, the underline of each price, the progress bar of opening
+The line is the bridge object: it becomes the road to Plot 35, the underline of each price, the progress bar of opening
 hours, and finally the phone number's underline. Bright, warm, white-card world for the offer.
 
 **Bridge thread.** curve: line draws up the facade → roof: line leaves the frame and the screen goes quiet (the gag) →
-plot fifty-five: line comes back as the avenue → prices: line drops under each price box → amenities: line
+plot thirty-five: line comes back as the avenue → prices: line drops under each price box → amenities: line
 slides through four rooms → pivot: black, one line → contact: line draws the card border.
 
 **Styleframes** (`styleframes/png/A1..A3.png`)
@@ -38,7 +38,7 @@ the penthouse door opens last. Ends on a clock bar and call/WhatsApp buttons. Da
 9:30 to 7:00 bar → bar becomes the call button.
 
 **Styleframes** (`styleframes/png/B1..B3.png`)
-- B1 (6 s, "seven"): map, pin, Plot 55 label with coordinates.
+- B1 (6 s, "seven"): map, pin, Plot 35 label with coordinates.
 - B2 (20 s, "penthouses"): three doors, penthouse highlighted.
 - B3 (40.6 s, "thirty"): hours bar with call, WhatsApp and email.
 

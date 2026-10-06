@@ -95,7 +95,7 @@ export const developerLockup = {
 
 export const contact = {
   address: approved(
-    "Plot 55 John Babiha (Acacia) Avenue, Kampala, Uganda",
+    "Plot 35 John Babiha (Acacia) Avenue, Kampala, Uganda",
   ) as Publishable<string>,
   phone: approved("+256 750 421224") as Publishable<string>,
   whatsapp: approved("+256 750 421224") as Publishable<string>,
@@ -1146,7 +1146,7 @@ export const amenitiesExclusion =
 // ---------------------------------------------------------------------------
 
 export const projectFacts: readonly ProjectFact[] = [
-  { label: "Location", value: approved("Plot 55 John Babiha (Acacia) Avenue, Kololo, Kampala") },
+  { label: "Location", value: approved("Plot 35 John Babiha (Acacia) Avenue, Kololo, Kampala") },
   {
     label: "Residence types",
     value: approved("Two bedroom, three bedroom, and six-bedroom duplex penthouses"),
@@ -1262,7 +1262,7 @@ export const faqs: readonly FaqSection[] = [
       {
         question: "Where can I buy an apartment in Kampala?",
         answer:
-          "Explorer Towers is a residential tower on Plot 55 John Babiha (Acacia) Avenue in Kololo, Kampala's central diplomatic and residential neighbourhood. It offers two-bedroom and three-bedroom residences and a six-bedroom penthouse, all for sale directly from the developer, 969 Development Company Limited, with Shoal Group and Gabonn Associates.",
+          "Explorer Towers is a residential tower on Plot 35 John Babiha (Acacia) Avenue in Kololo, Kampala's central diplomatic and residential neighbourhood. It offers two-bedroom and three-bedroom residences and a six-bedroom penthouse, all for sale directly from the developer, 969 Development Company Limited, with Shoal Group and Gabonn Associates.",
       },
       {
         question: "How much does a three-bedroom apartment cost in Kampala?",
@@ -1297,7 +1297,7 @@ export const faqs: readonly FaqSection[] = [
       {
         question: "Where exactly is Explorer Towers?",
         answer:
-          "Plot 55 John Babiha (Acacia) Avenue, Kololo, Kampala, Uganda. John Babiha Avenue is the road still widely known as Acacia Avenue. Uganda Golf Club is addressed on Kitante Road at the same avenue, with its fairways immediately south-west of the site, and Kololo Independence Park is nearby.",
+          "Plot 35 John Babiha (Acacia) Avenue, Kololo, Kampala, Uganda. John Babiha Avenue is the road still widely known as Acacia Avenue. Uganda Golf Club is addressed on Kitante Road at the same avenue, with its fairways immediately south-west of the site, and Kololo Independence Park is nearby.",
       },
       {
         question: "What is Kololo like as a place to live?",

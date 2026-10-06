@@ -92,7 +92,7 @@ negative:
 
 The film has one metaphor and three grounds. **The curve** opens it on the real facade in golden light: one yellow
 line climbs the balconies from the street to the roof and leaves the frame, then a silent beat flips the day to night
-and the line comes back as John Babiha (Acacia) Avenue on the aerial of Kololo. A pin lands on Plot 55; the pin
+and the line comes back as John Babiha (Acacia) Avenue on the aerial of Kololo. A pin lands on Plot 35; the pin
 expands into the **paper ground** where the three residences sit as white cards (daylight world: offer and prices).
 The pool of the penthouse splits into **amenity slats** (night world), a pivot on black ("a team that looks after it
 all", then nothing), and the **contact card** where the number rolls in. The line collapses into a hairline that

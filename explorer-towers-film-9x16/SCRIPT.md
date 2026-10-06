@@ -22,7 +22,7 @@ Format proposed: 16:9, about 45 s, English voice-over, ~125 words.
 |---|------|-----------|-------|
 | 1 | Hook (0–6 s) | Street at Acacia Avenue, golden hour; a curved line draws up the facade | One curve. From the street to the roof. |
 | 2 | Silent gag (2–3 s) | The line stops at the roof blade; city lights flick on | (silence) |
-| 3 | Place | Map pin, Kololo, then Plot 55 | Plot fifty-five, John Babiha, also called Acacia Avenue. Kololo, Kampala. |
+| 3 | Place | Map pin, Kololo, then Plot 35 | Plot thirty-five, John Babiha, also called Acacia Avenue. Kololo, Kampala. |
 | 4 | Offer | Three doors: 2-bed, 3-bed, penthouse | Two-bedroom homes from three hundred thousand dollars. Three-bedroom from four hundred thousand. And two six-bedroom penthouses, each with its own pool, priced on application. |
 | 5 | Amenities | Pool, gym, lounge, garden, covered arrival | A gym, a sauna, a garden, a lounge, covered parking and a team that manages it all. |
 | 6 | Pivot (on black) | Black, one line of text | Come and see it. |
@@ -34,7 +34,7 @@ One curve. From the street to the roof.
 
 ...
 
-Plot fifty-five, John Babiha, also called Acacia Avenue. Kololo, Kampala.
+Plot thirty-five, John Babiha, also called Acacia Avenue. Kololo, Kampala.
 
 Two-bedroom homes from three hundred thousand dollars. Three-bedroom, from four hundred thousand. And two six-bedroom penthouses, each with its own pool, priced on application.
 
@@ -50,7 +50,7 @@ Explorer Towers. Curved-balcony residences above Kampala.
 
 ### To paste in ElevenLabs (no staging)
 
-Kololo. Kampala. Plot fifty-five, John Babiha Avenue.
+Kololo. Kampala. Plot thirty-five, John Babiha Avenue.
 
 ...
 

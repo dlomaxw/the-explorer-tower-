@@ -19,7 +19,7 @@ patterns: ../patterns/STORYBOARD-CRAFT.md, ../patterns/PATTERNS.md
 - **Text** (readable without sound): every sentence of the voice is a `subtitle` at the bottom center (portrait band y 1330 to 1520, nothing else in it; see PORTRAIT.md) that arrives WORD BY WORD on the timestamps given in each frame (`word@seconds`, frame-local). Exactly ONE word per sentence sits in the `key-word-box` (named in the Scene lines as [boîte : …]). Typographic moments (the words are the image, no subtitle meanwhile): the hook « One curve. » (0.05 to 2.98), the amenity words (24.48 to 29.36), « Come and see it. » (32.44 to 33.13), the wordmark (42.26 to 43.57).
 - **Peaks**: 4 peaks [trait : …]: curve (0.40), Avenue (9.78), application (23.25), see it (32.91). A thin accent stroke under THE key word.
 - **One thing to look at**: in every shot the camera isolates the subject of the sentence; a clear zoom or pan in one direction, never a back-and-forth; equal margins; no decor without meaning.
-- **Real interfaces** (frame.md): only real renders from `site/public/media` copied in `assets/img/` and the real logos; prices and contact exactly as on the site (two-bedroom from USD 300,000, three-bedroom from USD 400,000, penthouses on application; +256 750 421224; 9:30am to 7:00pm; Plot 55 John Babiha (Acacia) Avenue, Kololo, Kampala; email on screen only).
+- **Real interfaces** (frame.md): only real renders from `site/public/media` copied in `assets/img/` and the real logos; prices and contact exactly as on the site (two-bedroom from USD 300,000, three-bedroom from USD 400,000, penthouses on application; +256 750 421224; 9:30am to 7:00pm; Plot 35 John Babiha (Acacia) Avenue, Kololo, Kampala; email on screen only).
 - **PORTRAIT**: canvas 1080x1920, layout and safe areas in `PORTRAIT.md`; every horizontal pan of the 16:9 film is a vertical pan down, every slide left is a slide up; positions quoted in pixels in the Scene lines are 16:9 positions and are replaced by PORTRAIT.md; the handoff states in this file are already portrait.
 - **Motion grammar**: two speeds, gestures of 1 to 6 images (expo.out) and linear drifts that never stop; elements arrive too big and blurred then settle; no frozen hold; no effect transition.
 - **Visible copy**: exactly the quoted copy of the Scene lines, nothing else.
@@ -99,33 +99,33 @@ Scene 3 (3.10 à 5.40 s) : P3, P3, the silent gag: the day turns to night
   IMAGE CLÉ : 4.30 : the aerial of Kololo at night, the tower lit amber, the avenue line drawing toward it
 
 
-## Frame 2: Plot 55 · 5.40 → 10.50
+## Frame 2: Plot 35 · 5.40 → 10.50
 
-- scene: The pin lands on Plot 55 and the avenue gets its name
+- scene: The pin lands on Plot 35 and the avenue gets its name
 - duration: 5.10s
 - transition_in: cut
 - status: animated
 - src: compositions/frames/02-plot.html
-- voiceover: "plot fifty five john babiha also called acacia avenue"
+- voiceover: "plot thirty five john babiha also called acacia avenue"
 - type: solution
 - blueprint: spatial-pan-stations (Adapt)
-- focal: the pin on Plot 55 over the night aerial
+- focal: the pin on Plot 35 over the night aerial
 - rules: coordinate-target-zoom, svg-path-draw
 - world: dark
 - handoff_in: à 0.00 : cam(0.50, 0.50, 1.0, rx 0, rz 0) aerial of Kololo at night in portrait crop, tower base centered at 50% / 46% of frame, blur 4 px of a camera still sliding downward at about 4 %/s; every window of the tower lit amber, the district lights on in rings around it; the yellow avenue line (5 px, glow) runs from the bottom-left corner to the tower base; no text on screen; grain 4%
 - handoff_out: à 5.10 : cam(0.52, 0.50, 3.0, rx 0, rz 0) push-in onto the plot, blur 12 px of a camera still diving at about 20 %/s; aerial night at 45% brightness, street grid and yellow avenue line crossing the frame; the yellow pin (100 px, glow) at the exact center (540, 960), radius-170 yellow halo at 8% opacity; no text on screen; grain 4%
 
-Word cues: plot@0.29 fifty@0.60 five@0.86 john@1.76 babiha@2.04 also@2.99 called@3.31 acacia@3.86 avenue@4.38
+Word cues: plot@0.29 thirty@0.60 five@0.86 john@1.76 babiha@2.04 also@2.99 called@3.31 acacia@3.86 avenue@4.38
 
-Scene 1 (0.00 à 2.55 s) : P4, P4, the pin lands on Plot 55
-  TEXTE ÉCRAN : subtitle « plot fifty-five, John Babiha, » word by word from 0.29, [boîte : five] at 0.60 ; label « Plot 55 » ; écart avance 0.1 s
+Scene 1 (0.00 à 2.55 s) : P4, P4, the pin lands on Plot 35
+  TEXTE ÉCRAN : subtitle « plot thirty-five, John Babiha, » word by word from 0.29, [boîte : five] at 0.60 ; label « Plot 35 » ; écart avance 0.1 s
   IMAGE DE DÉPART : handoff_in.
-  ÉTAPES : 0.29 the pin drops from x3 blurred 16 px onto the tower in 0.2 s expo.out ; 0.45 the halo (r 170, 8%) swells ; 0.60 « Plot 55 » label assembles letter by letter (0.04 s each) next to the pin ; 0.90 the coordinates roll in micro caps 0.3282° N · 32.5871° E ; 1.40 « Kololo · Kampala · Uganda » tag fades in top-left (blur 6 to 0) ; 1.76 « John Babiha (Acacia) Avenue, Kololo » slides along the avenue line
+  ÉTAPES : 0.29 the pin drops from x3 blurred 16 px onto the tower in 0.2 s expo.out ; 0.45 the halo (r 170, 8%) swells ; 0.60 « Plot 35 » label assembles letter by letter (0.04 s each) next to the pin ; 0.90 the coordinates roll in micro caps 0.3282° N · 32.5871° E ; 1.40 « Kololo · Kampala · Uganda » tag fades in top-left (blur 6 to 0) ; 1.76 « John Babiha (Acacia) Avenue, Kololo » slides along the avenue line
   PISTE CAMÉRA : dive toward the plot 10 %/s ; 1.70 à 2.55 push-in toward cam(0.52, 0.50, 2.0) expo.in, blur 8 px
   COUCHES ET PROFONDEUR : blurred rooftop foreground ; sharp pin and label ; aerial night as background ; the avenue line is the animated layer
   OBJET-PONT ET VECTEUR : the pin → stays and grows into the next shot's anchor
   SON : pop at 0.29 (0.5), key-press at 0.60 (0.3)
-  IMAGE CLÉ : 0.60 : the pin on the tower, « Plot 55 » big, coordinates rolling, subtitle « plot fifty-five » with the box on five
+  IMAGE CLÉ : 0.60 : the pin on the tower, « Plot 35 » big, coordinates rolling, subtitle « plot thirty-five » with the box on five
 
 Scene 2 (2.55 à 5.10 s) : P5, P5, the avenue gets its name
   TEXTE ÉCRAN : subtitle « also called Acacia Avenue. » word by word from 2.99, [boîte : Avenue] at 4.38 ; [trait : Avenue] draws 4.38 to 4.89 ; écart synchro
