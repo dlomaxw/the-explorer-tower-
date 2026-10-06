@@ -29,7 +29,10 @@ for w in sorted(set(text.split())):
     if w not in vocab and w not in extra:
         print(f"  ! '{w}' is not in the dictionary: add --word {w}=\"PH PH ...\"")
 for w, ph in extra.items():
-    d.add_word(w, ph, True)
+    try:
+        d.add_word(w, ph, True)
+    except Exception:  # already in the dictionary: keep the stock pronunciation
+        pass
 d.set_align_text(text)
 d.start_utt(); d.process_raw(open(raw, "rb").read(), full_utt=True); d.end_utt()
 words = [{"w": re.sub(r"\(\d\)", "", s.word), "start": round(s.start_frame / 100, 2), "end": round(s.end_frame / 100, 2)}
