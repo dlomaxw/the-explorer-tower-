@@ -1,40 +1,46 @@
 <template>
   <style>
+    @font-face { font-family: "Montserrat"; font-weight: 400; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-400-normal.woff2") format("woff2"); }
     @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
     @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
 
-    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; font-family: "Montserrat", sans-serif; }
     #root .c10-fill { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
     #c10-ground { background: #0c0c0e; }
 
-    #c10-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 470px; }
-    .c10-bg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background-size: cover; background-position: center; }
-    #c10-bg1 { background-image: url("assets/img/front-elevation-dusk.png"); filter: brightness(.45) blur(3px); transform: scale(1.15); }
-    #c10-bg2 { background-image: url("assets/img/aerial-night.webp"); filter: brightness(.35) blur(6px); transform: scale(1.1); opacity: 0; }
+    #c10-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #c10-bgcam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 540px; }
+    #c10-bgwrap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    .c10-bg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; display: block; }
+    #c10-bg1 { filter: brightness(.45) blur(3px); }
+    #c10-bg2 { filter: brightness(.35) blur(6px); opacity: 0; }
 
-    #c10-card { position: absolute; left: 560px; top: 240px; width: 800px; height: 600px; border-radius: 32px;
-      background: rgba(255,255,255,.96); box-shadow: 0 40px 100px rgba(0,0,0,.5); transform-origin: 400px 300px; }
-    #c10-cc { position: absolute; left: 0; top: 0; width: 800px; height: 600px; }
-    .c10-k { position: absolute; left: 64px; font-size: 20px; line-height: 24px; font-weight: 600; letter-spacing: .25em; color: #7a7466; text-transform: uppercase; white-space: nowrap; }
-    #c10-kcall { top: 44px; }
-    #c10-kview { top: 192px; }
-    #c10-kmail { top: 346px; }
-    #c10-kvisit { top: 440px; }
-    #c10-phone { position: absolute; left: 64px; top: 76px; font-size: 66px; line-height: 80px; font-weight: 800; color: #111; letter-spacing: -1px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    #c10-phone .c10-hi { background: #FFD60A; padding: 0 14px; border-radius: 8px; margin-left: -14px; margin-right: 6px; }
-    .c10-v { position: absolute; left: 64px; width: 672px; font-size: 28px; line-height: 36px; font-weight: 600; color: #111; opacity: 0; }
-    #c10-vmail { top: 378px; white-space: nowrap; }
-    #c10-vvisit { top: 472px; }
+    #c10-title { position: absolute; left: 120px; top: 180px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 120px; line-height: .95; letter-spacing: -3px; color: #fff; }
+    #c10-title i { font-family: "Cormorant Garamond", serif; font-weight: 500; font-style: italic; color: #FFD60A; }
 
-    .c10-t { position: absolute; top: 224px; font-size: 34px; line-height: 40px; font-weight: 800; color: #111; opacity: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    #c10-t1 { left: 64px; }
-    #c10-t2 { right: 64px; text-align: right; }
-    #c10-glow { position: absolute; left: 64px; top: 276px; width: 672px; height: 26px; border-radius: 13px; background: #FFD60A; filter: blur(14px); opacity: 0; }
-    #c10-track { position: absolute; left: 64px; top: 276px; width: 672px; height: 26px; border-radius: 13px; background: #e9e4d6; overflow: hidden; opacity: 0; transform-origin: 0 50%; }
+    #c10-cardcam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #c10-card { position: absolute; left: 1000px; top: 150px; width: 800px; padding: 60px 64px; box-sizing: border-box;
+      background: rgba(255,255,255,.96); border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,.5); overflow: hidden; }
+    #c10-cc { position: relative; }
+    .c10-k { font-family: "Montserrat", sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 5px; color: #7a7466; text-transform: uppercase; margin-bottom: 8px; }
+    .c10-m { font-family: "Montserrat", sans-serif; font-size: 34px; font-weight: 600; color: #111; margin-bottom: 28px; }
+    .c10-v { opacity: 0; }
+    #c10-big { display: flex; align-items: center; height: 86px; margin-bottom: 34px; }
+    #c10-box { display: flex; align-items: center; height: 86px; padding: 0 14px; background: #FFD60A; border-radius: 8px; }
+    #c10-rest { display: flex; align-items: center; height: 86px; margin-left: 22px; }
+    .c10-slot { position: relative; height: 86px; flex: none; }
+    .c10-cell { height: 86px; line-height: 86px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 70px; letter-spacing: -1px; color: #111; font-variant-numeric: tabular-nums; }
+
+    #c10-hrow { display: flex; align-items: center; height: 41px; margin-bottom: 28px; font-family: "Montserrat", sans-serif; }
+    .c10-t { font-family: "Montserrat", sans-serif; font-size: 34px; line-height: 41px; font-weight: 800; color: #111; opacity: 0; white-space: nowrap; font-variant-numeric: tabular-nums; flex: none; }
+    #c10-barwrap { position: relative; flex: 1; height: 26px; margin: 0 22px; }
+    #c10-glow { position: absolute; left: 0; top: 0; width: 100%; height: 26px; border-radius: 13px; background: #FFD60A; filter: blur(12px); opacity: 0; }
+    #c10-track { position: absolute; left: 0; top: 0; width: 100%; height: 26px; border-radius: 13px; background: #e9e4d6; overflow: hidden; opacity: 0; transform-origin: 0 50%; }
     #c10-fill { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #FFD60A; transform-origin: 0 50%; transform: scaleX(0); }
-    .c10-tick { position: absolute; top: 268px; width: 4px; height: 42px; border-radius: 2px; background: #111; opacity: 0; transform-origin: 50% 100%; }
-    #c10-tick1 { left: 62px; }
-    #c10-tick2 { left: 734px; }
+    .c10-tick { position: absolute; top: -8px; width: 4px; height: 42px; border-radius: 2px; background: #111; opacity: 0; transform-origin: 50% 100%; }
+    #c10-tick1 { left: -2px; }
+    #c10-tick2 { right: -2px; }
 
     #c10-line { position: absolute; left: 510px; top: 537px; width: 900px; height: 5px; border-radius: 3px; background: #FFD60A;
       box-shadow: 0 0 18px rgba(255,214,10,.9), 0 0 40px rgba(255,214,10,.45); opacity: 0; transform-origin: 50% 50%; }
@@ -57,24 +63,33 @@
       <div id="c10-ground" class="c10-fill"></div>
     </div>
 
-    <div id="c10-cam" data-layout-allow-overflow>
-      <div id="c10-bg1" class="c10-bg"></div>
-      <div id="c10-bg2" class="c10-bg"></div>
-      <div id="c10-card">
-        <div id="c10-cc">
-          <div id="c10-kcall" class="c10-k">Call or WhatsApp</div>
-          <div id="c10-phone"><span class="c10-hi">+256 750</span> 421224</div>
-          <div id="c10-kview" class="c10-k">Viewings</div>
-          <div id="c10-t1" class="c10-t">9:30am</div>
-          <div id="c10-t2" class="c10-t">7:00pm</div>
-          <div id="c10-glow"></div>
-          <div id="c10-track"><div id="c10-fill"></div></div>
-          <div id="c10-tick1" class="c10-tick"></div>
-          <div id="c10-tick2" class="c10-tick"></div>
-          <div id="c10-kmail" class="c10-k">Email</div>
-          <div id="c10-vmail" class="c10-v">brightthoughtsservices@gmail.com</div>
-          <div id="c10-kvisit" class="c10-k">Visit</div>
-          <div id="c10-vvisit" class="c10-v">Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala</div>
+    <div id="c10-stage" data-layout-allow-overflow>
+      <div id="c10-bgcam" data-layout-allow-overflow>
+        <div id="c10-bgwrap">
+          <img id="c10-bg1" class="c10-bg" src="assets/img/front-elevation-dusk.png" alt="">
+          <img id="c10-bg2" class="c10-bg" src="assets/img/aerial-night.webp" alt="">
+        </div>
+        <div id="c10-title">Come<br>and<br><i>see it.</i></div>
+      </div>
+      <div id="c10-cardcam" data-layout-allow-overflow>
+        <div id="c10-card">
+          <div id="c10-cc">
+            <div class="c10-k">Call or WhatsApp</div>
+            <div id="c10-big"><div id="c10-box"></div><div id="c10-rest"></div></div>
+            <div id="c10-kview" class="c10-k">Viewings</div>
+            <div id="c10-hrow">
+              <div id="c10-t1" class="c10-t">9:30am</div>
+              <div id="c10-barwrap">
+                <div id="c10-glow"></div>
+                <div id="c10-track"><div id="c10-fill"></div></div>
+                <div id="c10-tick1" class="c10-tick"></div>
+                <div id="c10-tick2" class="c10-tick"></div>
+              </div>
+              <div id="c10-t2" class="c10-t">7:00pm</div>
+            </div>
+            <div class="c10-k">Email</div><div id="c10-vmail" class="c10-m c10-v">brightthoughtsservices@gmail.com</div>
+            <div class="c10-k">Visit</div><div id="c10-vvisit" class="c10-m c10-v">Plot 37 John Babiha (Acacia) Avenue, Kololo, Kampala</div>
+          </div>
         </div>
       </div>
     </div>
@@ -93,7 +108,7 @@
     </div>
   </div>
 
-  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <script>
     (function () {
       var FID = "10-viewings";
@@ -105,16 +120,60 @@
         return tl.fromTo(el, from, to, t);
       }
 
-      var cam = $("c10-cam"), card = $("c10-card");
+      /* ---------- phone number, complete (same slots as frame 9) ---------- */
+      var chars = [
+        ["+", "c10-box", 44], ["2", "c10-box", 41], ["5", "c10-box", 41], ["6", "c10-box", 41],
+        [" ", "c10-box", 22],
+        ["7", "c10-box", 41], ["5", "c10-box", 41], ["0", "c10-box", 41],
+        ["4", "c10-rest", 41], ["2", "c10-rest", 41], ["1", "c10-rest", 41],
+        ["2", "c10-rest", 41], ["2", "c10-rest", 41], ["4", "c10-rest", 41]
+      ];
+      chars.forEach(function (c) {
+        var slot = document.createElement("div");
+        slot.className = "c10-slot";
+        slot.style.width = c[2] + "px";
+        if (c[0] !== " ") {
+          var cell = document.createElement("div");
+          cell.className = "c10-cell";
+          cell.textContent = c[0];
+          slot.appendChild(cell);
+        }
+        $(c[1]).appendChild(slot);
+      });
 
-      /* ---------- handoff_in: cam 1.12, blur 8 on the card; settle 0 to 0.3 ---------- */
-      gsap.set(cam, { scale: 1.12 });
-      gsap.set(card, { filter: "blur(8px)" });
-      tl.to(cam, { scale: 1.06, duration: 0.3, ease: "expo.out" }, 0);
-      tl.to(card, { filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
-      /* drift, then pull-out to cam 1.0 (monotonic zoom-out) */
-      tl.to(cam, { scale: 1.02, duration: 1.4, ease: "none" }, 0.3);
-      tl.to(cam, { scale: 1.0, duration: 0.74, ease: "expo.in" }, 1.7);
+      /* ---------- geometry of the card (measured) ---------- */
+      var card = $("c10-card");
+      var H = card.offsetHeight || 620;
+      var cy = 150 + H / 2;                       /* card center in stage coordinates */
+      var rowY = $("c10-kview").offsetTop + 70;   /* approx. center of the Viewings row inside the card */
+      var rowOff = rowY - H / 2;
+      var S0 = 1.12;                              /* frame 9 final camera scale */
+      var cardcam = $("c10-cardcam"), bgcam = $("c10-bgcam"), stage = $("c10-stage");
+
+      /* card scales about its own center: translate-only positioning */
+      gsap.set(cardcam, { transformOrigin: "1400px " + cy + "px" });
+      /* start = frame 9 last image: cam 1.12, y -92, origin 960,540 */
+      var tx0 = (960 + S0 * (1400 - 960)) - 1400;
+      var ty0 = (540 + S0 * (cy - 540) - 92) - cy;
+      gsap.set(cardcam, { scale: S0, x: tx0, y: ty0 });
+      gsap.set(bgcam, { scale: S0, y: -92, transformOrigin: "960px 540px" });
+      gsap.set(stage, { filter: "blur(8px)" });
+
+      /* push toward the Viewings row: card moves to its centered position */
+      var S1 = 1.06;
+      var tx1 = -440;                                   /* card center on x = 960 */
+      var ty1 = (500 - S1 * rowOff) - cy;               /* Viewings row near y 500 */
+      tl.to(cardcam, { scale: S1, x: tx1, y: ty1, duration: 0.5, ease: "expo.out" }, 0);
+      tl.to(bgcam, { scale: S1, y: 0, duration: 0.5, ease: "expo.out" }, 0);
+      tl.to(stage, { filter: "blur(0px)", duration: 0.4, ease: "power2.out" }, 0);
+      fT($("c10-title"), { opacity: 1 }, { opacity: 0, duration: 0.25, ease: "power2.in" }, 0.08);
+
+      /* drift, then pull-out to 1.0 with the card centered on y 540 */
+      var ty2 = (ty1 + (540 - cy)) / 2;
+      tl.to(cardcam, { scale: 1.02, x: -440, y: ty2, duration: 1.2, ease: "none" }, 0.5);
+      tl.to(bgcam, { scale: 1.02, duration: 1.2, ease: "none" }, 0.5);
+      tl.to(cardcam, { scale: 1.0, x: -440, y: 540 - cy, duration: 0.74, ease: "expo.in" }, 1.7);
+      tl.to(bgcam, { scale: 1.0, duration: 0.74, ease: "expo.in" }, 1.7);
       /* camera blur on the card during the pull-out */
       fT(card, { filter: "blur(0px)" }, { filter: "blur(6px)", duration: 0.38, ease: "power2.in" }, 1.7);
 
@@ -133,14 +192,18 @@
 
       /* ---------- the card collapses toward the center, becomes the line ---------- */
       fT($("c10-cc"), { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power2.in" }, 1.8);
-      tl.to(card, { scaleY: 5 / 600, scaleX: 1.14, duration: 0.4, ease: "expo.in" }, 1.7);
+      tl.to(card, { scaleY: 5 / H, scaleX: 1.14, duration: 0.4, ease: "expo.in", transformOrigin: "50% 50%" }, 1.7);
       fT(card, { opacity: 1 }, { opacity: 0, duration: 0.06, ease: "none" }, 2.08);
       fT($("c10-line"), { opacity: 0, scaleX: 1.14 }, { opacity: 1, duration: 0.08, ease: "none" }, 2.04);
       tl.to($("c10-line"), { scaleX: 1, duration: 0.4, ease: "power1.in" }, 2.04);
 
-      /* ---------- backgrounds: dusk tower, then night aerial ---------- */
-      fT($("c10-bg1"), { filter: "brightness(.45) blur(3px)" }, { filter: "brightness(.4) blur(5px)", duration: 0.6, ease: "power2.out" }, 1.7);
-      fT($("c10-bg2"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.inOut" }, 1.7);
+      /* ---------- backgrounds: dusk tower drifting left, then night aerial ---------- */
+      var bg1 = $("c10-bg1"), bg2 = $("c10-bg2");
+      gsap.set(bg1, { scale: 1.15, x: -142, transformOrigin: "50% 50%" });
+      gsap.set(bg2, { scale: 1.1, transformOrigin: "50% 50%" });
+      tl.to(bg1, { x: -212, duration: 2.44, ease: "none" }, 0);
+      fT(bg1, { filter: "brightness(.45) blur(3px)" }, { filter: "brightness(.4) blur(5px)", duration: 0.6, ease: "power2.out" }, 1.7);
+      fT(bg2, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.inOut" }, 1.7);
 
       /* ---------- subtitles ---------- */
       function word(id, cue) {

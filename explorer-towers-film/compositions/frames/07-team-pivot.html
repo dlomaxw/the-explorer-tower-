@@ -10,6 +10,18 @@
     #c07-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
     #c07-world { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
     #c07-img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; display: block; }
+    #c07-sl { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    #c07-sw { position: absolute; left: 0; top: 0; width: 6720px; height: 1080px; transform-origin: 0 0; }
+    .c07-slat { position: absolute; top: 0; width: 960px; height: 1080px; overflow: hidden; }
+    .c07-simg { position: absolute; left: 0; top: 0; width: 960px; height: 1080px; background-repeat: no-repeat; }
+    .c07-sgrad { position: absolute; left: 0; top: 0; width: 960px; height: 1080px;
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.72) 100%); }
+    #c07-s3 { left: 3840px; filter: blur(3px) brightness(.5); }
+    #c07-s4 { left: 4800px; filter: blur(12px) brightness(.82); }
+    #c07-sp { left: 5760px; filter: blur(3px) brightness(.5); }
+    #c07-i3 { background-image: url("assets/img/residents-lounge.webp"); background-size: cover; background-position: 50% 50%; }
+    #c07-i4 { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1200px; background-position: -340px -60px; }
+    #c07-ip { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1200px; background-position: -656px -60px; }
     #c07-dim { background: #000; opacity: 0; }
     #c07-vign { background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,.5) 100%); }
     #c07-warm { position: absolute; left: 0; top: 360px; width: 760px; height: 520px; opacity: 0; mix-blend-mode: screen;
@@ -47,6 +59,13 @@
       <div id="c07-dim" class="c07-fill"></div>
       <div id="c07-vign" class="c07-fill"></div>
       <div id="c07-cut" class="c07-fill"></div>
+    </div>
+    <div id="c07-sl">
+      <div id="c07-sw" data-layout-allow-overflow>
+        <div id="c07-s3" class="c07-slat"><div id="c07-i3" class="c07-simg"></div><div class="c07-sgrad"></div></div>
+        <div id="c07-s4" class="c07-slat"><div id="c07-i4" class="c07-simg"></div><div class="c07-sgrad"></div></div>
+        <div id="c07-sp" class="c07-slat"><div id="c07-ip" class="c07-simg"></div><div class="c07-sgrad"></div></div>
+      </div>
     </div>
 
     <div id="c07-glow"></div>
@@ -88,6 +107,17 @@
       tl.to(cam, { u: 0.545, duration: 0.40, ease: "power2.out", onUpdate: applyCam }, 0);
       tl.to(cam, { u: 0.52, duration: 1.48, ease: "power1.out", onUpdate: applyCam }, 0.40);
       tl.to(cam, { s: 1.42, duration: 1.88, ease: "none", onUpdate: applyCam }, 0);
+
+      /* ---------- seam from frame 6: its last image, then the slats grow and dissolve into the render ---------- */
+      var sw = $("c07-sw");
+      var cs = { u: 5280, s: 1.03 };
+      function applySw() {
+        sw.style.transform = "translate(" + (960 - cs.u * cs.s).toFixed(2) + "px," + (540 - 540 * cs.s).toFixed(2) + "px) scale(" + cs.s.toFixed(4) + ")";
+      }
+      applySw();
+      tl.to(cs, { u: 5700, duration: 0.40, ease: "power2.out", onUpdate: applySw }, 0);
+      tl.to(cs, { s: 1.25, duration: 0.50, ease: "power2.out", onUpdate: applySw }, 0);
+      fT($("c07-sl"), { opacity: 1 }, { opacity: 0, duration: 0.40, ease: "power2.inOut" }, 0.12);
 
       /* camera blur 12 px resolves (handoff_in) */
       fT($("c07-stage"), { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0);
