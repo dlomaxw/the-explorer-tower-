@@ -1,0 +1,1004 @@
+{
+ "audio": "casements-film/assets/audio/voix-montage.wav",
+ "duration": 53.3,
+ "threshold_db": -40.0,
+ "min_silence": 0.12,
+ "stats": {
+  "p10_db": -120.0,
+  "p50_db": -31.6,
+  "p95_db": -17.2
+ },
+ "phrases": [
+  {
+   "start": 2.46,
+   "end": 5.07,
+   "silence_after": 0.13,
+   "cut_point": 5.13,
+   "text": "sixty years of building Uganda's doors",
+   "words": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "start": 5.2,
+   "end": 6.8,
+   "silence_after": 0.49,
+   "cut_point": 7.04,
+   "text": "windows and skylines",
+   "words": [
+    6,
+    7,
+    8
+   ]
+  },
+  {
+   "start": 7.29,
+   "end": 8.54,
+   "silence_after": 0.14,
+   "cut_point": 8.61,
+   "text": "doors and windows that",
+   "words": [
+    9,
+    10,
+    11,
+    12
+   ]
+  },
+  {
+   "start": 8.68,
+   "end": 9.42,
+   "silence_after": 0.59,
+   "cut_point": 9.71,
+   "text": "open the way",
+   "words": [
+    13,
+    14,
+    15
+   ]
+  },
+  {
+   "start": 10.01,
+   "end": 13.38,
+   "silence_after": 0.5,
+   "cut_point": 13.63,
+   "text": "curtain walls and facades that dress the tallest towers",
+   "words": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+   ]
+  },
+  {
+   "start": 13.88,
+   "end": 14.44,
+   "silence_after": 0.33,
+   "cut_point": 14.61,
+   "text": "glass",
+   "words": [
+    25
+   ]
+  },
+  {
+   "start": 14.77,
+   "end": 15.54,
+   "silence_after": 0.29,
+   "cut_point": 15.68,
+   "text": "partitions",
+   "words": [
+    26
+   ]
+  },
+  {
+   "start": 15.83,
+   "end": 16.49,
+   "silence_after": 0.36,
+   "cut_point": 16.67,
+   "text": "railings",
+   "words": [
+    27
+   ]
+  },
+  {
+   "start": 16.85,
+   "end": 19.46,
+   "silence_after": 0.39,
+   "cut_point": 19.66,
+   "text": "steel gates grills and roller shutters",
+   "words": [
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+   ]
+  },
+  {
+   "start": 19.85,
+   "end": 20.55,
+   "silence_after": 0.3,
+   "cut_point": 20.7,
+   "text": "ceilings",
+   "words": [
+    34
+   ]
+  },
+  {
+   "start": 20.85,
+   "end": 21.65,
+   "silence_after": 0.37,
+   "cut_point": 21.84,
+   "text": "door hardware",
+   "words": [
+    35,
+    36
+   ]
+  },
+  {
+   "start": 22.02,
+   "end": 22.82,
+   "silence_after": 0.38,
+   "cut_point": 23.01,
+   "text": "roller blinds",
+   "words": [
+    37,
+    38
+   ]
+  },
+  {
+   "start": 23.2,
+   "end": 25.28,
+   "silence_after": 0.48,
+   "cut_point": 25.52,
+   "text": "even mini homes that go up in an hour",
+   "words": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+   ]
+  },
+  {
+   "start": 25.76,
+   "end": 27.02,
+   "silence_after": 0.32,
+   "cut_point": 27.18,
+   "text": "twelve product lines",
+   "words": [
+    48,
+    49,
+    50
+   ]
+  },
+  {
+   "start": 27.34,
+   "end": 28.15,
+   "silence_after": 0.26,
+   "cut_point": 28.28,
+   "text": "one factory",
+   "words": [
+    51,
+    52
+   ]
+  },
+  {
+   "start": 28.41,
+   "end": 29.09,
+   "silence_after": 0.49,
+   "cut_point": 29.34,
+   "text": "in kampala",
+   "words": [
+    53,
+    54
+   ]
+  },
+  {
+   "start": 29.58,
+   "end": 30.58,
+   "silence_after": 0.38,
+   "cut_point": 30.77,
+   "text": "share your idea",
+   "words": [
+    55,
+    56,
+    57
+   ]
+  },
+  {
+   "start": 30.96,
+   "end": 31.59,
+   "silence_after": 0.26,
+   "cut_point": 31.72,
+   "text": "we draw it",
+   "words": [
+    58,
+    59,
+    60
+   ]
+  },
+  {
+   "start": 31.85,
+   "end": 32.47,
+   "silence_after": 0.23,
+   "cut_point": 32.59,
+   "text": "we build it",
+   "words": [
+    61,
+    62,
+    63
+   ]
+  },
+  {
+   "start": 32.7,
+   "end": 33.52,
+   "silence_after": 0.41,
+   "cut_point": 33.73,
+   "text": "we install it",
+   "words": [
+    64,
+    65,
+    66
+   ]
+  },
+  {
+   "start": 33.93,
+   "end": 34.91,
+   "silence_after": 0.26,
+   "cut_point": 35.04,
+   "text": "built to last",
+   "words": [
+    67,
+    68,
+    69
+   ]
+  },
+  {
+   "start": 35.17,
+   "end": 36.54,
+   "silence_after": 0.43,
+   "cut_point": 36.75,
+   "text": "delivered as promised",
+   "words": [
+    70,
+    71,
+    72
+   ]
+  },
+  {
+   "start": 36.97,
+   "end": 37.59,
+   "silence_after": 0.35,
+   "cut_point": 37.77,
+   "text": "casements",
+   "words": [
+    73
+   ]
+  },
+  {
+   "start": 37.94,
+   "end": 38.91,
+   "silence_after": 0.24,
+   "cut_point": 39.03,
+   "text": "plot eighty six",
+   "words": [
+    74,
+    75,
+    76
+   ]
+  },
+  {
+   "start": 39.15,
+   "end": 40.73,
+   "silence_after": 0.39,
+   "cut_point": 40.92,
+   "text": "fifth street industrial area",
+   "words": [
+    77,
+    78,
+    79,
+    80
+   ]
+  },
+  {
+   "start": 41.12,
+   "end": 42.68,
+   "silence_after": 0.17,
+   "cut_point": 42.77,
+   "text": "call plus two five six",
+   "words": [
+    81,
+    82,
+    83,
+    84,
+    85
+   ]
+  },
+  {
+   "start": 42.85,
+   "end": 46.26,
+   "silence_after": 0.34,
+   "cut_point": 46.43,
+   "text": "seven five two seven zero zero seven zero zero",
+   "words": [
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94
+   ]
+  },
+  {
+   "start": 46.6,
+   "end": 47.12,
+   "silence_after": 0.18,
+   "cut_point": 47.21,
+   "text": "or visit",
+   "words": [
+    95,
+    96
+   ]
+  },
+  {
+   "start": 47.3,
+   "end": 49.56,
+   "silence_after": 3.74,
+   "cut_point": null,
+   "text": "casements dot c o dot u g",
+   "words": [
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103
+   ]
+  }
+ ],
+ "words": [
+  {
+   "w": "sixty",
+   "s": 2.46,
+   "e": 2.93,
+   "whisper_s": 2.4
+  },
+  {
+   "w": "years",
+   "s": 2.94,
+   "e": 3.39,
+   "whisper_s": 2.94
+  },
+  {
+   "w": "of",
+   "s": 3.4,
+   "e": 3.48,
+   "whisper_s": 3.4
+  },
+  {
+   "w": "building",
+   "s": 3.49,
+   "e": 3.86,
+   "whisper_s": 3.49
+  },
+  {
+   "w": "Uganda's",
+   "s": 3.87,
+   "e": 4.48,
+   "whisper_s": 3.87
+  },
+  {
+   "w": "doors",
+   "s": 4.49,
+   "e": 5.07,
+   "whisper_s": 4.49
+  },
+  {
+   "w": "windows",
+   "s": 5.2,
+   "e": 5.84,
+   "whisper_s": 5.08
+  },
+  {
+   "w": "and",
+   "s": 5.85,
+   "e": 5.98,
+   "whisper_s": 5.85
+  },
+  {
+   "w": "skylines",
+   "s": 5.99,
+   "e": 6.86,
+   "whisper_s": 5.99
+  },
+  {
+   "w": "doors",
+   "s": 7.29,
+   "e": 7.68,
+   "whisper_s": 7.29
+  },
+  {
+   "w": "and",
+   "s": 7.69,
+   "e": 7.82,
+   "whisper_s": 7.69
+  },
+  {
+   "w": "windows",
+   "s": 7.83,
+   "e": 8.39,
+   "whisper_s": 7.83
+  },
+  {
+   "w": "that",
+   "s": 8.4,
+   "e": 8.64,
+   "whisper_s": 8.4
+  },
+  {
+   "w": "open",
+   "s": 8.68,
+   "e": 8.92,
+   "whisper_s": 8.65
+  },
+  {
+   "w": "the",
+   "s": 8.93,
+   "e": 9.04,
+   "whisper_s": 8.93
+  },
+  {
+   "w": "way",
+   "s": 9.05,
+   "e": 9.5,
+   "whisper_s": 9.05
+  },
+  {
+   "w": "curtain",
+   "s": 10.01,
+   "e": 10.3,
+   "whisper_s": 9.98
+  },
+  {
+   "w": "walls",
+   "s": 10.31,
+   "e": 10.77,
+   "whisper_s": 10.31
+  },
+  {
+   "w": "and",
+   "s": 10.78,
+   "e": 10.87,
+   "whisper_s": 10.78
+  },
+  {
+   "w": "facades",
+   "s": 10.88,
+   "e": 11.56,
+   "whisper_s": 10.88
+  },
+  {
+   "w": "that",
+   "s": 11.57,
+   "e": 11.72,
+   "whisper_s": 11.57
+  },
+  {
+   "w": "dress",
+   "s": 11.73,
+   "e": 12.08,
+   "whisper_s": 11.73
+  },
+  {
+   "w": "the",
+   "s": 12.09,
+   "e": 12.19,
+   "whisper_s": 12.09
+  },
+  {
+   "w": "tallest",
+   "s": 12.2,
+   "e": 12.8,
+   "whisper_s": 12.2
+  },
+  {
+   "w": "towers",
+   "s": 12.81,
+   "e": 13.44,
+   "whisper_s": 12.81
+  },
+  {
+   "w": "glass",
+   "s": 13.88,
+   "e": 14.5,
+   "whisper_s": 13.85
+  },
+  {
+   "w": "partitions",
+   "s": 14.77,
+   "e": 15.6,
+   "whisper_s": 14.73
+  },
+  {
+   "w": "railings",
+   "s": 15.83,
+   "e": 16.55,
+   "whisper_s": 15.82
+  },
+  {
+   "w": "steel",
+   "s": 16.85,
+   "e": 17.25,
+   "whisper_s": 16.79
+  },
+  {
+   "w": "gates",
+   "s": 17.26,
+   "e": 17.77,
+   "whisper_s": 17.26
+  },
+  {
+   "w": "grills",
+   "s": 17.78,
+   "e": 18.44,
+   "whisper_s": 17.78
+  },
+  {
+   "w": "and",
+   "s": 18.45,
+   "e": 18.57,
+   "whisper_s": 18.45
+  },
+  {
+   "w": "roller",
+   "s": 18.58,
+   "e": 18.91,
+   "whisper_s": 18.58
+  },
+  {
+   "w": "shutters",
+   "s": 18.92,
+   "e": 19.52,
+   "whisper_s": 18.92
+  },
+  {
+   "w": "ceilings",
+   "s": 19.85,
+   "e": 20.6,
+   "whisper_s": 19.79
+  },
+  {
+   "w": "door",
+   "s": 20.85,
+   "e": 21.11,
+   "whisper_s": 20.83
+  },
+  {
+   "w": "hardware",
+   "s": 21.12,
+   "e": 21.76,
+   "whisper_s": 21.12
+  },
+  {
+   "w": "roller",
+   "s": 22.02,
+   "e": 22.29,
+   "whisper_s": 22.03
+  },
+  {
+   "w": "blinds",
+   "s": 22.3,
+   "e": 22.89,
+   "whisper_s": 22.3
+  },
+  {
+   "w": "even",
+   "s": 23.2,
+   "e": 23.44,
+   "whisper_s": 23.18
+  },
+  {
+   "w": "mini",
+   "s": 23.45,
+   "e": 23.76,
+   "whisper_s": 23.45
+  },
+  {
+   "w": "homes",
+   "s": 23.77,
+   "e": 24.2,
+   "whisper_s": 23.77
+  },
+  {
+   "w": "that",
+   "s": 24.21,
+   "e": 24.34,
+   "whisper_s": 24.21
+  },
+  {
+   "w": "go",
+   "s": 24.35,
+   "e": 24.57,
+   "whisper_s": 24.35
+  },
+  {
+   "w": "up",
+   "s": 24.58,
+   "e": 24.7,
+   "whisper_s": 24.58
+  },
+  {
+   "w": "in",
+   "s": 24.71,
+   "e": 24.8,
+   "whisper_s": 24.71
+  },
+  {
+   "w": "an",
+   "s": 24.81,
+   "e": 24.9,
+   "whisper_s": 24.81
+  },
+  {
+   "w": "hour",
+   "s": 24.91,
+   "e": 25.4,
+   "whisper_s": 24.91
+  },
+  {
+   "w": "twelve",
+   "s": 25.76,
+   "e": 26.14,
+   "whisper_s": 25.71
+  },
+  {
+   "w": "product",
+   "s": 26.15,
+   "e": 26.54,
+   "whisper_s": 26.15
+  },
+  {
+   "w": "lines",
+   "s": 26.55,
+   "e": 27.06,
+   "whisper_s": 26.55
+  },
+  {
+   "w": "one",
+   "s": 27.34,
+   "e": 27.57,
+   "whisper_s": 27.31
+  },
+  {
+   "w": "factory",
+   "s": 27.58,
+   "e": 28.23,
+   "whisper_s": 27.58
+  },
+  {
+   "w": "in",
+   "s": 28.41,
+   "e": 28.52,
+   "whisper_s": 28.36
+  },
+  {
+   "w": "kampala",
+   "s": 28.53,
+   "e": 29.16,
+   "whisper_s": 28.53
+  },
+  {
+   "w": "share",
+   "s": 29.58,
+   "e": 29.87,
+   "whisper_s": 29.57
+  },
+  {
+   "w": "your",
+   "s": 29.88,
+   "e": 30.16,
+   "whisper_s": 29.88
+  },
+  {
+   "w": "idea",
+   "s": 30.17,
+   "e": 30.67,
+   "whisper_s": 30.17
+  },
+  {
+   "w": "we",
+   "s": 30.96,
+   "e": 31.09,
+   "whisper_s": 30.97
+  },
+  {
+   "w": "draw",
+   "s": 31.1,
+   "e": 31.45,
+   "whisper_s": 31.1
+  },
+  {
+   "w": "it",
+   "s": 31.46,
+   "e": 31.79,
+   "whisper_s": 31.46
+  },
+  {
+   "w": "we",
+   "s": 31.85,
+   "e": 31.96,
+   "whisper_s": 31.8
+  },
+  {
+   "w": "build",
+   "s": 31.97,
+   "e": 32.3,
+   "whisper_s": 31.97
+  },
+  {
+   "w": "it",
+   "s": 32.31,
+   "e": 32.56,
+   "whisper_s": 32.31
+  },
+  {
+   "w": "we",
+   "s": 32.7,
+   "e": 32.83,
+   "whisper_s": 32.57
+  },
+  {
+   "w": "install",
+   "s": 32.84,
+   "e": 33.38,
+   "whisper_s": 32.84
+  },
+  {
+   "w": "it",
+   "s": 33.39,
+   "e": 33.62,
+   "whisper_s": 33.39
+  },
+  {
+   "w": "built",
+   "s": 33.93,
+   "e": 34.22,
+   "whisper_s": 33.91
+  },
+  {
+   "w": "to",
+   "s": 34.23,
+   "e": 34.31,
+   "whisper_s": 34.23
+  },
+  {
+   "w": "last",
+   "s": 34.32,
+   "e": 34.94,
+   "whisper_s": 34.32
+  },
+  {
+   "w": "delivered",
+   "s": 35.17,
+   "e": 35.7,
+   "whisper_s": 35.12
+  },
+  {
+   "w": "as",
+   "s": 35.71,
+   "e": 35.93,
+   "whisper_s": 35.71
+  },
+  {
+   "w": "promised",
+   "s": 35.94,
+   "e": 36.6,
+   "whisper_s": 35.94
+  },
+  {
+   "w": "casements",
+   "s": 36.97,
+   "e": 37.65,
+   "whisper_s": 36.95
+  },
+  {
+   "w": "plot",
+   "s": 37.94,
+   "e": 38.2,
+   "whisper_s": 37.89
+  },
+  {
+   "w": "eighty",
+   "s": 38.21,
+   "e": 38.44,
+   "whisper_s": 38.21
+  },
+  {
+   "w": "six",
+   "s": 38.45,
+   "e": 38.89,
+   "whisper_s": 38.45
+  },
+  {
+   "w": "fifth",
+   "s": 39.15,
+   "e": 39.28,
+   "whisper_s": 38.9
+  },
+  {
+   "w": "street",
+   "s": 39.29,
+   "e": 39.73,
+   "whisper_s": 39.29
+  },
+  {
+   "w": "industrial",
+   "s": 39.74,
+   "e": 40.37,
+   "whisper_s": 39.74
+  },
+  {
+   "w": "area",
+   "s": 40.38,
+   "e": 40.78,
+   "whisper_s": 40.38
+  },
+  {
+   "w": "call",
+   "s": 41.12,
+   "e": 41.37,
+   "whisper_s": 41.08
+  },
+  {
+   "w": "plus",
+   "s": 41.38,
+   "e": 41.77,
+   "whisper_s": 41.38
+  },
+  {
+   "w": "two",
+   "s": 41.78,
+   "e": 41.96,
+   "whisper_s": 41.78
+  },
+  {
+   "w": "five",
+   "s": 41.97,
+   "e": 42.21,
+   "whisper_s": 41.97
+  },
+  {
+   "w": "six",
+   "s": 42.22,
+   "e": 42.83,
+   "whisper_s": 42.22
+  },
+  {
+   "w": "seven",
+   "s": 42.85,
+   "e": 43.16,
+   "whisper_s": 42.84
+  },
+  {
+   "w": "five",
+   "s": 43.17,
+   "e": 43.47,
+   "whisper_s": 43.17
+  },
+  {
+   "w": "two",
+   "s": 43.48,
+   "e": 43.98,
+   "whisper_s": 43.48
+  },
+  {
+   "w": "seven",
+   "s": 43.99,
+   "e": 44.38,
+   "whisper_s": 43.99
+  },
+  {
+   "w": "zero",
+   "s": 44.39,
+   "e": 44.66,
+   "whisper_s": 44.39
+  },
+  {
+   "w": "zero",
+   "s": 44.67,
+   "e": 45.18,
+   "whisper_s": 44.67
+  },
+  {
+   "w": "seven",
+   "s": 45.19,
+   "e": 45.59,
+   "whisper_s": 45.19
+  },
+  {
+   "w": "zero",
+   "s": 45.6,
+   "e": 45.87,
+   "whisper_s": 45.6
+  },
+  {
+   "w": "zero",
+   "s": 45.88,
+   "e": 46.37,
+   "whisper_s": 45.88
+  },
+  {
+   "w": "or",
+   "s": 46.6,
+   "e": 46.75,
+   "whisper_s": 46.56
+  },
+  {
+   "w": "visit",
+   "s": 46.76,
+   "e": 47.24,
+   "whisper_s": 46.76
+  },
+  {
+   "w": "casements",
+   "s": 47.3,
+   "e": 47.88,
+   "whisper_s": 47.25
+  },
+  {
+   "w": "dot",
+   "s": 47.89,
+   "e": 48.16,
+   "whisper_s": 47.89
+  },
+  {
+   "w": "c",
+   "s": 48.17,
+   "e": 48.47,
+   "whisper_s": 48.17
+  },
+  {
+   "w": "o",
+   "s": 48.48,
+   "e": 48.71,
+   "whisper_s": 48.48
+  },
+  {
+   "w": "dot",
+   "s": 48.72,
+   "e": 49.02,
+   "whisper_s": 48.72
+  },
+  {
+   "w": "u",
+   "s": 49.03,
+   "e": 49.24,
+   "whisper_s": 49.03
+  },
+  {
+   "w": "g",
+   "s": 49.25,
+   "e": 49.78,
+   "whisper_s": 49.25
+  }
+ ]
+}

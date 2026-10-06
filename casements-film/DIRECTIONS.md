@@ -1,71 +1,40 @@
-# {{TITRE_DU_FILM}} : trois directions de storyboard (à choisir avant d'écrire le storyboard complet)
+# Casements Africa — three portrait (9:16) directions, choose one before the storyboard
 
-<!--
-Modèle de l'étape 4 de la méthode (premier prompt : « Propose-moi 3 directions de storyboard vraiment différentes pour
-ce script, avec 3 images de style chacune »). Copie-le en <projet>/DIRECTIONS.md, remplace chaque {{...}}
-(grep -n "{{" DIRECTIONS.md ne doit rien afficher), puis supprime ce commentaire.
+Format: **9:16, 1080x1920**, 53.3 s. Same voice for all three (`assets/audio/voix.mp3`, cut with a 2.4 s silent hook at the start
+and 3.5 s of end card, word times in `onsets.json`). Brand: green `#1f7a3d`, yellow `#f5b800` (the key-word box), near-black
+`#101010`. Real product photos only, no client buildings, no client names. Subtitles in the portrait band (y 1330 to 1520).
 
-- Lis d'abord patterns/STORYBOARD-CRAFT.md (les 10 lois) et patterns/PATTERNS.md (quoi montrer).
-- Trois directions VRAIMENT différentes : trois lieux, trois façons de faire le pont entre les idées, pas trois
-  habillages du même film. Même script, même voix, même minutage pour les trois (chaque musique ira avec chaque image).
-- Une image de style = une image figée du futur film, en qualité finale (vraies interfaces, vraie typographie, vraie
-  lumière), avec le mouvement suggéré dans l'image elle-même (flou de mouvement, flou de profondeur, élément qui arrive
-  trop grand et flou). Une page HTML autonome de 1920 × 1080 par image, dans <projet>/styleframes/<A1 à C3>.html, rendue
-  en PNG par : python3 .claude/skills/motion-design/scripts/render-styleframes.py <projet>
-- Choisis les trois moments de chaque direction là où elle se joue : l'accroche, le cœur de la douleur, le retournement
-  ou la preuve. Donne leur temps exact dans la voix.
-- Montre les 9 images côte à côte, direction par direction, et attends le choix. Corriger une image coûte dix fois
-  moins cher que corriger une vidéo.
-Exemple rempli : examples/C-le-devis-v7a/DIRECTIONS.md.
--->
+## Voice timeline (film seconds)
 
-Même voix, même musique, mêmes bruitages pour les trois directions : l'horloge ne bouge pas, seule la mise en scène
-change. Grammaire visée : `patterns/STORYBOARD-CRAFT.md` (un monde, une caméra qui s'y déplace, un objet-pont à chaque
-transition, deux vitesses, un événement toutes les 0,5 à 1 s, rien d'immobile). Vraies interfaces, épurées et
-actuelles : {{INTERFACES_ET_CAPTURES_DE_REFERENCE}}.
+0.0 to 2.4 silent hook: « Aluminium. Glass. Steel. Wood. » on screen only · sixty 2.46 · years 2.94 · building 3.49 · Uganda's 3.87 ·
+doors 4.49 · windows 5.20 · skylines 5.99 · doors 7.29 · windows 7.83 · open the way 8.68 · curtain walls 10.01 ·
+facades 10.88 · towers 12.81 · glass 13.88 · partitions 14.77 · railings 15.83 · steel gates 16.85 · grills 17.78 ·
+roller shutters 18.58 · ceilings 19.85 · door hardware 20.85 · roller blinds 22.02 · mini homes 23.45 · in an hour 24.71 ·
+twelve product lines 25.76 · one factory 27.34 · in Kampala 28.41 · share your idea 29.58 · we draw it 30.96 ·
+we build it 31.85 · we install it 32.70 · built to last 33.93 · delivered as promised 35.17 · Casements 36.97 ·
+plot eighty-six 37.94 · fifth street 39.15 · call 41.12 · seven five two 42.85 · seven zero zero 44.39 ·
+or visit 46.60 · casements dot c o dot u g 47.30 to 49.56 · end card to 53.3.
 
-## Minutage global de la voix (secondes du film)
+## A. « Twelve Frames » (recommended) — light, the window grid of the logo
 
-{{MOT TEMPS · MOT TEMPS · … (depuis onsets.json ; marque le pivot, par exemple [Stop. 14.02, musique coupée])}}
+**Concept.** The logo is a window drawn as overlapping green frames. Every product line sits in a green window frame on a
+light steel ground; the camera travels frame to frame down a tall column of frames, and the green frame lines are the thread
+(they draw, join, and at the end become the logo). Quality is shown by large, clean close-ups of the product.
+**Bridge objects.** a mullion line → the edge of the next frame → the logo's grid. **Styleframes:** A1 (hook, 1.5 s), A2 (curtain wall, 11 s), A3 (end card, 49 s).
 
-## A. « {{NOM_A}} » {{(recommandée)}}
+## B. « Blueprint to Building » — dark green blueprint
 
-**Concept.** {{En deux ou trois phrases : le lieu du film (le décor que la caméra parcourt), ce qu'il dit du message,
-pourquoi il sert cette voix. Ce qui change entre le monde de la douleur et celui de la solution.}}
+**Concept.** The film starts as a technical drawing (green grid, a window elevation with dimension lines) and every product line
+"builds" from drawn lines into the real product photo, in step with « Share your idea. We draw it. We build it. We install it. ».
+Precise, engineered look. **Bridge objects.** a drawn line → the outline of a product photo → the logo. **Styleframes:** B1 (hook, 1.5 s), B2 (steel gates, 17 s), B3 (end card, 49 s).
 
-**Fil des objets-ponts.** {{Le parcours de la caméra et, à chaque idée de la voix, l'objet qui survit et change de rôle :
-« mot ou temps : objet → nouveau rôle ». Par exemple : le prix arrive trop grand et se pose dans sa case ; la case
-grandit et devient le téléphone ; le devis rétrécit en notification. Nomme les 1 ou 2 mécanismes signature qui
-reviendront 4 à 8 fois, et la rime (le geste de la fin qui rejoue le début).}}
+## C. « Factory Floor » — warm, the real workshop
 
-**Images de style à dessiner.**
-- A1 ({{t}} s) : {{cadrage, sujet net, avant-plan flou, fond, lumière, ce qui est en mouvement, texte à l'écran}}
-- A2 ({{t}} s) : {{…}}
-- A3 ({{t}} s) : {{…}}
+**Concept.** The factory photos (orange light, green uniforms) open the film; the camera then scrolls down a tall catalogue of
+product cards like walking the shop floor, one card per line, blurred neighbours above and below.
+Warmest and most human. **Bridge objects.** a card edge → the next card → the logo plate. **Styleframes:** C1 (hook, 1.5 s), C2 (glass, partitions, railings, 14 s), C3 (end card, 49 s).
 
-## B. « {{NOM_B}} »
+## What I need from you
 
-**Concept.** {{…}}
-
-**Fil des objets-ponts.** {{…}}
-
-**Images de style à dessiner.**
-- B1 ({{t}} s) : {{…}}
-- B2 ({{t}} s) : {{…}}
-- B3 ({{t}} s) : {{…}}
-
-## C. « {{NOM_C}} »
-
-**Concept.** {{…}}
-
-**Fil des objets-ponts.** {{…}}
-
-**Images de style à dessiner.**
-- C1 ({{t}} s) : {{…}}
-- C2 ({{t}} s) : {{…}}
-- C3 ({{t}} s) : {{…}}
-
-## Choix
-
-Direction retenue : {{lettre}}, {{avec ses emprunts éventuels aux deux autres, par exemple un objet-pont de B}}.
-Images de style de référence pour la charte et le storyboard : {{styleframes/A1.png, A2.png, A3.png}}.
+Pick A, B or C (or a mix, e.g. "A's frames with C's end card"). Then I write `frame.md`, the shot-by-shot `STORYBOARD.md` on
+these word timings, its check grid, and build the animation.
