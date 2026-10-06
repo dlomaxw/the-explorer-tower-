@@ -1,0 +1,241 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; font-family: "Montserrat", sans-serif; }
+    #root .c04-fill { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+
+    #c04-ground { background: radial-gradient(circle at 50% 48%, rgba(255,214,10,.06) 0%, rgba(255,214,10,0) 62%), #f7f4ec; }
+    #c04-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    #c04-world { position: absolute; left: 0; top: 0; width: 1740px; height: 1080px; transform-origin: 0 0; }
+
+    /* residence-card (A2 verbatim, wrapped so the wrapper carries the motion) */
+    .c04-cw { position: absolute; top: 190px; width: 520px; height: 620px; }
+    .c04-card { position: relative; width: 520px; height: 620px; background: #fff; border-radius: 28px; box-shadow: 0 30px 80px rgba(60,50,20,.18); overflow: hidden; }
+    .c04-card .c04-p { position: relative; height: 360px; overflow: hidden; }
+    .c04-card .c04-pi { position: absolute; left: 0; top: 0; width: 520px; height: 420px; background-size: cover; background-position: center; }
+    .c04-card h3 { font-size: 34px; font-weight: 800; color: #111; margin: 26px 34px 6px; line-height: 1.22; }
+    .c04-card .c04-pr { font-size: 58px; font-weight: 800; color: #111; margin: 0 34px; font-variant-numeric: tabular-nums; }
+    .c04-card .c04-pr small { display: block; font-size: 22px; font-weight: 600; color: #6a6458; letter-spacing: 3px; }
+    .c04-hi { position: relative; display: inline-block; padding: 0 14px; margin-left: -14px; }
+    .c04-hi i { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #FFD60A; border-radius: 8px; transform-origin: 0 50%; }
+    .c04-num { position: relative; display: inline-block; transform-origin: 0 50%; }
+    .c04-ch { opacity: 0; }
+
+    #c04-cw2 { left: 0; z-index: 1; }
+    #c04-cw3 { left: 580px; z-index: 2; }
+    #c04-cwp { left: 1160px; z-index: 5; }
+    #c04-border { position: absolute; left: 0; top: 0; width: 520px; height: 620px; overflow: visible; opacity: 0; pointer-events: none; }
+    #c04-bpath { fill: none; stroke: #FFD60A; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px #FFD60A); }
+
+    #c04-grain { opacity: .03; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    .c04-sub { position: absolute; left: 0; top: 896px; width: 1920px; height: 64px; display: flex; justify-content: center; gap: 16px;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 52px; line-height: 64px; color: #111;
+      text-shadow: 0 2px 14px rgba(247,244,236,.85); z-index: 20; }
+    .c04-sub.c04-late { opacity: 1; }
+    .c04-w { position: relative; display: inline-block; opacity: 0; color: rgba(17,17,17,.4); white-space: nowrap; }
+    .c04-pair { display: inline-flex; gap: 0; }
+    .c04-box { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c04-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="04-three-bed-penthouses" data-width="1920" data-height="1080" data-duration="5.36">
+    <div id="c04-groundclip" class="clip" data-start="0" data-duration="5.36" data-track-index="0" data-layout-ignore>
+      <div id="c04-ground" class="c04-fill"></div>
+    </div>
+
+    <div id="c04-stage">
+      <div id="c04-world" data-layout-allow-overflow>
+        <div id="c04-cw2" class="c04-cw">
+          <div class="c04-card">
+            <div class="c04-p"><div class="c04-pi" style="background-image:url(assets/img/living-2bed.png)"></div></div>
+            <h3>Two-bedroom</h3>
+            <div class="c04-pr"><small>FROM</small><span class="c04-hi"><i></i><span class="c04-num" style="transform:none">USD 300,000</span></span></div>
+          </div>
+        </div>
+
+        <div id="c04-cw3" class="c04-cw">
+          <div class="c04-card">
+            <div class="c04-p"><div class="c04-pi" style="background-image:url(assets/img/living-3bed.png)"></div></div>
+            <h3 id="c04-name3"></h3>
+            <div class="c04-pr"><small id="c04-from3" style="opacity:0">FROM</small><span class="c04-hi"><i id="c04-box3" style="transform:scaleX(0)"></i><span id="c04-num3" class="c04-num" style="opacity:0">USD 0</span></span></div>
+          </div>
+        </div>
+
+        <div id="c04-cwp" class="c04-cw">
+          <div class="c04-card">
+            <div class="c04-p"><div id="c04-pimg" class="c04-pi" style="background-image:url(assets/img/sky-pool-penthouse.webp)"></div></div>
+            <h3 id="c04-namep"></h3>
+            <div id="c04-prp" class="c04-pr" style="font-size:40px; opacity:0"><small>PRICE</small>On application</div>
+          </div>
+          <svg id="c04-border" viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg">
+            <path id="c04-bpath" pathLength="1" d="M 260 2 H 492 A 26 26 0 0 1 518 28 V 592 A 26 26 0 0 1 492 618 H 28 A 26 26 0 0 1 2 592 V 28 A 26 26 0 0 1 28 2 Z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="c04-grain" class="c04-fill"></div>
+
+    <div id="c04-sub1" class="c04-sub">
+      <span class="c04-pair"><span id="c04-s1w0" class="c04-w">three-</span><span id="c04-s1w1" class="c04-w">bedroom,</span></span>
+      <span id="c04-s1w2" class="c04-w">from</span>
+    </div>
+    <div id="c04-sub2" class="c04-sub">
+      <span id="c04-s2w0" class="c04-w">four</span>
+      <span id="c04-s2w1" class="c04-w">hundred</span>
+      <span id="c04-s2w2" class="c04-w"><i id="c04-s2box" class="c04-box"></i><span id="c04-s2bt" class="c04-bt">thousand</span></span>
+    </div>
+    <div id="c04-sub3" class="c04-sub">
+      <span id="c04-s3w0" class="c04-w">and</span>
+      <span id="c04-s3w1" class="c04-w">two</span>
+      <span class="c04-pair"><span id="c04-s3w2" class="c04-w">six-</span><span id="c04-s3w3" class="c04-w">bedroom</span></span>
+      <span id="c04-s3w4" class="c04-w"><i id="c04-s3box" class="c04-box"></i><span id="c04-s3bt" class="c04-bt">penthouses,</span></span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "04-three-bed-penthouses";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- typed names (per-character, discrete) ---------- */
+      function buildChars(id, text) {
+        var host = $(id), out = [];
+        text.split(" ").forEach(function (wd, wi, arr) {
+          var wrap = document.createElement("span");
+          wrap.style.whiteSpace = "nowrap";
+          wd.split("").forEach(function (c) {
+            var s = document.createElement("span");
+            s.className = "c04-ch";
+            s.textContent = c;
+            wrap.appendChild(s);
+            out.push(s);
+          });
+          host.appendChild(wrap);
+          if (wi < arr.length - 1) host.appendChild(document.createTextNode(" "));
+        });
+        return out;
+      }
+      function typeIn(chars, t0, step) {
+        chars.forEach(function (s, i) { tl.set(s, { opacity: 1 }, t0 + i * step); });
+      }
+      var ch3 = buildChars("c04-name3", "Three-bedroom");
+      var chp = buildChars("c04-namep", "Six-bedroom penthouses");
+
+      /* ---------- camera: one state, one writer ---------- */
+      var world = $("c04-world"), stage = $("c04-stage");
+      var cam = { x: 620, y: 500, z: 1 };
+      function applyCam() {
+        world.style.transform = "translate(" + (960 - cam.x * cam.z).toFixed(2) + "px," + (540 - cam.y * cam.z).toFixed(2) + "px) scale(" + cam.z.toFixed(4) + ")";
+      }
+      function camT(props, dur, ease, t) {
+        var o = { duration: dur, ease: ease, onUpdate: applyCam };
+        for (var k in props) o[k] = props[k];
+        tl.to(cam, o, t);
+      }
+      var c2 = $("c04-cw2"), c3 = $("c04-cw3"), cp = $("c04-cwp");
+
+      /* initial state = handoff_in */
+      gsap.set(stage, { filter: "blur(14px)" });
+      gsap.set(c2, { y: 24, rotation: -1.5, filter: "blur(3px)" });
+      gsap.set(c3, { scale: 1.1, filter: "blur(0px)" });
+      gsap.set(cp, { y: 40, rotation: 1.5, filter: "blur(4px)" });
+      applyCam();
+
+      /* camera legs */
+      camT({ x: 840 }, 0.35, "expo.out", 0);                 /* settle on the three-bedroom */
+      camT({ x: 935 }, 1.65, "none", 0.35);                  /* drift ~3 %/s */
+      camT({ x: 1190 }, 0.36, "power2.in", 2.0);             /* pan right */
+      camT({ x: 1420 }, 0.40, "expo.out", 2.36);             /* land on the penthouse */
+      camT({ z: 1.14 }, 1.74, "none", 2.76);                 /* push 8 %/s */
+      camT({ z: 1.6 }, 0.86, "expo.in", 4.5);                /* push toward the card */
+
+      /* camera blur */
+      fT(stage, { filter: "blur(14px)" }, { filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0);
+      fT(stage, { filter: "blur(0px)" }, { filter: "blur(10px)", duration: 0.36, ease: "power2.in" }, 2.0);
+      fT(stage, { filter: "blur(10px)" }, { filter: "blur(0px)", duration: 0.40, ease: "power2.out" }, 2.36);
+      fT(stage, { filter: "blur(0px)" }, { filter: "blur(10px)", duration: 0.86, ease: "power2.in" }, 4.5);
+
+      /* ---------- cards: depth ---------- */
+      fT(c3, { scale: 1.1 }, { scale: 1, duration: 0.35, ease: "expo.out" }, 0);
+      fT(c2, { filter: "blur(3px)" }, { filter: "blur(8px)", duration: 0.5, ease: "power2.out" }, 1.3);
+      fT(cp, { filter: "blur(4px)", y: 40, rotation: 1.5 }, { filter: "blur(0px)", y: 0, rotation: 0, duration: 0.4, ease: "expo.out" }, 2.36);
+
+      /* ---------- Scene 1: the three-bedroom ---------- */
+      typeIn(ch3, 0.45, 0.02);
+      fT($("c04-from3"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 0.70);
+
+      var n3 = $("c04-num3"), st = { v: 0 };
+      fT(n3, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out" }, 0.85);
+      tl.to(st, { v: 400000, duration: 1.0, ease: "power3.out", onUpdate: function () {
+        n3.textContent = "USD " + Math.round(st.v).toLocaleString("en-US");
+      } }, 0.85);
+      fT($("c04-box3"), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, 1.84);
+
+      /* ---------- Scene 2: the penthouses ---------- */
+      typeIn(chp, 3.00, 0.018);
+      fT($("c04-pimg"), { y: 0 }, { y: -30, duration: 1.2, ease: "power2.out" }, 3.40);
+      fT($("c04-prp"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 3.90);
+      fT($("c04-pimg"), { filter: "brightness(1) saturate(1)" }, { filter: "brightness(1.14) saturate(1.1)", duration: 0.4, ease: "power2.out" }, 4.47);
+
+      /* the swell: penthouse grows, the others are pushed out left */
+      fT(cp, { scale: 1 }, { scale: 1.62, duration: 0.4, ease: "power3.out" }, 4.5);
+      fT(c2, { x: 0 }, { x: -300, duration: 0.7, ease: "power3.out" }, 4.5);
+      fT(c3, { x: 0 }, { x: -200, duration: 0.7, ease: "power3.out" }, 4.5);
+      fT(c3, { filter: "blur(0px)" }, { filter: "blur(8px)", duration: 0.5, ease: "power2.out" }, 4.5);
+
+      /* the line round the card */
+      var bp = $("c04-bpath");
+      bp.style.strokeDasharray = "1 1";
+      bp.style.strokeDashoffset = "1";
+      tl.set($("c04-border"), { opacity: 1 }, 4.90);
+      tl.to(bp, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 4.90);
+
+      /* ---------- subtitles ---------- */
+      function word(id, cue) {
+        var el = $(id), t = cue - 0.03;
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, t);
+        fT(el, { color: "rgba(17,17,17,.4)" }, { color: "#111111", duration: 0.2, ease: "power1.out" }, t + 0.14);
+      }
+      function keybox(wid, boxId, cue) {
+        word(wid, cue);
+        fT($(boxId), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, cue - 0.06);
+      }
+      function leave(id, t, dur) {
+        fT($(id), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: dur, ease: "power2.in" }, t);
+      }
+
+      word("c04-s1w0", 0.19);
+      word("c04-s1w1", 0.39);
+      word("c04-s1w2", 1.08);
+      leave("c04-sub1", 1.22, 0.12);
+
+      word("c04-s2w0", 1.37);
+      word("c04-s2w1", 1.57);
+      keybox("c04-s2w2", "c04-s2box", 1.87);
+      leave("c04-sub2", 2.56, 0.14);
+
+      word("c04-s3w0", 2.74);
+      word("c04-s3w1", 3.31);
+      word("c04-s3w2", 3.63);
+      word("c04-s3w3", 4.06);
+      keybox("c04-s3w4", "c04-s3box", 4.47);
+      leave("c04-sub3", 5.14, 0.14);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>

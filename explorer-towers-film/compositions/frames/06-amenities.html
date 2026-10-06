@@ -1,0 +1,234 @@
+<template>
+  <style>
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c06-fill { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #c06-ground { background: #0c0c0e; }
+
+    #c06-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    #c06-world { position: absolute; left: 0; top: 0; width: 3600px; height: 1080px; transform-origin: 0 0; }
+
+    .c06-slat { position: absolute; top: 0; width: 700px; height: 1080px;
+      --dof: 3px; --br: .5; --ct: 1;
+      filter: blur(var(--dof)) brightness(var(--br)) contrast(var(--ct)); will-change: filter; }
+    .c06-clip { position: absolute; left: 0; top: 0; width: 700px; height: 1080px; overflow: hidden; }
+    .c06-img { position: absolute; left: 0; top: 0; width: 700px; height: 1080px; background-repeat: no-repeat; }
+    .c06-grad { position: absolute; left: 0; top: 0; width: 700px; height: 1080px;
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.72) 100%); }
+    .c06-slice { position: absolute; top: 0; width: 175px; height: 1080px; overflow: hidden; }
+    .c06-slice .c06-img { width: 175px; }
+
+    #c06-s0 { left: 0; --dof: 12px; --br: .7; }
+    #c06-s1 { left: 720px; opacity: 0; --dof: 2px; --br: .4; --ct: 1.15; }
+    #c06-s2 { left: 1440px; opacity: 0; }
+    #c06-s3 { left: 2160px; opacity: 0; }
+    #c06-s4 { left: 2880px; opacity: 0; }
+
+    #c06-i1 { background-image: url("assets/img/sauna.webp"); background-size: auto 1400px; background-position: -1102px -290px; }
+    #c06-i2 { background-image: url("assets/img/playground.webp"); background-size: cover; background-position: 50% 60%; transform-origin: 50% 100%; }
+    #c06-i3 { background-image: url("assets/img/residents-lounge.webp"); background-size: cover; background-position: 50% 50%; }
+    #c06-i4 { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1200px; background-position: -470px -60px; }
+    .c06-gi { background-image: url("assets/img/pool-and-gym.webp"); background-size: 2400px 1351px; }
+
+    .c06-sweep { position: absolute; left: 0; top: -100px; width: 200px; height: 1300px; opacity: 0; mix-blend-mode: screen;
+      background: linear-gradient(90deg, rgba(255,240,190,0), rgba(255,240,190,.5), rgba(255,240,190,0)); }
+    .c06-puff { position: absolute; top: 900px; width: 180px; height: 180px; border-radius: 50%; opacity: 0; filter: blur(10px);
+      background: radial-gradient(closest-side, rgba(255,255,255,.4), rgba(255,255,255,0)); }
+    #c06-lamp { position: absolute; left: 130px; top: 130px; width: 440px; height: 440px; border-radius: 50%; opacity: 0; mix-blend-mode: screen;
+      background: radial-gradient(closest-side, rgba(255,240,160,.85), rgba(255,214,10,.25) 55%, rgba(255,214,10,0)); }
+
+    .c06-w { position: absolute; white-space: nowrap; opacity: 0; transform-origin: 0 100%;
+      font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: #fff; line-height: 0.88;
+      text-shadow: 0 6px 40px rgba(0,0,0,.6); }
+    #c06-w0 { left: 50px; top: 640px; font-size: 150px; }
+    #c06-w1 { left: 770px; top: 660px; font-size: 140px; }
+    #c06-w2 { left: 1490px; top: 670px; font-size: 130px; }
+    #c06-w3 { left: 2210px; top: 680px; font-size: 120px; }
+    #c06-w4 { left: 2930px; top: 720px; font-size: 90px; }
+
+    #c06-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+  </style>
+
+  <div id="root" data-composition-id="06-amenities" data-width="1920" data-height="1080" data-duration="5.29">
+    <div id="c06-groundclip" class="clip" data-start="0" data-duration="5.29" data-track-index="0" data-layout-ignore>
+      <div id="c06-ground" class="c06-fill"></div>
+    </div>
+
+    <div id="c06-stage">
+      <div id="c06-world" data-layout-allow-overflow>
+        <!-- slat 0: gym, four slices of the pool render -->
+        <div id="c06-s0" class="c06-slat" data-layout-allow-overflow>
+          <div id="c06-sl0" class="c06-slice" style="left:0px"><div class="c06-img c06-gi" style="background-position:-1444px -270px"></div></div>
+          <div id="c06-sl1" class="c06-slice" style="left:175px"><div class="c06-img c06-gi" style="background-position:-1619px -270px"></div></div>
+          <div id="c06-sl2" class="c06-slice" style="left:350px"><div class="c06-img c06-gi" style="background-position:-1794px -270px"></div></div>
+          <div id="c06-sl3" class="c06-slice" style="left:525px"><div class="c06-img c06-gi" style="background-position:-1969px -270px"></div></div>
+          <div class="c06-grad"></div>
+          <div class="c06-clip"><div id="c06-sw0" class="c06-sweep"></div></div>
+        </div>
+        <!-- slat 1: sauna -->
+        <div id="c06-s1" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i1" class="c06-img"></div>
+            <div class="c06-grad"></div>
+            <div id="c06-steam"></div>
+          </div>
+        </div>
+        <!-- slat 2: garden -->
+        <div id="c06-s2" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i2" class="c06-img"></div>
+            <div class="c06-grad"></div>
+          </div>
+        </div>
+        <!-- slat 3: lounge -->
+        <div id="c06-s3" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i3" class="c06-img"></div>
+            <div class="c06-grad"></div>
+            <div id="c06-lamp"></div>
+          </div>
+        </div>
+        <!-- slat 4: covered parking -->
+        <div id="c06-s4" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i4" class="c06-img"></div>
+            <div class="c06-grad"></div>
+            <div id="c06-sw4" class="c06-sweep"></div>
+          </div>
+        </div>
+
+        <div id="c06-w0" class="c06-w">A gym.</div>
+        <div id="c06-w1" class="c06-w">A sauna.</div>
+        <div id="c06-w2" class="c06-w">A garden.</div>
+        <div id="c06-w3" class="c06-w">A lounge.</div>
+        <div id="c06-w4" class="c06-w">Covered parking.</div>
+      </div>
+    </div>
+    <div id="c06-grain" class="c06-fill"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "06-amenities";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- one camera: u = world x at screen centre, s = zoom ---------- */
+      var C = [350, 1070, 1790, 2510, 3230];
+      var world = $("c06-world");
+      var cam = { u: C[0], s: 1.2 };
+      function applyCam() {
+        world.style.transform = "translate(" + (960 - cam.u * cam.s).toFixed(2) + "px," + (540 - 540 * cam.s).toFixed(2) + "px) scale(" + cam.s.toFixed(4) + ")";
+      }
+      applyCam();
+      function camU(u, dur, ease, t) {
+        tl.to(cam, { u: u, duration: dur, ease: ease, onUpdate: applyCam }, t);
+      }
+      /* drift (about 28 px/s) between the pans, pans expo.inOut */
+      camU(C[0] + 25, 0.90, "none", 0);
+      camU(C[1], 0.40, "expo.inOut", 0.90);
+      camU(C[1] + 14, 0.50, "none", 1.30);
+      camU(C[2], 0.40, "expo.inOut", 1.80);
+      camU(C[2] + 20, 0.70, "none", 2.20);
+      camU(C[3], 0.30, "expo.inOut", 2.90);
+      camU(C[3] + 17, 0.32, "none", 3.20);
+      camU(C[4], 0.48, "expo.inOut", 3.52);
+      camU(C[4] + 28, 1.00, "none", 4.00);
+      camU(C[4] + 28 + 130, 0.29, "power2.in", 5.00);
+      tl.to(cam, { s: 1.0, duration: 0.6, ease: "expo.out", onUpdate: applyCam }, 0);
+      tl.to(cam, { s: 1.03, duration: 0.39, ease: "power1.in", onUpdate: applyCam }, 4.90);
+
+      /* ---------- slats: slices of the pool, then the others slide in from the right ---------- */
+      for (var i = 0; i < 4; i++) {
+        tl.fromTo($("c06-sl" + i), { x: 100 + i * 40 }, { x: 0, duration: 0.5 + i * 0.06, ease: "power2.out" }, 0);
+      }
+      for (var k = 1; k < 5; k++) {
+        fT($("c06-s" + k), { opacity: 0, x: 420 }, { opacity: 1, x: 0, duration: 0.2, ease: "expo.out" }, 0.06 * k);
+      }
+
+      /* ---------- depth of field: the active slat is sharp, neighbours 2 to 3 px ---------- */
+      var ACT = [0.95, 0.8, 0.9, 0.9, 0.95];
+      var NB = [0.5, 0.4, 0.5, 0.5, 0.5];
+      var state = [];
+      function target(j, a) {
+        if (j === a) return { d: 0, b: ACT[j] };
+        var dist = Math.abs(j - a);
+        var d = dist === 1 ? (a === 4 ? 3 : 2) : 3;
+        return { d: d, b: NB[j] };
+      }
+      var cur = [{ d: 12, b: 0.7 }, { d: 2, b: 0.4 }, { d: 3, b: 0.5 }, { d: 3, b: 0.5 }, { d: 3, b: 0.5 }];
+      function rack(a, t, dur) {
+        for (var j = 0; j < 5; j++) {
+          var tg = target(j, a);
+          if (tg.d === cur[j].d && tg.b === cur[j].b) continue;
+          tl.to($("c06-s" + j), { "--dof": tg.d + "px", "--br": tg.b, duration: dur, ease: "power2.inOut" }, t);
+          cur[j] = tg;
+        }
+      }
+      tl.to($("c06-s0"), { "--dof": "0px", "--br": ACT[0], duration: 0.35, ease: "power2.out" }, 0);
+      cur[0] = { d: 0, b: ACT[0] };
+      rack(1, 0.90, 0.40);
+      rack(2, 1.80, 0.40);
+      rack(3, 2.90, 0.30);
+      rack(4, 3.52, 0.48);
+      /* handoff out: the last slat goes soft with the lateral pan */
+      tl.to($("c06-s4"), { "--dof": "12px", "--br": 0.82, duration: 0.29, ease: "power2.in" }, 5.00);
+
+      /* ---------- display words on their cues (one entrance each) ---------- */
+      fT($("c06-w0"), { opacity: 0, scale: 1.5, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power4.out" }, 0.27);
+      fT($("c06-w1"), { opacity: 0, x: -130, filter: "blur(12px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 1.20);
+      fT($("c06-w2"), { opacity: 0, y: 80, scale: 1.15, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, 2.29);
+      fT($("c06-w3"), { opacity: 0, scale: 1.3, x: 60, filter: "blur(14px)" }, { opacity: 1, scale: 1, x: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 3.19);
+      fT($("c06-w4"), { opacity: 0, scale: 1.5, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power4.out" }, 4.27);
+      /* words gone for the handoff */
+      fT($("c06-w4"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(12px)", duration: 0.2, ease: "power2.in" }, 5.02);
+
+      /* ---------- slat events ---------- */
+      /* gym: light sweep over the treadmills */
+      fT($("c06-sw0"), { opacity: 0, x: -300, rotation: 18 }, { x: 900, rotation: 18, duration: 0.7, ease: "power2.inOut" }, 0.55);
+      fT($("c06-sw0"), { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power2.out" }, 0.55);
+      fT($("c06-sw0"), { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in" }, 0.85);
+
+      /* sauna: steam rises */
+      var steam = $("c06-steam");
+      for (var p = 0; p < 7; p++) {
+        var pf = document.createElement("div");
+        pf.id = "c06-puff" + p;
+        pf.className = "c06-puff";
+        pf.style.left = (30 + p * 85) + "px";
+        steam.appendChild(pf);
+        var t0 = 1.50 + p * 0.12;
+        fT(pf, { y: 0, scale: 0.7 }, { y: -560, scale: 1.6, duration: 1.7, ease: "power1.out" }, t0);
+        fT(pf, { opacity: 0 }, { opacity: 0.6, duration: 0.4, ease: "power2.out" }, t0);
+        fT(pf, { opacity: 0.6 }, { opacity: 0, duration: 1.0, ease: "power1.in" }, t0 + 0.7);
+      }
+
+      /* garden: leaves sway */
+      tl.set($("c06-i2"), { scale: 1.1, rotation: 0 }, 0);
+      tl.to($("c06-i2"), { rotation: -1.2, duration: 0.5, ease: "sine.inOut" }, 2.60);
+      tl.to($("c06-i2"), { rotation: 1.2, duration: 0.6, ease: "sine.inOut" }, 3.10);
+      tl.to($("c06-i2"), { rotation: 0.2, duration: 0.5, ease: "sine.inOut" }, 3.70);
+
+      /* lounge: lamp glow */
+      fT($("c06-lamp"), { opacity: 0, scale: 0.6 }, { opacity: 0.85, scale: 1, duration: 0.5, ease: "expo.out" }, 3.45);
+
+      /* parking: headlights sweep across the arrival render */
+      fT($("c06-sw4"), { opacity: 0, x: -300, rotation: 14 }, { x: 900, rotation: 14, duration: 0.6, ease: "power2.inOut" }, 4.60);
+      fT($("c06-sw4"), { opacity: 0 }, { opacity: 0.9, duration: 0.15, ease: "power2.out" }, 4.60);
+      fT($("c06-sw4"), { opacity: 0.9 }, { opacity: 0, duration: 0.35, ease: "power2.in" }, 4.85);
+
+      applyCam();
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
