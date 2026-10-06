@@ -63,7 +63,7 @@ patterns: ../patterns/STORYBOARD-CRAFT.md, ../patterns/PATTERNS.md
 - rules: svg-path-draw, depth-of-field-blur
 - world: light
 - handoff_in: aucun (ouverture du film) ; première image = the golden-hour facade of Explorer Towers filling the frame at scale 1.35 with the sky above, the first yellow dot of the line at the foot of the curve, nothing else on screen (the first word « One » arrives on the first frame event)
-- handoff_out: à 5.40 : cam(0.50, 0.50, 1.0, rx 0, rz 0) aerial of Kololo at night, top-down tilt, tower centered at 52% / 48% of frame, blur 10 px of a camera still sliding downward at about 4 %/s; every window of the tower lit amber, the district lights on in rings around it; the yellow avenue line (5 px, glow) runs from bottom-left to the tower; no text on screen; grain 4%
+- handoff_out: à 5.40 : cam(0.50, 0.50, 1.0, rx 0, rz 0) aerial of Kololo at night, top-down tilt, tower centered at 52% / 48% of frame, blur 4 px of a camera still sliding downward at about 4 %/s; every window of the tower lit amber, the district lights on in rings around it; the yellow avenue line (5 px, glow) runs from bottom-left to the tower; no text on screen; grain 4%
 
 Word cues: one@0.05 curve@0.40 from@1.50 the@1.67 street@1.74 to@2.38 the@2.49 roof@2.57
 
@@ -111,7 +111,7 @@ Scene 3 (3.10 à 5.40 s) : P3, P3, the silent gag: the day turns to night
 - focal: the pin on Plot 37 over the night aerial
 - rules: coordinate-target-zoom, svg-path-draw
 - world: dark
-- handoff_in: à 0.00 : cam(0.50, 0.50, 1.0, rx 0, rz 0) aerial of Kololo at night, top-down tilt, tower centered at 52% / 48% of frame, blur 10 px of a camera still sliding downward at about 4 %/s; every window of the tower lit amber, the district lights on in rings around it; the yellow avenue line (5 px, glow) runs from bottom-left to the tower; no text on screen; grain 4%
+- handoff_in: à 0.00 : cam(0.50, 0.50, 1.0, rx 0, rz 0) aerial of Kololo at night, top-down tilt, tower centered at 52% / 48% of frame, blur 4 px of a camera still sliding downward at about 4 %/s; every window of the tower lit amber, the district lights on in rings around it; the yellow avenue line (5 px, glow) runs from bottom-left to the tower; no text on screen; grain 4%
 - handoff_out: à 5.10 : cam(0.52, 0.50, 3.0, rx 0, rz 0) push-in onto the plot, blur 12 px of a camera still diving at about 20 %/s; aerial night at 45% brightness, street grid and yellow avenue line crossing the frame; the yellow pin (100 px, glow) at the exact center, radius-170 yellow halo at 8% opacity; no text on screen; grain 4%
 
 Word cues: plot@0.29 thirty@0.60 seven@0.86 john@1.76 babiha@2.04 also@2.99 called@3.31 acacia@3.86 avenue@4.38
