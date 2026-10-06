@@ -36,11 +36,12 @@
 
 /* end card */
 #f12-glow{left:180px;top:160px;width:720px;height:720px;border-radius:50%;opacity:0;box-shadow:0 0 110px color-mix(in srgb,var(--mk-primary) 30%,transparent)}
-#f12-halo{left:160px;top:140px;width:760px;height:760px;opacity:0}
+#f12-halo{left:160px;top:140px;width:760px;height:760px}
 #f12-plate{left:250px;top:330px;width:580px;height:380px;display:flex;align-items:center;justify-content:center;opacity:0;background:var(--mk-bg)}
 #f12-plate img{width:470px;height:auto;display:block;opacity:0}
 #f12-btnw{left:0;top:950px;width:1080px;height:130px;display:flex;align-items:center;justify-content:center;opacity:0}
 #f12-btn{position:relative;overflow:hidden;font-size:46px;padding:.8em 1.5em}
+#f12-swclip{position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;border-radius:inherit;pointer-events:none}
 #f12-sweep{position:absolute;top:-12px;bottom:-12px;left:0;width:90px;background:rgba(255,255,255,.55);opacity:0}
 #f12-tag{left:90px;top:1130px;width:900px;font-size:52px;line-height:66px;font-weight:600;text-align:center;color:var(--mk-ink-soft);text-wrap:balance}
 #f12-tag .w{display:inline-block;opacity:0}
@@ -100,7 +101,7 @@
     <div id="f12-glow" class="abs"></div>
     <svg id="f12-halo" class="abs" width="760" height="760" viewBox="0 0 760 760" fill="none"><circle cx="380" cy="380" r="360" stroke-width="4" transform="rotate(-90 380 380)" style="stroke:var(--mk-primary)"></circle></svg>
     <div id="f12-plate" class="abs mk-card"><img id="f12-logo" src="assets/img/logo-full.png" alt=""></div>
-    <div id="f12-btnw" class="abs"><div id="f12-btn" class="mk-btn">brightilluminated.com<i id="f12-sweep"></i></div></div>
+    <div id="f12-btnw" class="abs"><div id="f12-btn" class="mk-btn"><span>brightilluminated.com</span><div id="f12-swclip"><i id="f12-sweep"></i></div></div></div>
     <div id="f12-tag" class="abs"></div>
 
     <div id="f12-rip" class="abs mk-ripple"></div>
