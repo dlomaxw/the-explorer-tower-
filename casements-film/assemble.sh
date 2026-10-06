@@ -14,8 +14,8 @@ export HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1 HYPERFRAMES_SKIP_SKILLS=1 HYPER
 
 # ---- settings (times in seconds on the final timeline, see STORYBOARD.md) ------------------------------------------
 FIRST_FRAME="01-hook"
-END_CARD="12-end-card"
-TOTAL="49.8"
+END_CARD="14-end-card"
+TOTAL="53.3"
 AUDIO="assets/audio/${MIX:-mix.wav}"   # mix from build-audio.sh or build-music-options.py (MIX=mix-M2.wav bash assemble.sh); empty = silent
 
 # Light flash, dark world -> light world (empty LEAK_AT = no flash). The flash covers the screen from
@@ -39,9 +39,9 @@ BED_START=""               # optional override
 BED_END=""                 # optional override
 
 # Colors of the flash and the iris ring: copy accent, accent-light and accent-glow from frame.md.
-ACCENT="#FFD60A"
-ACCENT_LIGHT="#FFE55C"
-ACCENT_GLOW="#FFF0A0"
+ACCENT="#f5b800"
+ACCENT_LIGHT="#ffd24d"
+ACCENT_GLOW="#ffe7a0"
 
 RUN_LINT="${RUN_LINT:-1}"  # RUN_LINT=0 skips the lint
 # ---------------------------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ if iris_at is not None:
     ix, iy = int(float(env["IRIS_X"])), int(float(env["IRIS_Y"]))
     fx += f'''
       <div id="fxiris" class="clip" data-start="{iris_at}" data-duration="0.95" data-track-index="31" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:61">
-        <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;inset:0"><circle id="fxiris-ring" cx="{ix}" cy="{iy}" r="0" fill="none" stroke="{light}" stroke-width="6" style="filter:drop-shadow(0 0 16px {glow}) drop-shadow(0 0 40px {rgba(accent, .8)})"/></svg>
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0"><circle id="fxiris-ring" cx="{ix}" cy="{iy}" r="0" fill="none" stroke="{light}" stroke-width="6" style="filter:drop-shadow(0 0 16px {glow}) drop-shadow(0 0 40px {rgba(accent, .8)})"/></svg>
       </div>'''
 s = s[:close] + fx + s[close:]
 
