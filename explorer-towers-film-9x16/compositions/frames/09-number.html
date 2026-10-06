@@ -13,9 +13,12 @@
     #c09-bgwrap { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
     #c09-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; display: block; filter: brightness(.45) blur(3px); }
 
-    #c09-title { position: absolute; left: 90px; top: 240px; width: 900px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 128px; line-height: 1; letter-spacing: -3px; color: #fff; }
-    #c09-title i { font-family: "Cormorant Garamond", serif; font-weight: 500; font-style: italic; font-size: 150px; letter-spacing: 0; color: #FFD60A; }
-
+    .c09-ln { position: absolute; left: 90px; white-space: nowrap; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 140px; line-height: 108px; height: 108px; letter-spacing: -3px; color: #fff; text-shadow: 0 8px 60px rgba(0,0,0,.4); }
+    #c09-l1 { top: 230px; }
+    #c09-l2 { top: 338px; }
+    #c09-l3 { top: 446px; }
+    #c09-seeit { position: relative; display: inline-block; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: #FFD60A; letter-spacing: 0; }
+    #c09-trait { position: absolute; left: 4px; right: 4px; bottom: -4px; height: 5px; border-radius: 3px; background: #FFD60A; box-shadow: 0 0 14px rgba(255,214,10,.7); }
     #c09-card { font-family: "Montserrat", sans-serif; position: absolute; left: 60px; top: 640px; width: 960px; padding: 56px 56px 52px; box-sizing: border-box;
       background: rgba(255,255,255,.96); border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,.5); overflow: hidden; }
     .c09-k { font-family: "Montserrat", sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 5px; color: #7a7466; text-transform: uppercase; margin-bottom: 8px; }
@@ -26,7 +29,7 @@
     .c09-slot { position: relative; height: 110px; overflow: hidden; flex: none; }
     .c09-strip { position: absolute; left: 0; top: 0; width: 100%; }
     .c09-cell { height: 110px; line-height: 110px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 92px; letter-spacing: -3px; color: #111; font-variant-numeric: tabular-nums; opacity: 0; }
-    .c09-ph { position: absolute; left: 50%; top: 51px; width: 28px; height: 8px; margin-left: -14px; border-radius: 4px; background: #6a6458; opacity: 1; }
+    .c09-ph { position: absolute; left: 50%; top: 51px; width: 28px; height: 8px; margin-left: -14px; border-radius: 4px; background: #4a4538; opacity: 1; }
     #c09-box .c09-ph { background: #111; }
     #c09-sweep { position: absolute; left: -300px; top: -100px; width: 220px; height: 1100px; opacity: 0;
       background: linear-gradient(90deg, rgba(255,240,160,0) 0%, rgba(255,240,160,.55) 50%, rgba(255,240,160,0) 100%); }
@@ -49,7 +52,9 @@
 
     <div id="c09-cam" data-layout-allow-overflow>
       <div id="c09-bgwrap"><img id="c09-bg" src="assets/img/front-elevation-dusk.png" alt=""></div>
-      <div id="c09-title">Come and<br><i>see it.</i></div>
+      <div id="c09-l1" class="c09-ln">Come</div>
+      <div id="c09-l2" class="c09-ln">and</div>
+      <div id="c09-l3" class="c09-ln"><span id="c09-seeit">see it.<i id="c09-trait"></i></span></div>
       <div id="c09-card">
         <div class="c09-k">Call or WhatsApp</div>
         <div id="c09-big"><div id="c09-box"></div><div id="c09-rest"></div></div>
