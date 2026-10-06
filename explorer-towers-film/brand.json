@@ -1,0 +1,14 @@
+{
+  "name": "Explorer Towers",
+  "_source": "derived from the approved frame.md of the Explorer Towers film (A+C mix); confirm against the official guideline",
+  "tagline": "Curved-balcony residences above Kampala.",
+  "colors": { "primary": "#FFD60A", "secondary": "#C9A400", "accent": "#FFD60A", "ink": "#111111", "bg": "#F7F4EC", "surface": "#FFFFFF" },
+  "fonts": {
+    "display": { "family": "Cormorant Garamond", "weights": [500, 600], "source": "fontsource:cormorant-garamond", "display_weight": 500 },
+    "body":    { "family": "Montserrat", "weights": [400, 600, 800], "source": "fontsource:montserrat" }
+  },
+  "logo": { "full": "assets/img/bright-properties.png" },
+  "radius": 28,
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "forbidden_names": ["Casements", "Northwind"]
+}

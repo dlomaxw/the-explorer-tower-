@@ -45,3 +45,4 @@ for other kinds of video.
 - Templates for the storyboard step: `templates/DIRECTIONS-TEMPLATE.md`, `templates/STORYBOARD-TEMPLATE.md`
 - A complete storyboard step (directions, storyboard, checked grid): `examples/C-le-devis-v7a/`
 - Third-party notices: `THIRD_PARTY_NOTICES.md`
+- Brand-locked professional films (own identity per project, animated UI, icons, 3D depth, video scenes): `.claude/skills/brand-motion-pro/SKILL.md` (portable: `dist/brand-motion-pro.zip`, `bash .claude/skills/brand-motion-pro/install.sh`)

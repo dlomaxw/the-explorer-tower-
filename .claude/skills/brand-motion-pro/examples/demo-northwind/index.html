@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <link rel="stylesheet" href="assets/fonts.css" />
+  <link rel="stylesheet" href="assets/brand/tokens.css" />
+  <link rel="stylesheet" href="assets/vendor/motion-kit.css" />
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/icons.js"></script>
+  <script src="assets/vendor/motion-kit.js"></script>
+  <style>
+    html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--mk-bg); }
+    .scene { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    .abs { position: absolute; }
+
+    /* ---- scene A: brand reveal on footage ---- */
+    #sA { background: var(--mk-secondary); }
+    #aMark { left: 880px; top: 250px; width: 160px; height: 160px; }
+    #aHead { left: 210px; top: 450px; width: 1500px; font-size: 128px; line-height: 1.04; color: #fff; text-align: center; }
+    #aLine { left: 730px; top: 800px; width: 460px; height: 10px; border-radius: 5px; background: var(--mk-accent); transform-origin: 0 50%; opacity: 0; }
+    #aMicro { left: 0; top: 160px; width: 1920px; text-align: center; font-size: 26px; font-weight: 700; letter-spacing: .32em; color: #fff; opacity: 0; }
+
+    /* ---- scene B: product UI ---- */
+    #sB { background: var(--mk-bg); }
+    #bGround { background: radial-gradient(ellipse 900px 700px at 560px 560px, color-mix(in srgb, var(--mk-primary) 9%, transparent), transparent 70%); }
+    #bTitle { left: 130px; top: 62px; font-size: 64px; color: var(--mk-ink); white-space: nowrap; }
+    #bStage { left: 0; top: 0; width: 1920px; height: 1080px; }
+    #bBrowser { left: 130px; top: 190px; }
+    .bh { display: flex; align-items: center; justify-content: space-between; padding: 30px 40px 12px; }
+    .bh h4 { font-size: 34px; font-weight: 800; }
+    .bgrid { display: flex; gap: 30px; padding: 12px 40px 20px; }
+    .bchart { width: 560px; height: 320px; padding: 26px 30px; }
+    .bcols { display: flex; align-items: flex-end; gap: 22px; height: 220px; margin-top: 18px; }
+    .bcols .mk-bar-col { flex: 1; }
+    .bring { width: 380px; height: 320px; position: relative; padding: 18px; }
+    .bring svg { position: absolute; left: 62px; top: 24px; }
+    .bring .pct { position: absolute; left: 0; width: 100%; top: 98px; text-align: center; font-size: 76px; font-weight: 800; font-family: var(--mk-font-display); }
+    .bring .cap { position: absolute; left: 0; width: 100%; top: 190px; text-align: center; font-size: 19px; font-weight: 700; letter-spacing: .14em; color: var(--mk-ink-soft); }
+    .brow { display: flex; align-items: center; gap: 22px; margin: 0 40px 14px; padding: 16px 24px; border-radius: 20px; background: var(--mk-bg); }
+    .brow .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--mk-primary); }
+    .brow b { font-size: 26px; flex: 1; }
+    .brow span { font-size: 24px; font-weight: 700; color: var(--mk-ink-soft); }
+    #bTiles { left: 1330px; top: 200px; width: 520px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px 40px; }
+    #bChips { left: 130px; top: 960px; display: flex; gap: 22px; }
+    #bCount { left: 1330px; top: 760px; width: 520px; }
+    #bCount .n { font-size: 130px; color: var(--mk-primary); font-variant-numeric: tabular-nums; }
+    #bCount .l { font-size: 26px; font-weight: 700; letter-spacing: .18em; color: var(--mk-ink-soft); margin-top: 34px; }
+
+    /* ---- scene C: phone + footage ---- */
+    #sC { background: linear-gradient(135deg, var(--mk-secondary), color-mix(in srgb, var(--mk-primary) 60%, #000)); }
+    #cStage { left: 0; top: 0; width: 1920px; height: 1080px; }
+    #cPhone { left: 1060px; top: 70px; }
+    .cap-t { position: absolute; left: 30px; top: 96px; right: 30px; font-size: 40px; font-weight: 800; color: var(--mk-ink); }
+    #cToast { left: 18px; top: 160px; width: 392px; padding: 18px 20px; gap: 16px; z-index: 6; }
+    #cToast b { font-size: 24px; display: block; }
+    #cToast small { font-size: 19px; font-weight: 600; color: var(--mk-ink-soft); }
+    #cCard { left: 26px; top: 590px; width: 376px; padding: 26px; z-index: 6; }
+    #cCard .r { display: flex; align-items: center; justify-content: space-between; font-size: 26px; font-weight: 700; margin-bottom: 20px; }
+    #cFeat { left: 140px; top: 200px; width: 760px; display: flex; flex-direction: column; gap: 52px; }
+    .feat { display: flex; align-items: center; gap: 36px; color: #fff; }
+    .feat .ic { width: 110px; height: 110px; border-radius: 30px; background: rgba(255,255,255,.14); border: 1.5px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; color: #fff; flex: none; }
+    .feat .ic .mk-icon { width: 58px; height: 58px; }
+    .feat h5 { font-size: 46px; font-weight: 800; letter-spacing: -.02em; }
+    .feat p { font-size: 26px; font-weight: 500; opacity: .82; margin-top: 6px; }
+    #cSub { left: 100px; top: 878px; width: 860px; padding: 26px 30px; border-radius: 30px; background: var(--mk-surface); box-shadow: var(--mk-shadow); font-size: 46px; line-height: 58px; color: var(--mk-ink); }
+
+    /* ---- scene D: contact + CTA ---- */
+    #sD { background: var(--mk-bg); }
+    #dGround { background: radial-gradient(ellipse 1000px 700px at 960px 540px, color-mix(in srgb, var(--mk-primary) 10%, transparent), transparent 70%); }
+    #dCam { left: 0; top: 0; width: 1920px; height: 1080px; }
+    #dMark { left: 880px; top: 90px; width: 160px; height: 160px; }
+    #dHead { left: 160px; top: 290px; width: 1600px; font-size: 138px; text-align: center; color: var(--mk-ink); }
+    #dRow { left: 0; top: 560px; width: 1920px; display: flex; justify-content: center; gap: 36px; }
+    #dRow .mk-chip { font-size: 34px; padding: .6em 1.1em .6em .8em; }
+    #dRow .mk-chip .mk-icon { width: 40px; height: 40px; }
+    #dBtn { left: 660px; top: 750px; width: 600px; height: 140px; font-size: 46px; }
+    #dBtn .mk-icon { width: 52px; height: 52px; }
+    #dRipple { left: 960px; top: 820px; }
+    #dSweep { left: -300px; top: -40px; width: 160px; height: 240px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent); transform: skewX(-18deg); opacity: 0; }
+    #dFoot { left: 0; top: 985px; width: 1920px; text-align: center; font-size: 24px; font-weight: 700; letter-spacing: .28em; color: var(--mk-ink-soft); }
+    #grain { left: 0; top: 0; width: 1920px; height: 1080px; }
+  </style>
+</head>
+<body>
+  <div id="root" class="mk-root" data-composition-id="main" data-start="0" data-duration="16" data-width="1920" data-height="1080">
+
+    <!-- ===================== scene A: brand reveal on brand-graded footage ===================== -->
+    <div id="sA" class="scene">
+      <video id="vBackdrop" class="clip mk-video" src="assets/video/backdrop.mp4" data-start="0" data-duration="4.3" data-track-index="2" muted playsinline
+             style="position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;opacity:0"></video>
+      <div id="aGrade" class="mk-grade" style="opacity:0"></div>
+      <div class="mk-vignette"></div>
+      <div id="aMicro" class="abs">NORTHWIND FREIGHT</div>
+      <svg id="aMark" class="abs" viewBox="0 0 120 120" fill="none" style="stroke:var(--mk-on-primary)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="100" height="100" rx="28"/>
+        <path d="M38 84V36l44 48V36"/>
+      </svg>
+      <div id="aHead" class="abs mk-display">Freight that arrives on time.</div>
+      <div id="aLine" class="abs"></div>
+    </div>
+
+    <!-- ===================== scene B: product UI in 3D ===================== -->
+    <div id="sB" class="scene" style="clip-path:circle(0% at 960px 540px)">
+      <div id="bGround" class="scene"></div>
+      <div id="bTitle" class="abs mk-display">Every shipment, one view.</div>
+      <div id="bStage" class="abs">
+        <div id="bBrowser" class="abs"></div>
+      </div>
+      <div id="bTiles" class="abs"></div>
+      <div id="bCount" class="abs"><div class="n mk-display" id="bN">0</div><div class="l">SHIPMENTS DELIVERED</div></div>
+      <div id="bChips" class="abs"></div>
+    </div>
+
+    <!-- ===================== scene C: phone with footage on screen ===================== -->
+    <div id="sC" class="scene" style="clip-path:inset(0% 100% 0% 0%)">
+      <div id="cStage" class="abs"></div>
+      <div id="cFeat" class="abs"></div>
+      <div id="cSub" class="abs"></div>
+    </div>
+
+    <!-- ===================== scene D: contact and CTA ===================== -->
+    <div id="sD" class="scene" style="clip-path:inset(100% 0% 0% 0%)">
+      <div id="dGround" class="scene"></div>
+      <div id="dCam" class="abs">
+        <svg id="dMark" class="abs" viewBox="0 0 120 120" fill="none" style="stroke:var(--mk-primary)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="10" width="100" height="100" rx="28"/>
+          <path d="M38 84V36l44 48V36"/>
+        </svg>
+        <div id="dHead" class="abs mk-display">Ship with Northwind.</div>
+        <div id="dRow" class="abs"></div>
+        <div id="dBtn" class="abs mk-btn" style="overflow:hidden"><span id="dBtnT">northwind.example</span><span id="dBtnI"></span><div id="dSweep" class="abs"></div></div>
+        <div id="dRipple" class="abs mk-ripple"></div>
+        <div id="dFoot" class="abs">FREIGHT THAT ARRIVES ON TIME</div>
+      </div>
+      <svg id="cur" class="abs mk-cursor" viewBox="0 0 34 44"><path d="M2 2L2 33L10 26L16 40L22 37.5L16 24L27 24Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+    </div>
+
+    <div id="grain" class="abs mk-grain"></div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+    window.__timelines["main"] = tl;
+    var qs = MK.qs;
+
+    /* ======================= build the UI from kit parts ======================= */
+    qs("#bBrowser").innerHTML = MK.browser("brw", "app.northwind.example/shipments",
+      '<div class="bh"><h4>Shipments this week</h4><span class="mk-badge">LIVE</span></div>' +
+      '<div class="bgrid">' +
+        '<div class="mk-card bchart"><div class="mk-badge" style="background:none;padding:0;color:var(--mk-ink-soft)">DELIVERED PER DAY</div>' +
+          '<div class="bcols">' + [46, 62, 54, 78, 70, 92, 84].map(function (h, i) { return '<div class="mk-bar-col" id="bc' + i + '" style="height:' + h + '%"></div>'; }).join("") + '</div></div>' +
+        '<div class="mk-card bring"><svg width="256" height="256" viewBox="0 0 256 256"><circle class="mk-ring-track" cx="128" cy="128" r="104" stroke-width="22"/>' +
+          '<circle id="bRing" class="mk-ring-fill" cx="128" cy="128" r="104" stroke-width="22" transform="rotate(-90 128 128)"/></svg>' +
+          '<div class="pct" id="bPct">0%</div><div class="cap">ON TIME</div></div>' +
+      '</div>' +
+      '<div class="brow" id="br0"><i class="dot"></i><b>Mombasa → Kampala</b><span>Delivered</span></div>' +
+      '<div class="brow" id="br1"><i class="dot" style="background:var(--mk-accent)"></i><b>Nairobi → Kigali</b><span>In transit</span></div>' +
+      '<div class="brow" id="br2" style="margin-bottom:34px"><i class="dot"></i><b>Dar es Salaam → Lusaka</b><span>Delivered</span></div>');
+    MK.stage3d("#bStage", 2200, "40%", "50%");
+    var tiles = [["truck", "Door to door"], ["shield", "Fully insured"], ["clock", "On schedule"], ["chart", "Live tracking"]];
+    qs("#bTiles").innerHTML = tiles.map(function (t, i) { return MK.tile("bt" + i, t[0], t[1], { size: 76, stroke: 1.7 }); }).join("");
+    qs("#bChips").innerHTML = ["Road", "Rail", "Sea", "Air"].map(function (t, i) { return '<span class="mk-chip" id="bch' + i + '">' + t + "</span>"; }).join("");
+
+    qs("#cStage").innerHTML = MK.phone("cPhone",
+      '<video id="vScreen" class="clip mk-video" src="assets/video/screen.mp4" data-start="8" data-duration="4.4" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:428px;height:908px;object-fit:cover;opacity:0"></video>' +
+      '<div class="mk-grade-soft"></div>' +
+      '<div class="cap-t" id="cCap">Your delivery</div>' +
+      '<div class="mk-toast abs" id="cToast"><div class="mk-tile-ic" style="width:64px;height:64px;border-radius:18px;box-shadow:none">' + MK.icon("bell", { size: 34, stroke: 1.9 }) + '</div><div><b>Out for delivery</b><small>Arriving today, 14:30</small></div></div>' +
+      '<div class="mk-card abs" id="cCard"><div class="r"><span>Live updates</span><div class="mk-toggle" id="cTog" style="width:84px;height:46px"><div class="mk-knob" id="cKnob" style="width:34px;height:34px;left:6px;top:6px"></div></div></div>' +
+        '<div class="mk-progress"><i id="cProg"></i></div></div>');
+    MK.stage3d("#cStage", 2000, "50%", "50%");
+    var feats = [["bell", "Real-time alerts", "Know the moment it moves."], ["lock", "Secure handover", "Every drop verified."], ["send", "One tap rebooking", "Repeat a route in seconds."]];
+    qs("#cFeat").innerHTML = feats.map(function (f, i) {
+      return '<div class="feat" id="cf' + i + '"><div class="ic">' + MK.icon(f[0], { size: 58, stroke: 1.7 }) + '</div><div><h5>' + f[1] + '</h5><p>' + f[2] + '</p></div></div>';
+    }).join("");
+
+    var cont = [["phone", "+000 000 000 000"], ["mail", "hello@northwind.example"], ["pin", "Sample City"]];
+    qs("#dRow").innerHTML = cont.map(function (c, i) { return '<span class="mk-chip" id="dc' + i + '">' + MK.icon(c[0], { size: 40, stroke: 2 }) + c[1] + "</span>"; }).join("");
+    qs("#dBtnI").innerHTML = MK.icon("arrow", { size: 52, stroke: 2.4 });
+
+    /* ======================= hide everything that is not on screen at t=0 ======================= */
+    gsap.set(["#aHead", "#bTitle", "#bTiles .mk-tile", "#bCount", "#bChips .mk-chip", "#brw", "#cPhone", "#cFeat .feat", "#cSub",
+            "#dHead", "#dRow .mk-chip", "#dBtn", "#dFoot", "#cur", "#dRipple", "#cToast", "#cCard", "#cCap"], { opacity: 0 });
+
+    /* ======================= SCENE A  0 – 4.2 : footage + brand reveal ======================= */
+    MK.videoIn(tl, "#vBackdrop", 0, { from: 1.14, to: 1.06, dur: 0.8, drift: 1.0, until: 4.2 });
+    tl.fromTo("#aGrade", { opacity: 0 }, { opacity: 0.66, duration: 0.6, ease: "none", immediateRender: false }, 0);
+    tl.fromTo("#aMicro", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: MK.ease.out, immediateRender: false }, 0.2);
+    MK.draw(tl, "#aMark rect, #aMark path", 0.15, { dur: 0.9, stagger: 0.18 });
+    tl.set("#aHead", { opacity: 1 }, 0.85);
+    MK.headline(tl, "#aHead", 0.85, { stagger: 0.09 });
+    tl.fromTo("#aLine", { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.6, ease: MK.ease.out, immediateRender: false }, 1.9);
+    MK.camera(tl, "#sA", 0, 3.5, { scale: 1.03, ease: "none" });
+    MK.exit(tl, "#aHead, #aLine, #aMicro", 3.3, { y: -50, dur: 0.3 });
+    MK.exit(tl, "#aMark", 3.3, { y: -50, scale: 0.9, dur: 0.3 });
+
+    /* ======================= SCENE B  3.5 – 8.2 : UI, 3D, icons, numbers ======================= */
+    MK.window(tl, "#sB", 3.5, 0.75, { shape: "circle", from: "circle(0% at 960px 540px)", to: "circle(80% at 960px 540px)" });
+    tl.fromTo("#bTitle", { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: MK.ease.out, immediateRender: false }, 4.0);
+    tl.fromTo("#brw", { opacity: 0, rotationY: 34, rotationX: -8, z: -500, x: -120, transformPerspective: 2200 },
+      { opacity: 1, rotationY: -9, rotationX: 5, z: 0, x: 0, transformPerspective: 2200, duration: 1.0, ease: MK.ease.out, immediateRender: false }, 4.05);
+    tl.to("#brw", { rotationY: -5, rotationX: 3, duration: 3.0, ease: "none" }, 5.05);
+    MK.bars(tl, ".bcols .mk-bar-col", 4.7, { stagger: 0.07, dur: 0.7 });
+    MK.ring(tl, "#bRing", 4.9, 1.1, 0.98);
+    MK.count(tl, "#bPct", 4.9, 1.1, 0, 98, { suffix: "%" });
+    MK.rows(tl, ".brow", 5.3, { stagger: 0.12, x: 50 });
+    tl.fromTo("#bTiles .mk-tile", { opacity: 0, y: 40, scale: 0.85, filter: "blur(8px)" },
+      { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.55, ease: MK.ease.out, stagger: 0.14, immediateRender: false }, 4.55);
+    tiles.forEach(function (t, i) { MK.drawIcon(tl, "#bt" + i + " .mk-icon", 4.7 + i * 0.14, { dur: 0.6, stagger: 0.1 }); });
+    tl.fromTo("#bCount", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: MK.ease.out, immediateRender: false }, 5.6);
+    MK.count(tl, "#bN", 5.6, 1.6, 0, 1240, { sep: "," });
+    tl.fromTo("#bChips .mk-chip", { opacity: 0, x: -30, filter: "blur(6px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.4, ease: MK.ease.out, stagger: 0.09, immediateRender: false }, 6.2);
+
+    /* ======================= SCENE C  7.9 – 12.2 : phone + video on screen ======================= */
+    MK.window(tl, "#sC", 7.9, 0.6, { from: "inset(0% 100% 0% 0%)", to: "inset(0% 0% 0% 0%)" });
+    tl.fromTo("#cPhone", { opacity: 0, rotationY: -55, rotationX: 10, z: -400, y: 160, transformPerspective: 2000 },
+      { opacity: 1, rotationY: -14, rotationX: 4, z: 0, y: 0, transformPerspective: 2000, duration: 1.0, ease: MK.ease.out, immediateRender: false }, 8.2);
+    tl.to("#cPhone", { rotationY: -8, rotationX: 2, duration: 3.0, ease: "none" }, 9.2);
+    MK.videoIn(tl, "#vScreen", 8.4, { from: 1.1, to: 1.0, dur: 0.6, blur: 10 });
+    tl.fromTo("#cCap", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: MK.ease.out, immediateRender: false }, 8.9);
+    MK.toast(tl, "#cToast", 9.3, 1.4);
+    tl.fromTo("#cCard", { opacity: 0, y: 60, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: MK.ease.out, immediateRender: false }, 9.8);
+    MK.toggle(tl, "#cKnob", "#cTog", 10.4, 38, "var(--mk-primary)");
+    MK.progress(tl, "#cProg", 10.5, 1.2, 0.82);
+    tl.fromTo("#cFeat .feat", { opacity: 0, x: -60, filter: "blur(10px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.6, ease: MK.ease.out, stagger: 0.28, immediateRender: false }, 8.45);
+    ["#cf0", "#cf1", "#cf2"].forEach(function (id, i) { MK.drawIcon(tl, id + " .mk-icon", 8.6 + i * 0.28, { dur: 0.55, stagger: 0.1 }); });
+    tl.fromTo("#cSub", { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: MK.ease.out, immediateRender: false }, 8.85);
+    MK.subtitle(tl, "#cSub", [["Real-time", 9.0], ["alerts,", 9.35, true], ["zero", 9.9], ["surprises.", 10.25]], { out: 11.8 });
+    MK.exit(tl, "#cSub", 11.75, { y: 20, dur: 0.2 });
+    MK.exit(tl, "#cPhone", 12.0, { y: -60, dur: 0.25 });
+    MK.exit(tl, "#vScreen", 11.95, { dur: 0.25 });
+
+    /* ======================= SCENE D  11.9 – 16 : contact, CTA, cursor ======================= */
+    MK.window(tl, "#sD", 11.9, 0.55, { from: "inset(100% 0% 0% 0%)", to: "inset(0% 0% 0% 0%)" });
+    MK.draw(tl, "#dMark rect, #dMark path", 12.35, { dur: 0.8, stagger: 0.16 });
+    tl.set("#dHead", { opacity: 1 }, 12.7);
+    MK.headline(tl, "#dHead", 12.7, { stagger: 0.09 });
+    tl.fromTo("#dRow .mk-chip", { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: MK.ease.out, stagger: 0.15, immediateRender: false }, 13.1);
+    cont.forEach(function (c, i) { MK.drawIcon(tl, "#dc" + i + " .mk-icon", 13.2 + i * 0.15, { dur: 0.5, stagger: 0.08 }); });
+    tl.fromTo("#dBtn", { opacity: 0, y: 40, scale: 0.94, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.6, ease: MK.ease.out, immediateRender: false }, 13.5);
+    var click = MK.cursor(tl, "#cur", { x: 1500, y: 900 }, { x: 1010, y: 800 }, 14.1, 0.55, "#dRipple");
+    MK.press(tl, "#dBtn", click);
+    MK.sweep(tl, "#dSweep", click + 0.1, 0.7, -300, 760);
+    tl.fromTo("#dFoot", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none", immediateRender: false }, 14.9);
+    MK.camera(tl, "#dCam", 12.0, 4.0, { scale: 1.03, ease: "none" });
+    MK.exit(tl, "#cur", 15.4, { dur: 0.2 });
+
+    tl.to({}, { duration: 16 }, 0); // full-span anchor
+  </script>
+</body>
+</html>

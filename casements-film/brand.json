@@ -1,0 +1,14 @@
+{
+  "name": "Casements Africa",
+  "_source": "derived from the approved frame.md of the Casements film (direction A); confirm against the official guideline",
+  "tagline": "Built to last. Delivered as promised.",
+  "colors": { "primary": "#1f7a3d", "secondary": "#14572c", "accent": "#f5b800", "ink": "#101010", "bg": "#f4f6f2", "surface": "#ffffff" },
+  "fonts": {
+    "display": { "family": "Montserrat", "weights": [800], "source": "fontsource:montserrat", "display_weight": 800 },
+    "body":    { "family": "Montserrat", "weights": [400, 600, 800], "source": "fontsource:montserrat" }
+  },
+  "logo": { "full": "assets/img/logo-full.png", "mark": "assets/img/mark.png" },
+  "radius": 6,
+  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "forbidden_names": ["Explorer Towers", "Bright Properties", "Northwind"]
+}

@@ -1,0 +1,52 @@
+{
+  "_example": true,
+  "_note": "SAMPLE brand for the demo only. Never ship a film with it: copy this file, replace EVERY value with the client's real brand.",
+  "name": "Northwind Freight",
+  "tagline": "Freight that arrives on time.",
+  "website": "northwind.example",
+  "contact": {
+    "phone": "+000 000 000 000",
+    "email": "hello@northwind.example",
+    "address": "1 Example Street, Sample City"
+  },
+  "colors": {
+    "primary": "#0b5fff",
+    "secondary": "#0a2f8f",
+    "accent": "#ffb400",
+    "ink": "#0c1424",
+    "bg": "#f3f6fb",
+    "surface": "#ffffff"
+  },
+  "fonts": {
+    "display": {
+      "family": "Plus Jakarta Sans",
+      "weights": [
+        800
+      ],
+      "source": "fontsource:plus-jakarta-sans",
+      "display_weight": 800
+    },
+    "body": {
+      "family": "Plus Jakarta Sans",
+      "weights": [
+        500,
+        700
+      ],
+      "source": "fontsource:plus-jakarta-sans"
+    }
+  },
+  "logo": {
+    "full": "assets/img/logo-full.png",
+    "mark": "assets/img/mark.png"
+  },
+  "radius": 30,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "voice": {
+    "language": "en",
+    "tone": "confident, concrete, no hype"
+  }
+}
