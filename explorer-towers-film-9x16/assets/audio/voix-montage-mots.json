@@ -1,0 +1,485 @@
+{
+ "duration": 49.8,
+ "words": [
+  {
+   "w": "one",
+   "start": 0.0,
+   "end": 0.39
+  },
+  {
+   "w": "curve",
+   "start": 0.4,
+   "end": 0.99
+  },
+  {
+   "w": "from",
+   "start": 1.41,
+   "end": 1.66
+  },
+  {
+   "w": "the",
+   "start": 1.67,
+   "end": 1.73
+  },
+  {
+   "w": "street",
+   "start": 1.74,
+   "end": 2.32
+  },
+  {
+   "w": "to",
+   "start": 2.33,
+   "end": 2.48
+  },
+  {
+   "w": "the",
+   "start": 2.49,
+   "end": 2.56
+  },
+  {
+   "w": "roof",
+   "start": 2.57,
+   "end": 3.09
+  },
+  {
+   "w": "plot",
+   "start": 5.66,
+   "end": 5.91
+  },
+  {
+   "w": "thirty",
+   "start": 5.92,
+   "end": 6.25
+  },
+  {
+   "w": "seven",
+   "start": 6.26,
+   "end": 6.84
+  },
+  {
+   "w": "john",
+   "start": 7.12,
+   "end": 7.43
+  },
+  {
+   "w": "babiha",
+   "start": 7.44,
+   "end": 8.03
+  },
+  {
+   "w": "also",
+   "start": 8.33,
+   "end": 8.7
+  },
+  {
+   "w": "called",
+   "start": 8.71,
+   "end": 9.25
+  },
+  {
+   "w": "acacia",
+   "start": 9.26,
+   "end": 9.77
+  },
+  {
+   "w": "avenue",
+   "start": 9.78,
+   "end": 10.29
+  },
+  {
+   "w": "kololo",
+   "start": 10.7,
+   "end": 11.49
+  },
+  {
+   "w": "kampala",
+   "start": 11.5,
+   "end": 12.14
+  },
+  {
+   "w": "two",
+   "start": 12.69,
+   "end": 12.86
+  },
+  {
+   "w": "bedroom",
+   "start": 12.87,
+   "end": 13.23
+  },
+  {
+   "w": "homes",
+   "start": 13.24,
+   "end": 13.67
+  },
+  {
+   "w": "from",
+   "start": 13.68,
+   "end": 13.88
+  },
+  {
+   "w": "three",
+   "start": 13.89,
+   "end": 14.25
+  },
+  {
+   "w": "hundred",
+   "start": 14.26,
+   "end": 14.62
+  },
+  {
+   "w": "thousand",
+   "start": 14.63,
+   "end": 15.04
+  },
+  {
+   "w": "dollars",
+   "start": 15.05,
+   "end": 15.63
+  },
+  {
+   "w": "three",
+   "start": 15.89,
+   "end": 16.16
+  },
+  {
+   "w": "bedroom",
+   "start": 16.17,
+   "end": 16.77
+  },
+  {
+   "w": "from",
+   "start": 16.78,
+   "end": 17.0
+  },
+  {
+   "w": "four",
+   "start": 17.01,
+   "end": 17.34
+  },
+  {
+   "w": "hundred",
+   "start": 17.35,
+   "end": 17.64
+  },
+  {
+   "w": "thousand",
+   "start": 17.65,
+   "end": 18.18
+  },
+  {
+   "w": "and",
+   "start": 18.51,
+   "end": 19.04
+  },
+  {
+   "w": "two",
+   "start": 19.05,
+   "end": 19.4
+  },
+  {
+   "w": "six",
+   "start": 19.41,
+   "end": 19.83
+  },
+  {
+   "w": "bedroom",
+   "start": 19.84,
+   "end": 20.24
+  },
+  {
+   "w": "penthouses",
+   "start": 20.25,
+   "end": 21.07
+  },
+  {
+   "w": "each",
+   "start": 21.22,
+   "end": 21.48
+  },
+  {
+   "w": "with",
+   "start": 21.49,
+   "end": 21.66
+  },
+  {
+   "w": "its",
+   "start": 21.67,
+   "end": 21.8
+  },
+  {
+   "w": "own",
+   "start": 21.81,
+   "end": 22.05
+  },
+  {
+   "w": "pool",
+   "start": 22.06,
+   "end": 22.51
+  },
+  {
+   "w": "priced",
+   "start": 22.52,
+   "end": 23.07
+  },
+  {
+   "w": "on",
+   "start": 23.08,
+   "end": 23.24
+  },
+  {
+   "w": "application",
+   "start": 23.25,
+   "end": 24.04
+  },
+  {
+   "w": "a",
+   "start": 24.41,
+   "end": 24.47
+  },
+  {
+   "w": "gym",
+   "start": 24.48,
+   "end": 25.05
+  },
+  {
+   "w": "a",
+   "start": 25.36,
+   "end": 25.4
+  },
+  {
+   "w": "sauna",
+   "start": 25.41,
+   "end": 25.98
+  },
+  {
+   "w": "a",
+   "start": 26.37,
+   "end": 26.49
+  },
+  {
+   "w": "garden",
+   "start": 26.5,
+   "end": 27.07
+  },
+  {
+   "w": "a",
+   "start": 27.08,
+   "end": 27.12
+  },
+  {
+   "w": "lounge",
+   "start": 27.42,
+   "end": 28.16
+  },
+  {
+   "w": "covered",
+   "start": 28.42,
+   "end": 28.8
+  },
+  {
+   "w": "parking",
+   "start": 28.81,
+   "end": 29.34
+  },
+  {
+   "w": "and",
+   "start": 29.35,
+   "end": 29.69
+  },
+  {
+   "w": "a",
+   "start": 29.7,
+   "end": 29.76
+  },
+  {
+   "w": "team",
+   "start": 29.77,
+   "end": 30.24
+  },
+  {
+   "w": "that",
+   "start": 30.25,
+   "end": 30.36
+  },
+  {
+   "w": "looks",
+   "start": 30.37,
+   "end": 30.68
+  },
+  {
+   "w": "after",
+   "start": 30.69,
+   "end": 31.04
+  },
+  {
+   "w": "it",
+   "start": 31.05,
+   "end": 31.13
+  },
+  {
+   "w": "all",
+   "start": 31.14,
+   "end": 31.49
+  },
+  {
+   "w": "come",
+   "start": 32.43,
+   "end": 32.59
+  },
+  {
+   "w": "and",
+   "start": 32.6,
+   "end": 32.7
+  },
+  {
+   "w": "see",
+   "start": 32.71,
+   "end": 32.9
+  },
+  {
+   "w": "it",
+   "start": 32.91,
+   "end": 33.43
+  },
+  {
+   "w": "call",
+   "start": 33.44,
+   "end": 33.91
+  },
+  {
+   "w": "or",
+   "start": 33.92,
+   "end": 34.06
+  },
+  {
+   "w": "whatsapp",
+   "start": 34.07,
+   "end": 34.7
+  },
+  {
+   "w": "plus",
+   "start": 34.71,
+   "end": 35.2
+  },
+  {
+   "w": "two",
+   "start": 35.21,
+   "end": 35.4
+  },
+  {
+   "w": "five",
+   "start": 35.41,
+   "end": 35.65
+  },
+  {
+   "w": "six",
+   "start": 35.66,
+   "end": 36.3
+  },
+  {
+   "w": "seven",
+   "start": 36.31,
+   "end": 36.66
+  },
+  {
+   "w": "five",
+   "start": 36.67,
+   "end": 36.92
+  },
+  {
+   "w": "zero",
+   "start": 36.93,
+   "end": 37.56
+  },
+  {
+   "w": "four",
+   "start": 37.57,
+   "end": 37.83
+  },
+  {
+   "w": "two",
+   "start": 37.84,
+   "end": 38.06
+  },
+  {
+   "w": "one",
+   "start": 38.07,
+   "end": 38.64
+  },
+  {
+   "w": "two",
+   "start": 38.65,
+   "end": 38.84
+  },
+  {
+   "w": "two",
+   "start": 38.85,
+   "end": 39.05
+  },
+  {
+   "w": "four",
+   "start": 39.06,
+   "end": 39.54
+  },
+  {
+   "w": "viewings",
+   "start": 39.91,
+   "end": 40.55
+  },
+  {
+   "w": "nine",
+   "start": 40.56,
+   "end": 40.85
+  },
+  {
+   "w": "thirty",
+   "start": 40.86,
+   "end": 41.19
+  },
+  {
+   "w": "to",
+   "start": 41.2,
+   "end": 41.34
+  },
+  {
+   "w": "seven",
+   "start": 41.35,
+   "end": 41.82
+  },
+  {
+   "w": "explorer",
+   "start": 42.25,
+   "end": 42.9
+  },
+  {
+   "w": "towers",
+   "start": 42.91,
+   "end": 43.63
+  },
+  {
+   "w": "curved",
+   "start": 43.94,
+   "end": 44.32
+  },
+  {
+   "w": "balcony",
+   "start": 44.33,
+   "end": 44.77
+  },
+  {
+   "w": "residences",
+   "start": 44.78,
+   "end": 45.59
+  },
+  {
+   "w": "above",
+   "start": 45.6,
+   "end": 45.92
+  },
+  {
+   "w": "kampala",
+   "start": 45.93,
+   "end": 46.5
+  }
+ ]
+}
