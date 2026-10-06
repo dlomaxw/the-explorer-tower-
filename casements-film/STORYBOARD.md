@@ -217,7 +217,7 @@ Scene 1 (0.00 à 3.04 s) : P7, glass, partitions, railings
 - scene: gates, grills and roller shutters panes
 - duration: 2.99s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/06-steel.html
 - voiceover: "steel gates grills and roller shutters"
 - type: benefit

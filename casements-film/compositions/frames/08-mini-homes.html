@@ -30,7 +30,7 @@
 .mh8-cell{position:absolute;overflow:visible;opacity:0}
 #mh8-sub{position:absolute;left:60px;top:1380px;width:960px;text-align:center;font-size:56px;font-weight:600;line-height:68px;color:#101010}
 .mh8-w{display:inline-block;position:relative;opacity:0;margin:0 7px}
-#mh8-box{position:absolute;left:-8px;right:-8px;top:6px;bottom:2px;background:#f5b800;border-radius:6px;transform-origin:0 50%;transform:scaleX(0)}
+#mh8-box{position:absolute;left:-8px;right:-8px;top:6px;bottom:2px;background:#f5b800;border-radius:6px;transform-origin:0 50%}
 .mh8-ht{position:relative;font-weight:800}
 </style>
 <div id="root" data-composition-id="08-mini-homes" data-start="0" data-duration="2.51" data-width="1080" data-height="1920">
@@ -116,6 +116,7 @@
       tl.fromTo(w,{opacity:0,y:8,filter:"blur(6px)"},{opacity:0.4,y:0,filter:"blur(0px)",duration:0.14,ease:"power3.out",immediateRender:false},t);
       tl.to(w,{opacity:1,duration:0.2,ease:"power3.out"},t+0.14);
     });
+    tl.set("#mh8-box",{scaleX:0},0);
     tl.to("#mh8-box",{scaleX:1,duration:0.16,ease:"power3.out"},1.84);
     tl.to("#mh8-sub",{opacity:0,filter:"blur(6px)",duration:0.14,ease:"power2.in"},2.30);
     window.__timelines=window.__timelines||{};
