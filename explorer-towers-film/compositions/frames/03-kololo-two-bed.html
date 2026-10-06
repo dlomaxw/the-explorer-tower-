@@ -11,14 +11,23 @@
     #c03-warm { background: radial-gradient(ellipse 760px 560px at 960px 500px, rgba(255,214,10,.06) 0%, rgba(255,214,10,0) 100%); opacity: 0; }
 
     /* the dive: aerial night, pin, halo */
-    #c03-aer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; filter: blur(12px); }
-    #c03-aw { position: absolute; left: -48px; top: -182px; width: 2000px; height: 1125px; transform-origin: 1008px 722px; }
+    #c03-aer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 960px 540px; }
+    #c03-stage0 { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; filter: blur(12px); }
+    #c03-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; transform: translate(-2043.6px, -1463.7px) scale(3); }
+    #c03-aw { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; transform-origin: 0 0; transform: translate(-63.3px, -94.5px) scale(1.056); }
     #c03-aimg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; display: block; }
-    #c03-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; background: #000; opacity: .55; }
+    #c03-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; background: #070a18; opacity: .55; }
+    .c03-dring { position: absolute; border-radius: 50%; opacity: .5; mix-blend-mode: screen;
+      background: radial-gradient(closest-side, rgba(255,150,40,0) 60%, rgba(255,170,60,.42) 80%, rgba(255,150,40,0) 100%); }
+    .c03-floor { position: absolute; left: 902px; width: 208px; height: 8px; border-radius: 4px; background: #ffb347; opacity: .8;
+      mix-blend-mode: screen; box-shadow: 0 0 12px 3px rgba(255,170,60,.7); }
     #c03-asvg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; overflow: visible; }
-    #c03-avenue { fill: none; stroke: #FFD60A; stroke-width: 4.74; stroke-linecap: round; filter: drop-shadow(0 0 6px #FFD60A); }
-    #c03-halo { position: absolute; left: 790px; top: 370px; width: 340px; height: 340px; border-radius: 50%; background: #FFD60A; opacity: .08; }
-    #c03-pin { position: absolute; left: 910px; top: 490px; width: 100px; height: 100px; border-radius: 50%; background: #FFD60A; box-shadow: 0 0 40px 10px rgba(255,214,10,.6); }
+    #c03-avenue { fill: none; stroke: #FFD60A; stroke-width: 1.58; stroke-linecap: round; filter: drop-shadow(0 0 6px #FFD60A); }
+    #c03-halo { position: absolute; left: 790px; top: 370px; width: 340px; height: 340px; border-radius: 50%; background: rgba(255,214,10,.08); }
+    #c03-pin { position: absolute; left: 910px; top: 490px; width: 100px; height: 100px; }
+    .c03-shape { position: absolute; left: 0; top: 0; width: 100px; height: 100px; border-radius: 50% 50% 50% 0; background: #FFD60A; transform: rotate(-45deg); box-shadow: 0 0 70px #FFD60A; }
+    .c03-shape:after { content: ""; position: absolute; left: 34px; top: 34px; width: 32px; height: 32px; border-radius: 50%; background: #111; }
+    #c03-disc { position: absolute; left: 910px; top: 490px; width: 100px; height: 100px; border-radius: 50%; background: #FFD60A; opacity: 0; }
     #c03-pdisc { position: absolute; left: 910px; top: 490px; width: 100px; height: 100px; border-radius: 50%; background: #f7f4ec; opacity: 0; }
 
     #c03-hair { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; opacity: 0; filter: blur(3px); }
@@ -66,16 +75,26 @@
     </div>
 
     <div id="c03-aer">
-      <div id="c03-aw" data-layout-allow-overflow>
-        <img id="c03-aimg" src="assets/img/aerial-night.webp" alt="">
-        <div id="c03-dim"></div>
-        <svg id="c03-asvg" viewBox="0 0 2000 1125" xmlns="http://www.w3.org/2000/svg">
-          <path id="c03-avenue" d="M 640 1125 C 780 1010, 930 880, 1008 722"/>
-        </svg>
+      <div id="c03-stage0">
+        <div id="c03-cam" data-layout-allow-overflow>
+          <div id="c03-aw" data-layout-allow-overflow>
+            <img id="c03-aimg" src="assets/img/aerial-dusk.webp" alt="">
+            <div id="c03-dim"></div>
+            <div class="c03-dring" style="left:815px;top:470px;width:380px;height:260px"></div>
+            <div class="c03-dring" style="left:655px;top:360px;width:700px;height:480px"></div>
+            <div class="c03-dring" style="left:455px;top:220px;width:1100px;height:760px"></div>
+            <div class="c03-dring" style="left:205px;top:50px;width:1600px;height:1100px"></div>
+            <div id="c03-floors"></div>
+            <svg id="c03-asvg" viewBox="0 0 2000 1125" xmlns="http://www.w3.org/2000/svg">
+              <path id="c03-avenue" d="M 640 1125 C 780 1010, 930 880, 1008 722"/>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
     <div id="c03-halo"></div>
-    <div id="c03-pin"></div>
+    <div id="c03-pin"><div class="c03-shape"></div></div>
+    <div id="c03-disc"></div>
     <div id="c03-pdisc"></div>
     <div id="c03-warm" class="c03-fill"></div>
 
@@ -144,17 +163,24 @@
       }
 
       /* ---------- Scene 1: the pin is the iris ---------- */
-      var avenue = $("c03-avenue");
-      avenue.style.strokeDasharray = "none";
-      tl.set($("c03-aw"), { scale: 3.0 }, 0);
-      tl.to($("c03-aw"), { scale: 3.2, duration: 0.4, ease: "none" }, 0);
-      tl.to($("c03-pin"), { scale: 24, duration: 0.35, ease: "expo.in" }, 0);
+      var fl = $("c03-floors");
+      for (var f = 0; f < 10; f++) {
+        var fb = document.createElement("div");
+        fb.id = "c03-floor" + f;
+        fb.className = "c03-floor";
+        fb.style.top = (688 - f * 17) + "px";
+        fl.appendChild(fb);
+      }
+      tl.to($("c03-aer"), { scale: 1.08, duration: 0.4, ease: "none" }, 0);
+      tl.set($("c03-disc"), { opacity: 1, scale: 0.7 }, 0.03);
+      tl.to($("c03-disc"), { scale: 24, duration: 0.32, ease: "expo.in" }, 0.03);
       tl.to($("c03-halo"), { opacity: 0, duration: 0.3, ease: "power2.in" }, 0);
       tl.set($("c03-pdisc"), { opacity: 1, scale: 0.5 }, 0.06);
       tl.to($("c03-pdisc"), { scale: 24, duration: 0.32, ease: "expo.in" }, 0.06);
       tl.set($("c03-aer"), { opacity: 0 }, 0.40);
       tl.set($("c03-halo"), { opacity: 0 }, 0.40);
       tl.set($("c03-pin"), { opacity: 0 }, 0.40);
+      tl.set($("c03-disc"), { opacity: 0 }, 0.40);
       fT($("c03-warm"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.45);
       fT($("c03-grain"), { opacity: 0.04 }, { opacity: 0.03, duration: 5.28, ease: "none" }, 0);
 
