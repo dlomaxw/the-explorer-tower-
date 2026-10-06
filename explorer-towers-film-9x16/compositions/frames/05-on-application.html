@@ -1,0 +1,247 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c05-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+    #c05-ground { background: #f7f4ec; }
+    #c05-night { background: #0c0c0e; opacity: 0; }
+
+    /* the two neighbour cards, pushed out above and blurred (handoff_in) */
+    #c05-back { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .c05-nb { position: absolute; left: 90px; width: 900px; height: 840px; background: #ffffff; border-radius: 28px; box-shadow: 0 30px 80px rgba(60,50,20,.18); filter: blur(8px); }
+    #c05-nb1 { top: -560px; }
+    #c05-nb2 { top: -1560px; }
+    .c05-nbr { position: absolute; left: 0; top: 0; width: 100%; height: 56%; border-radius: 28px 28px 0 0; background: #efe9db; }
+
+    #c05-grow { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; transform-origin: 540px 960px; will-change: transform; }
+    #c05-ring { position: absolute; left: 0; top: 282px; width: 1080px; height: 1356px; box-sizing: border-box; border: 12px solid #FFD60A; border-radius: 40px;
+      box-shadow: 0 0 24px rgba(255,214,10,.55); transform-origin: 540px 678px; }
+    #c05-slices { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0; }
+    .c05-slw { position: absolute; left: 0; width: 1080px; height: 480px; overflow: hidden; }
+    .c05-world { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .c05-is { position: absolute; left: -1103px; top: 0; width: 1614px; height: 975px; transform-origin: 0 0; transform: scale(1.9692); }
+    .c05-img { position: absolute; left: 0; top: 0; width: 1614px; height: 975px; display: block; }
+    .c05-poolmask { position: absolute; left: 0; top: 0; width: 1614px; height: 975px; overflow: hidden;
+      clip-path: polygon(310px 455px, 560px 395px, 640px 400px, 900px 430px, 1210px 440px, 1320px 470px, 1315px 560px, 1230px 620px, 1200px 730px, 600px 590px, 420px 520px); }
+    .c05-caus { position: absolute; top: 0; width: 2400px; height: 975px; opacity: 0; mix-blend-mode: screen;
+      background-image:
+        radial-gradient(ellipse 34px 14px at 30px 30px, rgba(200,235,255,.95), rgba(200,235,255,0) 100%),
+        radial-gradient(ellipse 22px 30px at 90px 80px, rgba(255,255,255,.85), rgba(255,255,255,0) 100%),
+        radial-gradient(ellipse 40px 16px at 140px 20px, rgba(170,220,255,.8), rgba(170,220,255,0) 100%);
+      background-size: 170px 110px, 130px 120px, 210px 90px; }
+    .c05-ca { left: 0; }
+    .c05-caus.c05-cb { left: 0; top: 18px; background-size: 140px 96px, 170px 130px, 190px 100px; }
+    .c05-sweepmask { position: absolute; left: 0; top: 0; width: 1614px; height: 975px; overflow: hidden;
+      clip-path: polygon(225px 395px, 330px 470px, 480px 535px, 640px 570px, 860px 602px, 1225px 622px, 1225px 662px, 860px 645px, 640px 615px, 480px 580px, 330px 520px, 225px 445px); }
+    .c05-sweep { position: absolute; left: 0; top: 300px; width: 180px; height: 450px; opacity: 0;
+      background: linear-gradient(90deg, rgba(255,240,170,0), rgba(255,250,225,.95) 50%, rgba(255,240,170,0)); }
+    .c05-dim { position: absolute; left: 0; top: 0; width: 1614px; height: 975px; background: #000; opacity: 0; }
+    .c05-svg { position: absolute; left: 0; top: 0; width: 1614px; height: 975px; overflow: visible; }
+    .c05-gline { fill: none; stroke: #FFD60A; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 5px #FFD60A); }
+    .c05-spk { position: absolute; width: 40px; height: 40px; margin: -20px 0 0 -20px; opacity: 0; }
+    .c05-spk svg { display: block; width: 40px; height: 40px; filter: drop-shadow(0 0 6px #ffffff); }
+
+    #c05-grain { opacity: .03; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    #c05-disp { position: absolute; left: 0; top: 600px; width: 1080px; height: 140px; display: flex; justify-content: center; align-items: flex-start; gap: 26px;
+      font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 130px; line-height: 130px; color: #ffffff;
+      text-shadow: 0 6px 40px rgba(0,0,0,.45); opacity: 0; white-space: nowrap; }
+    .c05-dw { position: relative; display: inline-block; }
+    #c05-pk { position: absolute; left: 0; bottom: -8px; width: 100%; height: 14px; overflow: visible; }
+    #c05-pkp { fill: none; stroke: #FFD60A; stroke-width: 5; stroke-linecap: round; filter: drop-shadow(0 0 10px #FFD60A); }
+
+    .c05-sub { position: absolute; left: 0; top: 1330px; width: 1080px; height: 190px; display: flex; justify-content: center; align-items: center; gap: 16px;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 56px; line-height: 68px; color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.6); }
+    .c05-w { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); }
+    .c05-box { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c05-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="05-on-application" data-width="1080" data-height="1920" data-duration="3.04">
+    <div id="c05-groundclip" class="clip" data-start="0" data-duration="3.04" data-track-index="0" data-layout-ignore>
+      <div id="c05-ground" class="c05-fill"></div>
+    </div>
+    <div id="c05-night" class="c05-fill"></div>
+
+    <div id="c05-back">
+      <div id="c05-nb1" class="c05-nb"><div class="c05-nbr"></div></div>
+      <div id="c05-nb2" class="c05-nb"><div class="c05-nbr"></div></div>
+    </div>
+
+    <div id="c05-grow" data-layout-allow-overflow>
+      <div id="c05-world" class="c05-world" data-layout-allow-overflow>
+        <div class="c05-is">
+          <img class="c05-img" src="assets/img/sky-pool-penthouse.webp" alt="">
+          <div class="c05-poolmask">
+            <div id="c05-ca" class="c05-caus c05-ca"></div>
+            <div id="c05-cbb" class="c05-caus c05-cb"></div>
+          </div>
+          <div class="c05-sweepmask"><div class="c05-sweep"></div></div>
+          <div class="c05-dim"></div>
+          <svg class="c05-svg" viewBox="0 0 1614 975" xmlns="http://www.w3.org/2000/svg">
+            <path class="c05-gline" d="M 232 415 C 300 500, 440 560, 640 592 C 860 625, 1050 635, 1222 640"/>
+          </svg>
+          <div class="c05-spk c05-spk0" style="left:900px;top:520px"><svg viewBox="0 0 56 56"><path d="M28 0 C30 18 38 26 56 28 C38 30 30 38 28 56 C26 38 18 30 0 28 C18 26 26 18 28 0Z" fill="#ffffff"/></svg></div>
+          <div class="c05-spk c05-spk1" style="left:700px;top:500px"><svg viewBox="0 0 56 56"><path d="M28 0 C30 18 38 26 56 28 C38 30 30 38 28 56 C26 38 18 30 0 28 C18 26 26 18 28 0Z" fill="#ffffff"/></svg></div>
+          <div class="c05-spk c05-spk2" style="left:1010px;top:565px"><svg viewBox="0 0 56 56"><path d="M28 0 C30 18 38 26 56 28 C38 30 30 38 28 56 C26 38 18 30 0 28 C18 26 26 18 28 0Z" fill="#ffffff"/></svg></div>
+          <div class="c05-spk c05-spk3" style="left:800px;top:470px"><svg viewBox="0 0 56 56"><path d="M28 0 C30 18 38 26 56 28 C38 30 30 38 28 56 C26 38 18 30 0 28 C18 26 26 18 28 0Z" fill="#ffffff"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div id="c05-ring"></div>
+    <div id="c05-slices" data-layout-allow-overflow></div>
+
+    <div id="c05-grain" class="c05-fill"></div>
+
+    <div id="c05-disp">
+      <span id="c05-dw0" class="c05-dw">On</span>
+      <span id="c05-dw1" class="c05-dw">application<svg id="c05-pk" viewBox="0 0 330 14" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path id="c05-pkp" d="M 3 9 C 90 3, 230 3, 327 6"/></svg></span>
+    </div>
+
+    <div id="c05-sub1" class="c05-sub">
+      <span id="c05-s1w0" class="c05-w">each</span>
+      <span id="c05-s1w1" class="c05-w">with</span>
+      <span id="c05-s1w2" class="c05-w">its</span>
+      <span id="c05-s1w3" class="c05-w">own</span>
+      <span id="c05-s1w4" class="c05-w"><i id="c05-s1box" class="c05-box"></i><span id="c05-s1bt" class="c05-bt">pool,</span></span>
+    </div>
+    <div id="c05-sub2" class="c05-sub">
+      <span id="c05-s2w0" class="c05-w">priced</span>
+      <span id="c05-s2w1" class="c05-w">on</span>
+      <span id="c05-s2w2" class="c05-w"><i id="c05-s2box" class="c05-box"></i><span id="c05-s2bt" class="c05-bt">application.</span></span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "05-on-application";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- four horizontal band copies of the world (class-driven tweens keep them in sync) ---------- */
+      var main = $("c05-world");
+      var slicesEl = $("c05-slices");
+      var SH = 480;
+      for (var i = 0; i < 4; i++) {
+        var wrap = document.createElement("div");
+        wrap.id = "c05-sl" + i;
+        wrap.className = "c05-slw";
+        wrap.style.top = (i * SH) + "px";
+        var inner = main.cloneNode(true);
+        inner.removeAttribute("id");
+        var ids = inner.querySelectorAll("[id]");
+        for (var j = 0; j < ids.length; j++) ids[j].removeAttribute("id");
+        inner.style.top = (-i * SH) + "px";
+        wrap.appendChild(inner);
+        slicesEl.appendChild(wrap);
+      }
+
+      /* the pool edge is the push target; same origin in stage coordinates for every copy */
+      gsap.set(".c05-world", { transformOrigin: "538px 1328px", scale: 1 });
+
+      /* glass edge line: measured dash */
+      var lines = document.querySelectorAll(".c05-gline");
+      var LL = lines[0].getTotalLength();
+      for (var q = 0; q < lines.length; q++) {
+        lines[q].style.strokeDasharray = LL + " " + LL;
+        lines[q].style.strokeDashoffset = LL;
+      }
+
+      /* peak stroke under "application" */
+      var pk = $("c05-pkp");
+      var PL = pk.getTotalLength();
+      pk.style.strokeDasharray = PL + " " + PL;
+      pk.style.strokeDashoffset = PL;
+
+      /* ---------- Scene 1: the card (85% x 60%) grows into the full-bleed pool ---------- */
+      var grow = $("c05-grow");
+      fT(grow, { scale: 0.85, filter: "blur(10px)", clipPath: "inset(282px 0px 282px 0px round 40px)" },
+               { scale: 1, filter: "blur(0px)", clipPath: "inset(0px 0px 0px 0px round 0px)", duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo("#c05-ring", { scaleX: 0.85, scaleY: 0.85, opacity: 1 }, { scaleX: 1, scaleY: 1.4159, duration: 0.5, ease: "expo.out" }, 0);
+      tl.to("#c05-ring", { opacity: 0, duration: 0.2, ease: "power2.in" }, 0.3);
+      tl.fromTo("#c05-nb1", { y: 0 }, { y: -700, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo("#c05-nb2", { y: 0 }, { y: -700, duration: 0.5, ease: "expo.out" }, 0);
+      fT("#c05-night", { opacity: 0 }, { opacity: 1, duration: 0.1, ease: "none" }, 0.45);
+
+      /* camera push 6 %/s toward the pool edge, held 1.10 to 1.38 */
+      tl.to(".c05-world", { scale: 1.066, duration: 1.10, ease: "none" }, 0);
+      tl.to(".c05-world", { scale: 1.166, duration: 1.66, ease: "none" }, 1.38);
+
+      /* water caustics shimmer (animated layers) */
+      fT(".c05-caus", { opacity: 0 }, { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 0.30);
+      tl.fromTo(".c05-ca", { x: 0 }, { x: -340, duration: 2.5, ease: "none" }, 0.30);
+      tl.fromTo(".c05-cb", { x: -380 }, { x: 0, duration: 2.5, ease: "none" }, 0.30);
+      tl.to(".c05-caus", { opacity: 0.32, duration: 0.3, ease: "power1.out" }, 1.70);
+
+      /* glass edge: highlight sweep left to right + the yellow line draws along it */
+      fT(".c05-sweep", { opacity: 0, x: 440 }, { opacity: 0.9, x: 560, duration: 0.2, ease: "power2.out" }, 0.60);
+      tl.to(".c05-sweep", { x: 1180, duration: 0.5, ease: "power2.inOut" }, 0.70);
+      tl.to(".c05-sweep", { opacity: 0, duration: 0.2, ease: "power2.in" }, 1.10);
+      tl.to(".c05-gline", { strokeDashoffset: 0, duration: 0.7, ease: "expo.out" }, 0.60);
+
+      /* sparkles on the water */
+      [["c05-spk0", 0.92], ["c05-spk1", 0.98], ["c05-spk2", 1.20], ["c05-spk3", 1.26]].forEach(function (s) {
+        fT("." + s[0], { opacity: 0, scale: 0, rotation: -30 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.14, ease: "power3.out" }, s[1]);
+        tl.to("." + s[0], { opacity: 0, scale: 0.4, duration: 0.22, ease: "power2.in" }, s[1] + 0.14);
+      });
+
+      /* ---------- Scene 2: the render darkens to 70% ---------- */
+      tl.fromTo(".c05-dim", { opacity: 0 }, { opacity: 0.3, duration: 0.3, ease: "power2.out", immediateRender: false }, 1.70);
+
+      /* ---------- display "On application" ---------- */
+      fT("#c05-disp", { opacity: 0, scale: 1.4, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 1.93);
+      tl.to(pk, { strokeDashoffset: 0, duration: 0.49, ease: "power2.out" }, 2.11);
+      fT("#c05-disp", { opacity: 1, y: 0, filter: "blur(0px)" }, { opacity: 0, y: -60, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, 2.52);
+
+      /* ---------- subtitles ---------- */
+      function word(id, cue) {
+        var el = $(id);
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, cue + 0.14);
+      }
+      function keybox(wid, boxId, txtId, cue) {
+        word(wid, cue);
+        fT($(boxId), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, cue - 0.05);
+        fT($(txtId), { color: "#ffffff" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, cue + 0.02);
+      }
+      word("c05-s1w0", 0.09);
+      word("c05-s1w1", 0.33);
+      word("c05-s1w2", 0.51);
+      word("c05-s1w3", 0.65);
+      keybox("c05-s1w4", "c05-s1box", "c05-s1bt", 0.90);
+      fT("#c05-sub1", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 1.36);
+
+      word("c05-s2w0", 1.56);
+      word("c05-s2w1", 1.92);
+      keybox("c05-s2w2", "c05-s2box", "c05-s2bt", 2.09);
+      fT("#c05-sub2", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 2.76);
+
+      /* ---------- the pool slices into four horizontal slats and slides up ---------- */
+      tl.set("#c05-grow", { opacity: 0 }, 2.50);
+      tl.set("#c05-slices", { opacity: 1 }, 2.50);
+      fT("#c05-slices", { filter: "blur(0px)" }, { filter: "blur(12px)", duration: 0.54, ease: "power2.in" }, 2.50);
+      var DY = [-96, -64, -32, 0];
+      for (var k = 0; k < 4; k++) {
+        fT("#c05-sl" + k, { y: 0 }, { y: DY[k], duration: 0.54, ease: "power3.in" }, 2.50);
+      }
+      fT("#c05-grain", { opacity: 0.03 }, { opacity: 0.04, duration: 0.5, ease: "power1.out" }, 2.50);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,240 @@
+<template>
+  <style>
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c06-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #c06-ground { background: #0c0c0e; }
+
+    #c06-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #c06-world { position: absolute; left: 0; top: 0; width: 1080px; height: 6720px; transform-origin: 0 0; }
+
+    .c06-slat { position: absolute; left: 0; width: 1080px; height: 960px;
+      --dof: 3px; --br: .5; --ct: 1;
+      filter: blur(var(--dof)) brightness(var(--br)) contrast(var(--ct)); will-change: filter; }
+    .c06-clip { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; overflow: hidden; }
+    .c06-img { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; background-repeat: no-repeat; }
+    .c06-grad { position: absolute; left: 0; top: 0; width: 1080px; height: 960px;
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.78) 100%); }
+    .c06-slice { position: absolute; left: 0; width: 1080px; height: 240px; overflow: hidden; }
+    .c06-slice .c06-img { height: 240px; }
+
+    #c06-pt { top: 0; }
+    #c06-s0 { top: 960px; --dof: 12px; --br: .7; }
+    #c06-s1 { top: 1920px; opacity: 0; --dof: 2px; --br: .55; }
+    #c06-s2 { top: 2880px; opacity: 0; }
+    #c06-s3 { top: 3840px; opacity: 0; }
+    #c06-s4 { top: 4800px; opacity: 0; }
+    #c06-pb { top: 5760px; }
+    #c06-fill { position: absolute; left: 0; top: 960px; width: 1080px; height: 4800px; background: url("assets/img/residents-lounge.webp") center / cover; filter: brightness(.4); }
+
+    #c06-ipt { background-image: url("assets/img/pool-and-gym.webp"); background-size: 2000px 1126px; background-position: 0px -100px; }
+    #c06-i1 { background-image: url("assets/img/sauna.webp"); background-size: auto 1400px; background-position: -912px -350px; }
+    #c06-i2 { background-image: url("assets/img/playground.webp"); background-size: cover; background-position: 50% 60%; transform-origin: 50% 100%; }
+    #c06-i3 { background-image: url("assets/img/residents-lounge.webp"); background-size: cover; background-position: 50% 50%; }
+    #c06-i4 { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1150px; background-position: -250px -90px; }
+    #c06-ipb { background-image: url("assets/img/arrival-podium.png"); background-size: auto 1150px; background-position: -469px -90px; }
+    .c06-gi { background-image: url("assets/img/pool-and-gym.webp"); background-size: 2000px 1126px; }
+
+    .c06-sweep { position: absolute; left: 0; top: -120px; width: 200px; height: 1200px; opacity: 0; mix-blend-mode: screen;
+      background: linear-gradient(90deg, rgba(255,240,190,0), rgba(255,240,190,.5), rgba(255,240,190,0)); }
+    .c06-puff { position: absolute; top: 740px; width: 180px; height: 180px; border-radius: 50%; opacity: 0; filter: blur(10px);
+      background: radial-gradient(closest-side, rgba(255,255,255,.4), rgba(255,255,255,0)); }
+    #c06-lamp { position: absolute; left: 560px; top: 170px; width: 440px; height: 440px; border-radius: 50%; opacity: 0; mix-blend-mode: screen;
+      background: radial-gradient(closest-side, rgba(255,240,160,.85), rgba(255,214,10,.25) 55%, rgba(255,214,10,0)); }
+
+    .c06-w { position: absolute; left: 70px; white-space: nowrap; opacity: 0; transform-origin: 0 100%;
+      font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: #fff; line-height: 0.88;
+      text-shadow: 0 6px 40px rgba(0,0,0,.6); }
+    #c06-w0 { top: 1720px; font-size: 130px; }
+    #c06-w1 { top: 2680px; font-size: 130px; }
+    #c06-w2 { top: 3640px; font-size: 130px; }
+    #c06-w3 { top: 4600px; font-size: 130px; }
+    #c06-w4 { top: 5590px; font-size: 80px; }
+
+    #c06-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+  </style>
+
+  <div id="root" data-composition-id="06-amenities" data-width="1080" data-height="1920" data-duration="5.29">
+    <div id="c06-groundclip" class="clip" data-start="0" data-duration="5.29" data-track-index="0" data-layout-ignore>
+      <div id="c06-ground" class="c06-fill"></div>
+    </div>
+
+    <div id="c06-stage">
+      <div id="c06-world" data-layout-allow-overflow>
+        <div id="c06-fill"></div>
+        <div id="c06-pt" class="c06-slat"><div class="c06-clip"><div id="c06-ipt" class="c06-img"></div><div class="c06-grad"></div></div></div>
+        <div id="c06-pb" class="c06-slat"><div class="c06-clip"><div id="c06-ipb" class="c06-img"></div><div class="c06-grad"></div></div></div>
+        <!-- band 0: gym, four horizontal slices of the pool render -->
+        <div id="c06-s0" class="c06-slat" data-layout-allow-overflow>
+          <div id="c06-sl0" class="c06-slice" style="top:0px"><div class="c06-img c06-gi" style="background-position:-920px -166px"></div></div>
+          <div id="c06-sl1" class="c06-slice" style="top:240px"><div class="c06-img c06-gi" style="background-position:-920px -406px"></div></div>
+          <div id="c06-sl2" class="c06-slice" style="top:480px"><div class="c06-img c06-gi" style="background-position:-920px -646px"></div></div>
+          <div id="c06-sl3" class="c06-slice" style="top:720px"><div class="c06-img c06-gi" style="background-position:-920px -886px"></div></div>
+          <div class="c06-grad"></div>
+          <div class="c06-clip"><div id="c06-sw0" class="c06-sweep"></div></div>
+        </div>
+        <!-- band 1: sauna -->
+        <div id="c06-s1" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i1" class="c06-img"></div>
+            <div class="c06-grad"></div>
+            <div id="c06-steam"></div>
+          </div>
+        </div>
+        <!-- band 2: garden -->
+        <div id="c06-s2" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i2" class="c06-img"></div>
+            <div class="c06-grad"></div>
+          </div>
+        </div>
+        <!-- band 3: lounge -->
+        <div id="c06-s3" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i3" class="c06-img"></div>
+            <div class="c06-grad"></div>
+            <div id="c06-lamp"></div>
+          </div>
+        </div>
+        <!-- band 4: covered parking -->
+        <div id="c06-s4" class="c06-slat">
+          <div class="c06-clip">
+            <div id="c06-i4" class="c06-img"></div>
+            <div class="c06-grad"></div>
+            <div id="c06-sw4" class="c06-sweep"></div>
+          </div>
+        </div>
+
+        <div id="c06-w0" class="c06-w">A gym.</div>
+        <div id="c06-w1" class="c06-w">A sauna.</div>
+        <div id="c06-w2" class="c06-w">A garden.</div>
+        <div id="c06-w3" class="c06-w">A lounge.</div>
+        <div id="c06-w4" class="c06-w">Covered parking.</div>
+      </div>
+    </div>
+    <div id="c06-grain" class="c06-fill"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "06-amenities";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- one camera: v = world y at screen centre, s = zoom (pan goes DOWN only) ---------- */
+      var C = [1440, 2400, 3360, 4320, 5280];
+      var world = $("c06-world");
+      var cam = { v: C[0], s: 1.2 };
+      function applyCam() {
+        world.style.transform = "translate(" + (540 - 540 * cam.s).toFixed(2) + "px," + (960 - cam.v * cam.s).toFixed(2) + "px) scale(" + cam.s.toFixed(4) + ")";
+      }
+      applyCam();
+      function camV(v, dur, ease, t) {
+        tl.to(cam, { v: v, duration: dur, ease: ease, onUpdate: applyCam }, t);
+      }
+      camV(C[0] + 25, 0.90, "none", 0);
+      camV(C[1], 0.40, "expo.inOut", 0.90);
+      camV(C[1] + 14, 0.50, "none", 1.30);
+      camV(C[2], 0.40, "expo.inOut", 1.80);
+      camV(C[2] + 20, 0.70, "none", 2.20);
+      camV(C[3], 0.30, "expo.inOut", 2.90);
+      camV(C[3] + 17, 0.32, "none", 3.20);
+      camV(C[4] - 150, 0.48, "expo.inOut", 3.52);
+      camV(C[4] - 122, 1.00, "none", 4.00);
+      camV(C[4], 0.29, "power2.in", 5.00);
+      tl.to(cam, { s: 1.0, duration: 0.6, ease: "expo.out", onUpdate: applyCam }, 0);
+
+      /* ---------- bands: pool slices slide UP into place, the others rise in from the bottom ---------- */
+      for (var i = 0; i < 4; i++) {
+        var d = 100 + i * 30;
+        tl.fromTo($("c06-sl" + i), { y: d }, { y: 0, duration: d / 200, ease: "power2.out" }, 0);
+      }
+      for (var k = 1; k < 5; k++) {
+        fT($("c06-s" + k), { opacity: 0, y: 420 }, { opacity: 1, y: 0, duration: 0.2, ease: "expo.out" }, 0.06 * k);
+      }
+
+      /* ---------- depth of field: the active band is sharp, neighbours 2 to 3 px ---------- */
+      var ACT = [0.95, 1.2, 0.9, 0.9, 0.95];
+      var NB = [0.5, 0.55, 0.5, 0.5, 0.5];
+      function target(j, a) {
+        if (j === a) return { d: 0, b: ACT[j] };
+        var dist = Math.abs(j - a);
+        var dd = dist === 1 ? (a === 4 ? 3 : 2) : 3;
+        return { d: dd, b: NB[j] };
+      }
+      var cur = [{ d: 12, b: 0.7 }, { d: 2, b: 0.55 }, { d: 3, b: 0.5 }, { d: 3, b: 0.5 }, { d: 3, b: 0.5 }];
+      function rack(a, t, dur) {
+        for (var j = 0; j < 5; j++) {
+          var tg = target(j, a);
+          if (tg.d === cur[j].d && tg.b === cur[j].b) continue;
+          tl.to($("c06-s" + j), { "--dof": tg.d + "px", "--br": tg.b, duration: dur, ease: "power2.inOut" }, t);
+          cur[j] = tg;
+        }
+      }
+      tl.to($("c06-s0"), { "--dof": "0px", "--br": ACT[0], duration: 0.35, ease: "power2.out" }, 0);
+      cur[0] = { d: 0, b: ACT[0] };
+      rack(1, 0.90, 0.40);
+      rack(2, 1.80, 0.40);
+      rack(3, 2.90, 0.30);
+      rack(4, 3.52, 0.48);
+      /* handoff out: the last band goes soft with the closing pan */
+      tl.to($("c06-s4"), { "--dof": "12px", "--br": 0.82, duration: 0.29, ease: "power2.in" }, 5.00);
+
+      /* ---------- display words on their cues (one entrance each) ---------- */
+      fT($("c06-w0"), { opacity: 0, scale: 1.5, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power4.out" }, 0.27);
+      fT($("c06-w1"), { opacity: 0, y: 120, filter: "blur(12px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 1.20);
+      fT($("c06-w2"), { opacity: 0, y: -80, scale: 1.15, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, 2.29);
+      fT($("c06-w3"), { opacity: 0, scale: 1.3, y: 60, filter: "blur(14px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 3.19);
+      fT($("c06-w4"), { opacity: 0, scale: 1.5, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power4.out" }, 4.27);
+      /* words gone for the handoff */
+      fT($("c06-w4"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(12px)", duration: 0.2, ease: "power2.in" }, 5.02);
+
+      /* ---------- band events ---------- */
+      /* gym: light sweep over the treadmills */
+      fT($("c06-sw0"), { opacity: 0, x: -300, rotation: 18 }, { x: 1200, rotation: 18, duration: 0.7, ease: "power2.inOut" }, 0.55);
+      fT($("c06-sw0"), { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power2.out" }, 0.55);
+      fT($("c06-sw0"), { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in" }, 0.85);
+
+      /* sauna: steam rises */
+      var steam = $("c06-steam");
+      for (var p = 0; p < 7; p++) {
+        var pf = document.createElement("div");
+        pf.id = "c06-puff" + p;
+        pf.className = "c06-puff";
+        pf.style.left = (20 + p * 140) + "px";
+        steam.appendChild(pf);
+        var t0 = 1.50 + p * 0.12;
+        fT(pf, { y: 0, scale: 0.7 }, { y: -560, scale: 1.6, duration: 1.7, ease: "power1.out" }, t0);
+        fT(pf, { opacity: 0 }, { opacity: 0.6, duration: 0.4, ease: "power2.out" }, t0);
+        fT(pf, { opacity: 0.6 }, { opacity: 0, duration: 1.0, ease: "power1.in" }, t0 + 0.7);
+      }
+
+      /* garden: leaves sway */
+      tl.set($("c06-i2"), { scale: 1.1, rotation: 0 }, 0);
+      tl.to($("c06-i2"), { rotation: -1.2, duration: 0.5, ease: "sine.inOut" }, 2.60);
+      tl.to($("c06-i2"), { rotation: 1.2, duration: 0.6, ease: "sine.inOut" }, 3.10);
+      tl.to($("c06-i2"), { rotation: 0.2, duration: 0.5, ease: "sine.inOut" }, 3.70);
+
+      /* lounge: lamp glow */
+      fT($("c06-lamp"), { opacity: 0, scale: 0.6 }, { opacity: 0.85, scale: 1, duration: 0.5, ease: "expo.out" }, 3.45);
+
+      /* parking: headlights sweep across the arrival render */
+      fT($("c06-sw4"), { opacity: 0, x: -300, rotation: 14 }, { x: 1200, rotation: 14, duration: 0.6, ease: "power2.inOut" }, 4.60);
+      fT($("c06-sw4"), { opacity: 0 }, { opacity: 0.9, duration: 0.15, ease: "power2.out" }, 4.60);
+      fT($("c06-sw4"), { opacity: 0.9 }, { opacity: 0, duration: 0.35, ease: "power2.in" }, 4.85);
+
+      applyCam();
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
