@@ -52,7 +52,7 @@ patterns: ../patterns/STORYBOARD-CRAFT.md, ../patterns/PATTERNS.md
 - scene: the four panes: Aluminium, Glass, Steel, Wood
 - duration: 2.43s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-hook.html
 - voiceover: ""
 - type: hook
@@ -81,7 +81,7 @@ Scene 1 (0.00 à 2.43 s) : P1, four materials in silence
 - scene: the 60+ counter and the doors, windows and skylights panes
 - duration: 4.61s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/02-sixty-years.html
 - voiceover: "sixty years of building Uganda's doors windows and skylines"
 - type: solution
@@ -120,7 +120,7 @@ Scene 2 (2.60 à 4.61 s) : P3, Uganda's doors, windows and skylines
 - scene: the aluminium pane-large and its leaf opening
 - duration: 2.67s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/03-doors-windows.html
 - voiceover: "doors and windows that open the way"
 - type: benefit
@@ -149,7 +149,7 @@ Scene 1 (0.00 à 2.67 s) : P4, doors and windows that open the way
 - scene: the curtain wall pane then the facade pane, tilting up the towers
 - duration: 3.92s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/04-curtain-wall-facade.html
 - voiceover: "curtain walls and facades that dress the tallest towers"
 - type: benefit
@@ -188,7 +188,7 @@ Scene 2 (1.84 à 3.92 s) : P6, that dress the tallest towers
 - scene: three panes, one per word
 - duration: 3.04s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/05-glass-partitions-railings.html
 - voiceover: "glass partitions railings"
 - type: benefit
@@ -246,7 +246,7 @@ Scene 1 (0.00 à 2.99 s) : P8, steel gates, grills and roller shutters
 - scene: three panes, one per word
 - duration: 3.35s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/07-ceilings-hardware-blinds.html
 - voiceover: "ceilings door hardware roller blinds"
 - type: benefit
@@ -275,7 +275,7 @@ Scene 1 (0.00 à 3.35 s) : P9, ceilings, door hardware, roller blinds
 - scene: the mini home pane and the one-hour ring
 - duration: 2.51s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/08-mini-homes.html
 - voiceover: "even mini homes that go up in an hour"
 - type: benefit
@@ -304,7 +304,7 @@ Scene 1 (0.00 à 2.51 s) : P10, even mini homes that go up in an hour
 - scene: twelve small panes assembling, then the factory photo
 - duration: 3.82s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/09-twelve-factory.html
 - voiceover: "twelve product lines one factory in kampala"
 - type: benefit
@@ -343,7 +343,7 @@ Scene 2 (2.50 à 3.82 s) : P12, one factory, in Kampala
 - scene: one pane that becomes a drawing, a build and an installation
 - duration: 4.39s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/10-process.html
 - voiceover: "share your idea we draw it we build it we install it"
 - type: demo
@@ -372,7 +372,7 @@ Scene 1 (0.00 à 4.39 s) : P13, share your idea, we draw it, we build it, we ins
 - scene: the promise and the four stat chips
 - duration: 3.02s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/11-built-to-last.html
 - voiceover: "built to last delivered as promised"
 - type: benefit
@@ -401,7 +401,7 @@ Scene 1 (0.00 à 3.02 s) : P14, built to last, delivered as promised
 - scene: the logo plate and the address card
 - duration: 4.17s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/12-address.html
 - voiceover: "casements plot eighty six fifth street industrial area"
 - type: cta
@@ -440,7 +440,7 @@ Scene 2 (2.00 à 4.17 s) : P16, plot eighty-six, Fifth Street, Industrial Area
 - scene: the contact card and the number rolling in
 - duration: 5.51s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/13-call.html
 - voiceover: "call plus two five six seven five two seven zero zero seven zero zero"
 - type: cta
@@ -479,7 +479,7 @@ Scene 2 (2.59 à 5.51 s) : P18, seven five two, seven zero zero, seven zero zero
 - scene: the logo, the promise and the website button
 - duration: 6.87s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/14-end-card.html
 - voiceover: "or visit casements dot c o dot u g"
 - type: cta
