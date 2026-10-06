@@ -1,0 +1,18 @@
+:root{
+  --mk-primary:#FAE104;
+  --mk-secondary:#B8A600;
+  --mk-accent:#FAE104;
+  --mk-ink:#FFFFFF;
+  --mk-ink-soft:#B5B5B5;
+  --mk-bg:#0A0A0A;
+  --mk-surface:#161616;
+  --mk-line:#2A2A2A;
+  --mk-on-primary:#101010;
+  --mk-on-accent:#101010;
+  --mk-font-display:"Montserrat",system-ui,sans-serif;
+  --mk-font-body:"Montserrat",system-ui,sans-serif;
+  --mk-display-weight:800;
+  --mk-radius:26px;
+  --mk-shadow:0 30px 70px rgba(255,255,255,0.16);
+  --mk-shadow-brand:0 30px 80px rgba(250,225,4,0.35);
+}
