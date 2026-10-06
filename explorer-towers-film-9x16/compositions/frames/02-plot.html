@@ -1,0 +1,270 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c02-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #c02-ground { background: #0c0c0e; }
+
+    /* aerial portrait: image height 2100 (scale 1.8667 of the 2000x1125 reference space), tower base at 50% / 46% */
+    #c02-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; filter: blur(4px); }
+    #c02-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
+    #c02-aw { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; transform-origin: 0 0; transform: translate(-1341px, -465px) scale(1.8667); }
+    .c02-aimg { position: absolute; left: 0; width: 2000px; height: 1125px; display: block; }
+    #c02-aimg { top: 0; }
+    #c02-aimg2 { top: 1124px; transform: scaleY(-1); }
+    #c02-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 2250px; background: #070a18; opacity: 0; }
+    .c02-dring { position: absolute; border-radius: 50%; opacity: .5; mix-blend-mode: screen;
+      background: radial-gradient(closest-side, rgba(255,150,40,0) 60%, rgba(255,170,60,.42) 80%, rgba(255,150,40,0) 100%); }
+    .c02-floor { position: absolute; left: 902px; width: 208px; height: 8px; border-radius: 4px; background: #ffb347; opacity: .8;
+      mix-blend-mode: screen; box-shadow: 0 0 12px 3px rgba(255,170,60,.7); }
+    #c02-asvg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; overflow: visible; }
+    #c02-avenue { fill: none; stroke: #FFD60A; stroke-width: 2.68; stroke-linecap: round; filter: drop-shadow(0 0 3px #FFD60A); }
+
+    #c02-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    /* pin-following layer (screen space, position written by the camera) */
+    #c02-follow { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+    #c02-halo { position: absolute; left: -170px; top: -170px; width: 340px; height: 340px; border-radius: 50%; background: rgba(255,214,10,.08); opacity: 0; }
+    #c02-halo2 { position: absolute; left: 0; top: 0; width: 340px; height: 340px; border-radius: 50%; background: rgba(255,214,10,.10); opacity: 0; }
+    #c02-pin { position: absolute; left: -50px; top: -50px; width: 100px; height: 100px; opacity: 0; }
+    .c02-shape { position: absolute; left: 0; top: 0; width: 100px; height: 100px; border-radius: 50% 50% 50% 0; background: #FFD60A;
+      transform: rotate(-45deg); box-shadow: 0 0 70px #FFD60A; }
+    .c02-shape:after { content: ""; position: absolute; left: 34px; top: 34px; width: 32px; height: 32px; border-radius: 50%; background: #111; }
+
+    .c02-ch { display: inline-block; white-space: pre; }
+    #c02-plot-a .c02-ch, #c02-plot-b .c02-ch { opacity: 0; }
+    #c02-plot { position: absolute; left: -400px; top: -262px; width: 800px; text-align: center; white-space: nowrap; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.75); }
+    #c02-plot-a { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 96px; line-height: 96px; letter-spacing: -2px; }
+    #c02-plot-b { margin-top: 14px; font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 24px; line-height: 28px; letter-spacing: .22em; text-transform: uppercase; color: #d9dbe0; }
+    #c02-addr { position: absolute; left: 0; top: 124px; width: 0; height: 0; opacity: 0; }
+    .c02-arow { position: absolute; left: -450px; width: 900px; text-align: center; white-space: nowrap; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.8); }
+    #c02-arow1 { top: 2px; font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 36px; line-height: 46px; color: #d9dbe0; }
+    #c02-arow2 { top: -4px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 52px; line-height: 60px; }
+    #c02-arow2 .c02-ch { opacity: 0; }
+
+    #c02-tag { position: absolute; left: 60px; top: 232px; opacity: 0; white-space: nowrap; font-family: "Montserrat", sans-serif; font-weight: 600;
+      font-size: 24px; line-height: 28px; letter-spacing: .22em; text-transform: uppercase; color: #aeb3bd; text-shadow: 0 2px 18px rgba(0,0,0,.7); }
+
+    .c02-sub { position: absolute; left: 0; width: 1080px; display: flex; flex-direction: column; align-items: center;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 56px; line-height: 72px; color: #fff;
+      text-shadow: 0 2px 22px rgba(0,0,0,.8); }
+    #c02-sub1 { top: 1350px; }
+    #c02-sub2 { top: 1386px; }
+    .c02-line { display: flex; justify-content: center; height: 72px; }
+    .c02-w { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); white-space: nowrap; }
+    .c02-w + .c02-w { margin-left: 16px; }
+    .c02-w.c02-ng + .c02-w { margin-left: 0; }
+    .c02-bt { position: relative; display: inline-block; height: 72px; }
+    .c02-box { position: absolute; left: -0.14em; right: -0.14em; top: 7px; bottom: 7px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c02-bx { position: relative; display: inline-block; }
+    .c02-stroke { position: absolute; left: -0.14em; right: -0.14em; top: 68px; height: 5px; border-radius: 3px; background: #FFD60A;
+      box-shadow: 0 0 12px rgba(255,214,10,.6); transform-origin: 0 50%; transform: scaleX(0); }
+  </style>
+
+  <div id="root" data-composition-id="02-plot" data-width="1080" data-height="1920" data-duration="5.1">
+    <div id="c02-groundclip" class="clip" data-start="0" data-duration="5.1" data-track-index="0" data-layout-ignore>
+      <div id="c02-ground" class="c02-fill"></div>
+    </div>
+
+    <div id="c02-stage">
+      <div id="c02-cam" data-layout-allow-overflow>
+        <div id="c02-aw" data-layout-allow-overflow>
+          <img id="c02-aimg" class="c02-aimg" src="assets/img/aerial-dusk.webp" alt="">
+          <img id="c02-aimg2" class="c02-aimg" src="assets/img/aerial-dusk.webp" alt="">
+          <div id="c02-dim"></div>
+          <div id="c02-d0" class="c02-dring" style="left:815px;top:470px;width:380px;height:260px"></div>
+          <div id="c02-d1" class="c02-dring" style="left:655px;top:360px;width:700px;height:480px"></div>
+          <div id="c02-d2" class="c02-dring" style="left:455px;top:220px;width:1100px;height:760px"></div>
+          <div id="c02-d3" class="c02-dring" style="left:205px;top:50px;width:1600px;height:1100px"></div>
+          <div id="c02-floors"></div>
+          <svg id="c02-asvg" viewBox="0 0 2000 1125" xmlns="http://www.w3.org/2000/svg">
+            <path id="c02-avenue" d="M 706 1299 C 790 1090, 925 900, 1008 722"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="c02-grain" class="c02-fill"></div>
+
+    <div id="c02-follow">
+      <div id="c02-halo"><div id="c02-halo2"></div></div>
+      <div id="c02-pin"><div class="c02-shape"></div></div>
+      <div id="c02-plot">
+        <div id="c02-plot-a"></div>
+        <div id="c02-plot-b"></div>
+      </div>
+      <div id="c02-addr">
+        <div id="c02-arow1" class="c02-arow"></div>
+        <div id="c02-arow2" class="c02-arow"></div>
+      </div>
+    </div>
+
+    <div id="c02-tag">Kololo · Kampala · Uganda</div>
+
+    <div id="c02-sub1" class="c02-sub">
+      <div class="c02-line">
+        <span id="c02-s1w0" class="c02-w">plot</span>
+        <span id="c02-s1w1" class="c02-w c02-ng">thirty-</span>
+        <span id="c02-s1w2" class="c02-w"><span class="c02-bt"><i id="c02-s1box" class="c02-box"></i><span id="c02-s1bt" class="c02-bx">seven</span></span>,</span>
+      </div>
+      <div class="c02-line">
+        <span id="c02-s1w3" class="c02-w">John</span>
+        <span id="c02-s1w4" class="c02-w">Babiha,</span>
+      </div>
+    </div>
+    <div id="c02-sub2" class="c02-sub">
+      <div class="c02-line">
+        <span id="c02-s2w0" class="c02-w">also</span>
+        <span id="c02-s2w1" class="c02-w">called</span>
+        <span id="c02-s2w2" class="c02-w">Acacia</span>
+        <span id="c02-s2w3" class="c02-w"><span class="c02-bt"><i id="c02-s2box" class="c02-box"></i><i id="c02-s2stroke" class="c02-stroke"></i><span id="c02-s2bt" class="c02-bx">Avenue</span></span>.</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "02-plot";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* tower light floor bars */
+      var fl = $("c02-floors");
+      for (var f = 0; f < 10; f++) {
+        var b = document.createElement("div");
+        b.id = "c02-floor" + f;
+        b.className = "c02-floor";
+        b.style.top = (688 - f * 17) + "px";
+        fl.appendChild(b);
+      }
+
+      /* letter builder */
+      function build(host, text) {
+        var out = [];
+        for (var i = 0; i < text.length; i++) {
+          var s = document.createElement("span");
+          s.className = "c02-ch";
+          s.textContent = text.charAt(i);
+          host.appendChild(s);
+          out.push(s);
+        }
+        return out;
+      }
+      var plotL = build($("c02-plot-a"), "Plot 37");
+      var coordL = build($("c02-plot-b"), "0.3282° N · 32.5871° E");
+      var oldL = build($("c02-arow1"), "John Babiha (Acacia) Avenue, Kololo");
+      var newL = build($("c02-arow2"), "Acacia Avenue");
+
+      /* ---------- camera (single writer). P = plot = tower base, screen coords at cam(540,960,1) ---------- */
+      var PX = 540, PY = 883;
+      var cam = { cx: 540, cy: 960, z: 1 };
+      var camEl = $("c02-cam"), follow = $("c02-follow"), avenue = $("c02-avenue");
+      function applyCam() {
+        var z = cam.z;
+        camEl.style.transform = "translate(" + (540 - z * cam.cx).toFixed(2) + "px," + (960 - z * cam.cy).toFixed(2) + "px) scale(" + z.toFixed(4) + ")";
+        follow.style.transform = "translate(" + (540 + z * (PX - cam.cx)).toFixed(2) + "px," + (960 + z * (PY - cam.cy)).toFixed(2) + "px)";
+        avenue.setAttribute("stroke-width", (5 / 1.8667 / z).toFixed(3));
+      }
+      function camT(props, dur, ease, t) {
+        var o = { duration: dur, ease: ease, onUpdate: applyCam };
+        for (var k in props) o[k] = props[k];
+        tl.to(cam, o, t);
+      }
+      camT({ cx: 540, cy: 941, z: 1.17 }, 1.70, "none", 0);
+      camT({ cx: 540, cy: 921, z: 2.0 }, 0.85, "power3.inOut", 1.70);
+      camT({ cx: 540, cy: 900, z: 2.4 }, 1.95, "none", 2.55);
+      camT({ cx: PX, cy: PY, z: 3.0 }, 0.60, "expo.in", 4.50);
+
+      /* camera blur on the aerial only (pin and text stay sharp) */
+      var stage = $("c02-stage");
+      fT(stage, { filter: "blur(4px)" }, { filter: "blur(8px)", duration: 0.85, ease: "power2.in" }, 1.70);
+      fT(stage, { filter: "blur(8px)" }, { filter: "blur(6px)", duration: 1.95, ease: "none" }, 2.55);
+      fT(stage, { filter: "blur(6px)" }, { filter: "blur(12px)", duration: 0.60, ease: "expo.in" }, 4.50);
+
+      /* dim to 45% brightness by the end */
+      var dim = $("c02-dim");
+      fT(dim, { opacity: 0 }, { opacity: 0.25, duration: 2.25, ease: "none" }, 0.30);
+      fT(dim, { opacity: 0.25 }, { opacity: 0.55, duration: 2.55, ease: "none" }, 2.55);
+
+      /* ---------- Scene 1 ---------- */
+      var pin = $("c02-pin"), halo = $("c02-halo"), halo2 = $("c02-halo2");
+      fT(pin, { opacity: 0, scale: 3, filter: "blur(16px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.20, ease: "expo.out" }, 0.27);
+      fT(halo, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.50, ease: "power3.out" }, 0.45);
+
+      plotL.forEach(function (el, i) {
+        fT(el, { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.16, ease: "power3.out" }, 0.57 + i * 0.04);
+      });
+      coordL.forEach(function (el, i) {
+        fT(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 0.88 + i * 0.02);
+      });
+
+      fT($("c02-tag"), { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.40, ease: "power2.out" }, 1.40);
+
+      /* address slides up along the avenue (bottom-left to the pin) */
+      var addr = $("c02-addr");
+      fT(addr, { opacity: 0, x: -70, y: 110, filter: "blur(6px)" }, { opacity: 1, x: 0, y: 0, filter: "blur(0px)", duration: 0.50, ease: "expo.out" }, 1.76);
+
+      /* subtitle */
+      function word(id, cue) {
+        var el = $(id), t = cue - 0.03;
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, t);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, t + 0.14);
+      }
+      function keybox(wid, boxId, txtId, cue) {
+        word(wid, cue);
+        fT($(boxId), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, cue - 0.08);
+        fT($(txtId), { color: "#ffffff" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, cue - 0.01);
+      }
+      word("c02-s1w0", 0.29);
+      word("c02-s1w1", 0.60);
+      keybox("c02-s1w2", "c02-s1box", "c02-s1bt", 0.86);
+      word("c02-s1w3", 1.76);
+      word("c02-s1w4", 2.04);
+      fT($("c02-sub1"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 2.60);
+
+      /* ---------- Scene 2 ---------- */
+      tl.to(addr, { x: 18, y: -28, duration: 1.26, ease: "none" }, 2.60);
+
+      word("c02-s2w0", 2.99);
+      word("c02-s2w1", 3.31);
+      word("c02-s2w2", 3.86);
+      keybox("c02-s2w3", "c02-s2box", "c02-s2bt", 4.38);
+      fT($("c02-s2stroke"), { scaleX: 0 }, { scaleX: 1, duration: 0.51, ease: "power2.out" }, 4.38);
+
+      /* label letters converge into « Acacia Avenue » */
+      oldL.forEach(function (el, i) {
+        var dx = (i < oldL.length / 2 ? 1 : -1) * 0.4 * 36;
+        tl.to(el, { opacity: 0, x: dx, duration: 0.28, ease: "power3.in" }, 3.86);
+      });
+      newL.forEach(function (el, i) {
+        var dx = (i < newL.length / 2 ? -1 : 1) * 0.4 * 52;
+        fT(el, { opacity: 0, x: dx }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 3.86);
+      });
+
+      /* halo pulse once */
+      fT(halo2, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "expo.out" }, 4.70);
+      tl.to(halo2, { opacity: 0, duration: 0.17, ease: "power2.inOut" }, 4.88);
+      tl.to(halo, { scale: 1.2, duration: 0.18, ease: "expo.out" }, 4.70);
+      tl.to(halo, { scale: 1, duration: 0.17, ease: "power2.inOut" }, 4.88);
+
+      /* clear the text before the seam: last image shows pin and halo only */
+      [$("c02-plot"), addr, $("c02-tag")].forEach(function (el) {
+        fT(el, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 4.80);
+      });
+      fT($("c02-sub2"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 4.88);
+
+      applyCam();
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
