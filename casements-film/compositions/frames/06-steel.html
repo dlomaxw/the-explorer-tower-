@@ -35,18 +35,18 @@
 
   <div id="f06steel-cam">
     <!-- previous pane (railings) leaving through the top, bridge line and mullion at y 1360 -->
-    <div id="f06steel-rail" class="f06steel-pane" style="top:-960px;height:1000px;filter:blur(12px)">
+    <div id="f06steel-rail" class="f06steel-pane" style="top:-620px;height:1000px;filter:blur(12px)">
       <div class="f06steel-sh"></div>
       <div class="f06steel-ph"><img src="assets/img/g-railings-modern-staircase-with-brown.jpg" alt=""></div>
-      <div class="f06steel-bar"></div>
+      <div class="f06steel-bar"><span>Railings</span><span style="color:#f5b800">.</span></div>
       <svg class="f06steel-fr" width="960" height="1000" viewBox="0 0 960 1000"><path d="M11 11H949V989H11Z"/></svg>
     </div>
-    <svg id="f06steel-lv0" class="f06steel-vl" style="left:529px;top:40px;height:1320px" width="22" height="1320" viewBox="0 0 22 1320"><path d="M11 0V1320"/></svg>
+    <svg id="f06steel-lv0" class="f06steel-vl" style="left:529px;top:40px;height:1320px;opacity:0" width="22" height="1320" viewBox="0 0 22 1320"><path d="M11 0V1320"/></svg>
     <svg id="f06steel-hl0" class="f06steel-hl" style="top:1349px" width="960" height="22" viewBox="0 0 960 22"><path d="M0 11H960"/></svg>
-    <div id="f06steel-n0" class="f06steel-node" style="left:525px;top:1345px"></div>
+    <div id="f06steel-n0" class="f06steel-node" style="left:525px;top:1345px;opacity:0"></div>
 
     <!-- steel gates pane-large -->
-    <div id="f06steel-gates" class="f06steel-pane" style="top:1420px;height:1000px">
+    <div id="f06steel-gates" class="f06steel-pane" style="top:1420px;height:1000px;opacity:0">
       <div class="f06steel-sh"></div>
       <div class="f06steel-ph"><img id="f06steel-gimg" src="assets/img/g-steel-products-new-metal-gate.jpg" alt=""></div>
       <div id="f06steel-gbar" class="f06steel-bar"><span class="f06steel-lw">Steel</span> <span class="f06steel-lw">gates</span><span class="f06steel-lw f06steel-dot">.</span></div>
@@ -120,6 +120,10 @@
       // HANDOFF OUT: everything travelling blurs to 12 px as the camera accelerates
       tl.fromTo(["#f06steel-grille", "#f06steel-roller", "#f06steel-lv2", "#f06steel-lv1", "#f06steel-n1", "#f06steel-n2"], { filter: B0 }, { filter: B12, duration: 0.29, ease: "power2.in", immediateRender: false }, 2.7);
       tl.set("#f06steel-ceil", { scale: 1.1, opacity: 1 }, 1.95);
+
+      // SEAM: first image = last image of frame 5 (railings pane leaving, mullion bar only); bridge, node and gates join 1 frame later
+      tl.set(["#f06steel-lv0", "#f06steel-n0", "#f06steel-gates"], { opacity: 1 }, 0.03);
+      tl.fromTo("#f06steel-rail", { y: 0 }, { y: -420, duration: 0.14, ease: "power2.out" }, 0);
 
       // labels (waterfall: binary opacity, whip from below, one direction)
       function label(bar, words, t, barT) {

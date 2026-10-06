@@ -12,10 +12,15 @@
     #f09-photo img{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
     #f09-pscrim{position:absolute;left:0;top:0;width:1080px;height:1920px;background:rgba(244,246,242,.38);opacity:0}
     #f09-grid{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 990px}
-    .f09-pn{position:absolute;width:300px;height:300px;border:12px solid #1f7a3d;background:rgba(255,255,255,.45);box-shadow:0 30px 70px rgba(16,16,16,.22);overflow:hidden}
-    .f09-pn img{position:absolute;left:0;top:0;width:276px;height:276px;object-fit:cover;opacity:0}
+    .f09-pn{position:absolute;width:300px;height:300px;border:14px solid #1f7a3d;background:transparent;overflow:hidden}
+    .f09-pn img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:0}
     #f09-pn1 img{opacity:1}
     .f09-bar{position:absolute;background:#1f7a3d;opacity:0}
+    #f09-big{position:absolute;left:60px;top:240px;width:690px;height:740px;border:16px solid #1f7a3d;background:#1f7a3d;overflow:hidden;transform-origin:0 0;box-shadow:0 30px 70px rgba(16,16,16,.22)}
+    #f09-bigph{position:absolute;left:0;top:0;width:100%;height:640px;background:url("assets/img/g-mini-homes-circular-uniport.jpg") center/cover}
+    #f09-biglab{position:absolute;left:0;top:640px;width:100%;height:68px;padding:12px 20px;font-size:40px;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.01em}
+    #f09-biglab span{color:#f5b800}
+    #f09-shade{position:absolute;left:0;top:0;width:1080px;height:1920px;background:rgba(0,0,0,.025)}
     #f09-bt{left:60px;top:460px;width:960px;height:22px;transform-origin:0 50%}
     #f09-br{left:998px;top:460px;width:22px;height:1000px;transform-origin:50% 0}
     #f09-bb{left:60px;top:1438px;width:960px;height:22px;transform-origin:100% 50%}
@@ -36,6 +41,7 @@
 
   <div id="f09-bgclip" class="clip" data-start="0" data-duration="3.82" data-track-index="0">
     <div id="f09-ground"></div>
+    <div id="f09-shade"></div>
     <div id="f09-grain"></div>
   </div>
 
@@ -43,18 +49,19 @@
     <div id="f09-photo"><img src="assets/img/about-factory-2.jpg" alt=""></div>
     <div id="f09-pscrim"></div>
     <div id="f09-grid">
-      <div class="f09-pn" id="f09-pn1" style="left:60px;top:330px"><img src="assets/img/g-mini-homes-circular-uniport.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn2" style="left:390px;top:330px"><img src="assets/img/g-aluminium-doors-and-windows-sliding-doors-2.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn3" style="left:720px;top:330px"><img src="assets/img/g-curtain-wall-modern-high-rise.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn4" style="left:60px;top:670px"><img src="assets/img/g-facade-aluminium-fins-e.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn5" style="left:390px;top:670px"><img src="assets/img/g-glass-products-a-green-and-clear.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn6" style="left:720px;top:670px"><img src="assets/img/g-partitions-frameless-glass.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn7" style="left:60px;top:1010px"><img src="assets/img/g-railings-modern-staircase-with-brown.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn8" style="left:390px;top:1010px"><img src="assets/img/g-steel-products-saftidor.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn9" style="left:720px;top:1010px"><img src="assets/img/g-ceiling-acoustic-ceilings.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn10" style="left:60px;top:1350px"><img src="assets/img/g-door-hardware-lever-handles-slim.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn11" style="left:390px;top:1350px"><img src="assets/img/g-roller-blinds-zebra-blind-grey.jpg" alt=""></div>
-      <div class="f09-pn" id="f09-pn12" style="left:720px;top:1350px"><img src="assets/img/g-interior-design-modern-hand-drawn-wooden.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn1" style="left:60px;top:330px;height:360px"><img src="assets/img/g-mini-homes-circular-uniport.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn2" style="left:390px;top:330px;height:360px"><img src="assets/img/g-aluminium-doors-and-windows-sliding-doors-2.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn3" style="left:720px;top:330px;height:360px"><img src="assets/img/g-curtain-wall-modern-high-rise.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn4" style="left:60px;top:722px;height:285px"><img src="assets/img/g-facade-aluminium-fins-e.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn5" style="left:390px;top:722px;height:285px"><img src="assets/img/g-glass-products-a-green-and-clear.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn6" style="left:720px;top:722px;height:285px"><img src="assets/img/g-partitions-frameless-glass.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn7" style="left:60px;top:1035px;height:285px"><img src="assets/img/g-railings-modern-staircase-with-brown.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn8" style="left:390px;top:1035px;height:285px"><img src="assets/img/g-steel-products-saftidor.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn9" style="left:720px;top:1035px;height:285px"><img src="assets/img/g-ceiling-acoustic-ceilings.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn10" style="left:60px;top:1345px;height:285px"><img src="assets/img/g-door-hardware-lever-handles-slim.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn11" style="left:390px;top:1345px;height:285px"><img src="assets/img/g-roller-blinds-zebra-blind-grey.jpg" alt=""></div>
+      <div class="f09-pn" id="f09-pn12" style="left:720px;top:1345px;height:285px"><img src="assets/img/g-interior-design-modern-hand-drawn-wooden.jpg" alt=""></div>
+      <div id="f09-big"><div id="f09-bigph"></div><div id="f09-biglab">Mini homes<span>.</span></div></div>
     </div>
     <div id="f09-plate"></div>
     <div id="f09-numwrap"><span id="f09-num">12</span></div>
@@ -90,6 +97,10 @@
     // Grid: starts blurred 8 px from the pull-back, sharp in 0.4 s
     tl.fromTo("#f09-grid", {filter:"blur(8px)"}, {filter:"blur(0px)", duration:0.4, ease:"power3.out"}, 0);
 
+    // Seam: the big mini-home pane of frame 8 settles into cell 1 and the ground lightens
+    tl.to("#f09-big", {x:0, y:90, scale:0.435, opacity:0, duration:0.3, ease:"expo.out"}, 0);
+    tl.to("#f09-shade", {opacity:0, duration:0.4, ease:"power3.out"}, 0);
+
     // Fill cascade, one cell every 0.1 s from 0.30
     for (var i = 2; i <= 12; i++) {
       var at = 0.30 + (i - 2) * 0.1;
@@ -113,7 +124,7 @@
     tl.to(".f09-pn img", {opacity:0, duration:0.18, ease:"power3.in"}, 2.5);
     for (var j = 1; j <= 12; j++) {
       var el = $("#f09-pn" + j);
-      var cx = parseFloat(el.style.left) + 150, cy = parseFloat(el.style.top) + 150;
+      var cx = parseFloat(el.style.left) + 150, cy = parseFloat(el.style.top) + parseFloat(el.style.height || 300) / 2;
       tl.to(el, {x:540 - cx, y:960 - cy, scale:0.35, opacity:0, duration:0.5, ease:"expo.in"}, 2.5);
     }
 

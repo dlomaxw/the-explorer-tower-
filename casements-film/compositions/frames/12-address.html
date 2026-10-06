@@ -10,10 +10,13 @@
 #a12-glow{position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse 760px 700px at 540px 560px,rgba(31,122,61,.06),rgba(31,122,61,0) 100%)}
 #a12-grain{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:.03;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
 
-/* chips of the previous frame, leaving upward (handoff_in) */
-.a12-chip{position:absolute;width:456px;height:170px;background:#fff;border:3px solid #1f7a3d;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.a12-chip b{font-size:96px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;color:#101010}
-.a12-chip i{font-style:normal;font-size:18px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6a6458;margin-top:6px}
+/* previous frame (handoff_in): mark, headline, chips, blurred 10 px, lifting out through the top */
+.a12-chip{position:absolute;width:460px;height:260px;background:#fff;border:3px solid #1f7a3d;box-shadow:0 20px 40px rgba(16,16,16,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;filter:blur(10px);will-change:transform}
+.a12-chip b{font-size:96px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;color:#1f7a3d}
+.a12-chip i{font-style:normal;font-size:24px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#6a6458;margin-top:24px;white-space:nowrap}
+#a12-pmark{position:absolute;left:360px;top:-40px;width:360px;height:360px;filter:blur(10px);will-change:transform}
+.a12-ph{position:absolute;left:0;width:1080px;text-align:center;font-size:120px;font-weight:800;line-height:120px;letter-spacing:-.04em;color:#101010;filter:blur(10px);will-change:transform}
+.a12-ph u{text-decoration:none;color:#f5b800}
 
 /* logo plate */
 #a12-plate{position:absolute;left:140px;top:220px;width:800px;height:680px;background:#fff;border:14px solid #1f7a3d;box-shadow:0 40px 90px rgba(16,16,16,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;will-change:transform,filter}
@@ -54,12 +57,13 @@
 <div id="a12-glow" class="clip" data-start="0" data-duration="4.17" data-track-index="1"></div>
 <div id="a12-grain" class="clip" data-start="0" data-duration="4.17" data-track-index="2"></div>
 
-<div id="a12-chips">
-  <div class="a12-chip" id="a12-c1" style="left:60px;top:14px"><b>60+</b><i>Years of Experience</i></div>
-  <div class="a12-chip" id="a12-c2" style="left:564px;top:14px"><b>ISO</b><i>Certified</i></div>
-  <div class="a12-chip" id="a12-c3" style="left:60px;top:204px"><b>500+</b><i>Projects Delivered</i></div>
-  <div class="a12-chip" id="a12-c4" style="left:564px;top:204px"><b>100%</b><i>Genuine Materials</i></div>
-</div>
+<img id="a12-pmark" src="assets/img/mark.png" alt="">
+<div class="a12-ph" id="a12-ph1" style="top:345px">Built to last<u>.</u></div>
+<div class="a12-ph" id="a12-ph2" style="top:520px">Delivered<br>as promised<u>.</u></div>
+<div class="a12-chip" id="a12-c1" style="left:50px;top:880px"><b>60+</b><i>Years of Experience</i></div>
+<div class="a12-chip" id="a12-c2" style="left:570px;top:880px"><b>ISO</b><i>Certified</i></div>
+<div class="a12-chip" id="a12-c3" style="left:50px;top:1178px"><b>500+</b><i>Projects Delivered</i></div>
+<div class="a12-chip" id="a12-c4" style="left:570px;top:1178px"><b>100%</b><i>Genuine Materials</i></div>
 
 <div id="a12-plate">
   <img id="a12-logo" src="assets/img/logo-full.png" alt="">
@@ -112,11 +116,15 @@
   var l2L = split("a12-l2", "5th Street", false);
   var l3L = split("a12-l3", "Industrial Area, Kampala", false);
 
-  /* ---- handoff_in: chips leave upward at ~500 px/s, blurred 10 ---- */
-  tl.fromTo("#a12-chips", { y: 0, filter: "blur(10px)" }, { y: -420, filter: "blur(10px)", duration: 0.84, ease: "none", immediateRender: false }, 0);
+  /* ---- handoff_in: previous frame lifts out through the top (faster for the lower chips) ---- */
+  tl.fromTo("#a12-pmark", { y: 0 }, { y: -500, duration: 0.5, ease: "power2.in", immediateRender: false }, 0);
+  tl.fromTo("#a12-ph1", { y: 0 }, { y: -800, duration: 0.5, ease: "power2.in", immediateRender: false }, 0);
+  tl.fromTo("#a12-ph2", { y: 0 }, { y: -900, duration: 0.5, ease: "power2.in", immediateRender: false }, 0);
+  tl.fromTo("#a12-c1,#a12-c2", { y: 0 }, { y: -1300, duration: 0.6, ease: "power2.in", immediateRender: false }, 0);
+  tl.fromTo("#a12-c3,#a12-c4", { y: 0 }, { y: -1600, duration: 0.6, ease: "power2.in", immediateRender: false }, 0);
 
   /* ---- plate rises from the bottom edge and settles at y 220 ---- */
-  tl.fromTo("#a12-plate", { y: 1314, scale: 1.1, filter: "blur(10px)" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.72, ease: "expo.out", immediateRender: false }, 0);
+  tl.fromTo("#a12-plate", { y: 1800, scale: 1.1, filter: "blur(10px)" }, { y: 0, scale: 1, filter: "blur(0px)", duration: 0.72, ease: "expo.out", immediateRender: false }, 0);
   /* slow push inside the plate */
   tl.fromTo("#a12-logo", { scale: 1 }, { scale: 1.05, duration: 3.9, ease: "none", immediateRender: false }, 0);
 
