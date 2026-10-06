@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0c0c0e;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="49.8"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div
+        id="el-01-curve"
+        class="scene"
+        data-composition-id="01-curve"
+        data-composition-src="compositions/frames/01-curve.html"
+        data-start="0"
+        data-duration="5.4"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-02-plot"
+        class="scene"
+        data-composition-id="02-plot"
+        data-composition-src="compositions/frames/02-plot.html"
+        data-start="5.4"
+        data-duration="5.1"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-03-kololo-two-bed"
+        class="scene"
+        data-composition-id="03-kololo-two-bed"
+        data-composition-src="compositions/frames/03-kololo-two-bed.html"
+        data-start="10.5"
+        data-duration="5.28"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-04-three-bed-penthouses"
+        class="scene"
+        data-composition-id="04-three-bed-penthouses"
+        data-composition-src="compositions/frames/04-three-bed-penthouses.html"
+        data-start="15.780000000000001"
+        data-duration="5.36"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-05-on-application"
+        class="scene"
+        data-composition-id="05-on-application"
+        data-composition-src="compositions/frames/05-on-application.html"
+        data-start="21.14"
+        data-duration="3.04"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-06-amenities"
+        class="scene"
+        data-composition-id="06-amenities"
+        data-composition-src="compositions/frames/06-amenities.html"
+        data-start="24.18"
+        data-duration="5.29"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-07-team-pivot"
+        class="scene"
+        data-composition-id="07-team-pivot"
+        data-composition-src="compositions/frames/07-team-pivot.html"
+        data-start="29.47"
+        data-duration="2.83"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-08-come-and-see-it"
+        class="scene"
+        data-composition-id="08-come-and-see-it"
+        data-composition-src="compositions/frames/08-come-and-see-it.html"
+        data-start="32.3"
+        data-duration="2.42"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-09-number"
+        class="scene"
+        data-composition-id="09-number"
+        data-composition-src="compositions/frames/09-number.html"
+        data-start="34.72"
+        data-duration="4.94"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-10-viewings"
+        class="scene"
+        data-composition-id="10-viewings"
+        data-composition-src="compositions/frames/10-viewings.html"
+        data-start="39.66"
+        data-duration="2.44"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-11-end-card"
+        class="scene"
+        data-composition-id="11-end-card"
+        data-composition-src="compositions/frames/11-end-card.html"
+        data-start="42.099999999999994"
+        data-duration="7.7"
+        data-track-index="1"
+      ></div>
+      <audio id="mix" data-start="0" data-duration="49.8" data-track-index="11" src="assets/audio/mix.wav" data-volume="1"></audio>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      (function () { var tl = window.__timelines["main"];
+        // orchestrator layer (motion-design skill): light flash and iris
+        tl.to({}, { duration: 49.8 }, 0); // full-span anchor
+      })();
+    </script>
+  </body>
+</html>

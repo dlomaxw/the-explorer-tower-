@@ -1,0 +1,311 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Montserrat"; font-weight: 800; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; font-display: block; src: url("assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c01-fill { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+    #c01-ground { background: #b9a7a6; }
+    #c01-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    #c01-world { position: absolute; left: 0; top: 0; width: 1834px; height: 1024px; transform-origin: 0 0; }
+    #c01-sky { position: absolute; left: -300px; top: -1100px; width: 2434px; height: 1101px;
+      background: linear-gradient(180deg, #5d6288 0%, #8d86a0 45%, #c4b1ae 100%); }
+    .c01-facade { position: absolute; left: 0; top: 0; width: 1834px; height: 1024px; display: block;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0px, #000 110px); mask-image: linear-gradient(180deg, transparent 0px, #000 110px); }
+    #c01-ghost { opacity: 0; filter: blur(12px); }
+    #c01-svg { position: absolute; left: 0; top: 0; width: 1834px; height: 1024px; overflow: visible; }
+    #c01-svg path, #c01-svg circle { fill: none; }
+    .c01-ring { stroke: #FFE55C; stroke-width: 5; stroke-linecap: round; opacity: 0; filter: drop-shadow(0 0 6px #FFD60A); }
+    #c01-roofedge { stroke: #FFF0A0; stroke-width: 4; stroke-linecap: round; opacity: 0; filter: drop-shadow(0 0 8px #FFD60A); }
+    #c01-line { stroke: #FFD60A; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 9px #FFD60A); }
+    #c01-dot { fill: #FFD60A; filter: drop-shadow(0 0 9px #FFD60A); }
+
+    #c01-grade { background: #2a3f7a; mix-blend-mode: multiply; opacity: 0; }
+    #c01-vign { background:
+      linear-gradient(180deg, rgba(25,15,40,.62) 0px, rgba(25,15,40,.62) 720px, rgba(25,15,40,0) 1150px),
+      linear-gradient(180deg, rgba(0,0,0,0) 1150px, rgba(0,0,0,.6) 1920px); }
+
+    #c01-aer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; opacity: 0; }
+    #c01-aw { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; transform-origin: 0 0; }
+    #c01-aimg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; display: block; }
+    #c01-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; background: #070a18; opacity: .6; }
+    .c01-dring { position: absolute; border-radius: 50%; opacity: 0; mix-blend-mode: screen;
+      background: radial-gradient(closest-side, rgba(255,150,40,0) 60%, rgba(255,170,60,.42) 80%, rgba(255,150,40,0) 100%); }
+    .c01-floor { position: absolute; left: 902px; width: 208px; height: 3px; border-radius: 2px; background: #ffb347; opacity: 0;
+      mix-blend-mode: screen; box-shadow: 0 0 3px 1px rgba(255,170,60,.45); }
+    #c01-asvg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; overflow: visible; }
+    #c01-avenue { fill: none; stroke: #FFD60A; stroke-width: 2.04; stroke-linecap: round; filter: drop-shadow(0 0 2.5px #FFD60A); }
+
+    #c01-rail { pointer-events: none; filter: blur(8px); opacity: 0; }
+    #c01-railbar { position: absolute; left: -40px; width: 1200px; top: 1832px; height: 40px; background: #2a1b14; }
+    #c01-railbal { position: absolute; left: -40px; width: 1200px; top: 1868px; height: 100px;
+      background: repeating-linear-gradient(90deg, #2a1b14 0px, #2a1b14 16px, rgba(42,27,20,0) 16px, rgba(42,27,20,0) 96px); }
+    #c01-grain { opacity: 0; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    .c01-t { position: absolute; left: 90px; white-space: nowrap; opacity: 0; transform-origin: 0 50%; text-shadow: 0 8px 60px rgba(0,0,0,.35); }
+    #c01-one { top: 240px; height: 230px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 260px; line-height: 230px; letter-spacing: -8px; color: #fff; }
+    #c01-curve { top: 490px; height: 210px; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 230px; line-height: 210px; color: #FFD60A; }
+    #c01-trait { position: absolute; left: 96px; top: 716px; width: 560px; height: 6px; border-radius: 3px; background: #FFD60A;
+      box-shadow: 0 0 14px rgba(255,214,10,.7); transform-origin: 0 50%; opacity: 0; }
+
+    .c01-sub { position: absolute; left: 0; top: 1330px; width: 1080px; height: 190px; padding: 0 60px; box-sizing: border-box;
+      display: flex; flex-wrap: wrap; justify-content: center; align-content: center; align-items: center; column-gap: 16px; row-gap: 0;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 56px; line-height: 68px; color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .c01-br { width: 100%; height: 0; display: block; }
+    .c01-w { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); }
+    .c01-k { opacity: 1; }
+    .c01-k .c01-bt { opacity: 0; color: rgba(255,255,255,.55); }
+    .c01-box { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c01-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="01-curve" data-width="1080" data-height="1920" data-duration="5.4">
+    <div id="c01-groundclip" class="clip" data-start="0" data-duration="5.4" data-track-index="0" data-layout-ignore>
+      <div id="c01-ground" class="c01-fill"></div>
+    </div>
+
+    <div id="c01-stage">
+      <div id="c01-world" data-layout-allow-overflow>
+        <div id="c01-sky"></div>
+        <img id="c01-facade" class="c01-facade" src="assets/img/street-golden-hour.png" alt="">
+        <img id="c01-ghost" class="c01-facade" src="assets/img/street-golden-hour.png" alt="">
+        <svg id="c01-svg" viewBox="0 0 1834 1024" xmlns="http://www.w3.org/2000/svg">
+          <defs><clipPath id="c01-clip"><rect id="c01-cliprect" x="-400" y="-2000" width="2800" height="2800"/></clipPath></defs>
+          <g id="c01-fx" clip-path="url(#c01-clip)">
+            <g id="c01-rings"></g>
+            <path id="c01-roofedge" d="M 1050 272 L 900 45"/>
+            <path id="c01-line" d=""/>
+          </g>
+          <circle id="c01-dot" cx="900" cy="835" r="5"/>
+        </svg>
+      </div>
+    </div>
+    <div id="c01-grade" class="c01-fill"></div>
+    <div id="c01-vign" class="c01-fill"></div>
+
+    <div id="c01-aer">
+      <div id="c01-aw" data-layout-allow-overflow>
+        <img id="c01-aimg" src="assets/img/aerial-dusk.webp" alt="">
+        <div id="c01-dim"></div>
+        <div id="c01-d0" class="c01-dring" style="left:815px;top:470px;width:380px;height:260px"></div>
+        <div id="c01-d1" class="c01-dring" style="left:655px;top:360px;width:700px;height:480px"></div>
+        <div id="c01-d2" class="c01-dring" style="left:455px;top:220px;width:1100px;height:760px"></div>
+        <div id="c01-d3" class="c01-dring" style="left:205px;top:50px;width:1600px;height:1100px"></div>
+        <div id="c01-floors"></div>
+        <svg id="c01-asvg" viewBox="0 0 2000 1125" xmlns="http://www.w3.org/2000/svg">
+          <path id="c01-avenue" d="M 770 1160 C 850 1010, 940 860, 1008 718"/>
+        </svg>
+      </div>
+    </div>
+    <div id="c01-grain" class="c01-fill"></div>
+
+    <div id="c01-one" class="c01-t">One</div>
+    <div id="c01-curve" class="c01-t">curve.</div>
+    <div id="c01-trait"></div>
+
+    <div id="c01-rail" class="c01-fill"><div id="c01-railbar" data-layout-allow-overflow></div><div id="c01-railbal" data-layout-allow-overflow></div></div>
+
+    <div id="c01-sub1" class="c01-sub">
+      <span id="c01-s1w0" class="c01-w">one</span>
+      <span id="c01-s1w1" class="c01-w c01-k"><i id="c01-s1box" class="c01-box"></i><span id="c01-s1bt" class="c01-bt">curve</span></span>
+    </div>
+    <div id="c01-sub2" class="c01-sub">
+      <span id="c01-s2w0" class="c01-w">from</span>
+      <span id="c01-s2w1" class="c01-w">the</span>
+      <span id="c01-s2w2" class="c01-w">street</span>
+      <i class="c01-br"></i>
+      <span id="c01-s2w3" class="c01-w">to</span>
+      <span id="c01-s2w4" class="c01-w">the</span>
+      <span id="c01-s2w5" class="c01-w c01-k"><i id="c01-s2box" class="c01-box"></i><span id="c01-s2bt" class="c01-bt">roof</span></span>
+    </div>
+  </div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "01-curve";
+      var $ = function (id) { return document.getElementById(id); };
+      var NS = "http://www.w3.org/2000/svg";
+      var tl = gsap.timeline({ paused: true });
+      var IW = 1834, IH = 1024, K0 = 1.9;
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- the line: hugs the curved balcony rings (image coordinates) ---------- */
+      var RY = [830, 768, 706, 644, 582, 520, 458, 396, 334];
+      var d = "M 900 835 C 960 838, 1010 836, 1033 830";
+      for (var i = 0; i < RY.length - 1; i++) {
+        d += " C 1018 " + (RY[i] - 18) + ", 1018 " + (RY[i] - 44) + ", 1033 " + RY[i + 1];
+      }
+      d += " C 1040 310, 1048 290, 1050 272 L 900 45 C 896 -40, 896 -140, 900 -260";
+      var line = $("c01-line");
+      line.setAttribute("d", d);
+      var L = line.getTotalLength();
+      line.style.strokeDasharray = L + " " + L;
+      line.style.strokeDashoffset = L;
+      function lenAtY(y) {
+        for (var s = 0; s <= L; s += 2) { if (line.getPointAtLength(s).y <= y) return s; }
+        return L;
+      }
+      function offAt(y) { return L - lenAtY(y); }
+
+      var ringsG = $("c01-rings"), ringEls = [];
+      RY.forEach(function (y, k) {
+        var p = document.createElementNS(NS, "path");
+        p.setAttribute("id", "c01-ring" + k);
+        p.setAttribute("class", "c01-ring");
+        p.setAttribute("d", "M 985 " + (y - 34) + " C 1015 " + (y - 32) + ", 1034 " + (y - 22) + ", 1034 " + y);
+        ringsG.appendChild(p);
+        ringEls.push(p);
+      });
+
+      /* ---------- camera on the facade (single writer) ---------- */
+      var world = $("c01-world"), dot = $("c01-dot"), cliprect = $("c01-cliprect");
+      var cam = { u: 0.54, v: 0.505, z: 1.0 };
+      function applyCam() {
+        var k = K0 * cam.z;
+        world.style.transform = "translate(" + (540 - cam.u * IW * k).toFixed(2) + "px," + (960 - cam.v * IH * k).toFixed(2) + "px) scale(" + k.toFixed(4) + ")";
+        line.setAttribute("stroke-width", (16 / k).toFixed(2));
+        dot.setAttribute("r", (8 / k).toFixed(2));
+        /* the line never enters the subtitle band: clipped at screen y 1310 */
+        cliprect.setAttribute("height", (cam.v * IH + 350 / k + 2000).toFixed(1));
+      }
+      function camT(props, dur, ease, t) {
+        var o = { duration: dur, ease: ease, onUpdate: applyCam };
+        for (var key in props) o[key] = props[key];
+        tl.to(cam, o, t);
+      }
+      camT({ v: 0.485 }, 0.9, "none", 0);
+      camT({ v: 0.52, z: 1.5 }, 0.6, "expo.inOut", 0.9);
+      camT({ v: 0.34 }, 0.6, "none", 1.5);
+      camT({ v: 0.215, z: 1.62 }, 0.5, "power2.out", 2.1);
+      camT({ v: 0.12, z: 1.8 }, 0.5, "power3.in", 2.6);
+      camT({ v: -0.40 }, 0.9, "power2.out", 3.1);
+
+      /* camera blur on the facade stage */
+      var stage = $("c01-stage");
+      function blurT(px0, px1, dur, ease, t) {
+        fT(stage, { filter: "blur(" + px0 + "px)" }, { filter: "blur(" + px1 + "px)", duration: dur, ease: ease }, t);
+      }
+      blurT(0, 8, 0.3, "power2.in", 0.9);
+      blurT(8, 0, 0.3, "power2.out", 1.2);
+      blurT(0, 10, 0.6, "power2.in", 2.2);
+      blurT(10, 4, 0.6, "power2.out", 2.8);
+
+      /* motion-blur ghost of the facade, about 40 px up on screen */
+      fT($("c01-ghost"), { opacity: 0, y: 0 }, { opacity: 0.45, y: -8, duration: 0.15, ease: "power2.out" }, 1.2);
+      fT($("c01-ghost"), { opacity: 0.45, y: -8 }, { opacity: 0, y: -16, duration: 0.15, ease: "power2.in" }, 1.35);
+
+      /* ---------- line draw ---------- */
+      tl.to(line, { strokeDashoffset: offAt(830), duration: 0.3, ease: "power2.out" }, 0.30);
+      tl.to(line, { strokeDashoffset: offAt(768), duration: 0.3, ease: "power1.out" }, 0.60);
+      tl.to(line, { strokeDashoffset: offAt(582), duration: 0.8, ease: "none" }, 0.90);
+      tl.to(line, { strokeDashoffset: offAt(458), duration: 0.25, ease: "none" }, 1.70);
+      tl.to(line, { strokeDashoffset: offAt(334), duration: 0.25, ease: "none" }, 1.95);
+      tl.to(line, { strokeDashoffset: offAt(274), duration: 0.15, ease: "none" }, 2.20);
+      tl.to(line, { strokeDashoffset: offAt(48), duration: 0.22, ease: "power2.out" }, 2.35);
+      tl.to(line, { strokeDashoffset: 0, duration: 0.23, ease: "power2.in" }, 2.57);
+      tl.to(line, { strokeDashoffset: -L, duration: 0.30, ease: "power3.in" }, 2.80);
+      fT(dot, { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "power1.in" }, 2.80);
+
+      ringEls.forEach(function (p, k) {
+        fT(p, { opacity: 0 }, { opacity: 0.55, duration: 0.2, ease: "power2.out" }, 0.60 + k * 0.15);
+      });
+      [[4, 1.70], [6, 1.95], [8, 2.20]].forEach(function (pr) {
+        var p = ringEls[pr[0]], t = pr[1];
+        tl.to(p, { opacity: 1, duration: 0.08, ease: "power2.out" }, t);
+        tl.to(p, { opacity: 0.55, duration: 0.12, ease: "power2.in" }, t + 0.08);
+      });
+      fT($("c01-roofedge"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 2.35);
+      fT($("c01-roofedge"), { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power2.in" }, 2.85);
+
+      /* ---------- titles ---------- */
+      var one = $("c01-one"), curve = $("c01-curve"), trait = $("c01-trait");
+      fT(one, { opacity: 0, scale: 1.6, filter: "blur(24px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.18, ease: "expo.out" }, 0.05);
+      fT(curve, { opacity: 0, scale: 1.5, filter: "blur(20px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.2, ease: "expo.out" }, 0.40);
+      fT(trait, { opacity: 1, scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 0.40);
+      [one, curve, trait].forEach(function (el) {
+        fT(el, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(12px)", duration: 0.15, ease: "power2.in" }, 1.40);
+      });
+
+      /* ---------- subtitles ---------- */
+      function word(id, cue) {
+        var el = $(id);
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, cue + 0.14);
+      }
+      function keybox(wid, boxId, txtId, cue) {
+        var tx = $(txtId);
+        fT($(boxId), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, cue - 0.07);
+        fT(tx, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+        fT(tx, { color: "rgba(255,255,255,.55)" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, cue + 0.04);
+      }
+      word("c01-s1w0", 0.03);
+      keybox("c01-s1w1", "c01-s1box", "c01-s1bt", 0.38);
+      fT($("c01-sub1"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 1.36);
+
+      word("c01-s2w0", 1.48);
+      word("c01-s2w1", 1.65);
+      word("c01-s2w2", 1.72);
+      word("c01-s2w3", 2.36);
+      word("c01-s2w4", 2.47);
+      keybox("c01-s2w5", "c01-s2box", "c01-s2bt", 2.55);
+      fT($("c01-sub2"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in" }, 2.80);
+
+      fT($("c01-rail"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, 1.30);
+      fT($("c01-rail"), { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in" }, 3.10);
+
+      /* ---------- Scene 3: day turns to night, aerial of Kololo ---------- */
+      fT($("c01-grade"), { opacity: 0 }, { opacity: 0.8, duration: 0.8, ease: "power2.inOut" }, 3.10);
+
+      /* tower base (1006,700) lands at screen (540,883) at 5.40; drift 69 px over 0.9 s (about 4 %/s) */
+      var aer = $("c01-aer"), aw = $("c01-aw");
+      var A = { off: 1920, drift: 0 };
+      function applyAer() {
+        aw.style.transform = "translate(-1925px," + (-763 + A.drift + A.off).toFixed(2) + "px) scale(2.45)";
+      }
+      applyAer();
+      tl.set(aer, { opacity: 1 }, 3.60);
+      tl.to(A, { off: 0, duration: 0.9, ease: "expo.out", onUpdate: applyAer }, 3.60);
+      tl.to(A, { drift: -69, duration: 0.9, ease: "none", onUpdate: applyAer }, 4.50);
+      fT(aer, { filter: "blur(18px)" }, { filter: "blur(4px)", duration: 0.9, ease: "power2.out" }, 3.60);
+
+      fT($("c01-dim"), { opacity: 0.6 }, { opacity: 0, duration: 0.5, ease: "power2.out" }, 3.90);
+      for (var r = 0; r < 4; r++) {
+        var rg = $("c01-d" + r);
+        fT(rg, { opacity: 0, scale: 0.85 }, { opacity: 0.6, scale: 1, duration: 0.4, ease: "power3.out" }, 3.90 + r * 0.08);
+        tl.to(rg, { opacity: 0.3, duration: 0.5, ease: "power1.out" }, 4.30 + r * 0.08);
+      }
+      var fl = $("c01-floors");
+      for (var f = 0; f < 10; f++) {
+        var b = document.createElement("div");
+        b.id = "c01-floor" + f;
+        b.className = "c01-floor";
+        b.style.top = (688 - f * 17) + "px";
+        fl.appendChild(b);
+        fT(b, { opacity: 0 }, { opacity: 0.45, duration: 0.12, ease: "power2.out" }, 4.30 + f * 0.05);
+      }
+
+      var av = $("c01-avenue");
+      var AL = av.getTotalLength();
+      av.style.strokeDasharray = AL + " " + AL;
+      av.style.strokeDashoffset = AL;
+      tl.to(av, { strokeDashoffset: 0, duration: 0.7, ease: "expo.out" }, 4.70);
+
+      fT($("c01-grain"), { opacity: 0 }, { opacity: 0.04, duration: 0.6, ease: "power1.out" }, 3.60);
+
+      applyCam();
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
