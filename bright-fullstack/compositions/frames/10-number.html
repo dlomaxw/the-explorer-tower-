@@ -12,7 +12,7 @@
 #f10-qk{position:absolute;left:-.12em;right:-.1em;top:10px;bottom:1px;background:var(--mk-accent);border-radius:16px}
 #f10-qw{position:relative;color:var(--mk-on-accent)}
 #f10-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--mk-bg)}
-#f10-cap{position:absolute;left:0;top:0;width:900px;height:558px;border:4px solid var(--mk-primary);border-radius:30px;background:var(--mk-bg)}
+#f10-cap{position:absolute;left:-4px;top:-4px;width:900px;height:558px;border:4px solid var(--mk-primary);border-radius:30px;background:var(--mk-bg)}
 #f10-rise{position:absolute;left:90px;top:340px;width:900px;height:800px}
 #f10-card{position:absolute;left:0;top:0;width:900px;height:800px;background:var(--mk-surface);border:4px solid var(--mk-primary);
   border-radius:var(--mk-radius);box-shadow:var(--mk-shadow);overflow:hidden}
@@ -112,9 +112,9 @@
   // 0.00 the card (arrives from frame 9, already rising) settles
   tl.fromTo("#f10-rise", { y: 542 }, { y: 0, duration: 0.8, ease: MK.ease.out, immediateRender: false }, 0.04);
   tl.fromTo("#f10-card", { clipPath: "inset(0px 0px 242px 0px round 30px)" }, { clipPath: "inset(-80px -80px -80px -80px round 30px)", duration: 0.8, ease: MK.ease.out, immediateRender: false }, 0.04);
-  tl.to("#f10-cap", { opacity: 0, duration: 0.45, ease: "none" }, 0.1);
+  tl.to("#f10-cap", { opacity: 0, duration: 0.2, ease: "none" }, 0.04);
   // the question rises out through the top
-  tl.to("#f10-q", { y: -460, opacity: 0, filter: "blur(10px)", duration: 0.55, ease: "power2.in" }, 0.04);
+  tl.to("#f10-q", { y: -460, opacity: 0, filter: "blur(10px)", duration: 0.42, ease: "power2.in" }, 0.04);
 
   // rings: drawn on, then a slow outward drift (living layer for the whole frame)
   MK.draw(tl, ".f10-ring", 0.05, { dur: 0.9, stagger: 0.12, ease: MK.ease.io });
