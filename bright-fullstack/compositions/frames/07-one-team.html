@@ -1,0 +1,142 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f07-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f07-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 45%}
+.f07-abs{position:absolute}
+#f07-ghost{left:210px;top:330px;width:660px;height:400px;opacity:.9;filter:blur(10px);padding:26px;display:flex;gap:18px}
+#f07-ghost i{flex:1;border-radius:16px;background:var(--mk-bg);border:1px solid var(--mk-line)}
+#f07-team{left:0;top:0;width:1080px;height:1400px}
+#f07-ring{left:260px;top:450px;width:560px;height:500px}
+#f07-pulse{left:290px;top:480px;width:500px;height:440px;border-radius:50%;border:8px solid var(--mk-primary);opacity:0}
+.f07-disc{left:430px;top:590px;width:220px;height:220px;border-radius:50%;background:var(--mk-surface);border:2px solid var(--mk-line);
+  display:flex;align-items:center;justify-content:center;color:var(--mk-ink);box-shadow:var(--mk-shadow)}
+.f07-disc svg{width:96px;height:96px}
+.f07-lab{top:842px;width:340px;text-align:center;font-weight:700;font-size:26px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);opacity:0}
+#f07-card{left:120px;top:640px;width:840px;height:560px;padding:44px 48px;opacity:0;overflow:visible}
+#f07-fname{font-family:var(--mk-font-mono);font-size:34px;font-weight:500;color:var(--mk-ink-soft);letter-spacing:.02em}
+#f07-keyc{right:48px;top:30px;width:132px;height:132px;border-radius:50%;border:2px solid var(--mk-line);background:var(--mk-bg);display:flex;align-items:center;justify-content:center;color:var(--mk-primary)}
+#f07-keyc svg{width:84px;height:84px}
+.f07-ln{height:22px;border-radius:11px;background:var(--mk-line);transform-origin:0 50%}
+#f07-lines{left:48px;top:200px;width:744px}
+#f07-lines .f07-ln{margin-bottom:28px}
+#f07-stamp{right:34px;bottom:-58px;padding:10px 40px 14px;border-radius:14px;background:var(--mk-accent);color:var(--mk-on-accent);
+  font-family:var(--mk-font-display);font-weight:800;font-size:112px;line-height:1.05;letter-spacing:-.02em;opacity:0;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+#f07-cal{left:390px;top:1100px;width:300px;height:300px}
+#f07-sub{position:absolute;left:0;top:1450px;width:1080px;height:190px}
+.f07-s{position:absolute;left:0;top:60px;width:1080px;height:68px;font-size:56px;line-height:68px;text-align:center}
+.f07-s .mk-sub{font-size:56px;line-height:68px}
+</style>
+
+<div id="root" data-composition-id="07-one-team" data-start="0" data-duration="2.52" data-width="1080" data-height="1920">
+  <div id="f07-ground" class="clip" data-start="0" data-duration="2.52" data-track-index="0"></div>
+  <div id="f07-cam">
+    <div id="f07-ghost" class="f07-abs mk-card"><i></i><i></i><i></i></div>
+    <div id="f07-team" class="f07-abs">
+      <div id="f07-pulse" class="f07-abs"></div>
+      <svg id="f07-ring" class="f07-abs" viewBox="0 0 560 500" fill="none"><circle id="f07-ringc" cx="280" cy="250" r="236" style="stroke:var(--mk-primary)" stroke-width="18" stroke-linecap="round"/></svg>
+      <div id="f07-d1" class="f07-abs f07-disc"></div>
+      <div id="f07-d2" class="f07-abs f07-disc"></div>
+      <div id="f07-d3" class="f07-abs f07-disc"></div>
+      <div id="f07-l1" class="f07-abs f07-lab" style="left:-120px">Design</div>
+      <div id="f07-l2" class="f07-abs f07-lab" style="left:370px">Engineering</div>
+      <div id="f07-l3" class="f07-abs f07-lab" style="left:860px">QA</div>
+    </div>
+    <div id="f07-card" class="f07-abs mk-card">
+      <div id="f07-fname">source-code</div>
+      <div id="f07-keyc" class="f07-abs"></div>
+      <div id="f07-lines" class="f07-abs">
+        <div class="f07-ln" style="width:62%"></div>
+        <div class="f07-ln" style="width:88%;margin-left:0"></div>
+        <div class="f07-ln" style="width:74%"></div>
+        <div class="f07-ln" style="width:48%"></div>
+        <div class="f07-ln" style="width:81%"></div>
+      </div>
+      <div id="f07-stamp" class="f07-abs">Yours</div>
+    </div>
+  </div>
+  <svg id="f07-cal" class="f07-abs" viewBox="0 0 300 300" fill="none"><circle id="f07-calc" cx="150" cy="150" r="130" style="stroke:var(--mk-primary)" stroke-width="14" stroke-linecap="round"/></svg>
+  <div id="f07-sub" class="mk-root"><div id="f07-sub1" class="f07-s mk-root"></div><div id="f07-sub2" class="f07-s mk-root"></div></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+  var D = 2.52;
+
+  qs("#f07-d1").innerHTML = MK.icon("layers", { size: 96, stroke: 1.8 });
+  qs("#f07-d2").innerHTML = MK.icon("cube", { size: 96, stroke: 1.8 });
+  qs("#f07-d3").innerHTML = MK.icon("check", { size: 96, stroke: 1.8 });
+  qs("#f07-keyc").innerHTML = MK.icon("key", { size: 84, stroke: 1.8 });
+  qs("#f07-cal").style.cssText = "position:absolute;left:390px;top:1100px;width:300px;height:300px";
+
+  // 3D depth on the card
+  gsap.set("#f07-card", { transformPerspective: 1400 });
+  MK.hide("#f07-l1,#f07-l2,#f07-l3,#f07-card,#f07-stamp,#f07-keyc");
+  gsap.set("#f07-ringc", { opacity: 0 });
+  gsap.set("#f07-ring", { opacity: 1 });
+  gsap.set("#f07-cal", { rotation: -90, transformOrigin: "50% 50%" });
+  gsap.set("#f07-ring", { rotation: -90, transformOrigin: "50% 50%" });
+  gsap.set(".f07-ln", { scaleX: 0 });
+
+  // incoming image = handoff_out of frame 6: ghost board (60 %, blurred) and three small avatars at the bottom
+  gsap.set("#f07-ghost", { y: 0, scale: 1 });
+  gsap.set("#f07-d1", { x: -200, y: 550, scale: 0.41 });
+  gsap.set("#f07-d2", { x: 0, y: 550, scale: 0.41 });
+  gsap.set("#f07-d3", { x: 200, y: 550, scale: 0.41 });
+
+  // ghost board leaves upward
+  tl.to("#f07-ghost", { y: -260, opacity: 0, filter: "blur(16px)", duration: 0.32, ease: MK.ease.exit }, 0);
+
+  // 0.04 beat: avatars rise into a row of three role discs
+  tl.to("#f07-d1", { x: -290, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.04);
+  tl.to("#f07-d2", { x: 0, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.1);
+  tl.to("#f07-d3", { x: 290, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.16);
+  MK.reveal(tl, "#f07-l1", 0.2, { dur: 0.45, dist: 24, blur: 6 });
+  MK.reveal(tl, "#f07-l2", 0.28, { dur: 0.45, dist: 24, blur: 6 });
+  MK.reveal(tl, "#f07-l3", 0.36, { dur: 0.45, dist: 24, blur: 6 });
+
+  // one team: labels out, discs merge inside one yellow ring
+  MK.exit(tl, "#f07-l1,#f07-l2,#f07-l3", 0.5, { dur: 0.2, blur: 6 });
+  tl.to("#f07-d1", { x: 0, y: -62, scale: 0.62, duration: 0.5, ease: MK.ease.out }, 0.58);
+  tl.to("#f07-d2", { x: -68, y: 40, scale: 0.62, duration: 0.5, ease: MK.ease.out }, 0.58);
+  tl.to("#f07-d3", { x: 68, y: 40, scale: 0.62, duration: 0.5, ease: MK.ease.out }, 0.58);
+  MK.draw(tl, "#f07-ringc", 0.56, { dur: 0.55, ease: "power2.inOut" });
+  tl.fromTo("#f07-ring", { scale: 0.88 }, { scale: 1, duration: 0.6, ease: MK.ease.out, immediateRender: false }, 0.56);
+  tl.fromTo("#f07-pulse", { scale: 0.7, opacity: 0.7 }, { scale: 1.45, opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, 0.61);
+
+  // you own the code: the ring steps back, a code card flies toward the camera
+  tl.to("#f07-team", { y: -190, scale: 0.7, transformOrigin: "540px 700px", duration: 0.65, ease: MK.ease.out }, 1.18);
+  tl.fromTo("#f07-card", { y: -260, scale: 0.45, rotationX: 22, rotationY: -30, filter: "blur(12px)", opacity: 0 },
+    { y: 0, scale: 1, rotationX: -5, rotationY: 8, filter: "blur(0px)", opacity: 1, duration: 0.65, ease: MK.ease.out, immediateRender: false }, 1.18);
+  tl.fromTo("#f07-lines .f07-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: MK.ease.out, stagger: 0.07, immediateRender: false }, 1.34);
+  tl.fromTo("#f07-keyc", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: MK.ease.out, immediateRender: false }, 1.36);
+  MK.drawIcon(tl, "#f07-keyc svg", 1.4, { dur: 0.5, stagger: 0.1 });
+  tl.fromTo("#f07-stamp", { scale: 1.4, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -8, duration: 0.2, ease: MK.ease.out, immediateRender: false }, 1.63);
+  tl.fromTo("#f07-card", { x: 0 }, { x: 0, rotationY: 3, rotationX: -2, duration: 0.45, ease: "none", immediateRender: false }, 1.83);
+
+  // camera push (drift) on the whole stage
+  MK.camera(tl, "#f07-cam", 0, 2.1, { scale: 1.06, ease: "none" });
+
+  // handoff_out: card and ring slide up and out blurred; calendar ring starts to draw at the bottom
+  tl.to("#f07-card", { y: -520, opacity: 0, filter: "blur(10px)", duration: 0.4, ease: MK.ease.exit }, 2.06);
+  tl.to("#f07-team", { y: -560, opacity: 0, filter: "blur(10px)", duration: 0.4, ease: MK.ease.exit }, 2.06);
+  var cc = qs("#f07-calc");
+  cc.setAttribute("pathLength", "1"); cc.style.strokeDasharray = "1"; cc.style.strokeDashoffset = "1"; cc.style.opacity = "0";
+  tl.set("#f07-calc", { opacity: 1 }, 2.2);
+  tl.fromTo("#f07-calc", { strokeDashoffset: 1 }, { strokeDashoffset: 0.82, duration: 0.32, ease: "none", immediateRender: false }, 2.2);
+
+  // subtitle
+  MK.subtitle(tl, "#f07-sub1", [["One", 0.28], ["team.", 0.61, true]], { out: 1.0 });
+  MK.subtitle(tl, "#f07-sub2", [["You", 1.31], ["own", 1.63, true], ["the", 1.79], ["code.", 1.88]], { out: D - 0.12 });
+
+  window.__timelines["07-one-team"] = tl;
+})();
+</script>
+</template>

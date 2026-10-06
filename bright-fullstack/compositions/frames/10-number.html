@@ -1,0 +1,159 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f10-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f10-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 42%}
+#f10-rings{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f10-rings circle{fill:none;stroke:var(--mk-line);stroke-width:3}
+#f10-rise{position:absolute;left:90px;top:340px;width:900px;height:800px}
+#f10-card{position:absolute;left:0;top:0;width:900px;height:800px;background:var(--mk-surface);border:3px solid var(--mk-primary);
+  border-radius:var(--mk-radius);box-shadow:var(--mk-shadow);overflow:hidden}
+#f10-head{position:absolute;left:0;top:56px;width:900px;height:70px;display:flex;align-items:center;justify-content:center;gap:28px}
+#f10-head .f10-lab{font-weight:700;font-size:26px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);white-space:nowrap}
+#f10-head svg{color:var(--mk-primary);flex:none}
+#f10-number{position:absolute;left:0;top:176px;width:900px;height:330px}
+.f10-line{position:absolute;left:0;width:900px;height:150px;display:flex;justify-content:center;align-items:center;
+  font-family:var(--mk-font-display);font-weight:800;font-size:136px;line-height:150px;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:var(--mk-ink)}
+#f10-line1{top:0}
+#f10-line2{top:180px}
+#f10-box{position:absolute;left:92px;top:-4px;width:716px;height:158px;background:var(--mk-accent);border-radius:26px;opacity:0}
+.f10-in{position:relative;display:flex;align-items:center;justify-content:center}
+.f10-plus{display:inline-block;width:92px;text-align:center;opacity:0}
+.f10-gap{display:inline-block;width:44px}
+.f10-slot{position:relative;display:inline-block;width:88px;height:150px;overflow:hidden;opacity:0}
+.f10-col{position:absolute;left:0;top:0;width:88px}
+.f10-col div{width:88px;height:150px;line-height:150px;text-align:center}
+#f10-rule{position:absolute;left:60px;top:590px;width:780px;height:2px;background:var(--mk-line);transform-origin:0 50%}
+#f10-mail{position:absolute;left:0;top:626px;width:900px;height:110px;display:flex;align-items:center;justify-content:center;gap:24px;
+  font-weight:600;font-size:40px;color:var(--mk-ink);white-space:nowrap}
+#f10-mail svg{color:var(--mk-primary);flex:none}
+#f10-sweep{position:absolute;left:0;top:-60px;width:170px;height:940px;background:rgba(255,255,255,.12);opacity:0}
+</style>
+
+<div id="root" data-composition-id="10-number" data-start="0" data-duration="4.94" data-width="1080" data-height="1920">
+  <div id="f10-ground" class="clip" data-start="0" data-duration="4.94" data-track-index="0"></div>
+  <div id="f10-cam">
+    <svg id="f10-rings" viewBox="0 0 1080 1920">
+      <circle class="f10-ring" cx="540" cy="740" r="470"/>
+      <circle class="f10-ring" cx="540" cy="740" r="640"/>
+      <circle class="f10-ring" cx="540" cy="740" r="820"/>
+    </svg>
+    <div id="f10-rise" class="mk-root">
+      <div id="f10-card">
+        <div id="f10-head"><span id="f10-ic1"></span><span class="f10-lab" id="f10-lab">Call or WhatsApp</span><span id="f10-ic2"></span></div>
+        <div id="f10-number">
+          <div id="f10-line1" class="f10-line"><div id="f10-box"></div><div class="f10-in" id="f10-in1"></div></div>
+          <div id="f10-line2" class="f10-line"><div class="f10-in" id="f10-in2"></div></div>
+        </div>
+        <div id="f10-rule"></div>
+        <div id="f10-mail"><span id="f10-ic3"></span><span id="f10-addr">shine@brightilluminated.com</span></div>
+        <div id="f10-sweep"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+  var D = 4.94, H = 150;
+
+  // icons
+  qs("#f10-ic1").innerHTML = MK.icon("phone", { size: 56, stroke: 2 });
+  qs("#f10-ic2").innerHTML = MK.icon("send", { size: 56, stroke: 2 });
+  qs("#f10-ic3").innerHTML = MK.icon("mail", { size: 52, stroke: 2 });
+
+  // digit slots: [digit, spoken cue, line, group break after]
+  function addPlus(host) { var p = document.createElement("span"); p.className = "f10-plus"; p.textContent = "+"; host.appendChild(p); return p; }
+  function addGap(host) { var g = document.createElement("span"); g.className = "f10-gap"; host.appendChild(g); }
+  var in1 = qs("#f10-in1"), in2 = qs("#f10-in2");
+  var plus = addPlus(in1);
+  var spec = [
+    [2, 0.46, in1], [5, 0.65, in1], [6, 0.91, in1], "gap1",
+    [7, 1.52, in1], [5, 1.90, in1], [0, 2.14, in1],
+    [4, 2.80, in2], [2, 3.10, in2], [1, 3.32, in2], "gap2",
+    [2, 3.87, in2], [2, 4.09, in2], [4, 4.29, in2]
+  ];
+  var slots = [], cols = [];
+  spec.forEach(function (s, i) {
+    if (s === "gap1") { addGap(in1); return; }
+    if (s === "gap2") { addGap(in2); return; }
+    var slot = document.createElement("span"); slot.className = "f10-slot";
+    var col = document.createElement("div"); col.className = "f10-col";
+    for (var k = 0; k < 20; k++) { var c = document.createElement("div"); c.textContent = String(k % 10); col.appendChild(c); }
+    slot.appendChild(col); s[2].appendChild(slot);
+    slots.push({ slot: slot, col: col, d: s[0], cue: s[1], n: slots.length });
+  });
+
+  // initial states (hidden until their beat)
+  MK.hide(".f10-slot"); MK.hide(".f10-plus");
+  MK.hide("#f10-head > *"); MK.hide("#f10-mail"); MK.hide("#f10-rule");
+  gsap.set("#f10-box", { opacity: 0, scaleX: 1.12, scaleY: 1.35 });
+  gsap.set("#f10-rise", { y: 700, filter: "blur(8px)" });
+  gsap.set("#f10-sweep", { skewX: -20, x: -300 });
+  gsap.set("#f10-card", { transformPerspective: 1400, rotationX: 0, rotationY: 0 });
+
+  // 0.00 the card (arrives from frame 9, already rising) settles
+  tl.fromTo("#f10-rise", { y: 700, filter: "blur(8px)" }, { y: 0, filter: "blur(0px)", duration: 0.75, ease: MK.ease.out, immediateRender: false }, 0);
+
+  // rings: drawn on, then a slow outward drift (living layer for the whole frame)
+  MK.draw(tl, ".f10-ring", 0.05, { dur: 0.9, stagger: 0.12, ease: MK.ease.io });
+  tl.fromTo("#f10-rings", { scale: 0.94, transformOrigin: "540px 740px" }, { scale: 1.08, transformOrigin: "540px 740px", duration: D, ease: "none", immediateRender: false }, 0);
+
+  // 0.12 header row
+  tl.fromTo("#f10-lab", { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: MK.ease.out, immediateRender: false }, 0.12);
+  tl.fromTo("#f10-ic1", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: MK.ease.out, immediateRender: false }, 0.12);
+  tl.fromTo("#f10-ic2", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: MK.ease.out, immediateRender: false }, 0.2);
+  MK.drawIcon(tl, "#f10-ic1", 0.14, { dur: 0.5 });
+  MK.drawIcon(tl, "#f10-ic2", 0.22, { dur: 0.5 });
+
+  // plus sign on its cue
+  tl.fromTo(".f10-plus", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: MK.ease.out, immediateRender: false }, 0.15);
+
+  // digits roll in their slots, each landing just after its spoken cue
+  slots.forEach(function (s) {
+    var travel = 4 + (s.n % 3) * 2;
+    var endIdx = s.d + 10, startIdx = endIdx - travel;
+    var t0 = Math.max(0.12, s.cue - 0.34);
+    gsap.set(s.col, { y: -startIdx * H });
+    tl.fromTo(s.slot, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: "none", immediateRender: false }, t0);
+    tl.fromTo(s.col, { y: -startIdx * H, filter: "blur(5px)" },
+      { y: -endIdx * H, filter: "blur(0px)", duration: 0.42, ease: MK.ease.out, immediateRender: false }, t0);
+  });
+
+  // 1.30 the accent box closes around "+256 750" (lands on the 1.56 beat), text turns dark on yellow
+  tl.fromTo("#f10-box", { opacity: 0, scaleX: 1.12, scaleY: 1.35 }, { opacity: 1, scaleX: 1, scaleY: 1, duration: 0.28, ease: MK.ease.out, immediateRender: false }, 1.30);
+  tl.to("#f10-line1", { color: "var(--mk-on-accent)", duration: 0.12, ease: "none" }, 1.38);
+
+  // small hit on each group start: the number block nudges (finite, subtle)
+  [0.30, 0.90, 2.00, 3.10].forEach(function (t) {
+    tl.fromTo("#f10-number", { y: 0 }, { y: -6, duration: 0.07, ease: "power2.out", immediateRender: false }, t);
+    tl.to("#f10-number", { y: 0, duration: 0.3, ease: MK.ease.out }, t + 0.07);
+  });
+
+  // divider and email row slide in (on screen only)
+  tl.fromTo("#f10-rule", { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.5, ease: MK.ease.out, immediateRender: false }, 4.05);
+  tl.fromTo("#f10-mail", { x: 90, opacity: 0, filter: "blur(8px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: MK.ease.out, immediateRender: false }, 4.20);
+  MK.drawIcon(tl, "#f10-ic3", 4.26, { dur: 0.5 });
+
+  // light sweep across the card
+  MK.sweep(tl, "#f10-sweep", 4.45, 0.7, -300, 1100);
+
+  // card depth: small 3D tilt, slow, over the whole frame; camera push to x1.05
+  tl.fromTo("#f10-card", { rotationX: 0, rotationY: 0, transformPerspective: 1400 },
+    { rotationX: 3, rotationY: -5, transformPerspective: 1400, duration: D, ease: "none", immediateRender: false }, 0);
+  MK.camera(tl, "#f10-cam", 0, D, { scale: 1.05, ease: "none" });
+
+  // handoff_out: card slightly blurred 6 px with the full number
+  tl.to("#f10-card", { filter: "blur(6px)", duration: 0.3, ease: "power2.in" }, D - 0.4);
+
+  window.__timelines["10-number"] = tl;
+})();
+</script>
+</template>

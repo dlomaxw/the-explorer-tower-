@@ -1,0 +1,131 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f09-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f09-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
+#f09-q{position:absolute;left:0;top:640px;width:1080px;height:280px;transform-origin:50% 50%}
+#f09-qin{position:absolute;left:0;top:0;width:1080px;height:280px;transform-origin:50% 50%}
+.f09-line{position:absolute;left:0;width:1080px;text-align:center;font-family:var(--mk-font-display);font-weight:800;font-size:150px;line-height:150px;letter-spacing:-0.03em;white-space:nowrap}
+#f09-l1{top:0}
+#f09-l2{top:156px}
+.f09-wd{position:relative;display:inline-block;white-space:pre}
+.f09-w{position:relative;display:inline-block;opacity:0;color:var(--mk-ink)}
+#f09-key{position:absolute;left:-.1em;right:-.1em;top:.1em;bottom:.0em;background:var(--mk-accent);border-radius:22px;transform-origin:0 50%;transform:scaleX(0)}
+#f09-qm{position:relative;display:inline-block;opacity:0;color:var(--mk-ink)}
+#f09-caret{position:absolute;left:533px;top:900px;width:14px;height:120px;background:var(--mk-accent)}
+#f09-btns{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.f09-btn{position:absolute;left:110px;width:860px;height:190px;border-radius:var(--mk-radius);background:var(--mk-surface);border:2px solid var(--mk-line);box-shadow:var(--mk-shadow);overflow:hidden;opacity:0}
+#f09-b1{top:680px}
+#f09-b2{top:920px}
+.f09-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--mk-accent);transform-origin:0 50%;transform:scaleX(0)}
+.f09-row{position:absolute;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;gap:36px;padding:0 50px;color:var(--mk-ink)}
+.f09-ic{width:120px;height:120px;border-radius:32px;display:flex;align-items:center;justify-content:center;border:2px solid var(--mk-line);color:var(--mk-primary);flex:none}
+.f09-ic .mk-icon{width:70px;height:70px}
+.f09-lab{flex:1;font-family:var(--mk-font-display);font-weight:800;font-size:76px;line-height:1;letter-spacing:-0.02em;text-align:center;padding-right:120px}
+#f09-card{position:absolute;left:110px;top:900px;width:860px;height:500px;border-radius:var(--mk-radius);background:var(--mk-bg);border:6px solid var(--mk-accent);box-shadow:var(--mk-shadow);opacity:0}
+#f09-sub{position:absolute;left:0;top:1450px;width:1080px;height:190px}
+#f09-sub .mk-sub{position:absolute;left:0;top:61px;width:1080px;font-size:56px;line-height:68px}
+</style>
+
+<div id="root" data-composition-id="09-ready" data-start="0" data-duration="2.55" data-width="1080" data-height="1920">
+  <div id="f09-ground" class="clip" data-start="0" data-duration="2.55" data-track-index="0"></div>
+  <div id="f09-cam">
+    <div id="f09-q"><div id="f09-qin">
+      <div id="f09-l1" class="f09-line"><span class="f09-wd"><span class="f09-w" id="f09-w1">Ready</span></span> <span class="f09-wd"><span class="f09-w" id="f09-w2">to</span></span></div>
+      <div id="f09-l2" class="f09-line"><span class="f09-wd"><i id="f09-key"></i><span class="f09-w" id="f09-w3">ship</span></span><span id="f09-qm">?</span></div>
+    </div></div>
+    <div id="f09-btns">
+      <div id="f09-b1" class="f09-btn"><div class="f09-fill" id="f09-fill1"></div><div class="f09-row" id="f09-row1"><div class="f09-ic" id="f09-ic1"></div><div class="f09-lab">Call</div></div></div>
+      <div id="f09-b2" class="f09-btn"><div class="f09-fill" id="f09-fill2"></div><div class="f09-row" id="f09-row2"><div class="f09-ic" id="f09-ic2"></div><div class="f09-lab">WhatsApp</div></div></div>
+    </div>
+    <div id="f09-card"></div>
+  </div>
+  <div id="f09-caret"></div>
+  <div id="f09-sub" class="mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+
+  qs("#f09-ic1").innerHTML = MK.icon("phone", { size: 70, stroke: 2.2 });
+  qs("#f09-ic2").innerHTML = MK.icon("send", { size: 70, stroke: 2.2 });
+
+  // hidden at t=0 (the caret is the only visible thing: handoff from frame 8)
+  MK.hide(["#f09-w1", "#f09-w2", "#f09-w3", "#f09-qm", "#f09-btns .f09-btn", "#f09-card"]);
+  gsap.set("#f09-btns", { transformPerspective: 2200 });
+
+  // camera: slow pull back 3 percent over the whole frame
+  gsap.set("#f09-cam", { scale: 1.03 });
+  tl.to("#f09-cam", { scale: 1, duration: 2.55, ease: "none" }, 0);
+
+  // 0.00 the caret travels to the end of the line and turns into the question mark
+  function qmDelta(axis) {
+    return function () {
+      var r = qs("#f09-qm").getBoundingClientRect(), c = qs("#f09-caret").getBoundingClientRect();
+      var sc = 1080 / (qs("#root").getBoundingClientRect().width || 1080);
+      var cx = (r.left + r.width / 2) * sc, cy = (r.top + r.height / 2) * sc;
+      var bx = (c.left + c.width / 2) * sc - (gsap.getProperty("#f09-caret", "x") || 0), by = (c.top + c.height / 2) * sc - (gsap.getProperty("#f09-caret", "y") || 0);
+      return axis === "x" ? cx - bx : cy - by;
+    };
+  }
+  tl.to("#f09-caret", { x: qmDelta("x"), y: qmDelta("y"), scaleY: 0.78, duration: 0.3, ease: "power3.inOut", immediateRender: false }, 0.0);
+  tl.to("#f09-caret", { scaleY: 1.05, scaleX: 1.4, duration: 0.07, ease: "none" }, 0.1);
+  tl.fromTo("#f09-qm", { opacity: 0, scale: 0.6, y: 14, filter: "blur(10px)" },
+    { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: MK.ease.out, immediateRender: false }, 0.24);
+  tl.to("#f09-caret", { opacity: 0, scaleY: 0.5, duration: 0.14, ease: "power2.in" }, 0.28);
+
+  // 0.30 words one by one, box on ship
+  function word(sel, at) {
+    tl.fromTo(sel, { opacity: 0, y: 60, filter: "blur(12px)" },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: MK.ease.out, immediateRender: false }, at);
+  }
+  word("#f09-w1", 0.29 - MK.FE);
+  word("#f09-w2", 0.53 - MK.FE);
+  word("#f09-w3", 0.61 - MK.FE);
+  tl.fromTo("#f09-key", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.2, ease: "power3.out", immediateRender: false }, 0.56);
+  tl.to("#f09-w3", { color: "var(--mk-on-accent)", duration: 0.12, ease: "none" }, 0.72);
+  // living layer on the question while it holds
+  tl.to("#f09-qin", { scale: 1.05, duration: 0.85, ease: "none" }, 0.3);
+
+  // 1.10 the question rises and shrinks
+  tl.to("#f09-q", { y: -330, scale: 0.6, duration: 0.6, ease: MK.ease.out }, 1.1);
+  tl.to("#f09-qin", { scale: 1, duration: 0.3, ease: "power2.out" }, 1.15);
+
+  // 1.12 buttons arrive with a 3D tilt, icons draw on
+  tl.fromTo("#f09-btns", { rotationX: 10, rotationY: -12, z: -120 },
+    { rotationX: 3, rotationY: -4, z: 0, duration: 0.9, ease: MK.ease.out, immediateRender: false }, 1.1);
+  tl.to("#f09-btns", { rotationY: 3, rotationX: 2, duration: 1.0, ease: "none" }, 2.0);
+  MK.reveal(tl, "#f09-b1", 1.1, { dir: "up", dist: 120, blur: 12, dur: 0.6 });
+  MK.reveal(tl, "#f09-b2", 1.26, { dir: "up", dist: 120, blur: 12, dur: 0.6 });
+  MK.drawIcon(tl, "#f09-ic1 .mk-icon", 1.2, { dur: 0.5, tile: "#f09-ic1" });
+  MK.drawIcon(tl, "#f09-ic2 .mk-icon", 1.36, { dur: 0.5, tile: "#f09-ic2" });
+
+  // light up on the voice
+  function light(n, at) {
+    tl.fromTo("#f09-fill" + n, { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, at);
+    tl.to("#f09-row" + n, { color: "var(--mk-on-accent)", duration: 0.12, ease: "none" }, at + 0.08);
+    tl.to("#f09-ic" + n, { color: "var(--mk-on-accent)", duration: 0.12, ease: "none" }, at + 0.08);
+    tl.fromTo("#f09-b" + n, { scale: 1 }, { scale: 1.03, duration: 0.2, ease: MK.ease.out, immediateRender: false }, at);
+  }
+  light(1, 1.3);
+  light(2, 1.82);
+
+  // subtitle (single chunk, the question was a display moment)
+  MK.subtitle(tl, "#f09-sub", [["Call", 1.34], ["or", 1.71], ["WhatsApp", 1.86, true]], { out: 2.29 });
+
+  // 2.10 handoff: buttons slide down blurred 8 px, the contact card rises from the bottom
+  tl.to("#f09-b1", { y: 330, filter: "blur(8px)", opacity: 0.5, duration: 0.42, ease: "power2.in" }, 2.1);
+  tl.to("#f09-b2", { y: 330, filter: "blur(8px)", opacity: 0.5, duration: 0.42, ease: "power2.in" }, 2.1);
+  tl.fromTo("#f09-card", { y: 760, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: MK.ease.out, immediateRender: false }, 2.15);
+
+  window.__timelines["09-ready"] = tl;
+})();
+</script>
+</template>
