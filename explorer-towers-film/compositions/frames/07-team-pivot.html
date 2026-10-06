@@ -1,0 +1,139 @@
+<template>
+  <style>
+    @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: block; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+    #root .c07-fill { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+
+    #c07-ground { background: #000000; }
+
+    #c07-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+    #c07-world { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #c07-img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; display: block; }
+    #c07-dim { background: #000; opacity: 0; }
+    #c07-vign { background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,.5) 100%); }
+    #c07-warm { position: absolute; left: 0; top: 360px; width: 760px; height: 520px; opacity: 0; mix-blend-mode: screen;
+      background: linear-gradient(90deg, rgba(255,190,110,0) 0%, rgba(255,190,110,.38) 50%, rgba(255,190,110,0) 100%); }
+    #c07-cut { background: #000; opacity: 0; }
+
+    #c07-hair { position: absolute; left: 750px; top: 538px; width: 420px; height: 4px; border-radius: 2px; background: #FFD60A; opacity: 0;
+      box-shadow: 0 0 10px 2px rgba(255,214,10,.65); }
+    #c07-glow { position: absolute; left: 750px; top: 538px; width: 420px; height: 4px; border-radius: 2px; opacity: 0; background: #FFF0A0;
+      box-shadow: 0 0 28px 8px rgba(255,214,10,.55), 0 0 70px 18px rgba(255,214,10,.25); }
+
+    #c07-grain { opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+      background-size: 240px 240px; }
+
+    .c07-sub { position: absolute; left: 0; top: 896px; width: 1920px; height: 64px; display: flex; justify-content: center; gap: 16px;
+      font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 52px; line-height: 64px; color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .c07-w { position: relative; display: inline-block; opacity: 0; color: rgba(255,255,255,.55); }
+    .c07-box { position: absolute; left: -0.14em; right: -0.14em; top: 6px; bottom: 6px; border-radius: 6px; background: #FFD60A;
+      transform-origin: 0 50%; transform: scaleX(0); }
+    .c07-bt { position: relative; display: inline-block; }
+  </style>
+
+  <div id="root" data-composition-id="07-team-pivot" data-width="1920" data-height="1080" data-duration="2.83">
+    <div id="c07-groundclip" class="clip" data-start="0" data-duration="2.83" data-track-index="0" data-layout-ignore>
+      <div id="c07-ground" class="c07-fill"></div>
+    </div>
+
+    <div id="c07-stage">
+      <div id="c07-world" data-layout-allow-overflow>
+        <img id="c07-img" src="assets/img/reception.webp" alt="">
+        <div id="c07-warm"></div>
+      </div>
+      <div id="c07-dim" class="c07-fill"></div>
+      <div id="c07-vign" class="c07-fill"></div>
+      <div id="c07-cut" class="c07-fill"></div>
+    </div>
+
+    <div id="c07-glow"></div>
+    <div id="c07-hair"></div>
+    <div id="c07-grain" class="c07-fill"></div>
+
+    <div id="c07-sub" class="c07-sub">
+      <span id="c07-w0" class="c07-w">and</span>
+      <span id="c07-w1" class="c07-w">a</span>
+      <span id="c07-w2" class="c07-w"><i id="c07-box" class="c07-box"></i><span id="c07-bt" class="c07-bt">team</span></span>
+      <span id="c07-w3" class="c07-w">that</span>
+      <span id="c07-w4" class="c07-w">looks</span>
+      <span id="c07-w5" class="c07-w">after</span>
+      <span id="c07-w6" class="c07-w">it</span>
+      <span id="c07-w7" class="c07-w">all.</span>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var FID = "07-team-pivot";
+      var $ = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      function fT(el, from, to, t) {
+        to.immediateRender = false;
+        return tl.fromTo(el, from, to, t);
+      }
+
+      /* ---------- camera on the reception render (single writer) ---------- */
+      var world = $("c07-world");
+      var cam = { u: 0.615, s: 1.30 };
+      function applyCam() {
+        world.style.transform = "translate(" + (960 - cam.u * 1920 * cam.s).toFixed(2) + "px," + (540 - 0.5 * 1080 * cam.s).toFixed(2) + "px) scale(" + cam.s.toFixed(4) + ")";
+      }
+      applyCam();
+      /* lateral pan ends, slows at 0.40, then a calm push toward the desk */
+      tl.to(cam, { u: 0.545, duration: 0.40, ease: "power2.out", onUpdate: applyCam }, 0);
+      tl.to(cam, { u: 0.52, duration: 1.48, ease: "power1.out", onUpdate: applyCam }, 0.40);
+      tl.to(cam, { s: 1.42, duration: 1.88, ease: "none", onUpdate: applyCam }, 0);
+
+      /* camera blur 12 px resolves (handoff_in) */
+      fT($("c07-stage"), { filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0);
+
+      /* warm light sweeps the desk */
+      fT($("c07-warm"), { opacity: 0, x: -800 }, { opacity: 1, x: 300, duration: 0.35, ease: "power2.out" }, 0.80);
+      tl.to($("c07-warm"), { x: 1500, duration: 0.65, ease: "power1.inOut" }, 1.15);
+      tl.to($("c07-warm"), { opacity: 0, duration: 0.3, ease: "power1.in" }, 1.50);
+
+      /* render darkens to 60% */
+      fT($("c07-dim"), { opacity: 0 }, { opacity: 0.4, duration: 0.5, ease: "power2.out" }, 1.20);
+
+      /* ---------- subtitle ---------- */
+      function word(id, cue) {
+        var el = $(id);
+        fT(el, { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, cue);
+        fT(el, { color: "rgba(255,255,255,.55)" }, { color: "#ffffff", duration: 0.2, ease: "power1.out" }, cue + 0.14);
+      }
+      word("c07-w0", 0.09);
+      word("c07-w1", 0.21);
+      word("c07-w2", 0.28);
+      fT($("c07-box"), { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out" }, 0.23);
+      fT($("c07-bt"), { color: "#ffffff" }, { color: "#111111", duration: 0.12, ease: "power1.out" }, 0.30);
+      word("c07-w3", 0.76);
+      word("c07-w4", 0.88);
+      word("c07-w5", 1.20);
+      word("c07-w6", 1.56);
+      word("c07-w7", 1.65);
+      /* the subtitle leaves with the cut */
+      fT($("c07-sub"), { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.12, ease: "power2.in" }, 1.86);
+
+      /* ---------- the pivot: cut to black in 0.10 s ---------- */
+      fT($("c07-cut"), { opacity: 0 }, { opacity: 1, duration: 0.10, ease: "none" }, 1.88);
+      tl.set($("c07-stage"), { opacity: 0 }, 1.98);
+
+      /* ---------- the hairline: only living layer in the black ---------- */
+      /* drifts right at 20 px/s, back-solved so it sits at the exact center at 2.83 */
+      fT($("c07-hair"), { opacity: 0, x: -14.6 }, { opacity: 1, duration: 0.25, ease: "power3.out" }, 2.10);
+      tl.fromTo($("c07-hair"), { x: -14.6 }, { x: 0, duration: 0.73, ease: "none", immediateRender: false }, 2.10);
+      tl.fromTo($("c07-glow"), { x: -14.6 }, { x: 0, duration: 0.73, ease: "none", immediateRender: false }, 2.10);
+      fT($("c07-glow"), { opacity: 0 }, { opacity: 0.55, duration: 0.30, ease: "power2.out" }, 2.40);
+      tl.to($("c07-glow"), { opacity: 1, duration: 0.07, ease: "power2.out" }, 2.70);
+      tl.to($("c07-glow"), { opacity: 0.7, duration: 0.06, ease: "power2.in" }, 2.77);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[FID] = tl;
+    })();
+  </script>
+</template>
