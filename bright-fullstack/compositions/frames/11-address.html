@@ -1,0 +1,180 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f11-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f11-glow{position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse 620px 520px at 540px 780px,color-mix(in srgb,var(--mk-primary) 7%,transparent),transparent)}
+#f11-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
+
+/* 48 h ring starting to draw behind the stack (handoff_out) */
+#f11-ringsvg{position:absolute;left:40px;top:260px;width:1000px;height:1000px;opacity:0}
+#f11-ringsvg circle{fill:none;stroke-linecap:round}
+
+/* contact card (incoming handoff from frame 10) */
+#f11-contact{position:absolute;left:60px;top:560px;width:960px;height:470px;padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:26px;filter:blur(6px)}
+.f11-micro{font-weight:700;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft)}
+#f11-num{font-weight:800;font-size:76px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+#f11-numbox{display:inline-block;background:var(--mk-accent);color:var(--mk-on-accent);border-radius:12px;padding:0 .14em;margin-left:-.14em}
+#f11-rule{height:2px;background:var(--mk-line)}
+#f11-mail{display:flex;align-items:center;gap:20px;font-weight:600;font-size:34px;color:var(--mk-ink-soft)}
+#f11-mail svg{color:var(--mk-primary)}
+
+/* stack: plate, connector, address card */
+#f11-stack{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f11-platet{position:absolute;left:110px;top:300px;width:860px;height:320px}
+#f11-plate{position:absolute;left:0;top:0;width:860px;height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden;opacity:0}
+#f11-logo{position:relative;width:700px;height:202px}
+.f11-limg{position:absolute;left:-38px;top:-99.9px;width:777px;height:422px;max-width:none}
+#f11-la{clip-path:inset(0 100% 0 0)}
+#f11-lb{clip-path:inset(0 73.1% 0 26.9%)}
+#f11-trace{position:absolute;left:0;top:0;width:180.6px;height:202px;overflow:visible}
+#f11-trace path{fill:none;stroke:var(--mk-primary);stroke-width:11;stroke-linecap:round;stroke-linejoin:round}
+#f11-sweep{position:absolute;left:0;top:0;width:200px;height:320px;opacity:0;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent)}
+#f11-conn{position:absolute;left:530px;top:620px;width:20px;height:70px;overflow:visible}
+#f11-conn line{stroke:var(--mk-primary);stroke-width:6;stroke-linecap:round}
+#f11-addrt{position:absolute;left:110px;top:690px;width:860px;height:430px}
+#f11-addr{position:absolute;left:0;top:0;width:860px;height:430px;padding:50px 56px;opacity:0;overflow:hidden}
+#f11-addr .f11-micro{margin-bottom:20px}
+.f11-ln{font-weight:800;font-size:64px;line-height:80px;letter-spacing:-.02em;white-space:nowrap}
+#f11-edge{position:absolute;left:0;top:0;width:860px;height:8px}
+#f11-edge line{stroke:var(--mk-primary);stroke-width:8;stroke-linecap:butt}
+#f11-pinbox{position:absolute;right:60px;top:150px;width:150px;height:150px;display:flex;align-items:center;justify-content:center}
+#f11-pinring{position:absolute;left:0;top:0;width:150px;height:150px;border-radius:50%;border:5px solid var(--mk-accent);opacity:0}
+#f11-pin{color:var(--mk-primary)}
+#f11-pin svg{width:130px;height:130px}
+
+.f11-subc{position:absolute;left:60px;top:1450px;width:960px;height:190px;display:flex;align-items:center;justify-content:center;font-size:56px;line-height:68px}
+.f11-subc .mk-sub{font-size:56px;line-height:68px;width:100%}
+</style>
+
+<div id="root" data-composition-id="11-address" data-start="0" data-duration="4.63" data-width="1080" data-height="1920">
+  <div id="f11-ground" class="clip" data-start="0" data-duration="4.63" data-track-index="0"></div>
+  <div id="f11-glow"></div>
+  <div id="f11-cam">
+    <svg id="f11-ringsvg" viewBox="0 0 1000 1000">
+      <circle id="f11-ringtrack" cx="500" cy="500" r="440" style="stroke:var(--mk-line);stroke-width:10"/>
+      <circle id="f11-ringfill" cx="500" cy="500" r="440" transform="rotate(-90 500 500)" style="stroke:var(--mk-primary);stroke-width:14"/>
+    </svg>
+
+    <div id="f11-contact" class="mk-card">
+      <div class="f11-micro">Call or WhatsApp</div>
+      <div id="f11-num"><span id="f11-numbox">+256 750</span> 421 224</div>
+      <div id="f11-rule"></div>
+      <div id="f11-mail"><span id="f11-mailic"></span><span>shine@brightilluminated.com</span></div>
+    </div>
+
+    <div id="f11-stack">
+      <div id="f11-platet">
+        <div id="f11-plate" class="mk-card">
+          <div id="f11-logo">
+            <img id="f11-la" class="f11-limg" src="assets/img/logo-full.png" alt="Bright Illuminated">
+            <img id="f11-lb" class="f11-limg" src="assets/img/logo-full.png" alt="">
+            <svg id="f11-trace" viewBox="0 0 465 520">
+              <path d="M0,0 L307,0 C400,22 455,85 450,160 L446,210 L422,233 L447,273 C470,330 470,390 450,440 C420,495 370,512 317,520 L0,520 Z"/>
+              <path d="M67,65 L280,65 C345,78 378,115 383,150"/>
+              <path d="M67,65 L67,448 L110,449 C230,449 300,445 367,425"/>
+              <path d="M269,131 C180,150 140,230 165,303 C195,370 270,395 330,368 C370,350 375,330 366,306"/>
+              <path d="M270,200 C215,200 205,260 235,300 C260,325 300,320 325,285"/>
+            </svg>
+          </div>
+          <div id="f11-sweep"></div>
+        </div>
+      </div>
+
+      <svg id="f11-conn" viewBox="0 0 20 70"><line x1="10" y1="0" x2="10" y2="70"/></svg>
+
+      <div id="f11-addrt">
+        <div id="f11-addr" class="mk-card">
+          <svg id="f11-edge" viewBox="0 0 860 8"><line x1="0" y1="4" x2="860" y2="4"/></svg>
+          <div class="f11-micro">Address</div>
+          <div class="f11-ln" id="f11-l1">The Square</div>
+          <div class="f11-ln" id="f11-l2">Third Street</div>
+          <div class="f11-ln" id="f11-l3">Kampala, Uganda</div>
+          <div id="f11-pinbox">
+            <div id="f11-pinring"></div>
+            <div id="f11-pin"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="f11-sub1" class="f11-subc mk-root"></div>
+  <div id="f11-sub2" class="f11-subc mk-root"></div>
+  <div id="f11-sub3" class="f11-subc mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+
+  MK.putIcon("#f11-mailic", "mail", { size: 40, stroke: 1.8 });
+  MK.putIcon("#f11-pin", "pin", { size: 130, stroke: 1.5 });
+
+  // initial state: the incoming image = contact card (blur 6 px) under a camera at 1.05
+  gsap.set("#f11-cam", { scale: 1.05, transformOrigin: "50% 50%" });
+  MK.hide(["#f11-plate", "#f11-addr", "#f11-conn", "#f11-edge", "#f11-ringsvg", "#f11-pinring", "#f11-l1", "#f11-l2", "#f11-l3"]);
+  MK.stage3d("#f11-stack", 1600, "50%", "45%");
+  gsap.set("#f11-pin", { opacity: 0 });
+  MK.prep("#f11-pin");
+  MK.prep("#f11-trace");
+
+  // camera drift (living layer for the whole frame)
+  MK.camera(tl, "#f11-cam", 0, 4.63, { scale: 1.12 });
+
+  // 0.00 contact card slides down and out, plate rises in its place
+  tl.to("#f11-contact", { y: 380, opacity: 0, filter: "blur(14px)", scale: 0.96, duration: 0.5, ease: "power2.in" }, 0.0);
+  MK.reveal(tl, "#f11-plate", 0.05, { dir: "up", dist: 260, blur: 12, scale: 0.96, dur: 0.6 });
+
+  // 0.30 yellow mark draws on (outline trace), then fills in; 0.62 white wordmark revealed
+  MK.draw(tl, "#f11-trace path", 0.30, { dur: 0.6, ease: "power2.inOut", stagger: 0.07 });
+  tl.fromTo("#f11-la", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 73.1% 0 0)", duration: 0.5, ease: "power2.inOut", immediateRender: false }, 0.55);
+  tl.to("#f11-trace", { opacity: 0, duration: 0.3, ease: "none" }, 1.0);
+  tl.fromTo("#f11-lb", { clipPath: "inset(0 73.1% 0 26.9%)" }, { clipPath: "inset(0 0% 0 26.9%)", duration: 0.65, ease: "power3.out", immediateRender: false }, 0.62);
+
+  // slow 3D drift on plate and address wrappers
+  MK.tilt(tl, "#f11-platet", 0.05, 4.4, { rx: -3, ry: 5, ease: "none", persp: 1600, from: { rx: 0, ry: -4 } });
+  MK.tilt(tl, "#f11-addrt", 1.2, 3.3, { rx: 3, ry: -5, ease: "none", persp: 1600, from: { rx: 0, ry: 4 } });
+
+  // 1.20 address card slides under the plate, mullion-style yellow line
+  MK.draw(tl, "#f11-conn line", 1.15, { dur: 0.35, ease: "power2.out" });
+  MK.reveal(tl, "#f11-addr", 1.2, { dir: "up", dist: 140, blur: 12, scale: 0.97, dur: 0.65 });
+  MK.draw(tl, "#f11-edge line", 1.35, { dur: 0.6, ease: "power2.inOut" });
+  tl.fromTo("#f11-edge", { opacity: 1 }, { opacity: 1, duration: 0.01, immediateRender: false }, 1.35);
+  MK.reveal(tl, "#f11-l1", 1.40, { dir: "up", dist: 30, blur: 8, dur: 0.55 });
+  MK.reveal(tl, "#f11-l2", 1.52, { dir: "up", dist: 30, blur: 8, dur: 0.55 });
+  MK.reveal(tl, "#f11-l3", 1.64, { dir: "up", dist: 30, blur: 8, dur: 0.55 });
+
+  // 1.77 map pin draws on
+  tl.set("#f11-pin", { opacity: 1 }, 1.77);
+  MK.drawIcon(tl, "#f11-pin", 1.77, { dur: 0.6, stagger: 0.12 });
+
+  // 2.34 light sweep across the plate (living beat)
+  MK.sweep(tl, "#f11-sweep", 2.34, 0.8, -260, 1000);
+
+  // 3.11 pin pulses twice at Kampala (finite)
+  MK.pulse(tl, "#f11-pinring", 3.11, { count: 2, gap: 0.5, scale: 1.9, dur: 0.8 });
+  tl.to("#f11-pinbox", { scale: 1.1, duration: 0.18, ease: "power2.out" }, 3.11);
+  tl.to("#f11-pinbox", { scale: 1, duration: 0.35, ease: "power2.inOut" }, 3.29);
+  tl.to("#f11-pinbox", { scale: 1.1, duration: 0.18, ease: "power2.out" }, 3.61);
+  tl.to("#f11-pinbox", { scale: 1, duration: 0.35, ease: "power2.inOut" }, 3.79);
+
+  // 3.90 the 48 h ring starts to draw behind, stack blurs to 8 px (handoff_out)
+  tl.fromTo("#f11-ringsvg", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "none", immediateRender: false }, 3.85);
+  MK.ring(tl, "#f11-ringfill", 3.9, 0.73, 0.1);
+  tl.to("#f11-stack", { filter: "blur(8px)", duration: 0.55, ease: "power2.in" }, 4.08);
+
+  // subtitle: three chunks, box on Kampala
+  MK.subtitle(tl, "#f11-sub1", [["Bright", 0.29], ["Illuminated,", 0.57]], { out: 1.25 });
+  MK.subtitle(tl, "#f11-sub2", [["The", 1.45], ["Square,", 1.55], ["Third", 2.33], ["Street,", 2.60]], { out: 2.88 });
+  MK.subtitle(tl, "#f11-sub3", [["Kampala,", 3.11, true], ["Uganda.", 3.73]], { out: 4.37 });
+
+  window.__timelines["11-address"] = tl;
+})();
+</script>
+</template>

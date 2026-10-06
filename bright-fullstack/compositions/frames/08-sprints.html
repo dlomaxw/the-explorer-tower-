@@ -1,0 +1,185 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f08-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f08-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
+#f08-steps{position:absolute;left:60px;top:370px;width:960px;display:flex;gap:24px}
+.f08-chip{flex:1;text-align:center;padding:26px 0;border-radius:999px;background:var(--mk-surface);border:2px solid var(--mk-line);
+  font-family:var(--mk-font-body);font-weight:700;font-size:30px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);padding-left:.22em}
+#f08-ringpos{position:absolute;left:140px;top:560px;width:800px;height:800px}
+#f08-ring{position:absolute;left:0;top:0;width:800px;height:800px}
+#f08-ring svg{position:absolute;left:0;top:0;width:800px;height:800px}
+#f08-numbox{position:absolute;left:0;top:0;width:800px;height:800px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#f08-num{font-family:var(--mk-font-display);font-weight:800;font-size:320px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--mk-ink)}
+#f08-wk{margin-top:6px;font-weight:700;font-size:34px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);padding-left:.22em}
+#f08-disc{position:absolute;left:260px;top:680px;width:560px;height:560px;border-radius:50%;background:var(--mk-surface);border:2px solid var(--mk-line);box-shadow:var(--mk-shadow)}
+#f08-pulse{position:absolute;left:260px;top:680px;width:560px;height:560px;border-radius:50%;border:5px solid var(--mk-primary)}
+#f08-orbit{position:absolute;left:210px;top:630px;width:660px;height:660px}
+#f08-shield{position:absolute;left:370px;top:790px;width:340px;height:340px;color:var(--mk-primary)}
+.f08-sat{position:absolute;left:475px;top:895px;width:130px;height:130px;border-radius:36px;background:var(--mk-surface);border:1px solid var(--mk-line);
+  box-shadow:var(--mk-shadow);display:flex;align-items:center;justify-content:center;color:var(--mk-ink)}
+#f08-arrowpos{position:absolute;left:480px;top:690px;width:120px;height:120px;color:var(--mk-primary)}
+#f08-arrow{transform:rotate(-90deg);width:120px;height:120px}
+#f08-caret{position:absolute;left:533px;top:900px;width:14px;height:120px;background:var(--mk-primary);border-radius:2px}
+#f08-sub1,#f08-sub2{position:absolute;left:60px;top:1450px;width:960px;height:190px;display:flex;align-items:center;justify-content:center;font-size:56px;line-height:68px}
+</style>
+
+<div id="root" data-composition-id="08-sprints" data-start="0" data-duration="3.12" data-width="1080" data-height="1920">
+  <div id="f08-ground" class="clip" data-start="0" data-duration="3.12" data-track-index="0"></div>
+  <div id="f08-cam">
+    <div id="f08-steps">
+      <div class="f08-chip" id="f08-c1">Plan</div>
+      <div class="f08-chip" id="f08-c2">Build</div>
+      <div class="f08-chip" id="f08-c3">Demo</div>
+    </div>
+    <div id="f08-ringpos">
+      <div id="f08-ring">
+        <svg viewBox="0 0 800 800" id="f08-ringsvg"></svg>
+        <div id="f08-numbox"><div id="f08-num">0</div><div id="f08-wk">weeks</div></div>
+      </div>
+    </div>
+    <div id="f08-disc"></div>
+    <div id="f08-pulse"></div>
+    <svg id="f08-orbit" viewBox="0 0 660 660"><circle id="f08-orbitc" cx="330" cy="330" r="330" fill="none" style="stroke:var(--mk-line)" stroke-width="2"/></svg>
+    <div id="f08-shield"></div>
+    <div class="f08-sat" id="f08-bell"></div>
+    <div class="f08-sat" id="f08-wrench"></div>
+    <div id="f08-arrowpos"><div id="f08-arrow"></div></div>
+  </div>
+  <div id="f08-caret"></div>
+  <div id="f08-sub1" class="mk-root"></div>
+  <div id="f08-sub2" class="mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+  var D = 3.12;
+  var NS = "http://www.w3.org/2000/svg";
+
+  /* ---- build ring svg: track, fill, 14 base ticks, 14 lit ticks ---- */
+  var svg = qs("#f08-ringsvg");
+  function el(tag, attrs, style) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (style) e.setAttribute("style", style);
+    svg.appendChild(e); return e;
+  }
+  var track = el("circle", { id: "f08-track", cx: 400, cy: 400, r: 300, fill: "none", "stroke-width": 14, "stroke-linecap": "round", pathLength: 1, transform: "rotate(-90 400 400)" },
+    "stroke:var(--mk-line);stroke-dasharray:1 1;stroke-dashoffset:0.82");
+  var fill = el("circle", { id: "f08-fill", cx: 400, cy: 400, r: 300, fill: "none", "stroke-width": 14, "stroke-linecap": "round", pathLength: 1, transform: "rotate(-90 400 400)" },
+    "stroke:var(--mk-primary);stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0");
+  var N = 14, baseT = [], litT = [];
+  for (var i = 0; i < N; i++) {
+    var a = (-90 + i * 360 / N) * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+    baseT.push(el("line", { x1: 400 + c * 340, y1: 400 + s * 340, x2: 400 + c * 378, y2: 400 + s * 378, "stroke-width": 12, "stroke-linecap": "round", class: "f08-tb" }, "stroke:var(--mk-line)"));
+    litT.push(el("line", { x1: 400 + c * 336, y1: 400 + s * 336, x2: 400 + c * 384, y2: 400 + s * 384, "stroke-width": 14, "stroke-linecap": "round", class: "f08-tl" }, "stroke:var(--mk-primary);opacity:0"));
+  }
+
+  /* ---- icons ---- */
+  qs("#f08-shield").innerHTML = MK.icon("shield", { size: 340, stroke: 1.5 });
+  qs("#f08-bell").innerHTML = MK.icon("bell", { size: 70, stroke: 1.8 });
+  qs("#f08-wrench").innerHTML = MK.icon("tool", { size: 70, stroke: 1.8 });
+  qs("#f08-arrow").innerHTML = MK.icon("arrow", { size: 120, stroke: 2.2 });
+
+  /* ---- hide what is not visible at t=0 ---- */
+  MK.hide("#f08-steps .f08-chip");
+  MK.hide(baseT);
+  MK.hide("#f08-numbox");
+  MK.hide("#f08-disc"); MK.hide("#f08-pulse"); MK.hide("#f08-orbit");
+  MK.hide("#f08-shield"); MK.hide("#f08-bell"); MK.hide("#f08-wrench");
+  MK.hide("#f08-arrowpos"); MK.hide("#f08-caret");
+  MK.hide("#f08-sub1"); MK.hide("#f08-sub2");
+  MK.prep("#f08-orbitc");
+  gsap.set("#f08-track", { opacity: 1 });
+  MK.stage3d("#f08-cam", 2200, "50%", "55%");
+
+  /* incoming state: ring small, low, partially drawn (calendar ring starting to draw at the bottom) */
+  gsap.set("#f08-ringpos", { y: 380, scale: 0.5, transformOrigin: "50% 50%" });
+  gsap.set("#f08-sub1", { opacity: 1 }); gsap.set("#f08-sub2", { opacity: 1 });
+
+  /* ---- camera: slow rotation + push (drift) ---- */
+  tl.fromTo("#f08-cam", { rotation: 0, scale: 1 }, { rotation: 3, scale: 1.03, duration: D, ease: "none", immediateRender: false }, 0);
+
+  /* ---- ring arrives from the bottom, draws, tilts in 3D ---- */
+  tl.to("#f08-ringpos", { y: 0, scale: 1, duration: 0.9, ease: "expo.out" }, 0);
+  tl.to("#f08-track", { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0);
+  MK.tilt(tl, "#f08-ring", 0, 0.9, { from: { rx: 26, ry: -20, z: -200 }, rx: 6, ry: -8, z: 0, persp: 2200, ease: "expo.out" });
+  tl.to("#f08-ring", { rotationX: 3, rotationY: -4, duration: 0.6, ease: "none" }, 0.9);
+  tl.fromTo(baseT, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out", stagger: 0.035, immediateRender: false }, 0.1);
+  tl.fromTo("#f08-numbox", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out", immediateRender: false }, 0.2);
+  MK.count(tl, "#f08-num", 0.25, 0.85, 0, 2, { ease: "power2.out" });
+
+  /* ---- ticks fill one by one, ring fill follows ---- */
+  tl.fromTo("#f08-fill", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 0.25);
+  tl.fromTo("#f08-fill", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.95, ease: "none", immediateRender: false }, 0.25);
+  for (var j = 0; j < N; j++) {
+    tl.fromTo(litT[j], { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none", immediateRender: false }, 0.25 + j * 0.075);
+  }
+
+  /* ---- steps: Plan / Build / Demo ---- */
+  tl.fromTo("#f08-steps .f08-chip", { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", stagger: 0.1, immediateRender: false }, 0.05);
+  function activate(sel, at, off) {
+    tl.to(sel, { borderColor: "var(--mk-primary)", color: "var(--mk-primary)", duration: 0.12, ease: "none" }, at);
+    tl.fromTo(sel, { scale: 1 }, { scale: 1.07, duration: 0.14, ease: "power3.out", immediateRender: false }, at);
+    tl.to(sel, { scale: 1, duration: 0.3, ease: "power3.out" }, at + 0.14);
+    if (off) tl.to(sel, { borderColor: "var(--mk-line)", color: "var(--mk-ink)", duration: 0.2, ease: "none" }, off);
+  }
+  activate("#f08-c1", 0.38, 0.72);
+  activate("#f08-c2", 0.72, 0.95);
+  activate("#f08-c3", 0.95, 0);
+
+  /* ---- exit of the sprint world ---- */
+  tl.to("#f08-steps", { opacity: 0, y: -50, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, 1.28);
+  tl.to("#f08-ringpos", { opacity: 0, scale: 0.8, filter: "blur(10px)", duration: 0.32, ease: "power2.in" }, 1.28);
+
+  /* ---- support: disc, shield draws, bell and wrench orbit once ---- */
+  tl.fromTo("#f08-disc", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out", immediateRender: false }, 1.52);
+  MK.tilt(tl, "#f08-shield", 1.52, 0.8, { from: { rx: 18, ry: 22, z: -300 }, rx: 5, ry: -6, z: 0, persp: 2200, ease: "expo.out" });
+  tl.fromTo("#f08-shield", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 1.52);
+  MK.drawIcon(tl, "#f08-shield svg .mk-i", 1.55, { dur: 0.55, stagger: 0.15 });
+  tl.to("#f08-shield", { rotationY: 8, rotationX: 2, duration: 1.2, ease: "none" }, 2.32);
+  tl.fromTo("#f08-orbit", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 1.8);
+  MK.draw(tl, "#f08-orbitc", 1.8, { dur: 0.6, ease: "power2.inOut" });
+  tl.to("#f08-orbit", { opacity: 0, duration: 0.25, ease: "power2.in" }, 2.66);
+
+  var R = 330, A0 = -150, orb = { a: 0 };
+  function place() {
+    var a1 = (A0 + orb.a) * Math.PI / 180, a2 = a1 + Math.PI;
+    gsap.set("#f08-bell", { x: Math.cos(a1) * R, y: Math.sin(a1) * R });
+    gsap.set("#f08-wrench", { x: Math.cos(a2) * R, y: Math.sin(a2) * R });
+  }
+  place();
+  tl.fromTo("#f08-bell", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out", immediateRender: false }, 1.85);
+  tl.fromTo("#f08-wrench", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out", immediateRender: false }, 1.93);
+  tl.fromTo(orb, { a: 0 }, { a: 360, duration: 0.81, ease: "power1.inOut", immediateRender: false, onUpdate: place }, 1.85);
+  MK.drawIcon(tl, "#f08-bell svg .mk-i", 1.9, { dur: 0.4, stagger: 0.05 });
+  MK.drawIcon(tl, "#f08-wrench svg .mk-i", 1.98, { dur: 0.4, stagger: 0.05 });
+  tl.to(["#f08-bell", "#f08-wrench"], { opacity: 0, scale: 0.7, duration: 0.25, ease: "power2.in" }, 2.72);
+
+  /* ---- after launch: arrow up, shield pulses ---- */
+  tl.fromTo("#f08-arrowpos", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out", immediateRender: false }, 2.66);
+  MK.drawIcon(tl, "#f08-arrow svg .mk-i", 2.66, { dur: 0.35, stagger: 0.06 });
+  tl.to("#f08-arrowpos", { y: -50, opacity: 0, duration: 0.3, ease: "power2.in" }, 2.82);
+  tl.fromTo("#f08-pulse", { scale: 0.9, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, 2.66);
+  tl.to("#f08-shield", { scale: 1.1, duration: 0.14, ease: "power3.out" }, 2.66);
+  tl.to("#f08-shield", { scale: 1, duration: 0.3, ease: "power3.out" }, 2.8);
+
+  /* ---- handoff out: shield and everything fade into the ground, caret appears at the centre ---- */
+  tl.to(["#f08-shield", "#f08-disc"], { opacity: 0, duration: 0.2, ease: "power2.in" }, 2.88);
+  tl.fromTo("#f08-caret", { opacity: 0, scaleY: 0.6 }, { opacity: 1, scaleY: 1, duration: 0.18, ease: "power3.out", immediateRender: false }, 2.92);
+
+  /* ---- subtitles ---- */
+  MK.subtitle(tl, "#f08-sub1", [["Two-week", 0.22, true], ["sprints.", 0.66]], { out: 1.28 });
+  MK.subtitle(tl, "#f08-sub2", [["Support", 1.46, true], ["after", 2.05], ["launch.", 2.37]], { out: D - 0.12 });
+
+  window.__timelines["08-sprints"] = tl;
+})();
+</script>
+</template>
