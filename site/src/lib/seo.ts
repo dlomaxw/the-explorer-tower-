@@ -134,7 +134,7 @@ export function projectJsonLd(): Record<string, unknown> {
   const address = isApproved(contact.address)
     ? {
         "@type": "PostalAddress",
-        streetAddress: "Plot 37 John Babiha (Acacia) Avenue, Kololo",
+        streetAddress: "Plot 55 John Babiha (Acacia) Avenue, Kololo",
         addressLocality: "Kampala",
         addressRegion: "Central Region",
         addressCountry: "UG",
