@@ -161,7 +161,6 @@
     tl.fromTo("#f03-tw" + d.n, { x: tfrom[i].x, y: tfrom[i].y, scale: 0.75, filter: "blur(10px)", opacity: 0 },
       { x: 0, y: 0, scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.7, ease: "expo.out" }, i * 0.05);
   });
-  tl.fromTo("#f03-tw1", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none", immediateRender: false }, 0);
   /* ---------- tiles draw on at their word ---------- */
   var cues = [0.20, 1.05, 2.00];
   tdefs.forEach(function (d, i) {

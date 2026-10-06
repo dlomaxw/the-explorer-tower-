@@ -6,14 +6,15 @@
 #f10-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 42%}
 #f10-rings{position:absolute;left:0;top:0;width:1080px;height:1920px}
 #f10-rings circle{fill:none;stroke:var(--mk-line);stroke-width:3}
-#f10-q{position:absolute;left:0;top:336px;width:1080px;font-family:var(--mk-font-display);font-weight:800;font-size:104px;line-height:104px;letter-spacing:-0.02em;text-align:center;color:var(--mk-ink)}
+#f10-q{position:absolute;left:0;top:336px;width:1080px;font-family:var(--mk-font-display);font-weight:800;font-size:100px;line-height:104px;letter-spacing:-0.02em;text-align:center;color:var(--mk-ink)}
 #f10-q div{height:104px;white-space:nowrap}
 #f10-qb{position:relative;display:inline-block}
 #f10-qk{position:absolute;left:-.12em;right:-.1em;top:10px;bottom:1px;background:var(--mk-accent);border-radius:16px}
 #f10-qw{position:relative;color:var(--mk-on-accent)}
 #f10-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--mk-bg)}
+#f10-cap{position:absolute;left:0;top:0;width:900px;height:558px;border:4px solid var(--mk-primary);border-radius:30px;background:var(--mk-bg)}
 #f10-rise{position:absolute;left:90px;top:340px;width:900px;height:800px}
-#f10-card{position:absolute;left:0;top:0;width:900px;height:800px;background:var(--mk-surface);border:3px solid var(--mk-primary);
+#f10-card{position:absolute;left:0;top:0;width:900px;height:800px;background:var(--mk-surface);border:4px solid var(--mk-primary);
   border-radius:var(--mk-radius);box-shadow:var(--mk-shadow);overflow:hidden}
 #f10-head{position:absolute;left:0;top:56px;width:900px;height:70px;display:flex;align-items:center;justify-content:center;gap:28px}
 #f10-head .f10-lab{font-weight:700;font-size:26px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);white-space:nowrap}
@@ -56,7 +57,7 @@
         <div id="f10-rule"></div>
         <div id="f10-mail"><span id="f10-ic3"></span><span id="f10-addr">shine@brightilluminated.com</span></div>
         <div id="f10-sweep"></div>
-        <div id="f10-fill"></div>
+        <div id="f10-cap"></div>
       </div>
     </div>
   </div>
@@ -111,7 +112,7 @@
   // 0.00 the card (arrives from frame 9, already rising) settles
   tl.fromTo("#f10-rise", { y: 542 }, { y: 0, duration: 0.8, ease: MK.ease.out, immediateRender: false }, 0.04);
   tl.fromTo("#f10-card", { clipPath: "inset(0px 0px 242px 0px round 30px)" }, { clipPath: "inset(-80px -80px -80px -80px round 30px)", duration: 0.8, ease: MK.ease.out, immediateRender: false }, 0.04);
-  tl.to("#f10-fill", { opacity: 0, duration: 0.5, ease: "none" }, 0.1);
+  tl.to("#f10-cap", { opacity: 0, duration: 0.45, ease: "none" }, 0.1);
   // the question rises out through the top
   tl.to("#f10-q", { y: -460, opacity: 0, filter: "blur(10px)", duration: 0.55, ease: "power2.in" }, 0.04);
 
