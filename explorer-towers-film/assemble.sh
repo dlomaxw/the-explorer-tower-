@@ -77,6 +77,20 @@ node $S/assemble-index.mjs --storyboard ./STORYBOARD.md --hyperframes . | tail -
 node $S/transitions.mjs inject --storyboard ./STORYBOARD.md --hyperframes . | tail -2
 node $S/transitions.mjs verify --storyboard ./STORYBOARD.md --index ./index.html | tail -1
 
+# With zero transitions transitions.mjs leaves index.html untouched, so the full-span anchor the orchestrator layer
+# patches in front of is missing: stamp it here (same block as transitions.mjs), idempotent.
+python3 - <<'PYEOF'
+import re
+s = open("index.html", encoding="utf-8").read()
+if not re.search(r"(?m)^[ \t]*tl\.to\(\{\}, \{ duration: [0-9.]+ \}, 0\);", s):
+    anchor = 'window.__timelines["main"] = gsap.timeline({ paused: true });'
+    total = re.search(r'data-composition-id="main"[^>]*?data-duration="([\d.]+)"', s).group(1)
+    block = anchor + "\n      (function () { var tl = window.__timelines[\"main\"];\n        tl.to({}, { duration: " + total + " }, 0); // full-span anchor\n      })();"
+    # the orchestrator layer inserts its tweens before the anchor line, inside the same scope
+    s = s.replace(anchor, block)
+    open("index.html", "w", encoding="utf-8").write(s)
+PYEOF
+
 python3 - <<'EOF'
 import os, re
 

@@ -103,7 +103,7 @@ Scene 3 (3.10 à 5.40 s) : P3, P3, the silent gag: the day turns to night
 - scene: The pin lands on Plot 37 and the avenue gets its name
 - duration: 5.10s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/02-plot.html
 - voiceover: "plot thirty seven john babiha also called acacia avenue"
 - type: solution
@@ -142,7 +142,7 @@ Scene 2 (2.55 à 5.10 s) : P5, P5, the avenue gets its name
 - scene: The pin opens into paper: Kololo, Kampala, and the two-bedroom card with its price
 - duration: 5.28s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/03-kololo-two-bed.html
 - voiceover: "kololo kampala two bedroom homes from three hundred thousand dollars"
 - type: benefit
@@ -181,7 +181,7 @@ Scene 2 (2.00 à 5.28 s) : P7, P7, the two-bedroom card and its price
 - scene: The three-bedroom card and the penthouse card swell into the pool
 - duration: 5.36s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/04-three-bed-penthouses.html
 - voiceover: "three bedroom from four hundred thousand and two six bedroom penthouses"
 - type: benefit
@@ -220,7 +220,7 @@ Scene 2 (2.36 à 5.36 s) : P9, P9, the penthouses
 - scene: The pool, then « On application » and the render slices into slats
 - duration: 3.04s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/05-on-application.html
 - voiceover: "each with its own pool priced on application"
 - type: benefit
@@ -259,7 +259,7 @@ Scene 2 (1.38 à 3.04 s) : P11, P11, priced on application
 - scene: Five amenity slats traversed by one camera: gym, sauna, garden, lounge, covered parking
 - duration: 5.29s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/06-amenities.html
 - voiceover: "a gym a sauna a garden a lounge covered parking"
 - type: benefit
@@ -308,7 +308,7 @@ Scene 3 (3.52 à 5.29 s) : P14, P14, covered parking
 - scene: The team that looks after it all, then black with a yellow hairline
 - duration: 2.83s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/07-team-pivot.html
 - voiceover: "and a team that looks after it all"
 - type: benefit
@@ -347,7 +347,7 @@ Scene 2 (1.88 à 2.83 s) : P16, P16, the pivot on black
 - scene: « Come and see it. » and the contact card border draws from the hairline
 - duration: 2.42s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/08-come-and-see-it.html
 - voiceover: "come and see it call or whatsapp"
 - type: cta
@@ -386,7 +386,7 @@ Scene 2 (1.30 à 2.42 s) : P18, P18, call or WhatsApp
 - scene: The phone number rolls in digit by digit
 - duration: 4.94s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/09-number.html
 - voiceover: "plus two five six seven five zero four two one two two four"
 - type: cta
@@ -425,7 +425,7 @@ Scene 2 (2.38 à 4.94 s) : P20, P20, four two one, two two four
 - scene: Viewings: the hours bar fills, then the card collapses into a line
 - duration: 2.44s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/10-viewings.html
 - voiceover: "viewings nine thirty to seven"
 - type: cta
@@ -464,7 +464,7 @@ Scene 2 (1.40 à 2.44 s) : P22, P22, nine thirty to seven
 - scene: The wordmark assembles, plates rise, a cursor clicks the WhatsApp button, living hold, black
 - duration: 7.70s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/11-end-card.html
 - voiceover: "explorer towers curved balcony residences above kampala"
 - type: cta
