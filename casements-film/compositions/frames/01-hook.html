@@ -1,0 +1,86 @@
+<template>
+<style>
+@font-face{font-family:"Montserrat";font-weight:600;src:url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:800;src:url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2")}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"Montserrat",sans-serif}
+#hook01-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:#f4f6f2}
+#hook01-radial{position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(circle at 50% 48%,rgba(31,122,61,.06) 0%,rgba(31,122,61,0) 62%)}
+#hook01-grain{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:.03;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.6 -.3'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+#hook01-cam,#hook01-world{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.hook01-pane{position:absolute;width:450px;height:560px}
+.hook01-shadow{position:absolute;left:0;top:0;width:450px;height:560px;box-shadow:0 30px 70px rgba(16,16,16,.22);opacity:0}
+.hook01-inner{position:absolute;left:22px;top:22px;width:406px;height:516px;background:#ffffff;opacity:0}
+.hook01-photo{position:absolute;left:22px;top:22px;width:406px;height:516px;overflow:hidden}
+.hook01-photo img{display:block;width:406px;height:516px;object-fit:cover;opacity:0}
+.hook01-frame{position:absolute;left:0;top:0;overflow:visible}
+.hook01-frame path{fill:none;stroke:#1f7a3d;stroke-width:22;stroke-linejoin:miter}
+.hook01-barclip{position:absolute;left:0;top:448px;width:450px;height:112px;overflow:hidden}
+.hook01-bar{position:absolute;left:0;top:0;width:450px;height:112px;background:#1f7a3d;opacity:0}
+.hook01-label{position:absolute;left:34px;top:0;line-height:90px;font-size:52px;font-weight:800;letter-spacing:-0.01em;color:#fff;white-space:nowrap}
+.hook01-label i{font-style:normal;color:#f5b800}
+#hook01-tag{position:absolute;left:60px;top:262px;font-size:24px;font-weight:600;letter-spacing:.25em;color:#14572c;white-space:nowrap;line-height:30px}
+.hook01-ch{display:inline-block;opacity:0}
+#hook01-node{position:absolute;left:525px;top:910px;width:30px;height:30px;border-radius:50%;background:#101010;opacity:0}
+</style>
+<div id="root" data-composition-id="01-hook" data-start="0" data-duration="2.43" data-width="1080" data-height="1920">
+  <div id="hook01-ground" class="clip" data-start="0" data-duration="2.43" data-track-index="0">
+    <div id="hook01-radial"></div><div id="hook01-grain"></div>
+  </div>
+  <div id="hook01-cam"><div id="hook01-world">
+    <div id="hook01-tag"><span class="hook01-ch" id="hook01-ch-0">S</span><span class="hook01-ch" id="hook01-ch-1">I</span><span class="hook01-ch" id="hook01-ch-2">N</span><span class="hook01-ch" id="hook01-ch-3">C</span><span class="hook01-ch" id="hook01-ch-4">E</span><span class="hook01-ch" id="hook01-ch-5">&nbsp;</span><span class="hook01-ch" id="hook01-ch-6">1</span><span class="hook01-ch" id="hook01-ch-7">9</span><span class="hook01-ch" id="hook01-ch-8">6</span><span class="hook01-ch" id="hook01-ch-9">5</span><span class="hook01-ch" id="hook01-ch-10">&nbsp;</span><span class="hook01-ch" id="hook01-ch-11">·</span><span class="hook01-ch" id="hook01-ch-12">&nbsp;</span><span class="hook01-ch" id="hook01-ch-13">K</span><span class="hook01-ch" id="hook01-ch-14">A</span><span class="hook01-ch" id="hook01-ch-15">M</span><span class="hook01-ch" id="hook01-ch-16">P</span><span class="hook01-ch" id="hook01-ch-17">A</span><span class="hook01-ch" id="hook01-ch-18">L</span><span class="hook01-ch" id="hook01-ch-19">A</span></div>
+    <div class="hook01-pane" id="hook01-pane-al" style="left:60px;top:330px">
+      <div class="hook01-shadow" id="hook01-shadow-al"></div>
+      <div class="hook01-inner" id="hook01-inner-al"></div>
+      <div class="hook01-photo"><img id="hook01-img-al" src="assets/img/home-windows.jpg" alt=""></div>
+      <svg class="hook01-frame" viewBox="0 0 450 560" width="450" height="560"><path id="hook01-path-al" d="M11 11 H439 V549 H11 Z"/></svg>
+      <div class="hook01-barclip"><div class="hook01-bar" id="hook01-bar-al"><span class="hook01-label">Aluminium<i>.</i></span></div></div>
+    </div>
+    <div class="hook01-pane" id="hook01-pane-gl" style="left:570px;top:330px">
+      <div class="hook01-shadow" id="hook01-shadow-gl"></div>
+      <div class="hook01-inner" id="hook01-inner-gl"></div>
+      <div class="hook01-photo"><img id="hook01-img-gl" src="assets/img/hero-img5.jpg" alt=""></div>
+      <svg class="hook01-frame" viewBox="0 0 450 560" width="450" height="560"><path id="hook01-path-gl" d="M11 11 H439 V549 H11 Z"/></svg>
+      <div class="hook01-barclip"><div class="hook01-bar" id="hook01-bar-gl"><span class="hook01-label">Glass<i>.</i></span></div></div>
+    </div>
+    <div class="hook01-pane" id="hook01-pane-st" style="left:60px;top:960px">
+      <div class="hook01-shadow" id="hook01-shadow-st"></div>
+      <div class="hook01-inner" id="hook01-inner-st"></div>
+      <div class="hook01-photo"><img id="hook01-img-st" src="assets/img/home-steel.jpg" alt=""></div>
+      <svg class="hook01-frame" viewBox="0 0 450 560" width="450" height="560"><path id="hook01-path-st" d="M11 11 H439 V549 H11 Z"/></svg>
+      <div class="hook01-barclip"><div class="hook01-bar" id="hook01-bar-st"><span class="hook01-label">Steel<i>.</i></span></div></div>
+    </div>
+    <div class="hook01-pane" id="hook01-pane-wd" style="left:570px;top:960px">
+      <div class="hook01-shadow" id="hook01-shadow-wd"></div>
+      <div class="hook01-inner" id="hook01-inner-wd"></div>
+      <div class="hook01-photo"><img id="hook01-img-wd" src="assets/img/home-glass.jpg" alt=""></div>
+      <svg class="hook01-frame" viewBox="0 0 450 560" width="450" height="560"><path id="hook01-path-wd" d="M11 11 H439 V549 H11 Z"/></svg>
+      <div class="hook01-barclip"><div class="hook01-bar" id="hook01-bar-wd"><span class="hook01-label">Wood<i>.</i></span></div></div>
+    </div>
+    <div id="hook01-node"></div>
+  </div></div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+  (function(){
+    var tl=gsap.timeline({paused:true});
+    var P=["al",0.0,0.3],["gl",0.15,0.75],["st",0.3,1.2],["wd",0.45,1.65];
+    P.forEach(function(p){
+      var k=p[0],d=p[1],a=p[2];
+      var path=document.getElementById("hook01-path-"+k);
+      var len=path.getTotalLength?path.getTotalLength():1932;
+      path.style.strokeDasharray=len;path.style.strokeDashoffset=len;
+      tl.to(path,{strokeDashoffset:0,duration:0.3,ease:"expo.out"},d);
+      tl.to("#hook01-shadow-"+k,{opacity:1,duration:0.3,ease:"power3.out"},d);
+      tl.to("#hook01-inner-"+k,{opacity:1,duration:0.2,ease:"power3.out"},d+0.1);
+      tl.fromTo("#hook01-img-"+k,{scale:1.15,filter:"blur(14px)",opacity:0},{scale:1,filter:"blur(0px)",opacity:1,duration:0.2,ease:"expo.out",immediateRender:false},a);
+      tl.fromTo("#hook01-bar-"+k,{y:24,opacity:0},{y:0,opacity:1,duration:0.15,ease:"power3.out",immediateRender:false},a+0.1);
+    });
+    tl.fromTo("#hook01-node",{scale:0,opacity:0},{scale:1,opacity:1,duration:0.2,ease:"expo.out",immediateRender:false},1.9);
+    for(var i=0;i<20;i++){tl.set("#hook01-ch-"+i,{opacity:1},1.9+i*0.014);}
+    tl.fromTo("#hook01-cam",{y:0},{y:-93,duration:2.43,ease:"none"},0);
+    tl.fromTo("#hook01-world",{y:0,filter:"blur(0px)"},{y:-60,filter:"blur(6px)",duration:0.43,ease:"expo.in",immediateRender:false},2.0);
+    window.__timelines=window.__timelines||{};
+    window.__timelines["01-hook"]=tl;
+  })();
+  </script>
+</div>
+</template>
