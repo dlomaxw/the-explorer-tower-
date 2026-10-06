@@ -20,7 +20,15 @@
     .p07-mu{position:absolute;left:0;overflow:visible}
     .p07-mu path{fill:none;stroke:#1f7a3d;stroke-width:22;stroke-dasharray:100 100}
     .p07-mu circle{fill:#101010}
-    #p07-p0{filter:blur(12px);transform-origin:50% 100%}
+    .p07-p0{position:absolute;left:0;top:0;width:1080px;height:1px;filter:blur(12px)}
+    .p07-strip{position:absolute;left:60px;width:960px;height:420px;border:22px solid #1f7a3d;box-shadow:0 30px 70px rgba(16,16,16,.22);background:#e8ede6}
+    .p07-sph{position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden}
+    .p07-sph img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;display:block}
+    .p07-sbar{position:absolute;left:0;right:0;bottom:0;height:110px;background:#1f7a3d;color:#fff;font-weight:800;font-size:52px;line-height:110px;letter-spacing:-.01em;padding-left:30px;white-space:nowrap}
+    .p07-sbar i{font-style:normal;color:#f5b800}
+    .p07-vl{position:absolute;overflow:visible}
+    .p07-vl path{fill:none;stroke:#1f7a3d;stroke-width:22}
+    .p07-nd{position:absolute;width:30px;height:30px;border-radius:50%;background:#101010}
     #p07-p1{filter:blur(12px);transform-origin:50% 0%}
     #p07-p4{filter:blur(12px);transform-origin:50% 0%}
     #p07-m1{filter:blur(12px)}
@@ -36,10 +44,14 @@
   <div id="p07-grain" class="clip" data-start="0" data-duration="3.35" data-track-index="1"></div>
 
   <div id="p07-world" data-layout-allow-overflow>
-    <div id="p07-p0" class="p07-pane" style="top:340px;opacity:1">
-      <div id="p07-p0sh" class="p07-sh" style="opacity:1"></div>
-      <div class="p07-cl"><div id="p07-p0ph" class="p07-ph" style="background-image:url('assets/img/product-steel-roller-shutters.jpg');opacity:1"></div><div class="p07-bar" id="p07-p0bar">Roller shutters<i>.</i></div></div>
-      <svg class="p07-fr" viewBox="0 0 960 1000"><rect id="p07-p0fr" x="11" y="11" width="938" height="978" pathLength="100" style="stroke-dashoffset:0"/></svg>
+    <div id="p07-p0" class="p07-p0">
+      <svg class="p07-vl" style="left:529px;top:-170px" width="22" height="70" viewBox="0 0 22 70"><path d="M11 0V70"/></svg>
+      <div class="p07-nd" style="left:525px;top:-135px"></div>
+      <div class="p07-strip" style="top:-100px"><div class="p07-sph"><img src="assets/img/g-steel-products-stainless-steel-sliding.jpg" alt="" style="object-position:50% 50%"></div><div class="p07-sbar">Grills<i>.</i></div></div>
+      <svg class="p07-vl" style="left:529px;top:320px;height:70px" width="22" height="70" viewBox="0 0 22 70"><path d="M11 0V70"/></svg>
+      <div class="p07-nd" style="left:525px;top:340px"></div>
+      <div class="p07-strip" style="top:390px"><div class="p07-sph"><img src="assets/img/g-steel-products-row-of-white.jpg" alt="" style="object-position:20% 50%"></div><div class="p07-sbar">Shutters<i>.</i></div></div>
+      <svg class="p07-vl" style="left:529px;top:810px;height:560px" width="22" height="560" viewBox="0 0 22 560"><path d="M11 0V560"/></svg>
     </div>
     <div id="p07-p1" class="p07-pane" style="top:1440px;opacity:1">
       <div id="p07-p1sh" class="p07-sh" style="opacity:1"></div>
@@ -61,7 +73,7 @@
       <div class="p07-cl"><div id="p07-p4ph" class="p07-ph" style="background-image:url('assets/img/g-mini-homes-circular-uniport.jpg');opacity:1"></div></div>
       <svg class="p07-fr" viewBox="0 0 960 1000"><rect id="p07-p4fr" x="11" y="11" width="938" height="978" pathLength="100" style="stroke-dashoffset:0"/></svg>
     </div>
-    <svg id="p07-m1" class="p07-mu" style="top:1350px;opacity:1" width="1080" height="40" viewBox="0 0 1080 40"><path id="p07-m1l" d="M60 20 H1020" pathLength="100" style="stroke-dashoffset:0"/><circle id="p07-m1a" cx="60" cy="20" r="15" style="opacity:1"/><circle id="p07-m1b" cx="1020" cy="20" r="15" style="opacity:1"/></svg>
+    <svg id="p07-m1" class="p07-mu" style="top:1350px;opacity:1" width="1080" height="40" viewBox="0 0 1080 40"><path id="p07-m1l" d="M60 20 H1020" pathLength="100" style="stroke-dashoffset:0"/><circle id="p07-m1a" cx="540" cy="20" r="9" style="opacity:1;fill:#2a2f29"/><circle id="p07-m1b" cx="1020" cy="20" r="15" style="opacity:0"/></svg>
     <svg id="p07-m2" class="p07-mu" style="top:2450px;opacity:0" width="1080" height="40" viewBox="0 0 1080 40"><path id="p07-m2l" d="M60 20 H1020" pathLength="100" style="stroke-dashoffset:100"/><circle id="p07-m2a" cx="60" cy="20" r="15" style="opacity:0"/><circle id="p07-m2b" cx="1020" cy="20" r="15" style="opacity:0"/></svg>
     <svg id="p07-m3" class="p07-mu" style="top:3550px;opacity:0" width="1080" height="40" viewBox="0 0 1080 40"><path id="p07-m3l" d="M60 20 H1020" pathLength="100" style="stroke-dashoffset:100"/><circle id="p07-m3a" cx="60" cy="20" r="15" style="opacity:0"/><circle id="p07-m3b" cx="1020" cy="20" r="15" style="opacity:0"/></svg>
     <svg id="p07-m4" class="p07-mu" style="top:4650px;opacity:0" width="1080" height="40" viewBox="0 0 1080 40"><path id="p07-m4l" d="M60 20 H1020" pathLength="100" style="stroke-dashoffset:100"/><circle id="p07-m4a" cx="60" cy="20" r="15" style="opacity:0"/><circle id="p07-m4b" cx="1020" cy="20" r="15" style="opacity:0"/></svg>
@@ -77,12 +89,11 @@
     (function () {
       var tl = gsap.timeline({ paused: true });
       var B0 = "blur(0px)", B6 = "blur(6px)", B12 = "blur(12px)", B14 = "blur(14px)";
-      gsap.set("#p07-p0", { scale: 1.1 });
-      gsap.set("#p07-p1", { scale: 1.1 });
+            gsap.set("#p07-p1", { scale: 1.1 });
       gsap.set("#p07-p4", { scale: 1.1 });
 
       // CAMERA: one writer per leg, descent with a move per word
-      tl.fromTo("#p07-world", { y: 0 }, { y: -1130, duration: 0.75, ease: "power2.out" }, 0);
+      tl.fromTo("#p07-world", { y: 125 }, { y: -1130, duration: 0.75, ease: "power2.out" }, 0);
       tl.fromTo("#p07-world", { y: -1130 }, { y: -1165, duration: 0.44, ease: "none", immediateRender: false }, 0.75);
       tl.fromTo("#p07-world", { y: -1165 }, { y: -2240, duration: 0.76, ease: "power3.out", immediateRender: false }, 1.19);
       tl.fromTo("#p07-world", { y: -2240 }, { y: -2290, duration: 0.41, ease: "none", immediateRender: false }, 1.95);
@@ -95,6 +106,7 @@
       tl.fromTo("#p07-m1", { filter: B12 }, { filter: B0, duration: 0.75, ease: "power2.out" }, 0);
       // roller shutters pane leaves through the top (off screen by 1.5 s)
       tl.set("#p07-p0", { opacity: 0 }, 1.5);
+      tl.set("#p07-m1", { opacity: 0 }, 1.5);
 
       // panes that draw: frame lines, then photo from x1.15 + blur 14, then label bar slides up 20 px
       function build(id, tDraw, tPhoto, tBar, mk, tM) {
@@ -132,7 +144,7 @@
 
       // subtitle band scrim
       tl.fromTo("#p07-scrim", { opacity: 0 }, { opacity: 1, duration: 0.14, ease: "power3.out", immediateRender: false }, 0.1);
-      tl.to("#p07-scrim", { opacity: 0, duration: 0.14, ease: "power2.in" }, 3.19);
+      tl.to("#p07-scrim", { opacity: 0, duration: 0.14, ease: "power2.in" }, 3.11);
 
       // subtitle, word by word (0 to 2 frames early), key-word box first
       function word(id, cue) {
@@ -154,7 +166,7 @@
       tl.set("#p07-c3", { opacity: 1 }, 2.28);
       word("d", 2.36);
       box("e", 2.64); word("e", 2.64);
-      tl.to("#p07-c3", { opacity: 0, filter: B6, duration: 0.14, ease: "power2.in" }, 3.19);
+      tl.to("#p07-c3", { opacity: 0, filter: B6, duration: 0.14, ease: "power2.in" }, 3.11);
 
       window.__timelines = window.__timelines || {};
       window.__timelines["07-ceilings-hardware-blinds"] = tl;
