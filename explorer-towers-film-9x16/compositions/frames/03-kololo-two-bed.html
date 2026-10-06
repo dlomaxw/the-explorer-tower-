@@ -216,8 +216,8 @@
       }
       camT({ s: 1.0 }, 4.2, "none", 0.4);
       camT({ cy: 1114 }, 0.25, "power3.inOut", 1.75);
-      camT({ cy: 2120 }, 0.68, "power2.in", 4.60);
-      fT($("c03-stage"), { filter: "blur(0px)" }, { filter: "blur(14px)", duration: 0.68, ease: "power2.in" }, 4.60);
+      camT({ cy: 2120 }, 0.64, "power2.in", 4.60);
+      fT($("c03-stage"), { filter: "blur(0px)" }, { filter: "blur(14px)", duration: 0.64, ease: "power2.in" }, 4.60);
 
       /* ---------- Scene 1 to 2: the card edge, then the two-bedroom card rises ---------- */
       var c2 = $("c03-c2");
@@ -259,7 +259,7 @@
       fT($("c03-line"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 4.90);
 
       /* neighbours settle into the pan: three-bedroom grows to x1.1 and sharpens under the camera blur */
-      fT(c3, { scale: 1 }, { scale: 1.1, duration: 0.68, ease: "power2.in" }, 4.60);
+      fT(c3, { scale: 1 }, { scale: 1.1, duration: 0.64, ease: "power2.in" }, 4.60);
       fT(c3, { filter: "blur(6px)" }, { filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 4.45);
 
       /* ---------- subtitles ---------- */

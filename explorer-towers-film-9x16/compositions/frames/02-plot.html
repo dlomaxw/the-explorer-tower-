@@ -10,17 +10,16 @@
     /* aerial portrait: image height 2100 (scale 1.8667 of the 2000x1125 reference space), tower base at 50% / 46% */
     #c02-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; filter: blur(4px); }
     #c02-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
-    #c02-aw { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; transform-origin: 0 0; transform: translate(-1341px, -465px) scale(1.8667); }
+    #c02-aw { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; transform-origin: 0 0; transform: translate(-1925px, -832px) scale(2.45); }
     .c02-aimg { position: absolute; left: 0; width: 2000px; height: 1125px; display: block; }
     #c02-aimg { top: 0; }
-    #c02-aimg2 { top: 1124px; transform: scaleY(-1); }
-    #c02-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 2250px; background: #070a18; opacity: 0; }
-    .c02-dring { position: absolute; border-radius: 50%; opacity: .5; mix-blend-mode: screen;
+    #c02-dim { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; background: #070a18; opacity: 0; }
+    .c02-dring { position: absolute; border-radius: 50%; opacity: .3; mix-blend-mode: screen;
       background: radial-gradient(closest-side, rgba(255,150,40,0) 60%, rgba(255,170,60,.42) 80%, rgba(255,150,40,0) 100%); }
-    .c02-floor { position: absolute; left: 902px; width: 208px; height: 8px; border-radius: 4px; background: #ffb347; opacity: .8;
-      mix-blend-mode: screen; box-shadow: 0 0 12px 3px rgba(255,170,60,.7); }
+    .c02-floor { position: absolute; left: 902px; width: 208px; height: 3px; border-radius: 2px; background: #ffb347; opacity: .45;
+      mix-blend-mode: screen; box-shadow: 0 0 3px 1px rgba(255,170,60,.45); }
     #c02-asvg { position: absolute; left: 0; top: 0; width: 2000px; height: 1125px; overflow: visible; }
-    #c02-avenue { fill: none; stroke: #FFD60A; stroke-width: 2.68; stroke-linecap: round; filter: drop-shadow(0 0 3px #FFD60A); }
+    #c02-avenue { fill: none; stroke: #FFD60A; stroke-width: 2.04; stroke-linecap: round; filter: drop-shadow(0 0 2.5px #FFD60A); }
 
     #c02-grain { opacity: .04; mix-blend-mode: overlay;
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
@@ -75,7 +74,6 @@
       <div id="c02-cam" data-layout-allow-overflow>
         <div id="c02-aw" data-layout-allow-overflow>
           <img id="c02-aimg" class="c02-aimg" src="assets/img/aerial-dusk.webp" alt="">
-          <img id="c02-aimg2" class="c02-aimg" src="assets/img/aerial-dusk.webp" alt="">
           <div id="c02-dim"></div>
           <div id="c02-d0" class="c02-dring" style="left:815px;top:470px;width:380px;height:260px"></div>
           <div id="c02-d1" class="c02-dring" style="left:655px;top:360px;width:700px;height:480px"></div>
@@ -83,7 +81,7 @@
           <div id="c02-d3" class="c02-dring" style="left:205px;top:50px;width:1600px;height:1100px"></div>
           <div id="c02-floors"></div>
           <svg id="c02-asvg" viewBox="0 0 2000 1125" xmlns="http://www.w3.org/2000/svg">
-            <path id="c02-avenue" d="M 706 1299 C 790 1090, 925 900, 1008 722"/>
+            <path id="c02-avenue" d="M 770 1160 C 850 1010, 940 860, 1008 718"/>
           </svg>
         </div>
       </div>
@@ -172,17 +170,17 @@
         var z = cam.z;
         camEl.style.transform = "translate(" + (540 - z * cam.cx).toFixed(2) + "px," + (960 - z * cam.cy).toFixed(2) + "px) scale(" + z.toFixed(4) + ")";
         follow.style.transform = "translate(" + (540 + z * (PX - cam.cx)).toFixed(2) + "px," + (960 + z * (PY - cam.cy)).toFixed(2) + "px)";
-        avenue.setAttribute("stroke-width", (5 / 1.8667 / z).toFixed(3));
+        avenue.setAttribute("stroke-width", (5 / 2.45 / z).toFixed(3));
       }
       function camT(props, dur, ease, t) {
         var o = { duration: dur, ease: ease, onUpdate: applyCam };
         for (var k in props) o[k] = props[k];
         tl.to(cam, o, t);
       }
-      camT({ cx: 540, cy: 941, z: 1.17 }, 1.70, "none", 0);
-      camT({ cx: 540, cy: 921, z: 2.0 }, 0.85, "power3.inOut", 1.70);
-      camT({ cx: 540, cy: 900, z: 2.4 }, 1.95, "none", 2.55);
-      camT({ cx: PX, cy: PY, z: 3.0 }, 0.60, "expo.in", 4.50);
+      camT({ cx: 540, cy: 960, z: 1.08 }, 1.70, "none", 0);
+      camT({ cx: 540, cy: 930, z: 1.55 }, 0.85, "power3.inOut", 1.70);
+      camT({ cx: 540, cy: 905, z: 1.90 }, 1.95, "none", 2.55);
+      camT({ cx: PX, cy: PY, z: 2.2857 }, 0.60, "expo.in", 4.50);
 
       /* camera blur on the aerial only (pin and text stay sharp) */
       var stage = $("c02-stage");
