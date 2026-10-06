@@ -11,8 +11,9 @@
   --mk-on-accent:#101010;
   --mk-font-display:"Montserrat",system-ui,sans-serif;
   --mk-font-body:"Montserrat",system-ui,sans-serif;
+  --mk-font-mono:"IBM Plex Mono",ui-monospace,monospace;
   --mk-display-weight:800;
   --mk-radius:26px;
-  --mk-shadow:0 30px 70px rgba(255,255,255,0.16);
+  --mk-shadow:0 30px 70px rgba(0,0,0,0.6);
   --mk-shadow-brand:0 30px 80px rgba(250,225,4,0.35);
 }

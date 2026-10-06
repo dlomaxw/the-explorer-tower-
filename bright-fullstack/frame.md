@@ -14,6 +14,7 @@ colors:
   ink: "#FFFFFF"
   ink-soft: "#B5B5B5"
   bg: "#0A0A0A"
+  ground: "#0A0A0A"
   surface: "#161616"
   line: "#2A2A2A"
   on-primary: "#101010"
@@ -22,6 +23,7 @@ colors:
 fonts:
   display: "Montserrat"
   body: "Montserrat"
+  mono: "IBM Plex Mono"            # terminal and API card text ONLY
   note: "local woff2 only (assets/fonts, assets/fonts.css), never a network @import. No other family anywhere."
 
 typography:

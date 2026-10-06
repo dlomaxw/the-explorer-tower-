@@ -1,32 +1,67 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1080, height=1920" />
-  <link rel="stylesheet" href="assets/fonts.css" />
-  <link rel="stylesheet" href="assets/brand/tokens.css" />
-  <link rel="stylesheet" href="assets/vendor/motion-kit.css" />
-  <script src="assets/vendor/gsap.min.js"></script>
-  <script src="assets/vendor/icons.js"></script>
-  <script src="assets/vendor/motion-kit.js"></script>
-  <style>
-    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
-    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--mk-bg); }
-    .scene { position: absolute; inset: 0; }
-  </style>
-</head>
-<body>
-  <div id="root" class="mk-root" data-composition-id="bright-illuminated" data-start="0" data-duration="12" data-width="1080" data-height="1920">
-    <div id="ground" class="clip" data-start="0" data-duration="12" data-track-index="0"></div>
-    <!-- scenes go here as PLAIN divs (no data-start): <div id="s1" class="scene"> ... </div>. Only the ground, <video> and <audio> carry data-start. -->
-    <!-- audio (after the voice and the mix exist): <audio id="mix" data-start="0" data-duration="12" data-track-index="11" src="assets/audio/mix.wav" data-volume="1"></audio> -->
-  </div>
-  <script>
-    window.__timelines = window.__timelines || {};
-    var tl = gsap.timeline({ paused: true });
-    window.__timelines["bright-illuminated"] = tl; // MUST equal data-composition-id of #root
-    // 1) hide what is not on screen at t=0 with MK.hide(sel) (gsap.set), never tl.set at 0   2) build every scene with MK.*   3) keep a full-span anchor:
-    tl.to({}, { duration: 12 }, 0);
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/fonts.css" />
+    <link rel="stylesheet" href="assets/brand/tokens.css" />
+    <link rel="stylesheet" href="assets/vendor/motion-kit.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0A0A0A;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="2.93"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div
+        id="el-01-build"
+        class="scene"
+        data-composition-id="01-build"
+        data-composition-src="compositions/frames/01-build.html"
+        data-start="0"
+        data-duration="2.93"
+        data-track-index="1"
+      ></div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      (function () { var tl = window.__timelines["main"];
+        tl.to({}, { duration: 2.93 }, 0); // full-span anchor
+      })();
+    </script>
+  </body>
 </html>

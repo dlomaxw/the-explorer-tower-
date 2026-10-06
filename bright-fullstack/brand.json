@@ -3,14 +3,62 @@
   "_source": "colours and wordmark taken from the two logos the client supplied (yellow B-swirl mark, black/white wordmark); fonts to confirm against the live site",
   "tagline": "Immersive technology solutions across industries.",
   "website": "brightilluminated.com",
-  "contact": { "phone": "+256 750 421 224", "email": "shine@brightilluminated.com", "address": "The Square, Third Street, Kampala, Uganda" },
-  "colors": { "primary": "#FAE104", "secondary": "#B8A600", "accent": "#FAE104", "ink": "#FFFFFF", "bg": "#0A0A0A", "surface": "#161616", "line": "#2A2A2A", "ink_soft": "#B5B5B5" },
-  "fonts": {
-    "display": { "family": "Montserrat", "weights": [800], "source": "fontsource:montserrat", "display_weight": 800 },
-    "body":    { "family": "Montserrat", "weights": [500, 700], "source": "fontsource:montserrat" }
+  "contact": {
+    "phone": "+256 750 421 224",
+    "email": "shine@brightilluminated.com",
+    "address": "The Square, Third Street, Kampala, Uganda"
   },
-  "logo": { "full": "assets/img/logo-full.png", "mark": "assets/img/mark.png", "light_version": "assets/img/logo-source.png" },
+  "colors": {
+    "primary": "#FAE104",
+    "secondary": "#B8A600",
+    "accent": "#FAE104",
+    "ink": "#FFFFFF",
+    "bg": "#0A0A0A",
+    "surface": "#161616",
+    "line": "#2A2A2A",
+    "ink_soft": "#B5B5B5"
+  },
+  "fonts": {
+    "display": {
+      "family": "Montserrat",
+      "weights": [
+        800
+      ],
+      "source": "fontsource:montserrat",
+      "display_weight": 800
+    },
+    "body": {
+      "family": "Montserrat",
+      "weights": [
+        500,
+        700
+      ],
+      "source": "fontsource:montserrat"
+    },
+    "mono": {
+      "family": "IBM Plex Mono",
+      "weights": [
+        400,
+        500
+      ],
+      "source": "fontsource:ibm-plex-mono"
+    }
+  },
+  "logo": {
+    "full": "assets/img/logo-full.png",
+    "mark": "assets/img/mark.png",
+    "light_version": "assets/img/logo-source.png"
+  },
   "radius": 26,
-  "format": { "width": 1080, "height": 1920, "fps": 30 },
-  "forbidden_names": ["Explorer Towers", "Casements", "Northwind", "Bright Properties"]
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "forbidden_names": [
+    "Explorer Towers",
+    "Casements",
+    "Northwind",
+    "Bright Properties"
+  ]
 }

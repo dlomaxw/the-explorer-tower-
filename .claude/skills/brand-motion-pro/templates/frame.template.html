@@ -1,0 +1,34 @@
+<template>
+<style>
+/* One frame = one sub-composition. Copy this file to compositions/frames/NN-name.html, replace every "fNN" prefix.
+   Brand: only var(--mk-*) colours and fonts; the brand CSS (fonts.css, tokens.css, motion-kit.css) is linked by index.html
+   for the whole film, so a frame never re-declares @font-face and never writes a colour literal. */
+#root{position:absolute;left:0;top:0;width:{{W}}px;height:{{H}}px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#fNN-ground{position:absolute;left:0;top:0;width:{{W}}px;height:{{H}}px;background:var(--mk-bg)}
+#fNN-cam{position:absolute;left:0;top:0;width:{{W}}px;height:{{H}}px;transform-origin:50% 50%}
+#fNN-sub{position:absolute;left:0;top:1450px;width:{{W}}px;height:190px}
+</style>
+
+<div id="root" data-composition-id="NN-name" data-start="0" data-duration="D" data-width="{{W}}" data-height="{{H}}">
+  <div id="fNN-ground" class="clip" data-start="0" data-duration="D" data-track-index="0"></div>
+  <div id="fNN-cam"><!-- scene content here --></div>
+  <div id="fNN-sub" class="mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+  // 1) hide what is not on screen at t=0:  MK.hide("#fNN-x");   (never tl.set at 0)
+  // 2) the opening image must equal handoff_in of the storyboard
+  // 3) build the steps at their times with MK.*; subtitle: MK.subtitle(tl, "#fNN-sub", [["word", cue, true?]...], {out: D - 0.12})
+  // 4) the closing image must equal handoff_out; subtitle gone 0.1 s before the end
+  window.__timelines["NN-name"] = tl;
+})();
+</script>
+</template>

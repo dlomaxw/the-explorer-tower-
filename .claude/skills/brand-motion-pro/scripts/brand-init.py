@@ -117,13 +117,16 @@ def tokens_css(brand, c):
     disp = fonts.get("display", fonts.get("body", {"family": "sans-serif"}))["family"]
     body = fonts.get("body", fonts.get("display", {"family": "sans-serif"}))["family"]
     radius = brand.get("radius", 28)
-    shadow = f"0 30px 70px {rgba(c['ink'], .16)}"
+    dark = lum(c["bg"]) < 0.25  # on a dark ground a light shadow glows: use black, stronger
+    shadow = f"0 30px 70px {rgba('#000000', .6)}" if dark else f"0 30px 70px {rgba(c['ink'], .16)}"
     shadow_brand = f"0 30px 80px {rgba(c['primary'], .35)}"
     return (":root{\n"
             f"  --mk-primary:{c['primary']};\n  --mk-secondary:{c['secondary']};\n  --mk-accent:{c['accent']};\n"
             f"  --mk-ink:{c['ink']};\n  --mk-ink-soft:{c['ink_soft']};\n  --mk-bg:{c['bg']};\n  --mk-surface:{c['surface']};\n"
             f"  --mk-line:{c['line']};\n  --mk-on-primary:{c['on_primary']};\n  --mk-on-accent:{c['on_accent']};\n"
             f"  --mk-font-display:\"{disp}\",system-ui,sans-serif;\n  --mk-font-body:\"{body}\",system-ui,sans-serif;\n"
+            + (f"  --mk-font-mono:\"{fonts['mono']['family']}\",ui-monospace,monospace;\n" if "mono" in fonts else "")
+            +
             f"  --mk-display-weight:{brand.get('fonts', {}).get('display', {}).get('display_weight', 800)};\n"
             f"  --mk-radius:{radius}px;\n  --mk-shadow:{shadow};\n  --mk-shadow-brand:{shadow_brand};\n}}\n")
 
@@ -183,7 +186,11 @@ def main():
         rep["{{c_" + k + "}}"] = v
     for k, v in rep.items():
         tpl = tpl.replace(k, v)
-    open(os.path.join(project, "frame.md"), "w", encoding="utf-8").write(tpl)
+    fm = os.path.join(project, "frame.md")
+    if os.path.exists(fm) and os.environ.get("FORCE_FRAME_MD") != "1":
+        print("  frame.md exists: kept (FORCE_FRAME_MD=1 to regenerate)")
+    else:
+        open(fm, "w", encoding="utf-8").write(tpl)
     ok = contrast_table(c)
     print("\nWrote tokens.css, fonts.css, frame.md, vendor kit. Link in index.html:\n"
           '  <link rel="stylesheet" href="assets/fonts.css"> <link rel="stylesheet" href="assets/brand/tokens.css">\n'

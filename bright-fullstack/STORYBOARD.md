@@ -28,9 +28,17 @@ patterns: ../patterns/STORYBOARD-CRAFT.md
 
 ## Frame 1: The build · 0.00 → 2.93
 
+- scene: The build
 - id: 01-build
 - duration: 2.93s
 - transition_in: cut
+- status: animated
+- src: compositions/frames/01-build.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: The build
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Bright Illuminated. Full-stack software development."
 - subtitle chunks (45 characters at most): ['Bright Illuminated.', 'Full-stack software development.']
 - key-word boxes (one per sentence): ['illuminated', 'full']
@@ -50,9 +58,17 @@ Scene 1 (0.00 à 2.93 s) : P1, the terminal that opens the page
 
 ## Frame 2: From simple to complex · 2.93 → 6.66
 
+- scene: From simple to complex
 - id: 02-range
 - duration: 3.73s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/02-range.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: From simple to complex
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "From simple landing pages to complex enterprise systems."
 - subtitle chunks (45 characters at most): ['From simple landing pages', 'to complex enterprise systems.']
 - key-word boxes (one per sentence): ['complex']
@@ -72,9 +88,17 @@ Scene 1 (0.00 à 3.73 s) : P2, a landing page that grows into a system
 
 ## Frame 3: Web, mobile, backend · 6.66 → 10.55
 
+- scene: Web, mobile, backend
 - id: 03-layers
 - duration: 3.89s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/03-layers.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Web, mobile, backend
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Web apps, mobile apps, backend and APIs."
 - subtitle chunks (45 characters at most): ['Web apps, mobile apps,', 'backend and APIs.']
 - key-word boxes (one per sentence): ['apis']
@@ -94,9 +118,17 @@ Scene 1 (0.00 à 3.89 s) : P3, three layers drawn one per phrase
 
 ## Frame 4: Custom CRM and ERP · 10.55 → 12.00
 
+- scene: Custom CRM and ERP
 - id: 04-crm-erp
 - duration: 1.45s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/04-crm-erp.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Custom CRM and ERP
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Custom CRM,"
 - subtitle chunks (45 characters at most): ['Custom CRM,']
 - key-word boxes (one per sentence): ['crm']
@@ -116,9 +148,17 @@ Scene 1 (0.00 à 1.45 s) : P4, the CRM numbers (short beat)
 
 ## Frame 5: Automation and DevOps · 12.00 → 15.14
 
+- scene: Automation and DevOps
 - id: 05-automation
 - duration: 3.14s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/05-automation.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Automation and DevOps
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Automation tools and DevOps."
 - subtitle chunks (45 characters at most): ['Automation tools and DevOps.']
 - key-word boxes (one per sentence): ['devops']
@@ -129,7 +169,7 @@ Word cues (frame-local seconds): automation@0.13 tools@0.73 and@1.42 devops@1.75
 
 Scene 1 (0.00 à 3.14 s) : P5, the deployment pipeline runs
   TEXTE ÉCRAN: node labels « Code », « Test », « Build », « Deploy » (micro), a progress bar and « Deployed » with a check; subtitle with box on « DevOps »
-  ÉTAPES: 0.00 the line becomes a vertical pipeline with four nodes ; 0.13 « Code » node draws (word « automation » 0.13) ; 0.73 « Test » node, progress ring fills 0.7 s ; 1.42 « Build » (« and ») ; 1.75 « Deploy » node (« DevOps ») and a toggle flips to live (MK.toggle), a toast « Deployed to production » slides in from the top (MK.toast) ; 2.50 a check mark draws in the accent
+  ÉTAPES: 0.00 the line becomes a vertical pipeline with four nodes ; 0.13 « Code » node draws (word « automation » 0.13) ; 0.73 « Test » node, progress ring fills 0.7 s ; 1.42 « Build » (« and ») ; 1.75 « Deploy » node (« DevOps ») and a toggle flips to live (MK.toggle), a toast « Deployed to production » slides in from the top (MK.toast) ; 2.50 a green-free check mark draws in the accent
   CAMÉRA: descent following the pipeline at 5 %/s
   COUCHES: pipeline line + nodes (mid) · toast and toggle (front) · subtitle band
   OBJET-PONT ET VECTEUR: the yellow caret and the yellow line (see the handoffs)
@@ -138,9 +178,17 @@ Scene 1 (0.00 à 3.14 s) : P5, the deployment pipeline runs
 
 ## Frame 6: Built around your team · 15.14 → 19.96
 
+- scene: Built around your team
 - id: 06-not-template
 - duration: 4.82s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/06-not-template.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Built around your team
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Custom CRM solutions built around how your team works, not a template."
 - subtitle chunks (45 characters at most): ['Custom CRM solutions built', 'around how your team works,', 'not a template.']
 - key-word boxes (one per sentence): ['template']
@@ -160,9 +208,17 @@ Scene 1 (0.00 à 4.82 s) : P6, a template card is replaced by a custom board
 
 ## Frame 7: One team, you own the code · 19.96 → 22.48
 
+- scene: One team, you own the code
 - id: 07-one-team
 - duration: 2.52s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/07-one-team.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: One team, you own the code
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "One team. You own the code."
 - subtitle chunks (45 characters at most): ['One team.', 'You own the code.']
 - key-word boxes (one per sentence): ['team', 'own']
@@ -182,9 +238,17 @@ Scene 1 (0.00 à 2.52 s) : P7, three roles become one team, the code is yours
 
 ## Frame 8: Sprints and support · 22.48 → 25.60
 
+- scene: Sprints and support
 - id: 08-sprints
 - duration: 3.12s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/08-sprints.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Sprints and support
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Two-week sprints. Support after launch."
 - subtitle chunks (45 characters at most): ['Two-week sprints.', 'Support after launch.']
 - key-word boxes (one per sentence): ['two', 'support']
@@ -195,7 +259,7 @@ Word cues (frame-local seconds): two@0.22 week@0.44 sprints@0.66 support@1.46 af
 
 Scene 1 (0.00 à 3.12 s) : P8, sprint cycle then post-launch support
   TEXTE ÉCRAN: « 2 weeks » inside the sprint ring (numeral rolls 0 → 2), steps « Plan », « Build », « Demo » (micro) ; then a shield icon and « Support after launch » ; subtitle two sentences
-  ÉTAPES: 0.00 calendar ring draws (0.8 s) with 14 ticks around it ; 0.25 the ticks fill one by one in sync with the words, the numeral rolls to 2 ; 1.10 « Demo » flag pops on the ring ; 1.50 the ring splits and re-forms into a loop arrow ; 1.80 « Support » : a shield icon draws, a bell and a wrench orbit it once (finite) ; 2.60 « after launch » : an upward arrow (arrow icon) points up and the shield pulses
+  ÉTAPES: 0.00 calendar ring draws (0.8 s) with 14 ticks around it ; 0.25 the ticks fill one by one in sync with the words, the numeral rolls to 2 ; 1.10 « Demo » flag pops on the ring ; 1.50 the ring splits and re-forms into a loop arrow ; 1.80 « Support » : a shield icon draws, a bell and a wrench orbit it once (finite) ; 2.60 « after launch » : a rocket-free upward arrow (arrow icon) points up and the shield pulses
   CAMÉRA: slow rotation 5° of the stage
   COUCHES: ring + ticks (mid) · shield and icons (front) · subtitle band
   OBJET-PONT ET VECTEUR: the yellow caret and the yellow line (see the handoffs)
@@ -204,9 +268,17 @@ Scene 1 (0.00 à 3.12 s) : P8, sprint cycle then post-launch support
 
 ## Frame 9: Ready to ship, call or WhatsApp · 25.60 → 28.15
 
+- scene: Ready to ship, call or WhatsApp
 - id: 09-ready
 - duration: 2.55s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/09-ready.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Ready to ship, call or WhatsApp
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Ready to ship? Call or WhatsApp"
 - subtitle chunks (45 characters at most): ['Ready to ship?', 'Call or WhatsApp']
 - key-word boxes (one per sentence): ['ship', 'whatsapp']
@@ -226,9 +298,17 @@ Scene 1 (0.00 à 2.55 s) : P9, the question, then the two ways to reach us
 
 ## Frame 10: The number · 28.15 → 33.09
 
+- scene: The number
 - id: 10-number
 - duration: 4.94s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/10-number.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: The number
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "plus two five six, seven five zero, four two one, two two four."
 - subtitle chunks (45 characters at most): none (display moment)
 - key-word boxes (one per sentence): the number box (scene lines)
@@ -248,9 +328,17 @@ Scene 1 (0.00 à 4.94 s) : P10, the number rolls digit by digit
 
 ## Frame 11: The address · 33.09 → 37.72
 
+- scene: The address
 - id: 11-address
 - duration: 4.63s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/11-address.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: The address
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "Bright Illuminated, The Square, Third Street, Kampala, Uganda."
 - subtitle chunks (45 characters at most): ['Bright Illuminated,', 'The Square, Third Street,', 'Kampala, Uganda.']
 - key-word boxes (one per sentence): ['kampala']
@@ -270,9 +358,17 @@ Scene 1 (0.00 à 4.63 s) : P11, the logo and the address
 
 ## Frame 12: Fixed price in 48 hours, end card · 37.72 → 43.90
 
+- scene: Fixed price in 48 hours, end card
 - id: 12-offer
 - duration: 6.18s
 - transition_in: cut
+- status: outline
+- src: compositions/frames/12-offer.html
+- type: solution
+- blueprint: spatial-pan-stations (Adapt)
+- focal: Fixed price in 48 hours, end card
+- rules: svg-path-draw, waterfall-entry
+- world: dark
 - voiceover: "A fixed-price proposal within forty-eight hours."
 - subtitle chunks (45 characters at most): ['A fixed-price proposal', 'within forty-eight hours.']
 - key-word boxes (one per sentence): ['forty']
@@ -283,7 +379,7 @@ Word cues (frame-local seconds): a@0.32 fixed@0.41 price@0.80 proposal@1.05 with
 
 Scene 1 (0.00 à 6.18 s) : P12, the 48-hour proposal and the end card
   TEXTE ÉCRAN: ring numeral « 48 h », a proposal document card « Scope · Timeline · Fixed price », end card: logo, « brightilluminated.com » button, tagline « Immersive technology solutions across industries. » ; subtitle two chunks, box on « forty-eight »
-  ÉTAPES: 0.00 plate and address slide away ; 0.20 proposal card drops in (3 rows: Scope, Timeline, Fixed price, each with a check drawing) ; 0.90 the 48 h ring fills as the numeral rolls 0 → 48 on « forty-eight » ; 3.00 end card: logo plate, button « brightilluminated.com » ; 3.60 cursor arrives in one curved move and clicks (ripple) ; 3.90 light sweep ; 4.00 to 6.18 living hold (slow push, caret blink, ring glow pulse x2) ; 6.00 cut to the ground colour
+  ÉTAPES: 0.00 plate and address slide away ; 0.20 proposal card drops in (3 rows: Scope, Timeline, Fixed price, each with a check drawing) ; 0.90 the 48 h ring fills as the numeral rolls 0 → 48 on « forty-eight » ; 2.80 « Tell us what you need » is NOT spoken: no text ; 3.00 end card: logo plate, button « brightilluminated.com » ; 3.60 cursor arrives in one curved move and clicks (ripple) ; 3.90 light sweep ; 4.00 to 6.18 living hold (slow push, caret blink, ring glow pulse x2) ; 6.00 cut to the ground colour
   CAMÉRA: push 3 %/s, ends at 1.05
   COUCHES: proposal card (3D) · ring · end-card plate and button · cursor
   OBJET-PONT ET VECTEUR: the yellow caret and the yellow line (see the handoffs)

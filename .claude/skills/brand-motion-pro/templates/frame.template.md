@@ -14,6 +14,7 @@ colors:
   ink: "{{c_ink}}"
   ink-soft: "{{c_ink_soft}}"
   bg: "{{c_bg}}"
+  ground: "{{c_bg}}"            # the film ground (the assembler reads this role)
   surface: "{{c_surface}}"
   line: "{{c_line}}"
   on-primary: "{{c_on_primary}}"
