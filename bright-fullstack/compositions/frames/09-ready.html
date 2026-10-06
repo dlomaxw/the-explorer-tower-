@@ -14,7 +14,7 @@
 #f09-key{position:absolute;left:-.1em;right:-.1em;top:.1em;bottom:.0em;background:var(--mk-accent);border-radius:22px;transform-origin:0 50%;transform:scaleX(0)}
 #f09-qm{position:relative;display:inline-block;opacity:0;color:var(--mk-ink)}
 #f09-caret{position:absolute;left:533px;top:900px;width:14px;height:120px;background:var(--mk-accent)}
-#f09-btns{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#f09-btns{z-index:1;position:absolute;left:0;top:0;width:1080px;height:1920px}
 .f09-btn{position:absolute;left:110px;width:860px;height:190px;border-radius:var(--mk-radius);background:var(--mk-surface);border:2px solid var(--mk-line);box-shadow:var(--mk-shadow);overflow:hidden;opacity:0}
 #f09-b1{top:680px}
 #f09-b2{top:920px}
@@ -23,7 +23,7 @@
 .f09-ic{width:120px;height:120px;border-radius:32px;display:flex;align-items:center;justify-content:center;border:2px solid var(--mk-line);color:var(--mk-primary);flex:none}
 .f09-ic .mk-icon{width:70px;height:70px}
 .f09-lab{flex:1;font-family:var(--mk-font-display);font-weight:800;font-size:76px;line-height:1;letter-spacing:-0.02em;text-align:center;padding-right:120px}
-#f09-card{position:absolute;left:110px;top:900px;width:860px;height:500px;border-radius:var(--mk-radius);background:var(--mk-bg);border:6px solid var(--mk-accent);box-shadow:var(--mk-shadow);opacity:0}
+#f09-card{z-index:5;position:absolute;left:90px;top:880px;width:900px;height:560px;border-radius:var(--mk-radius);background:var(--mk-bg);border:6px solid var(--mk-accent);box-shadow:var(--mk-shadow);opacity:0}
 #f09-sub{position:absolute;left:0;top:1450px;width:1080px;height:190px}
 #f09-sub .mk-sub{position:absolute;left:0;top:61px;width:1080px;font-size:56px;line-height:68px}
 </style>
@@ -90,12 +90,12 @@
   word("#f09-w2", 0.53 - MK.FE);
   word("#f09-w3", 0.61 - MK.FE);
   tl.fromTo("#f09-key", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.2, ease: "power3.out", immediateRender: false }, 0.56);
-  tl.to("#f09-w3", { color: "var(--mk-on-accent)", duration: 0.12, ease: "none" }, 0.72);
+  tl.to("#f09-w3", { color: "var(--mk-on-accent)", duration: 0.08, ease: "none" }, 0.6);
   // living layer on the question while it holds
   tl.to("#f09-qin", { scale: 1.05, duration: 0.85, ease: "none" }, 0.3);
 
   // 1.10 the question rises and shrinks
-  tl.to("#f09-q", { y: -330, scale: 0.6, duration: 0.6, ease: MK.ease.out }, 1.1);
+  tl.to("#f09-q", { y: -350, scale: 0.68, duration: 0.6, ease: MK.ease.out }, 1.1);
   tl.to("#f09-qin", { scale: 1, duration: 0.3, ease: "power2.out" }, 1.15);
 
   // 1.12 buttons arrive with a 3D tilt, icons draw on
@@ -118,12 +118,12 @@
   light(2, 1.82);
 
   // subtitle (single chunk, the question was a display moment)
-  MK.subtitle(tl, "#f09-sub", [["Call", 1.34], ["or", 1.71], ["WhatsApp", 1.86, true]], { out: 2.29 });
+  MK.subtitle(tl, "#f09-sub", [["Call", 1.34], ["or", 1.71], ["WhatsApp", 1.86, true]], { out: 2.26 });
 
   // 2.10 handoff: buttons slide down blurred 8 px, the contact card rises from the bottom
-  tl.to("#f09-b1", { y: 330, filter: "blur(8px)", opacity: 0.5, duration: 0.42, ease: "power2.in" }, 2.1);
-  tl.to("#f09-b2", { y: 330, filter: "blur(8px)", opacity: 0.5, duration: 0.42, ease: "power2.in" }, 2.1);
-  tl.fromTo("#f09-card", { y: 760, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: MK.ease.out, immediateRender: false }, 2.15);
+  tl.to("#f09-b1", { y: 280, filter: "blur(8px)", opacity: 0.5, duration: 0.42, ease: "power2.in" }, 2.1);
+  tl.to("#f09-b2", { y: 280, filter: "blur(8px)", opacity: 0.5, duration: 0.42, ease: "power2.in" }, 2.1);
+  tl.fromTo("#f09-card", { y: 800, opacity: 0 }, { y: 0, opacity: 1, duration: 0.27, ease: MK.ease.out, immediateRender: false }, 2.28);
 
   window.__timelines["09-ready"] = tl;
 })();

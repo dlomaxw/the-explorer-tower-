@@ -39,9 +39,9 @@
       <div id="f07-d1" class="f07-abs f07-disc"></div>
       <div id="f07-d2" class="f07-abs f07-disc"></div>
       <div id="f07-d3" class="f07-abs f07-disc"></div>
-      <div id="f07-l1" class="f07-abs f07-lab" style="left:-120px">Design</div>
+      <div id="f07-l1" class="f07-abs f07-lab" style="left:120px">Design</div>
       <div id="f07-l2" class="f07-abs f07-lab" style="left:370px">Engineering</div>
-      <div id="f07-l3" class="f07-abs f07-lab" style="left:860px">QA</div>
+      <div id="f07-l3" class="f07-abs f07-lab" style="left:620px">QA</div>
     </div>
     <div id="f07-card" class="f07-abs mk-card">
       <div id="f07-fname">source-code</div>
@@ -98,12 +98,12 @@
   tl.to("#f07-d1", { x: -290, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.04);
   tl.to("#f07-d2", { x: 0, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.1);
   tl.to("#f07-d3", { x: 290, y: 0, scale: 1, duration: 0.4, ease: MK.ease.out }, 0.16);
-  MK.reveal(tl, "#f07-l1", 0.2, { dur: 0.45, dist: 24, blur: 6 });
-  MK.reveal(tl, "#f07-l2", 0.28, { dur: 0.45, dist: 24, blur: 6 });
-  MK.reveal(tl, "#f07-l3", 0.36, { dur: 0.45, dist: 24, blur: 6 });
+  MK.reveal(tl, "#f07-l1", 0.2, { dur: 0.3, dist: 24, blur: 6 });
+  MK.reveal(tl, "#f07-l2", 0.28, { dur: 0.3, dist: 24, blur: 6 });
+  MK.reveal(tl, "#f07-l3", 0.36, { dur: 0.3, dist: 24, blur: 6 });
 
   // one team: labels out, discs merge inside one yellow ring
-  MK.exit(tl, "#f07-l1,#f07-l2,#f07-l3", 0.5, { dur: 0.2, blur: 6 });
+  MK.exit(tl, "#f07-l1,#f07-l2,#f07-l3", 0.68, { dur: 0.2, blur: 6 });
   tl.to("#f07-d1", { x: 0, y: -62, scale: 0.62, duration: 0.5, ease: MK.ease.out }, 0.58);
   tl.to("#f07-d2", { x: -68, y: 40, scale: 0.62, duration: 0.5, ease: MK.ease.out }, 0.58);
   tl.to("#f07-d3", { x: 68, y: 40, scale: 0.62, duration: 0.5, ease: MK.ease.out }, 0.58);

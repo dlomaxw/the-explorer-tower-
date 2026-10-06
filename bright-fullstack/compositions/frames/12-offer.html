@@ -1,0 +1,214 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f12-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f12-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
+#f12-cam .abs{position:absolute}
+
+/* incoming seam layers (end of frame 11) */
+#f12-inplate{left:190px;top:330px;width:700px;height:340px;display:flex;align-items:center;justify-content:center}
+#f12-inplate img{width:560px;height:auto;display:block}
+#f12-inaddr{left:110px;top:720px;width:860px;height:280px;padding:42px 56px;display:flex;align-items:center;gap:40px}
+#f12-inaddr .t{font-size:44px;font-weight:800;line-height:1.25}
+#f12-inaddr .t span{display:block;font-size:34px;font-weight:600;color:var(--mk-ink-soft)}
+#f12-inaddr .ic{color:var(--mk-primary);width:96px;height:96px;flex:none}
+
+/* proposal */
+#f12-stage{left:0;top:0;width:1080px;height:1000px}
+#f12-card{left:100px;top:170px;width:880px;height:624px;padding:44px 52px 20px;opacity:0}
+#f12-card .hd{display:flex;align-items:center;justify-content:space-between;height:56px;margin-bottom:10px}
+#f12-card .hd b{font-size:26px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft)}
+#f12-card .hd i{display:block;width:120px;height:12px;border-radius:6px;background:var(--mk-line)}
+.f12-row{position:relative;display:flex;align-items:center;gap:36px;height:150px;border-top:1px solid var(--mk-line);opacity:0}
+.f12-row .ck{width:84px;height:84px;flex:none}
+.f12-row .lb{font-size:54px;font-weight:800;letter-spacing:-.02em;flex:1}
+.f12-row .sk{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.f12-row .sk i{display:block;height:14px;border-radius:7px;background:var(--mk-line)}
+
+/* ring */
+#f12-ringw{left:340px;top:920px;width:400px;height:400px;opacity:0}
+#f12-ringw svg{position:absolute;left:0;top:0}
+#f12-ringglow{left:340px;top:920px;width:400px;height:400px;border-radius:50%;opacity:0;box-shadow:0 0 90px color-mix(in srgb,var(--mk-primary) 30%,transparent)}
+#f12-numw{left:340px;top:920px;width:400px;height:400px;display:flex;align-items:center;justify-content:center;opacity:0}
+#f12-num{font-family:var(--mk-font-display);font-weight:800;font-size:150px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+#f12-numu{font-weight:800;font-size:64px;color:var(--mk-ink-soft);margin-left:8px;margin-top:56px}
+
+/* end card */
+#f12-glow{left:180px;top:160px;width:720px;height:720px;border-radius:50%;opacity:0;box-shadow:0 0 110px color-mix(in srgb,var(--mk-primary) 30%,transparent)}
+#f12-halo{left:160px;top:140px;width:760px;height:760px;opacity:0}
+#f12-plate{left:250px;top:330px;width:580px;height:380px;display:flex;align-items:center;justify-content:center;opacity:0;background:var(--mk-bg)}
+#f12-plate img{width:470px;height:auto;display:block;opacity:0}
+#f12-btnw{left:0;top:950px;width:1080px;height:130px;display:flex;align-items:center;justify-content:center;opacity:0}
+#f12-btn{position:relative;overflow:hidden;font-size:46px;padding:.8em 1.5em}
+#f12-sweep{position:absolute;top:-12px;bottom:-12px;left:0;width:90px;background:rgba(255,255,255,.55);opacity:0}
+#f12-tag{left:90px;top:1130px;width:900px;font-size:52px;line-height:66px;font-weight:600;text-align:center;color:var(--mk-ink-soft);text-wrap:balance}
+#f12-tag .w{display:inline-block;opacity:0}
+#f12-caret{display:inline-block;width:34px;height:9px;margin-left:12px;background:var(--mk-primary);opacity:0;vertical-align:baseline}
+#f12-cur{opacity:0}
+#f12-rip{left:640px;top:1015px}
+
+#f12-sub{position:absolute;left:0;top:1450px;width:1080px;height:190px}
+.f12-sc{position:absolute;left:0;top:30px;width:1080px;font-size:56px;line-height:68px}
+.f12-sc .mk-sub{font-size:56px;line-height:68px}
+#f12-cut{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg);opacity:0;z-index:100}
+</style>
+
+<div id="root" data-composition-id="12-offer" data-start="0" data-duration="6.18" data-width="1080" data-height="1920">
+  <div id="f12-ground" class="clip" data-start="0" data-duration="6.18" data-track-index="0"></div>
+  <div id="f12-cam">
+    <!-- ring (starts behind the incoming plate) -->
+    <div id="f12-ringglow" class="abs"></div>
+    <div id="f12-ringw" class="abs">
+      <svg width="400" height="400" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="170" stroke-width="18" style="stroke:var(--mk-line)"></circle>
+        <circle id="f12-ringfill" cx="200" cy="200" r="170" stroke-width="18" stroke-linecap="round" transform="rotate(-90 200 200)" style="stroke:var(--mk-primary)"></circle>
+      </svg>
+    </div>
+    <div id="f12-numw" class="abs"><span id="f12-num">0</span><span id="f12-numu">h</span></div>
+
+    <!-- incoming seam layers -->
+    <div id="f12-inplate" class="abs mk-card"><img src="assets/img/logo-full.png" alt=""></div>
+    <div id="f12-inaddr" class="abs mk-card">
+      <div class="ic" id="f12-inpin"></div>
+      <div class="t">The Square<span>Third Street</span><span>Kampala, Uganda</span></div>
+    </div>
+
+    <!-- proposal -->
+    <div id="f12-stage" class="abs">
+      <div id="f12-card" class="abs mk-card">
+        <div class="hd"><b>Proposal</b><i></i></div>
+        <div class="f12-row" id="f12-r1">
+          <svg class="ck" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="30" stroke-width="5" style="stroke:var(--mk-line)"></circle><circle class="c" cx="36" cy="36" r="30" stroke-width="5" stroke-linecap="round" style="stroke:var(--mk-primary)"></circle><path class="p" d="M22 37 L32 47 L51 26" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--mk-primary)"></path></svg>
+          <div class="lb">Scope</div>
+          <div class="sk"><i style="width:210px"></i><i style="width:130px"></i></div>
+        </div>
+        <div class="f12-row" id="f12-r2">
+          <svg class="ck" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="30" stroke-width="5" style="stroke:var(--mk-line)"></circle><circle class="c" cx="36" cy="36" r="30" stroke-width="5" stroke-linecap="round" style="stroke:var(--mk-primary)"></circle><path class="p" d="M22 37 L32 47 L51 26" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--mk-primary)"></path></svg>
+          <div class="lb">Timeline</div>
+          <div class="sk"><i style="width:170px"></i><i style="width:230px"></i></div>
+        </div>
+        <div class="f12-row" id="f12-r3">
+          <svg class="ck" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="30" stroke-width="5" style="stroke:var(--mk-line)"></circle><circle class="c" cx="36" cy="36" r="30" stroke-width="5" stroke-linecap="round" style="stroke:var(--mk-primary)"></circle><path class="p" d="M22 37 L32 47 L51 26" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--mk-primary)"></path></svg>
+          <div class="lb">Fixed price</div>
+          <div class="sk"><i style="width:250px"></i><i style="width:110px"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end card -->
+    <div id="f12-glow" class="abs"></div>
+    <svg id="f12-halo" class="abs" width="760" height="760" viewBox="0 0 760 760" fill="none"><circle cx="380" cy="380" r="360" stroke-width="4" transform="rotate(-90 380 380)" style="stroke:var(--mk-primary)"></circle></svg>
+    <div id="f12-plate" class="abs mk-card"><img id="f12-logo" src="assets/img/logo-full.png" alt=""></div>
+    <div id="f12-btnw" class="abs"><div id="f12-btn" class="mk-btn">brightilluminated.com<i id="f12-sweep"></i></div></div>
+    <div id="f12-tag" class="abs"></div>
+
+    <div id="f12-rip" class="abs mk-ripple"></div>
+    <svg id="f12-cur" class="mk-cursor" viewBox="0 0 36 50" fill="none"><path d="M2 2 L2 40 L12 31 L19 46 L26 43 L19 29 L33 29 Z" stroke-width="3" stroke-linejoin="round" style="fill:var(--mk-ink);stroke:var(--mk-bg)"></path></svg>
+  </div>
+  <div id="f12-sub" class="mk-root">
+    <div id="f12-sub1" class="f12-sc mk-root"></div>
+    <div id="f12-sub2" class="f12-sc mk-root"></div>
+  </div>
+  <div id="f12-cut"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+  var D = 6.18;
+
+  MK.putIcon("#f12-inpin", "pin", { size: 96, stroke: 1.8 });
+  MK.stage3d("#f12-stage", 1800, "50%", "40%");
+
+  // ---------- opening image = handoff_out of frame 11 ----------
+  gsap.set("#f12-inplate,#f12-inaddr", { filter: "blur(8px)" });
+  gsap.set("#f12-ringw", { opacity: 0.6, filter: "blur(8px)" });
+  var rf = qs("#f12-ringfill");
+  rf.setAttribute("pathLength", "1"); rf.style.strokeDasharray = "1"; rf.style.strokeDashoffset = "0.95";
+  gsap.set("#f12-numw", { opacity: 0 });
+  gsap.set(".f12-row", { opacity: 0 });
+  MK.prep("#f12-halo circle");
+  MK.prep(".f12-row .c,.f12-row .p");
+
+  // ---------- camera: slow push 1.00 -> 1.05 over the whole frame ----------
+  MK.camera(tl, "#f12-cam", 0, D, { scale: 1.05 });
+
+  // ---------- 0.00 plate and address slide away; ring resolves ----------
+  tl.to("#f12-inplate", { y: -110, opacity: 0, filter: "blur(16px)", duration: 0.45, ease: "power2.in" }, 0);
+  tl.to("#f12-inaddr", { y: -80, opacity: 0, filter: "blur(16px)", duration: 0.4, ease: "power2.in" }, 0.04);
+  tl.to("#f12-ringw", { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.out" }, 0);
+
+  // ---------- 0.20 proposal card drops in (3D) ----------
+  tl.fromTo("#f12-card", { opacity: 0, y: -130, filter: "blur(12px)", rotationX: -20, rotationY: 16, z: -260, transformPerspective: 1800 },
+    { opacity: 1, y: 0, filter: "blur(0px)", rotationX: 4, rotationY: -6, z: 0, transformPerspective: 1800, duration: 0.85, ease: "expo.out", immediateRender: false }, 0.2);
+  tl.to("#f12-card", { rotationX: 2, rotationY: -3, duration: 2.4, ease: "none" }, 1.05);
+  var rowT = [0.5, 0.7, 0.9];
+  for (var i = 1; i <= 3; i++) {
+    var rt = rowT[i - 1];
+    MK.rows(tl, "#f12-r" + i, rt, { x: 50, dur: 0.5 });
+    MK.draw(tl, "#f12-r" + i + " .c", rt + 0.12, { dur: 0.4 });
+    MK.draw(tl, "#f12-r" + i + " .p", rt + 0.4, { dur: 0.28, ease: "power2.out" });
+  }
+  // ---------- 0.90 ring fills, numeral rolls to 48 on "forty-eight" ----------
+  tl.fromTo("#f12-numw", { opacity: 0, scale: 0.9, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out", immediateRender: false }, 0.95);
+  MK.count(tl, "#f12-num", 1.0, 1.45, 0, 48, {});
+  tl.fromTo(rf, { strokeDashoffset: 0.95 }, { strokeDashoffset: 0, duration: 1.5, ease: "power3.out", immediateRender: false }, 0.9);
+  tl.fromTo("#f12-ringglow", { opacity: 0 }, { opacity: 0.5, duration: 0.6, ease: "power2.out", immediateRender: false }, 1.8);
+  tl.to("#f12-ringglow", { opacity: 0, duration: 0.4, ease: "power2.in" }, 2.45);
+  tl.to("#f12-ringw", { scale: 1.04, duration: 0.2, ease: "power2.out" }, 2.4);
+  tl.to("#f12-ringw", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 2.6);
+
+  // ---------- 2.85 proposal + ring leave ----------
+  tl.to("#f12-card", { y: -90, opacity: 0, filter: "blur(10px)", scale: 0.97, duration: 0.3, ease: "power2.in" }, 2.8);
+  tl.to("#f12-ringw", { y: -50, opacity: 0, filter: "blur(10px)", duration: 0.28, ease: "power2.in" }, 2.85);
+  tl.to("#f12-numw", { y: -50, opacity: 0, filter: "blur(10px)", duration: 0.28, ease: "power2.in" }, 2.85);
+
+  // ---------- 3.00 end card: halo, plate, logo ----------
+  MK.draw(tl, "#f12-halo circle", 3.0, { dur: 0.9, ease: "power2.inOut" });
+  tl.fromTo("#f12-glow", { opacity: 0 }, { opacity: 0.35, duration: 0.6, ease: "power2.out", immediateRender: false }, 3.1);
+  tl.fromTo("#f12-plate", { opacity: 0, y: 70, scale: 0.94, filter: "blur(12px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out", immediateRender: false }, 3.0);
+  tl.fromTo("#f12-logo", { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", immediateRender: false }, 3.2);
+  MK.reveal(tl, "#f12-btnw", 3.15, { dir: "up", dist: 70, blur: 10, dur: 0.6 });
+
+  // ---------- 3.60 cursor clicks the button ----------
+  var click = MK.cursor(tl, "#f12-cur", { x: 900, y: 1330 }, { x: 640, y: 1015 }, 3.15, 0.45, "#f12-rip");
+  MK.press(tl, "#f12-btn", click);
+  MK.sweep(tl, "#f12-sweep", 3.95, 0.6, -140, 820);
+  tl.to("#f12-cur", { opacity: 0, x: 700, y: 1060, duration: 0.3, ease: "power2.in" }, 4.3);
+
+  // ---------- tagline ----------
+  var tag = qs("#f12-tag");
+  "Immersive technology solutions across industries.".split(" ").forEach(function (wd) {
+    var s = document.createElement("span"); s.className = "w"; s.textContent = wd; tag.appendChild(s);
+    tag.appendChild(document.createTextNode(" "));
+  });
+  var caret = document.createElement("i"); caret.id = "f12-caret"; tag.appendChild(caret);
+  tl.fromTo("#f12-tag .w", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", stagger: 0.09, immediateRender: false }, 4.0);
+
+  // ---------- living hold: float, ring glow x2, finite caret blink ----------
+  MK.float(tl, "#f12-plate", 3.8, 2.0, { y: -10, period: 2.0 });
+  tl.to("#f12-glow", { opacity: 0.85, duration: 0.35, ease: "power2.out" }, 4.57);
+  tl.to("#f12-glow", { opacity: 0.35, duration: 0.55, ease: "power2.inOut" }, 4.92);
+  tl.to("#f12-glow", { opacity: 0.85, duration: 0.35, ease: "power2.out" }, 5.71);
+  tl.to("#f12-glow", { opacity: 0.35, duration: 0.3, ease: "power2.inOut" }, 6.06);
+  var ct = 4.7;
+  tl.set("#f12-caret", { opacity: 1 }, ct);
+  for (var b = 1; b <= 7; b++) tl.set("#f12-caret", { opacity: b % 2 ? 0 : 1 }, ct + b * 0.2);
+
+  // ---------- subtitles ----------
+  MK.subtitle(tl, "#f12-sub1", [["A", 0.32], ["fixed-price", 0.41], ["proposal", 1.05]], { out: 1.45 });
+  MK.subtitle(tl, "#f12-sub2", [["within", 1.6], ["forty-eight", 1.89, true], ["hours.", 2.53]], { out: 3.0 });
+
+  // ---------- final cut to the ground colour ----------
+  tl.to("#f12-cut", { opacity: 1, duration: 0.1, ease: "none" }, 6.0);
+
+  window.__timelines["12-offer"] = tl;
+})();
+</script>
+</template>

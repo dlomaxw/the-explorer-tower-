@@ -143,7 +143,7 @@
   tl.fromTo("#f08-disc", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out", immediateRender: false }, 1.52);
   MK.tilt(tl, "#f08-shield", 1.52, 0.8, { from: { rx: 18, ry: 22, z: -300 }, rx: 5, ry: -6, z: 0, persp: 2200, ease: "expo.out" });
   tl.fromTo("#f08-shield", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 1.52);
-  MK.drawIcon(tl, "#f08-shield svg .mk-i", 1.55, { dur: 0.55, stagger: 0.15 });
+  MK.drawIcon(tl, "#f08-shield svg", 1.55, { dur: 0.55, stagger: 0.15 });
   tl.to("#f08-shield", { rotationY: 8, rotationX: 2, duration: 1.2, ease: "none" }, 2.32);
   tl.fromTo("#f08-orbit", { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, 1.8);
   MK.draw(tl, "#f08-orbitc", 1.8, { dur: 0.6, ease: "power2.inOut" });
@@ -159,17 +159,17 @@
   tl.fromTo("#f08-bell", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out", immediateRender: false }, 1.85);
   tl.fromTo("#f08-wrench", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out", immediateRender: false }, 1.93);
   tl.fromTo(orb, { a: 0 }, { a: 360, duration: 0.81, ease: "power1.inOut", immediateRender: false, onUpdate: place }, 1.85);
-  MK.drawIcon(tl, "#f08-bell svg .mk-i", 1.9, { dur: 0.4, stagger: 0.05 });
-  MK.drawIcon(tl, "#f08-wrench svg .mk-i", 1.98, { dur: 0.4, stagger: 0.05 });
+  MK.drawIcon(tl, "#f08-bell svg", 1.9, { dur: 0.4, stagger: 0.05 });
+  MK.drawIcon(tl, "#f08-wrench svg", 1.98, { dur: 0.4, stagger: 0.05 });
   tl.to(["#f08-bell", "#f08-wrench"], { opacity: 0, scale: 0.7, duration: 0.25, ease: "power2.in" }, 2.72);
 
   /* ---- after launch: arrow up, shield pulses ---- */
   tl.fromTo("#f08-arrowpos", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out", immediateRender: false }, 2.66);
-  MK.drawIcon(tl, "#f08-arrow svg .mk-i", 2.66, { dur: 0.35, stagger: 0.06 });
-  tl.to("#f08-arrowpos", { y: -50, opacity: 0, duration: 0.3, ease: "power2.in" }, 2.82);
+  MK.drawIcon(tl, "#f08-arrow svg", 2.66, { dur: 0.35, stagger: 0.06 });
+  tl.to("#f08-arrow", { opacity: 0, duration: 0.25, ease: "power2.in" }, 2.82);
   tl.fromTo("#f08-pulse", { scale: 0.9, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, 2.66);
   tl.to("#f08-shield", { scale: 1.1, duration: 0.14, ease: "power3.out" }, 2.66);
-  tl.to("#f08-shield", { scale: 1, duration: 0.3, ease: "power3.out" }, 2.8);
+  tl.to("#f08-shield", { scale: 1, duration: 0.3, ease: "power3.out" }, 2.81);
 
   /* ---- handoff out: shield and everything fade into the ground, caret appears at the centre ---- */
   tl.to(["#f08-shield", "#f08-disc"], { opacity: 0, duration: 0.2, ease: "power2.in" }, 2.88);
