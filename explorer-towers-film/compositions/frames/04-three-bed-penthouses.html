@@ -16,11 +16,11 @@
     .c04-card .c04-p { position: relative; height: 360px; overflow: hidden; }
     .c04-card .c04-pi { position: absolute; left: 0; top: 0; width: 520px; height: 420px; background-size: cover; background-position: center; }
     .c04-card h3 { font-size: 34px; font-weight: 800; color: #111; margin: 26px 34px 6px; line-height: 1.22; }
-    .c04-card .c04-pr { font-size: 58px; font-weight: 800; color: #111; margin: 0 34px; font-variant-numeric: tabular-nums; }
-    .c04-card .c04-pr small { display: block; font-size: 22px; font-weight: 600; color: #6a6458; letter-spacing: 3px; }
-    .c04-hi { position: relative; display: inline-block; padding: 0 14px; margin-left: -14px; }
+    .c04-card .c04-pr { font-size: 58px; font-weight: 800; color: #111; margin: 0 34px; font-variant-numeric: tabular-nums; line-height: 70px; height: 104px; }
+    .c04-card .c04-pr small { display: block; font-size: 22px; line-height: 28px; height: 28px; margin-bottom: 6px; font-weight: 600; color: #6a6458; letter-spacing: 3px; }
+    .c04-hi { position: relative; display: block; width: max-content; height: 70px; line-height: 70px; padding: 0 14px; margin-left: -14px; }
     .c04-hi i { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #FFD60A; border-radius: 8px; transform-origin: 0 50%; }
-    .c04-num { position: relative; display: inline-block; transform-origin: 0 50%; }
+    .c04-num { position: relative; display: inline-block; line-height: 70px; transform-origin: 0 50%; }
     .c04-ch { opacity: 0; }
 
     #c04-cw2 { left: 0; z-index: 1; }
@@ -71,7 +71,7 @@
           <div class="c04-card">
             <div class="c04-p"><div id="c04-pimg" class="c04-pi" style="background-image:url(assets/img/sky-pool-penthouse.webp)"></div></div>
             <h3 id="c04-namep"></h3>
-            <div id="c04-prp" class="c04-pr" style="font-size:40px; opacity:0"><small>PRICE</small>On application</div>
+            <div id="c04-prp" class="c04-pr" style="font-size:40px; line-height:70px; opacity:0"><small>PRICE</small>On application</div>
           </div>
           <svg id="c04-border" viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg">
             <path id="c04-bpath" pathLength="1" d="M 260 2 H 492 A 26 26 0 0 1 518 28 V 592 A 26 26 0 0 1 492 618 H 28 A 26 26 0 0 1 2 592 V 28 A 26 26 0 0 1 28 2 Z"/>
@@ -232,7 +232,7 @@
       word("c04-s3w2", 3.63);
       word("c04-s3w3", 4.06);
       keybox("c04-s3w4", "c04-s3box", 4.47);
-      leave("c04-sub3", 5.14, 0.14);
+      leave("c04-sub3", 4.90, 0.14);
 
       window.__timelines = window.__timelines || {};
       window.__timelines[FID] = tl;
