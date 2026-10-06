@@ -1,0 +1,196 @@
+<template>
+  <div id="root" data-composition-id="14-end-card" data-start="0" data-duration="6.87" data-width="1080" data-height="1920">
+    <style>
+      @font-face { font-family: "Montserrat"; font-weight: 400; src: url("assets/fonts/montserrat-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 800; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Montserrat", sans-serif; color: #101010; }
+      #root * { box-sizing: border-box; margin: 0; padding: 0; }
+      .end14-abs { position: absolute; }
+
+      #end14-ground { left: 0; top: 0; width: 1080px; height: 1920px; background: radial-gradient(ellipse 760px 900px at 540px 900px, rgba(31,122,61,.06), rgba(31,122,61,0) 70%), #f4f6f2; }
+      #end14-grain { left: 0; top: 0; width: 1080px; height: 1920px; opacity: .03; pointer-events: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>"); }
+
+      #end14-cam { left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 780px; }
+      #end14-fg { left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; filter: blur(6px); opacity: .55; }
+
+      #end14-tag { left: 0; top: 140px; width: 1080px; text-align: center; font-size: 100px; font-weight: 800; line-height: 100px; letter-spacing: -0.04em; color: #101010; }
+      #end14-tag .end14-l2 { color: #14572c; }
+      #end14-tag .end14-wd { display: inline-block; white-space: nowrap; }
+      #end14-tag .end14-ch { display: inline-block; opacity: 0; }
+      #end14-tag .end14-sp { display: inline-block; width: .22em; }
+
+      #end14-mark { left: 465px; top: 470px; width: 150px; height: 150px; opacity: .4; }
+
+      #end14-card { left: 60px; top: 680px; width: 960px; height: 420px; background: #fff; border: 14px solid #1f7a3d; box-shadow: 0 40px 90px rgba(16,16,16,.25); padding: 36px 44px; display: flex; flex-direction: column; justify-content: space-between; }
+      .end14-k { font-size: 24px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: #6a6458; line-height: 28px; }
+      .end14-k span { display: inline-block; }
+      .end14-v { font-size: 72px; font-weight: 800; line-height: 84px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .end14-v .end14-yb { background: #f5b800; padding: 0 12px; border-radius: 6px; }
+      .end14-h { font-size: 36px; font-weight: 800; line-height: 48px; white-space: nowrap; }
+      #end14-cardline { left: 60px; top: 680px; width: 960px; height: 420px; overflow: visible; }
+      #end14-cardline rect { fill: none; stroke: #14572c; stroke-width: 14; stroke-dasharray: 100; stroke-dashoffset: 100; }
+
+      #end14-btn { left: 160px; top: 1135px; width: 760px; height: 120px; background: #1f7a3d; border-radius: 8px; box-shadow: 0 24px 50px rgba(16,16,16,.22); opacity: 0; display: flex; align-items: center; justify-content: center; }
+      #end14-btnfill { left: 0; top: 0; width: 760px; height: 120px; background: #f5b800; border-radius: 8px; opacity: 0; }
+      #end14-btntxt { position: relative; font-size: 52px; font-weight: 800; letter-spacing: -0.02em; color: #fff; line-height: 1.05; }
+      .end14-rip { width: 100px; height: 100px; left: 550px; top: 1155px; border-radius: 50%; border: 6px solid #f5b800; opacity: 0; pointer-events: none; }
+      #end14-cursor { left: 0; top: 0; width: 44px; height: 44px; opacity: 0; transform-origin: 0 0; pointer-events: none; filter: drop-shadow(0 4px 6px rgba(16,16,16,.35)); }
+
+      #end14-frame { left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      #end14-frame rect { fill: none; stroke-linejoin: round; }
+      #end14-frameline { stroke: #1f7a3d; stroke-width: 10; stroke-dasharray: 100; stroke-dashoffset: 100; }
+      #end14-sweep { stroke: #ffffff; stroke-width: 10; stroke-dasharray: 7 93; stroke-dashoffset: 0; opacity: 0; }
+
+      #end14-sub { left: 60px; top: 1380px; width: 960px; text-align: center; font-size: 56px; font-weight: 600; line-height: 68px; color: #101010; }
+      #end14-sub .end14-w { position: relative; display: inline-block; }
+      #end14-sub .end14-t { position: relative; display: inline-block; opacity: 0; }
+      #end14-sub .end14-bx { position: absolute; left: -0.14em; right: -0.14em; top: 0.04em; bottom: 0.02em; background: #f5b800; border-radius: 6px; transform-origin: 0 50%; transform: scaleX(0); }
+      #end14-sub .end14-ln { display: block; }
+
+      #end14-cut { left: 0; top: 0; width: 1080px; height: 1920px; background: #f4f6f2; opacity: 0; }
+    </style>
+
+    <div id="end14-ground" class="end14-abs clip" data-start="0" data-duration="6.87" data-track-index="0"></div>
+    <div id="end14-grain" class="end14-abs clip" data-start="0" data-duration="6.87" data-track-index="1"></div>
+
+    <div id="end14-cam" class="end14-abs">
+      <div id="end14-tag" class="end14-abs">
+        <span class="end14-wd"><span class="end14-ch">B</span><span class="end14-ch">u</span><span class="end14-ch">i</span><span class="end14-ch">l</span><span class="end14-ch">t</span></span><span class="end14-sp"></span><span class="end14-wd"><span class="end14-ch">t</span><span class="end14-ch">o</span></span><span class="end14-sp"></span><span class="end14-wd"><span class="end14-ch">l</span><span class="end14-ch">a</span><span class="end14-ch">s</span><span class="end14-ch">t</span><span class="end14-ch">.</span></span><br>
+        <span class="end14-l2"><span class="end14-wd"><span class="end14-ch">D</span><span class="end14-ch">e</span><span class="end14-ch">l</span><span class="end14-ch">i</span><span class="end14-ch">v</span><span class="end14-ch">e</span><span class="end14-ch">r</span><span class="end14-ch">e</span><span class="end14-ch">d</span></span><br><span class="end14-wd"><span class="end14-ch">a</span><span class="end14-ch">s</span></span><span class="end14-sp"></span><span class="end14-wd"><span class="end14-ch">p</span><span class="end14-ch">r</span><span class="end14-ch">o</span><span class="end14-ch">m</span><span class="end14-ch">i</span><span class="end14-ch">s</span><span class="end14-ch">e</span><span class="end14-ch">d</span><span class="end14-ch">.</span></span></span>
+      </div>
+
+      <img id="end14-mark" class="end14-abs" src="assets/img/mark.png" alt="">
+
+      <div id="end14-card" class="end14-abs">
+        <div><div class="end14-k">Call</div><div class="end14-v"><span class="end14-yb">+256 752</span> 700 700</div></div>
+        <div><div class="end14-k">Open</div><div class="end14-h">Mon–Fri 8:00–5:30 · Sat 8:00–1:00</div></div>
+        <div class="end14-k" id="end14-web"><span>W</span><span>E</span><span>B</span></div>
+      </div>
+      <svg id="end14-cardline" class="end14-abs" viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg">
+        <rect id="end14-cardrect" x="7" y="7" width="946" height="406" pathLength="100"></rect>
+      </svg>
+
+      <div id="end14-btn" class="end14-abs">
+        <div id="end14-btnfill" class="end14-abs"></div>
+        <div id="end14-btntxt">casements.co.ug</div>
+      </div>
+      <div class="end14-abs end14-rip" id="end14-rip1"></div>
+      <div class="end14-abs end14-rip" id="end14-rip2"></div>
+
+      <svg id="end14-cursor" class="end14-abs" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2 L2 34 L10 27 L16 40 L22 37 L16 25 L27 25 Z" fill="#ffffff" stroke="#101010" stroke-width="2.5" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+    <svg id="end14-fg" class="end14-abs" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#1f7a3d" stroke-width="26" stroke-linecap="square">
+        <path d="M24 260 L24 24 L260 24"></path>
+        <path d="M820 24 L1056 24 L1056 260"></path>
+        <path d="M24 1660 L24 1896 L260 1896"></path>
+        <path d="M820 1896 L1056 1896 L1056 1660"></path>
+      </g>
+    </svg>
+
+    <svg id="end14-frame" class="end14-abs" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+      <rect id="end14-frameline" x="48" y="48" width="984" height="1824" pathLength="100"></rect>
+      <rect id="end14-sweep" x="48" y="48" width="984" height="1824" pathLength="100"></rect>
+    </svg>
+
+    <div id="end14-sub" class="end14-abs">
+      <span class="end14-ln">
+        <span class="end14-w"><span class="end14-t" data-c="0.15">or</span></span>
+        <span class="end14-w"><i class="end14-bx" id="end14-bx1"></i><span class="end14-t" data-c="0.31" id="end14-visit">visit</span></span>
+      </span>
+      <span class="end14-ln">
+        <span class="end14-w"><i class="end14-bx" id="end14-bx2"></i><span class="end14-t" data-c="0.85" id="end14-casements">casements</span></span>
+        <span class="end14-w"><span class="end14-t" data-c="1.43">dot</span></span>
+        <span class="end14-w"><span class="end14-t" data-c="1.71">c</span></span>
+        <span class="end14-w"><span class="end14-t" data-c="2.02">o</span></span>
+        <span class="end14-w"><span class="end14-t" data-c="2.26">dot</span></span>
+        <span class="end14-w"><span class="end14-t" data-c="2.57">u</span></span>
+        <span class="end14-w"><span class="end14-t" data-c="2.79">g</span></span>
+      </span>
+    </div>
+
+    <div id="end14-cut" class="end14-abs"></div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        var $ = function (s) { return document.querySelector(s); };
+        var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+        // Camera: slow push 3 %/s throughout, no stop; foreground corners push faster (parallax)
+        tl.fromTo("#end14-cam", { scale: 1 }, { scale: 1.2, duration: 6.87, ease: "none" }, 0);
+        tl.fromTo("#end14-fg", { scale: 1 }, { scale: 1.45, duration: 6.87, ease: "none" }, 0);
+
+        // Handoff_in: card blurred 4px resolves to sharp
+        tl.fromTo("#end14-card", { filter: "blur(4px)" }, { filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0);
+
+        // Subtitle word by word (cues are 0 to 2 frames early)
+        $$("#end14-sub .end14-t").forEach(function (el) {
+          var c = parseFloat(el.getAttribute("data-c"));
+          var boxed = el.id === "end14-visit" || el.id === "end14-casements";
+          tl.fromTo(el, { opacity: 0, y: 8, filter: "blur(6px)" },
+            { opacity: boxed ? 1 : 0.4, y: 0, filter: "blur(0px)", duration: 0.14, ease: "power3.out", immediateRender: false }, c);
+          if (!boxed) tl.to(el, { opacity: 1, duration: 0.2, ease: "power1.out" }, c + 0.14);
+        });
+        // key-word boxes trace first (0.16 s, ending on the cue)
+        tl.fromTo("#end14-bx1", { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out", immediateRender: false }, 0.15);
+        tl.fromTo("#end14-bx2", { scaleX: 0 }, { scaleX: 1, duration: 0.16, ease: "power3.out", immediateRender: false }, 0.69);
+        // subtitle leaves before the end-card tagline
+        tl.fromTo("#end14-sub", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.14, ease: "power2.in", immediateRender: false }, 3.3);
+
+        // Scene 1: card frame lines pulse, WEB types in
+        tl.fromTo("#end14-cardrect", { strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 0.45, ease: "expo.out", immediateRender: false }, 0.5);
+        tl.to("#end14-cardrect", { opacity: 0, duration: 0.3, ease: "power2.in" }, 1.05);
+        $$("#end14-web span").forEach(function (el, i) {
+          tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.01, immediateRender: false }, 0.5 + i * 0.08);
+        });
+        gsap.set("#end14-web span", { opacity: 0 });
+
+        // Button rises x1.1 blurred, then settles
+        tl.fromTo("#end14-btn", { opacity: 0, y: 70, scale: 1.1, filter: "blur(14px)" },
+          { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "power3.out", immediateRender: false }, 1.0);
+
+        // Scene 2: cursor, one curved move (0.45 s), direct click at 2.85
+        gsap.set("#end14-cursor", { x: 1180, y: 880 });
+        tl.set("#end14-cursor", { opacity: 1 }, 2.3);
+        tl.fromTo("#end14-cursor", { x: 1180 }, { x: 600, duration: 0.45, ease: "power3.out", immediateRender: false }, 2.3);
+        tl.fromTo("#end14-cursor", { y: 880 }, { y: 1205, duration: 0.45, ease: "power2.inOut", immediateRender: false }, 2.3);
+        tl.to("#end14-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", yoyo: true, repeat: 1 }, 2.85);
+        tl.to("#end14-btn", { scale: 0.95, duration: 0.06, ease: "power2.in", yoyo: true, repeat: 1 }, 2.85);
+        // yellow ripple rings from the click point
+        tl.fromTo(["#end14-rip1", "#end14-rip2"], { scale: 0, opacity: 0.9 },
+          { scale: 6, opacity: 0, duration: 0.7, ease: "power2.out", stagger: 0.09, immediateRender: false }, 2.85);
+        gsap.set(["#end14-rip1", "#end14-rip2"], { scale: 0, opacity: 0 });
+        // button fills yellow
+        tl.fromTo("#end14-btnfill", { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power3.out", immediateRender: false }, 3.0);
+        tl.fromTo("#end14-btntxt", { color: "#ffffff" }, { color: "#101010", duration: 0.22, ease: "power3.out", immediateRender: false }, 3.0);
+
+        // Final sweep: frame lines of the whole page draw around the screen, mark joins the grid
+        tl.fromTo("#end14-frameline", { strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 0.7, ease: "expo.out", immediateRender: false }, 3.3);
+        tl.fromTo("#end14-mark", { opacity: 0.4 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 3.3);
+
+        // Tagline types at the top
+        tl.fromTo("#end14-tag .end14-ch", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.03, immediateRender: false }, 3.8);
+
+        // Living hold: light sweep along the frame lines every 1.2 s
+        [4.0, 5.2].forEach(function (t0) {
+          tl.set("#end14-sweep", { opacity: 1, strokeDashoffset: 0 }, t0);
+          tl.fromTo("#end14-sweep", { strokeDashoffset: 0 }, { strokeDashoffset: -100, duration: 1.1, ease: "power1.inOut", immediateRender: false }, t0);
+          tl.set("#end14-sweep", { opacity: 0 }, t0 + 1.1);
+        });
+
+        // 6.50 final cut to the ground color
+        tl.set("#end14-cut", { opacity: 1 }, 6.5);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["14-end-card"] = tl;
+      })();
+    </script>
+  </div>
+</template>
