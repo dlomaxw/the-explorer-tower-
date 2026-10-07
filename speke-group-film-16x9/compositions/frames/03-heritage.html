@@ -1,0 +1,156 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f03-ground{position:absolute;left:0;top:0;width:1920px;height:1080px;background:var(--mk-bg)}
+#f03-grain{position:absolute;left:0;top:0;width:1920px;height:1080px;opacity:0;pointer-events:none}
+#f03-cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:50% 50%}
+#f03-line{position:absolute;left:0;top:537px;width:1920px;height:6px;background:var(--mk-accent);transform-origin:0 50%}
+#f03-glint{position:absolute;left:0;top:535px;width:200px;height:10px;border-radius:5px;background:rgba(255,255,255,.85);opacity:0}
+#f03-photos{position:absolute;left:0;top:0;width:1920px;height:540px}
+.f03-card{position:absolute;top:80px;width:620px;padding:20px;background:var(--mk-surface);border:1px solid var(--mk-line);border-radius:14px;box-shadow:0 30px 56px rgba(0,0,0,.22),0 6px 14px rgba(0,0,0,.12);opacity:0}
+.f03-pic{position:relative;overflow:hidden;border-radius:6px;width:580px;height:290px}
+.f03-pic img{display:block;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%}
+#f03-cardA{left:230px}
+#f03-cardB{left:1070px}
+.f03-cap{padding:16px 4px 2px 4px;opacity:0}
+.f03-cap b{display:block;font-family:var(--mk-font-display);font-weight:700;font-size:38px;line-height:1.15;color:var(--mk-primary)}
+.f03-cap span{display:block;margin-top:8px;font-family:var(--mk-font-body);font-weight:700;font-size:24px;line-height:1.2;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft)}
+.f03-yr{position:absolute;top:592px;width:620px;text-align:center}
+.f03-ym{display:block;overflow:hidden;padding:0 0 16px 0;height:184px}
+.f03-y{display:block;font-family:var(--mk-font-display);font-weight:800;font-size:150px;line-height:1.1;letter-spacing:-.02em;color:var(--mk-primary);font-variant-numeric:tabular-nums}
+#f03-yr1{left:230px}
+#f03-yr2{left:1070px}
+.f03-lab{display:block;margin-top:6px;font-family:var(--mk-font-body);font-weight:700;font-size:24px;line-height:1.2;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink-soft);opacity:0}
+#f03-ul{position:absolute;left:1210px;top:758px;width:340px;height:8px;border-radius:4px;background:var(--mk-accent)}
+.f03-dot{position:absolute;top:523px;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:var(--mk-accent);box-shadow:0 0 0 8px var(--mk-bg);opacity:0}
+#f03-dot1{left:540px}
+#f03-dot2{left:1380px}
+#f03-bar{position:absolute;left:540px;top:532px;width:840px;height:16px;border-radius:8px;background:var(--mk-primary);transform-origin:0 50%}
+#f03-ring{position:absolute;left:1340px;top:500px;width:80px;height:80px;border-radius:50%;border:5px solid var(--mk-accent);opacity:0}
+.f03-sub{position:absolute;left:0;top:890px;width:1920px;height:90px;font-family:var(--mk-font-display);font-size:56px;line-height:68px;text-align:center;padding:0 100px}
+.f03-sub .mk-sub{font-family:var(--mk-font-display);font-weight:700;font-size:56px;line-height:68px}
+</style>
+
+<div id="root" data-composition-id="03-heritage" data-start="0" data-duration="6.4" data-width="1920" data-height="1080">
+  <div id="f03-ground" class="clip" data-start="0" data-duration="6.4" data-track-index="0"></div>
+  <div id="f03-grain" class="mk-grain"></div>
+  <div id="f03-cam">
+    <div id="f03-photos">
+      <div id="f03-cardA" class="f03-card">
+        <div id="f03-picA" class="f03-pic"><img id="f03-imgA" src="assets/img/about-history-1960.webp" alt="Speke Hotel archive photograph"></div>
+        <div id="f03-capA" class="f03-cap"><b>Speke Hotel, Kampala</b><span>Under its earlier owners</span></div>
+      </div>
+      <div id="f03-cardB" class="f03-card">
+        <div id="f03-picB" class="f03-pic"><img id="f03-imgB" src="assets/img/p-speke-hotel.webp" alt="Speke Hotel today"></div>
+        <div id="f03-capB" class="f03-cap"><b>Speke Hotel, today</b><span>Part of Speke Group</span></div>
+      </div>
+    </div>
+    <div id="f03-line"></div>
+    <div id="f03-glint"></div>
+    <div id="f03-marks">
+      <div id="f03-bar"></div>
+      <div id="f03-dot1" class="f03-dot"></div>
+      <div id="f03-dot2" class="f03-dot"></div>
+      <div id="f03-ring"></div>
+    </div>
+    <div id="f03-yrs">
+      <div id="f03-yr1" class="f03-yr"><span class="f03-ym"><span id="f03-y1" class="f03-y">1920s</span></span><span id="f03-lab1" class="f03-lab">A Kampala landmark</span></div>
+      <div id="f03-yr2" class="f03-yr"><span class="f03-ym"><span id="f03-y2" class="f03-y">1920</span></span><span id="f03-lab2" class="f03-lab">Acquired by the Group</span></div>
+      <div id="f03-ul"></div>
+    </div>
+  </div>
+  <div id="f03-sub1" class="f03-sub mk-root"></div>
+  <div id="f03-sub2" class="f03-sub mk-root"></div>
+  <div id="f03-sub3" class="f03-sub mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var D = 6.4;
+
+  /* initial state: cream ground only */
+  gsap.set("#f03-line", { scaleX: 0 });
+  gsap.set("#f03-bar", { scaleX: 0, opacity: 0 });
+  gsap.set("#f03-ul", { scaleX: 0, transformOrigin: "0 50%" });
+  gsap.set(["#f03-y1", "#f03-y2"], { yPercent: 115 });
+  gsap.set("#f03-yr1", { opacity: 0 });
+  gsap.set("#f03-yr2", { opacity: 0 });
+  gsap.set("#f03-ring", { scale: 0.6 });
+  MK.count(tl, "#f03-y2", 4.41, 0.64, 1920, 1996, { ease: "power2.out" });
+
+  /* 0.00 paper grain settles in, camera drifts slowly all frame */
+  tl.fromTo("#f03-grain", { opacity: 0 }, { opacity: 0.03, duration: 0.4, ease: "none", immediateRender: false }, 0);
+  MK.camera(tl, "#f03-cam", 0, 5.7, { scale: 1.03 });
+
+  /* 0.15 archive card rises, sepia wipes to colour */
+  MK.reveal(tl, "#f03-cardA", 0.15, { dir: "up", dist: 110, blur: 12, dur: 0.8 });
+  MK.tilt(tl, "#f03-cardA", 0.15, 1.2, { rx: 3, ry: -7, rz: -1.5, from: { rx: 14, ry: 12, rz: 0 }, ease: "expo.out" });
+  tl.fromTo("#f03-picA", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.1, ease: "power3.inOut", immediateRender: false }, 0.2);
+  tl.fromTo("#f03-imgA", { filter: "sepia(1) saturate(0.7) contrast(0.95)" }, { filter: "sepia(0) saturate(1) contrast(1)", duration: 1.5, ease: "power2.inOut", immediateRender: false }, 0.5);
+  tl.fromTo("#f03-imgA", { scale: 1 }, { scale: 1.12, duration: 3.7, ease: "none", immediateRender: false }, 0.2);
+  gsap.set("#f03-picA", { clipPath: "inset(0% 100% 0% 0%)" });
+  gsap.set("#f03-imgA", { filter: "sepia(1) saturate(0.7) contrast(0.95)" });
+  tl.to("#f03-capA", { opacity: 1, duration: 0.01 }, 1.3);
+  tl.fromTo("#f03-capA", { y: 14, filter: "blur(6px)" }, { y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", immediateRender: false }, 1.3);
+
+  /* 0.90 the timeline draws left to right; a glint travels along it */
+  tl.to("#f03-line", { scaleX: 1, duration: 0.9, ease: "expo.out" }, 0.9);
+  tl.fromTo("#f03-glint", { x: -200, opacity: 1 }, { x: 1920, opacity: 1, duration: 1.1, ease: "power2.inOut", immediateRender: false }, 1.7);
+  tl.to("#f03-glint", { opacity: 0, duration: 0.05 }, 2.82);
+  tl.to("#f03-capB", { opacity: 1, duration: 0.01 }, 2.8);
+  tl.fromTo("#f03-capB", { y: 14, filter: "blur(6px)" }, { y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out", immediateRender: false }, 2.8);
+
+  /* 2.10 hotel card (the landmark today) slides in from the right */
+  MK.reveal(tl, "#f03-cardB", 2.12, { dir: "right", dist: 140, blur: 12, dur: 0.75 });
+  MK.tilt(tl, "#f03-cardB", 2.12, 1.1, { rx: -2, ry: 6, rz: 2.5, from: { rx: 6, ry: 34, rz: 5 }, ease: "expo.out" });
+  tl.fromTo("#f03-imgB", { scale: 1.0 }, { scale: 1.1, duration: 3.2, ease: "none", immediateRender: false }, 2.12);
+  tl.to("#f03-cardB", { y: -10, duration: 2.4, ease: "sine.inOut" }, 3.1);
+
+  /* 3.30 first dot, 3.43 "1920s" rises on the word */
+  tl.fromTo("#f03-dot1", { scale: 0, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.45, ease: "expo.out", immediateRender: false }, 3.28);
+  tl.to("#f03-yr1", { opacity: 1, duration: 0.01 }, 3.39);
+  tl.to("#f03-y1", { yPercent: 0, duration: 0.6, ease: "expo.out" }, 3.4);
+  tl.to("#f03-lab1", { opacity: 1, duration: 0.01 }, 3.7);
+  tl.fromTo("#f03-lab1", { y: 12, filter: "blur(6px)" }, { y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out", immediateRender: false }, 3.7);
+
+  /* 3.90 the photos slide up, the line is stressed by a maroon bar that grows toward 1996 */
+  tl.to("#f03-cardA", { y: -16, duration: 0.8, ease: "expo.out" }, 3.9);
+  tl.to("#f03-bar", { opacity: 1, duration: 0.01 }, 4.0);
+  tl.to("#f03-bar", { scaleX: 1, duration: 0.9, ease: "expo.out" }, 4.0);
+
+  /* 4.35 second dot and 1996 counting up from 1920 on "acquired" */
+  tl.fromTo("#f03-dot2", { scale: 0, opacity: 1 }, { scale: 1, opacity: 1, duration: 0.45, ease: "expo.out", immediateRender: false }, 4.35);
+  tl.to("#f03-yr2", { opacity: 1, duration: 0.01 }, 4.34);
+  tl.to("#f03-y2", { yPercent: 0, duration: 0.5, ease: "expo.out" }, 4.35);
+  tl.to("#f03-lab2", { opacity: 1, duration: 0.01 }, 4.95);
+  tl.fromTo("#f03-lab2", { y: 12, filter: "blur(6px)" }, { y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out", immediateRender: false }, 4.95);
+
+  /* 5.05 set, gold underline, one pulse */
+  tl.to("#f03-ul", { scaleX: 1, duration: 0.5, ease: "expo.out" }, 5.05);
+  MK.pulse(tl, "#f03-ring", 5.1, { count: 1, scale: 3, dur: 0.7 });
+  tl.fromTo("#f03-y2", { scale: 1 }, { scale: 1.05, duration: 0.25, ease: "power3.out", immediateRender: false, transformOrigin: "50% 50%" }, 5.05);
+  tl.to("#f03-y2", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 5.3);
+
+  /* 5.65 everything leaves, only the gold line stays at y 960 */
+  tl.to("#f03-photos", { y: -420, opacity: 0, duration: 0.4, ease: "power2.in" }, 5.62);
+  tl.to("#f03-yrs", { y: 160, opacity: 0, duration: 0.35, ease: "power2.in" }, 5.62);
+  tl.to("#f03-bar", { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.65);
+  tl.to(["#f03-dot1", "#f03-dot2"], { scale: 0, opacity: 0, duration: 0.25, ease: "power2.in" }, 5.65);
+  tl.to("#f03-grain", { opacity: 0, duration: 0.3, ease: "none" }, 5.9);
+  tl.to("#f03-cam", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 5.9);
+
+  /* subtitles (voice) */
+  MK.subtitle(tl, "#f03-sub1", [["It", 0.25], ["began", 0.38], ["with", 0.77], ["Speke", 0.95, true], ["Hotel,", 1.34]], { out: 2.05 });
+  MK.subtitle(tl, "#f03-sub2", [["a", 2.12], ["Kampala", 2.19], ["landmark", 2.68], ["from", 3.22], ["the", 3.36], ["1920s,", 3.43]], { out: 4.3 });
+  MK.subtitle(tl, "#f03-sub3", [["acquired", 4.41], ["in", 4.90], ["1996.", 5.05, true]], { out: D - 0.12 });
+
+  window.__timelines["03-heritage"] = tl;
+})();
+</script>
+</template>
