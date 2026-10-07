@@ -394,6 +394,15 @@ export const media = {
     kind: "render",
     category: "amenities",
   },
+  steamRoom: {
+    src: "/media/amenities/steam-room.webp",
+    width: 1800,
+    height: 1012,
+    alt: "The steam room, tiled floor to ceiling in blue mosaic, with two tiered benches along the walls.",
+    caption: "Steam room",
+    kind: "render",
+    category: "amenities",
+  },
   skyPoolFacade: {
     src: "/media/amenities/sky-pool-facade.png",
     ...INT,
@@ -908,10 +917,16 @@ export const amenities: readonly Amenity[] = [
     media: media.arrivalPodium,
   },
   {
-    name: "Sauna and steam room",
+    name: "Sauna",
     description:
-      "Separate sauna and steam rooms off the pool lobby, beside the shower and restroom area.",
+      "A timber-lined sauna with tiered benches, off the pool lobby beside the shower and restroom area.",
     media: media.sauna,
+  },
+  {
+    name: "Steam room",
+    description:
+      "A steam room tiled in blue mosaic with tiered benches, next to the sauna.",
+    media: media.steamRoom,
   },
   {
     name: "Yoga and floor exercise studio",
@@ -1236,6 +1251,7 @@ export const galleryItems: readonly Media[] = (() => {
     media.conferenceRoom,
     media.meetingRoom,
     media.sauna,
+    media.steamRoom,
     media.playground,
     media.gateDetail,
     media.gatedEntrance,
