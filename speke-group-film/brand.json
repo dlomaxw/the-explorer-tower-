@@ -1,6 +1,5 @@
 {
   "name": "Speke Group",
-  "_draft": true,
   "_source": "colours, fonts and logo read from the client's own site repository (dlomaxw/speke-group: globals.css, speke-ui.css, public/brand); to confirm with the client",
   "tagline": "Hotels · Apartments · Resorts",
   "website": "spekegroup.com",
