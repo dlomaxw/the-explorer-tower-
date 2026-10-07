@@ -102,8 +102,6 @@
   row(1, "#f02-r1", "#f02-n1", 0.08, 0.16, 13, { dur: 1.0 });
   row(2, "#f02-r2", "#f02-n2", 1.78, 1.91, 900, { dur: 1.2, suffix: "+" });
   row(3, "#f02-r3", "#f02-n3", 2.9, 3.0, 45, { dur: 0.8 });
-  // the rows settle with a slow tilt-free drift (living layer)
-  tl.to(["#f02-r1", "#f02-r2", "#f02-r3"], { y: -8, duration: 3.2, ease: "none" }, 0.9);
 
   // tiles flip in on their words, the icon draws on, a slow tilt follows
   var cues = [3.73, 4.38, 5.18, 6.44];
