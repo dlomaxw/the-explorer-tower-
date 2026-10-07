@@ -77,7 +77,7 @@
   // 1.00 chip pops, pin draws
   tl.fromTo("#f04-chip", { opacity: 0, scale: 0.8, y: 30, filter: "blur(10px)" }, { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out", immediateRender: false }, 1.0);
   MK.drawIcon(tl, "#f04-pin", 1.1, { dur: 0.55 });
-  MK.pulse(tl, "#f04-chip", 1.55, { count: 1, scale: 1.18, dur: 0.7 });
+  tl.fromTo("#f04-chip", { scale: 1 }, { scale: 1.1, opacity: 1, duration: 0.3, ease: "expo.out", yoyo: true, repeat: 1, immediateRender: false }, 1.6);
   tl.fromTo("#f04-chip", { y: 0 }, { y: -10, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.7);
 
   // 1.88 eyebrow
