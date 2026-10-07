@@ -1,0 +1,18 @@
+:root{
+  --mk-primary:#6f2033;
+  --mk-secondary:#5c1728;
+  --mk-accent:#c9a227;
+  --mk-ink:#3a2020;
+  --mk-ink-soft:#5a4a3a;
+  --mk-bg:#f7f2e9;
+  --mk-surface:#efe6d6;
+  --mk-line:#dcc0a8;
+  --mk-on-primary:#ffffff;
+  --mk-on-accent:#101010;
+  --mk-font-display:"Playfair Display",system-ui,sans-serif;
+  --mk-font-body:"Inter",system-ui,sans-serif;
+  --mk-display-weight:700;
+  --mk-radius:18px;
+  --mk-shadow:0 30px 70px rgba(58,32,32,0.16);
+  --mk-shadow-brand:0 30px 80px rgba(111,32,51,0.35);
+}

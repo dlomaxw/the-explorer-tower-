@@ -1,0 +1,59 @@
+{
+  "name": "Speke Group",
+  "_source": "colours, fonts and logo read from the client's own site repository (dlomaxw/speke-group: globals.css, speke-ui.css, public/brand); to confirm with the client",
+  "tagline": "Hotels \u00b7 Apartments \u00b7 Resorts",
+  "website": "spekegroup.com",
+  "contact": {
+    "phone": "(+256) 707 711 750",
+    "email": "info@spekegroup.com",
+    "address": "4th Floor, Crane Chambers, Kampala Road, Uganda"
+  },
+  "colors": {
+    "primary": "#6f2033",
+    "secondary": "#5c1728",
+    "accent": "#c9a227",
+    "ink": "#3a2020",
+    "bg": "#f7f2e9",
+    "surface": "#efe6d6",
+    "line": "#dcc0a8",
+    "ink_soft": "#5a4a3a"
+  },
+  "fonts": {
+    "display": {
+      "family": "Playfair Display",
+      "weights": [
+        500,
+        700
+      ],
+      "source": "fontsource:playfair-display",
+      "display_weight": 700
+    },
+    "body": {
+      "family": "Inter",
+      "weights": [
+        400,
+        500,
+        600
+      ],
+      "source": "fontsource:inter"
+    }
+  },
+  "logo": {
+    "full": "assets/img/logo-full.png",
+    "light_version": "assets/img/logo-source.png"
+  },
+  "radius": 18,
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "forbidden_names": [
+    "Explorer Towers",
+    "Casements",
+    "Northwind",
+    "Bright Illuminated",
+    "shinebebright",
+    "Bright Properties"
+  ]
+}
