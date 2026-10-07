@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { ResidenceCard } from "@/components/residence-card";
 import { PageHeader, Section } from "@/components/ui";
@@ -11,13 +12,14 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/residences",
     title: "Apartments for sale in Kololo, Kampala",
     description:
-      "Apartments for sale in Kololo, Kampala. Two-bedroom from USD 300,000, three-bedroom from USD 400,000, and a six-bedroom penthouse with its own suspended pool and private cinema.",
+      "Apartments for sale in Kololo, Kampala. Two-bedroom from USD 300,000, three-bedroom from USD 400,000, plus two six-bedroom duplex penthouses.",
   });
 }
 
 export default function ResidencesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/residences")} />
       <PageHeader
         kicker="Residences"
         title="Three ways to live in the building"

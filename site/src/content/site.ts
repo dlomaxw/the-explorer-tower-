@@ -580,6 +580,8 @@ export const residences: readonly ResidenceType[] = [
     areaBasis: pending("Area basis to be confirmed"),
     price: approved("From USD 300,000"),
     priceFrom: { amount: 300000, currency: "USD" },
+    metaDescription:
+      "Two-bedroom apartments for sale in Kololo, Kampala, from USD 300,000. Open living, two en-suite bedrooms and a private balcony.",
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Floor plan available on request"),
@@ -613,6 +615,8 @@ export const residences: readonly ResidenceType[] = [
     areaBasis: pending("Area basis to be confirmed"),
     price: approved("From USD 400,000"),
     priceFrom: { amount: 400000, currency: "USD" },
+    metaDescription:
+      "Three-bedroom apartments for sale in Kololo, Kampala, from USD 400,000. Private entrance hall, principal suite with dressing room, balcony.",
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Floor plan available on request"),
@@ -646,6 +650,8 @@ export const residences: readonly ResidenceType[] = [
     area: pending("Request the penthouse area schedule"),
     areaBasis: pending("Area basis to be confirmed"),
     price: pending("Price on application — talk to us"),
+    metaDescription:
+      "Luxury six-bedroom duplex penthouses for sale in Kololo, Kampala, each with a private suspended pool and cinema room. Price on application.",
     availability: pending("Request current availability"),
     paymentPlan: pending("Request payment terms"),
     floorPlan: pending("Penthouse plan available on request"),

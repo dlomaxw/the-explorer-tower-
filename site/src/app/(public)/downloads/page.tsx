@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { InquiryForm } from "@/components/inquiry-form";
 import { Reveal } from "@/components/reveal";
@@ -11,9 +12,9 @@ import { isApproved } from "@/content/types";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/downloads",
-    title: "Downloads",
+    title: "Floor plans and brochure download",
     description:
-      "Brochure, floor plans and the schedule of areas for Explorer Towers.",
+      "Download the dimensioned floor plans for every level of Explorer Towers, and request the brochure and the schedule of areas.",
   });
 }
 
@@ -22,6 +23,7 @@ export default function DownloadsPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/downloads")} />
       <PageHeader
         kicker="Downloads"
         title="Documents"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Image from "next/image";
 
 import {
@@ -15,9 +16,9 @@ import { amenities, amenitiesNote, media } from "@/content/site";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/amenities",
-    title: "Amenities",
+    title: "Amenities: pool, gym, spa and meeting rooms",
     description:
-      "A sky pool cantilevered between floors, a glazed fitness room, covered arrival and gated parking at Explorer Towers, Kololo, Kampala.",
+      "Pool and sunken lounge, gym, sauna, steam room, yoga studio, conference and meeting rooms, and a children's play area at Explorer Towers, Kololo.",
   });
 }
 
@@ -27,6 +28,7 @@ export default function AmenitiesPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/amenities")} />
       <PageHeader
         kicker="Amenities"
         title="What the building shares"

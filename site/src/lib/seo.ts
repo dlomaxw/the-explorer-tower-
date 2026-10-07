@@ -4,7 +4,12 @@ import type { Metadata } from "next";
 
 import { data } from "./data";
 import { resolveSiteUrl } from "./site-config";
-import { faqs, identity, contact, residences } from "@/content/site";
+import {
+  faqs,
+  identity,
+  contact,
+  residences,
+} from "@/content/site";
 import { isApproved } from "@/content/types";
 
 /**
@@ -266,4 +271,102 @@ export function breadcrumbJsonLd(
       item: `${SITE_URL}${crumb.path}`,
     })),
   };
+}
+
+/**
+ * The business behind the site, and the site itself.
+ *
+ * Emitted from the root layout so every page carries it. This is what ties the
+ * address, the phone number and the map pin to a named organisation, which is
+ * the information a search engine uses to decide a business is real and where
+ * it is — the foundation of appearing for "apartments in Kololo".
+ *
+ * Only approved facts. Opening hours are left out on purpose: the approved
+ * hours carry no days, and publishing hours for the wrong days is a worse
+ * mistake than publishing none.
+ */
+export function organizationJsonLd(): Record<string, unknown> {
+  const name = isApproved(identity.developer)
+    ? identity.developer.value
+    : identity.projectName;
+
+  const organization: Record<string, unknown> = {
+    "@type": ["Organization", "RealEstateAgent"],
+    "@id": `${SITE_URL}/#organization`,
+    name,
+    brand: { "@type": "Brand", name: identity.projectName },
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.png`,
+    image: `${SITE_URL}/media/exterior/aerial-night.webp`,
+    areaServed: [
+      { "@type": "City", name: "Kampala" },
+      { "@type": "Country", name: "Uganda" },
+    ],
+  };
+
+  if (isApproved(contact.phone)) organization.telephone = contact.phone.value;
+  if (isApproved(contact.email)) organization.email = contact.email.value;
+
+  if (isApproved(contact.address)) {
+    organization.address = {
+      "@type": "PostalAddress",
+      streetAddress: "Plot 35 John Babiha (Acacia) Avenue, Kololo",
+      addressLocality: "Kampala",
+      addressRegion: "Central Region",
+      addressCountry: "UG",
+    };
+  }
+  if (isApproved(contact.coordinates)) {
+    organization.geo = {
+      "@type": "GeoCoordinates",
+      latitude: contact.coordinates.value.lat,
+      longitude: contact.coordinates.value.lng,
+    };
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: identity.projectName,
+        inLanguage: "en-UG",
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    ],
+  };
+}
+
+const CRUMB_NAMES: Record<string, string> = {
+  "/project": "Project",
+  "/residences": "Residences",
+  "/amenities": "Amenities",
+  "/gallery": "Gallery",
+  "/location": "Location",
+  "/progress": "Progress",
+  "/downloads": "Downloads",
+  "/contact": "Contact",
+  "/faq": "Questions",
+  "/privacy": "Privacy notice",
+  "/terms": "Terms",
+};
+
+/** Breadcrumb trail for any public path, built from the same page names. */
+export function breadcrumbsFor(path: string): Record<string, unknown> {
+  const trail: { name: string; path: string }[] = [
+    { name: "Home", path: "/" },
+  ];
+
+  const detail = residences.find((r) => path === `/residences/${r.slug}`);
+  if (detail) {
+    trail.push({ name: "Residences", path: "/residences" });
+    trail.push({ name: detail.name, path });
+  } else if (CRUMB_NAMES[path]) {
+    trail.push({ name: CRUMB_NAMES[path], path });
+  }
+
+  return breadcrumbJsonLd(trail);
 }

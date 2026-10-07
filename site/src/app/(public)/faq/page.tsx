@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { buildMetadata, faqJsonLd } from "@/lib/seo";
+import { buildMetadata, faqJsonLd, breadcrumbsFor } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
 
 import { Reveal } from "@/components/reveal";
@@ -10,15 +10,16 @@ import { faqs } from "@/content/site";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/faq",
-    title: "Questions",
+    title: "FAQ: buying an apartment in Kampala",
     description:
-      "Common questions about the residences, buying and visiting Explorer Towers.",
+      "Answers on buying a two-bedroom, three-bedroom or penthouse apartment in Kampala: prices, location, amenities, floors, visits and reservations.",
   });
 }
 
 export default function FaqPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/faq")} />
       <JsonLd data={faqJsonLd()} />
     <>
       <PageHeader

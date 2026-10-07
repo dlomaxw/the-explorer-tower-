@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Image from "next/image";
 
 import {
@@ -25,9 +26,9 @@ import { isApproved } from "@/content/types";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/project",
-    title: "The project",
+    title: "Project overview, Kololo apartment tower",
     description:
-      "Explorer Towers, a residential tower on John Babiha (Acacia) Avenue in Kololo, Kampala, built around one continuous curved balcony. The design, the facade and the confirmed facts.",
+      "Explorer Towers is a 26-residence tower on John Babiha (Acacia) Avenue, Kololo, Kampala, built around one continuous curved balcony.",
   });
 }
 
@@ -52,6 +53,7 @@ const DESIGN_NOTES = [
 export default function ProjectPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/project")} />
       <PageHeader
         kicker="The project"
         title="A tower built around a single line"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -32,7 +33,7 @@ export async function generateMetadata(
   return buildMetadata({
     path: `/residences/${residence.slug}`,
     title: residence.name,
-    description: residence.summary,
+    description: residence.metaDescription ?? residence.summary,
     // Each residence shares as itself rather than as the building exterior.
     image: residence.hero.src,
   });
@@ -49,6 +50,7 @@ export default async function ResidencePage(
 
   return (
     <div data-tier={residence.slug}>
+      <JsonLd data={breadcrumbsFor(`/residences/${residence.slug}`)} />
       <div className="relative h-[72svh] min-h-120 w-full">
         <Image
           src={residence.hero.src}

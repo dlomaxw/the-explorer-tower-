@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { PageHeader, Section } from "@/components/ui";
 import { CONSENT_NOTICE_VERSION } from "@/lib/inquiry-schema";
@@ -9,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/privacy",
     title: "Privacy notice",
-    description: "How Explorer Towers handles the details you send through this site.",
+    description: "How Explorer Towers collects, uses and protects the details you send through this website, and how to withdraw your consent.",
   });
 }
 
@@ -63,6 +64,7 @@ const SECTIONS = [
 export default function PrivacyPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/privacy")} />
       <PageHeader
         kicker="Privacy"
         title="Privacy notice"

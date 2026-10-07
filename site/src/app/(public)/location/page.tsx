@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Image from "next/image";
 
 import {
@@ -45,6 +46,7 @@ export default function LocationPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/location")} />
       <PageHeader
         kicker="Location"
         title="John Babiha (Acacia) Avenue"

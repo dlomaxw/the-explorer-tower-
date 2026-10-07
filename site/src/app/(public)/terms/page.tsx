@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { PageHeader, Section } from "@/components/ui";
 import { legal } from "@/content/site";
@@ -8,8 +9,8 @@ import { legal } from "@/content/site";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/terms",
-    title: "Terms",
-    description: "Terms on which the Explorer Towers website is published.",
+    title: "Website terms and conditions of use",
+    description: "The terms on which the Explorer Towers website is published, including how renders, prices and availability should be read.",
   });
 }
 
@@ -52,6 +53,7 @@ const SECTIONS = [
 export default function TermsPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/terms")} />
       <PageHeader
         kicker="Terms"
         title="Terms of use"

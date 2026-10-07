@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { FilmStrip } from "@/components/film-strip";
 import { MediaGallery } from "@/components/media-gallery";
@@ -10,15 +11,16 @@ import { films, galleryItems, legal } from "@/content/site";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/gallery",
-    title: "Gallery",
+    title: "Render gallery: facade, interiors, amenities",
     description:
-      "Exterior, interior and amenity images of Explorer Towers, filterable by category.",
+      "Renders of the facade, residences, pool terrace and amenities at Explorer Towers, an apartment tower in Kololo, Kampala.",
   });
 }
 
 export default function GalleryPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/gallery")} />
       <PageHeader
         kicker="Gallery"
         title="The building, inside and out"

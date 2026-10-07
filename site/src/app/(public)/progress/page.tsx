@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { MediaGallery } from "@/components/media-gallery";
 import { ButtonLink, EmptyState, PageHeader, Section } from "@/components/ui";
@@ -11,13 +12,14 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/progress",
     title: "Construction progress",
     description:
-      "Dated construction updates and site photography from Explorer Towers.",
+      "Dated construction updates and site photography from Explorer Towers in Kololo, Kampala, kept separate from the marketing renders.",
   });
 }
 
 export default function ProgressPage() {
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/progress")} />
       <PageHeader
         kicker="Progress"
         title="Construction updates"

@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 
 import { identity } from "@/content/site";
-import { SITE_INDEXABLE } from "@/lib/seo";
+import { SITE_INDEXABLE, organizationJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import {
   GoogleTagManager,
   GoogleTagManagerNoScript,
@@ -62,6 +63,7 @@ export default function RootLayout({
       <body>
         {/* Must be the first node in the body, per GTM's own install. */}
         <GoogleTagManagerNoScript />
+        <JsonLd data={organizationJsonLd()} />
         {children}
         <GoogleTagManager />
       </body>

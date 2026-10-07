@@ -95,6 +95,12 @@ export interface ResidenceType {
    * written for humans is how a price ends up wrong in a search result.
    */
   readonly priceFrom?: { amount: number; currency: string };
+  /**
+   * The line shown under the title in search results, written for that job.
+   * The on-page summary runs long and is written to be read in full, so
+   * reusing it as the description gets it truncated mid-sentence.
+   */
+  readonly metaDescription?: string;
   readonly availability: Publishable<string>;
   readonly paymentPlan: Publishable<string>;
   readonly floorPlan: Publishable<Media>;

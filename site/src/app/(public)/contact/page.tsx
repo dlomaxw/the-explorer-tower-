@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbsFor } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 import { InquiryForm } from "@/components/inquiry-form";
 import { Reveal } from "@/components/reveal";
@@ -18,9 +19,9 @@ import { isApproved } from "@/content/types";
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     path: "/contact",
-    title: "Contact",
+    title: "Contact and site visits in Kololo, Kampala",
     description:
-      "Register interest, request a callback, arrange a meeting or book a site visit at Explorer Towers.",
+      "Register interest, request a callback, arrange a meeting or book a site visit at Explorer Towers, Plot 35 John Babiha (Acacia) Avenue, Kololo.",
   });
 }
 
@@ -64,6 +65,7 @@ export default async function ContactPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbsFor("/contact")} />
       <PageHeader
         kicker="Contact"
         title="Talk to the sales team"
