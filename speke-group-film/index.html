@@ -1,32 +1,149 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1080, height=1920" />
-  <link rel="stylesheet" href="assets/fonts.css" />
-  <link rel="stylesheet" href="assets/brand/tokens.css" />
-  <link rel="stylesheet" href="assets/vendor/motion-kit.css" />
-  <script src="assets/vendor/gsap.min.js"></script>
-  <script src="assets/vendor/icons.js"></script>
-  <script src="assets/vendor/motion-kit.js"></script>
-  <style>
-    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
-    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--mk-bg); }
-    .scene { position: absolute; inset: 0; }
-  </style>
-</head>
-<body>
-  <div id="root" class="mk-root" data-composition-id="speke-group" data-start="0" data-duration="12" data-width="1080" data-height="1920">
-    <div id="ground" class="clip" data-start="0" data-duration="12" data-track-index="0"></div>
-    <!-- scenes go here as PLAIN divs (no data-start): <div id="s1" class="scene"> ... </div>. Only the ground, <video> and <audio> carry data-start. -->
-    <!-- audio (after the voice and the mix exist): <audio id="mix" data-start="0" data-duration="12" data-track-index="11" src="assets/audio/mix.wav" data-volume="1"></audio> -->
-  </div>
-  <script>
-    window.__timelines = window.__timelines || {};
-    var tl = gsap.timeline({ paused: true });
-    window.__timelines["speke-group"] = tl; // MUST equal data-composition-id of #root
-    // 1) hide what is not on screen at t=0 with MK.hide(sel) (gsap.set), never tl.set at 0   2) build every scene with MK.*   3) keep a full-span anchor:
-    tl.to({}, { duration: 12 }, 0);
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/fonts.css" />
+    <link rel="stylesheet" href="assets/brand/tokens.css" />
+    <link rel="stylesheet" href="assets/vendor/motion-kit.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f7f2e9;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="49.9"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div id="bed-hero" class="clip" data-start="0" data-duration="6.9" data-track-index="2" style="position:absolute;inset:0;background:#000"></div>
+      <video id="vid-hero" class="clip" src="assets/media/hero-properties-mobile.mp4" data-start="0" data-duration="6.9" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;transform-origin:50% 45%"></video>
+      <div id="bed-lake" class="clip" data-start="20" data-duration="6.2" data-track-index="4" style="position:absolute;inset:0;background:var(--mk-secondary)"></div>
+      <video id="vid-lake" class="clip" src="assets/media/hero-paradise-mobile.mp4" data-start="20" data-duration="6.2" data-media-start="0.5" data-track-index="5" muted playsinline style="position:absolute;left:-180px;top:0;width:1440px;height:1920px;object-fit:cover;opacity:1;transform-origin:50% 50%"></video>
+      <div
+        id="el-01-welcome"
+        class="scene"
+        data-composition-id="01-welcome"
+        data-composition-src="compositions/frames/01-welcome.html"
+        data-start="0"
+        data-duration="6.2"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-02-figures"
+        class="scene"
+        data-composition-id="02-figures"
+        data-composition-src="compositions/frames/02-figures.html"
+        data-start="6.2"
+        data-duration="7.4"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-03-heritage"
+        class="scene"
+        data-composition-id="03-heritage"
+        data-composition-src="compositions/frames/03-heritage.html"
+        data-start="13.600000000000001"
+        data-duration="6.4"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-04-marina"
+        class="scene"
+        data-composition-id="04-marina"
+        data-composition-src="compositions/frames/04-marina.html"
+        data-start="20"
+        data-duration="6.2"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-05-experiences"
+        class="scene"
+        data-composition-id="05-experiences"
+        data-composition-src="compositions/frames/05-experiences.html"
+        data-start="26.2"
+        data-duration="6"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-06-conference"
+        class="scene"
+        data-composition-id="06-conference"
+        data-composition-src="compositions/frames/06-conference.html"
+        data-start="32.2"
+        data-duration="5.8"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-07-award"
+        class="scene"
+        data-composition-id="07-award"
+        data-composition-src="compositions/frames/07-award.html"
+        data-start="38"
+        data-duration="5.4"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-08-cta"
+        class="scene"
+        data-composition-id="08-cta"
+        data-composition-src="compositions/frames/08-cta.html"
+        data-start="43.4"
+        data-duration="6.5"
+        data-track-index="1"
+      ></div>
+      <audio id="mix" data-start="0" data-duration="49.9" data-track-index="11" src="assets/audio/mix.wav" data-volume="1"></audio>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      (function () { var tl = window.__timelines["main"];
+        // orchestrator layer (motion-design skill): light flash and iris
+        // media layer: footage under the frames
+        tl.fromTo("#vid-hero", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
+        tl.fromTo("#vid-hero", { scale: 1 }, { scale: 1.08, duration: 6.2, ease: "none", immediateRender: false }, 0);
+        tl.to("#vid-hero", { scale: 1.1, duration: 0.7, ease: "none" }, 6.2);
+        tl.to("#vid-hero", { opacity: 0, duration: 0.05, ease: "none" }, 6.75);
+        tl.fromTo("#vid-lake", { scale: 1.02 }, { scale: 1.1, duration: 5.7, ease: "none", immediateRender: false }, 20.1);
+        tl.to({}, { duration: 49.9 }, 0); // full-span anchor
+      })();
+    </script>
+  </body>
 </html>

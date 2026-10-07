@@ -1,9 +1,8 @@
 <template>
 <style>
-#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink);background:var(--mk-bg)}
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink);background:transparent}
 #root *{box-sizing:border-box;margin:0;padding:0}
-#f04-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-secondary)}
-#f04-vid{position:absolute;left:-180px;top:0;width:1440px;height:1920px;object-fit:cover;transform-origin:50% 50%}
+#f04-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:transparent}
 #f04-veil{position:absolute;left:0;top:520px;width:1080px;height:1400px;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--mk-secondary) 70%,transparent) 30%,color-mix(in srgb,var(--mk-secondary) 90%,transparent) 55%,var(--mk-secondary) 100%)}
 #f04-top{position:absolute;left:0;top:0;width:1080px;height:420px;background:linear-gradient(180deg,color-mix(in srgb,var(--mk-secondary) 55%,transparent) 0%,transparent 100%)}
 #f04-fg{position:absolute;left:0;top:0;width:1080px;height:1920px}
@@ -27,7 +26,6 @@
 
 <div id="root" data-composition-id="04-marina" data-start="0" data-duration="6.2" data-width="1080" data-height="1920">
   <div id="f04-ground" class="clip" data-start="0" data-duration="6.2" data-track-index="0"></div>
-  <video id="f04-vid" class="clip mk-video" src="assets/media/hero-paradise-mobile.mp4" data-start="0" data-duration="6.2" data-media-start="0.5" data-track-index="1" muted playsinline></video>
   <div id="f04-top"></div>
   <div id="f04-veil"></div>
   <div id="f04-fg">
@@ -65,7 +63,6 @@
   gsap.set("#f04-card", { opacity: 0 });
   gsap.set("#f04-chip", { opacity: 0 });
   gsap.set("#f04-eyebrow", { opacity: 0 });
-  gsap.set("#f04-vid", { scale: 1.02 });
   gsap.set("#f04-fg", { opacity: 1 });
   gsap.set("#f04-wash", { y: 1920, opacity: 1 });
 
@@ -73,7 +70,6 @@
   tl.to("#f04-pt", { y: -980, duration: 0.8, ease: "expo.out" }, 0);
   tl.to("#f04-pb", { y: 980, duration: 0.8, ease: "expo.out" }, 0);
   // footage: slow aerial drift
-  tl.to("#f04-vid", { scale: 1.1, duration: 5.7, ease: "none" }, 0.1);
   // 0.9 maroon gradient rises
   tl.fromTo("#f04-veil", { opacity: 0, y: 220 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out", immediateRender: false }, 0.05);
   tl.fromTo("#f04-top", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "none", immediateRender: false }, 0.7);

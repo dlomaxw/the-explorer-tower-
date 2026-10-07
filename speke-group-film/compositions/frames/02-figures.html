@@ -2,8 +2,7 @@
 <style>
 #root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-bg)}
 #root *{box-sizing:border-box;margin:0;padding:0}
-#f02-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:rgba(0,0,0,1)}
-#f02-vid{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:50% 45%}
+#f02-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:transparent}
 #f02-veil{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-secondary);opacity:.9}
 #f02-glow{position:absolute;left:-200px;top:60px;width:1480px;height:1480px;opacity:0;
   background:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--mk-accent) 16%,transparent) 0%,transparent 62%)}
@@ -34,7 +33,6 @@
 
 <div id="root" data-composition-id="02-figures" data-start="0" data-duration="7.4" data-width="1080" data-height="1920">
   <div id="f02-ground" class="clip" data-start="0" data-duration="7.4" data-track-index="0"></div>
-  <video id="f02-vid" class="clip" src="assets/media/hero-properties-mobile.mp4" data-start="0" data-duration="0.7" data-media-start="6.2" data-track-index="1" muted playsinline></video>
   <div id="f02-veil"></div>
   <div id="f02-glow"></div>
   <div id="f02-cam">
@@ -74,7 +72,6 @@
   for (var i = 0; i < 4; i++) { qs("#f02-i" + (i + 1)).innerHTML = MK.icon(icons[i], { size: 84, stroke: 1.8 }); }
 
   // ---- t=0: footage under the 90 % maroon-deep veil (copy of frame 1 handoff_out) ----
-  gsap.set("#f02-vid", { scale: 1.08, opacity: 1 });
   MK.hide(["#f02-glow", ".f02-row", ".f02-tile", ".f02-lab", "#f02-disc"]);
   gsap.set(".f02-bar", { scaleY: 0 });
   gsap.set("#f02-disc", { scale: 0.02 });
@@ -82,9 +79,7 @@
   MK.prep("#f02-ring");
 
   // 0.00 the veil closes to a solid maroon ground, the footage dies under it by 0.55
-  tl.to("#f02-vid", { scale: 1.1, duration: 0.7, ease: "none" }, 0);
   tl.to("#f02-veil", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
-  tl.to("#f02-vid", { opacity: 0, duration: 0.05, ease: "none" }, 0.55);
   // faint gold glow breathes behind the numbers (finite drift)
   tl.fromTo("#f02-glow", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1.0, ease: "power2.out", immediateRender: false }, 0.2);
   tl.to("#f02-glow", { scale: 1.18, y: -40, duration: 6.4, ease: "none" }, 1.2);

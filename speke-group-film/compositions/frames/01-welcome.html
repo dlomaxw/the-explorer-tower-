@@ -2,9 +2,8 @@
 <style>
 #root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-bg)}
 #root *{box-sizing:border-box;margin:0;padding:0}
-#f01-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:rgba(0,0,0,1)}
+#f01-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:transparent}
 #f01-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%;overflow:hidden}
-#f01-vid{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;transform-origin:50% 45%}
 #f01-veil{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-secondary);opacity:0}
 #f01-shade{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0;
   background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 30%,color-mix(in srgb,var(--mk-secondary) 55%,transparent) 62%,var(--mk-secondary) 100%)}
@@ -34,7 +33,6 @@
 <div id="root" data-composition-id="01-welcome" data-start="0" data-duration="6.2" data-width="1080" data-height="1920">
   <div id="f01-ground" class="clip" data-start="0" data-duration="6.2" data-track-index="0"></div>
   <div id="f01-cam">
-    <video id="f01-vid" class="clip" src="assets/media/hero-properties-mobile.mp4" data-start="0" data-duration="6.2" data-track-index="1" muted playsinline></video>
     <div id="f01-veil"></div>
     <div id="f01-shade"></div>
     <div id="f01-titles">
@@ -77,8 +75,6 @@
   gsap.set("#f01-card", { transformPerspective: 1400, transformOrigin: "50% 100%", rotationX: 8, y: 160 });
 
   // ground -> footage (slow push 1.00 -> 1.08), veil keeps the type legible
-  tl.fromTo("#f01-vid", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
-  tl.to("#f01-vid", { scale: 1.08, duration: 6.2, ease: "none" }, 0);
   tl.fromTo("#f01-veil", { opacity: 0 }, { opacity: 0.4, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
   tl.fromTo("#f01-shade", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out", immediateRender: false }, 0.1);
 

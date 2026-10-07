@@ -200,6 +200,36 @@ print("orchestrator layer patched:", ", ".join(k for k, v in (("audio", env.get(
       ("iris", iris_at is not None), ("paper bed", "paperbed" in s)) if v) or "nothing")
 EOF
 
+# Media layer: the client's footage sits at the ROOT of index.html, under the frame layers (the assembler keeps media out of
+# sub-compositions); the frames above it have transparent grounds and the motion runs on the main timeline. Idempotent.
+python3 - <<'PYM'
+import re
+p = "index.html"
+s = open(p, encoding="utf-8").read()
+if 'id="vid-hero"' not in s:
+    first = re.search(r'<div\s+id="el-01-welcome"', s)
+    if first:
+        layer = (
+          '<div id="bed-hero" class="clip" data-start="0" data-duration="6.9" data-track-index="2" style="position:absolute;inset:0;background:#000"></div>\n      '
+          '<video id="vid-hero" class="clip" src="assets/media/hero-properties-mobile.mp4" data-start="0" data-duration="6.9" data-track-index="3" muted playsinline '
+          'style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;transform-origin:50% 45%"></video>\n      '
+          '<div id="bed-lake" class="clip" data-start="20" data-duration="6.2" data-track-index="4" style="position:absolute;inset:0;background:var(--mk-secondary)"></div>\n      '
+          '<video id="vid-lake" class="clip" src="assets/media/hero-paradise-mobile.mp4" data-start="20" data-duration="6.2" data-media-start="0.5" data-track-index="5" muted playsinline '
+          'style="position:absolute;left:-180px;top:0;width:1440px;height:1920px;object-fit:cover;opacity:1;transform-origin:50% 50%"></video>\n      ')
+        s = s[:first.start()] + layer + s[first.start():]
+        tw = """        // media layer: footage under the frames
+        tl.fromTo("#vid-hero", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
+        tl.fromTo("#vid-hero", { scale: 1 }, { scale: 1.08, duration: 6.2, ease: "none", immediateRender: false }, 0);
+        tl.to("#vid-hero", { scale: 1.1, duration: 0.7, ease: "none" }, 6.2);
+        tl.to("#vid-hero", { opacity: 0, duration: 0.05, ease: "none" }, 6.75);
+        tl.fromTo("#vid-lake", { scale: 1.02 }, { scale: 1.1, duration: 5.7, ease: "none", immediateRender: false }, 20.1);
+"""
+        a = re.search(r"(?m)^[ \t]*tl\.to\(\{\}, \{ duration: [0-9.]+ \}, 0\);", s)
+        s = s[:a.start()] + tw + s[a.start():]
+        open(p, "w", encoding="utf-8").write(s)
+        print("media layer added")
+PYM
+
 # GSAP is vendored in assets/vendor/ so the build and the render never depend on the jsDelivr CDN (blocked in some
 # environments). Rewrites the CDN tag in the fresh index.html and in the frame files, idempotent.
 python3 - <<'PYEOF'
