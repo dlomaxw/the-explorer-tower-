@@ -215,14 +215,14 @@ if 'id="vid-hero"' not in s:
           'style="position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;opacity:0;transform-origin:50% 45%"></video>\n      '
           '<div id="bed-lake" class="clip" data-start="20" data-duration="6.2" data-track-index="4" style="position:absolute;inset:0;background:var(--mk-secondary)"></div>\n      '
           '<video id="vid-lake" class="clip" src="assets/media/hero-paradise.mp4" data-start="20" data-duration="6.2" data-media-start="3.0" data-track-index="5" muted playsinline '
-          'style="position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;opacity:1;transform-origin:50% 50%"></video>\n      ')
+          'style="position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;opacity:1;transform-origin:0 0"></video>\n      ')
         s = s[:first.start()] + layer + s[first.start():]
         tw = """        // media layer: footage under the frames
         tl.fromTo("#vid-hero", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
         tl.fromTo("#vid-hero", { scale: 1 }, { scale: 1.08, duration: 6.2, ease: "none", immediateRender: false }, 0);
         tl.to("#vid-hero", { scale: 1.1, duration: 0.7, ease: "none" }, 6.2);
         tl.to("#vid-hero", { opacity: 0, duration: 0.05, ease: "none" }, 6.75);
-        tl.fromTo("#vid-lake", { scale: 1.02 }, { scale: 1.1, duration: 5.7, ease: "none", immediateRender: false }, 20.1);
+        tl.fromTo("#vid-lake", { scale: 1.14 }, { scale: 1.22, duration: 6.2, ease: "none", immediateRender: false }, 20.0);
 """
         a = re.search(r"(?m)^[ \t]*tl\.to\(\{\}, \{ duration: [0-9.]+ \}, 0\);", s)
         s = s[:a.start()] + tw + s[a.start():]
