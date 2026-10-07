@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/location",
     title: "Location — Kololo, Kampala",
     description:
-      "Explorer Towers stands on Plot 37 John Babiha (Acacia) Avenue in Kololo, Kampala, beside Uganda Golf Club. Directions and the verified address.",
+      "Explorer Towers stands on Plot 35 John Babiha (Acacia) Avenue in Kololo, Kampala, beside Uganda Golf Club. Directions and the verified address.",
   });
 }
 
@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * approved list.
  */
 const MAP_QUERY = encodeURIComponent(
-  "Plot 37 John Babiha Avenue, Acacia Avenue, Kampala, Uganda",
+  "Plot 35 John Babiha Avenue, Acacia Avenue, Kampala, Uganda",
 );
 
 export default function LocationPage() {
@@ -48,7 +48,7 @@ export default function LocationPage() {
       <PageHeader
         kicker="Location"
         title="John Babiha (Acacia) Avenue"
-        lead="The tower stands on Plot 37, John Babiha Avenue — still widely known as Acacia Avenue — with the escarpment and the city visible from the upper floors."
+        lead="The tower stands on Plot 35, John Babiha Avenue — still widely known as Acacia Avenue — with the escarpment and the city visible from the upper floors."
       />
 
       <Section>
@@ -123,7 +123,7 @@ export default function LocationPage() {
         */}
         <div className="mt-8 overflow-hidden rounded-3xl border border-stone-200 bg-stone-100">
           <iframe
-            title="Map showing Plot 37 John Babiha (Acacia) Avenue, Kampala"
+            title="Map showing Plot 35 John Babiha (Acacia) Avenue, Kampala"
             src={
               isApproved(contact.coordinates)
                 ? `https://www.google.com/maps?q=${contact.coordinates.value.lat},${contact.coordinates.value.lng}&z=17&output=embed`
