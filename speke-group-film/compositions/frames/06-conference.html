@@ -17,9 +17,10 @@
 .f06-slot{position:absolute}
 .f06-card{position:relative;background:var(--mk-bg);border-radius:var(--mk-radius);padding:10px 10px 0 10px;box-shadow:0 34px 70px rgba(0,0,0,.45),0 0 0 3px var(--mk-accent)}
 .f06-win{position:relative;overflow:hidden;border-radius:10px}
+.f06-seq{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;transform-origin:50% 50%}
 .f06-win img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;display:block;transform-origin:50% 50%}
 .f06-cap{height:56px;line-height:56px;text-align:center;font-family:var(--mk-font-body);font-weight:700;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-ink)}
-#f06-s1{left:70px;top:430px;width:540px}
+#f06-s1{left:70px;top:490px;width:540px}
 #f06-s1 .f06-win{height:392px}
 #f06-s2{left:330px;top:620px;width:680px}
 #f06-s2 .f06-win{height:330px}
@@ -49,9 +50,9 @@
         <div id="f06-lab1" class="f06-lab">Conference rooms</div>
       </div>
       <div id="f06-stage">
-        <div class="f06-slot" id="f06-s1"><div class="f06-card" id="f06-c1"><div class="f06-win"><img id="f06-i1" src="assets/img/v-oak.webp" alt="Boardroom"></div><div class="f06-cap">Boardrooms</div></div></div>
-        <div class="f06-slot" id="f06-s2"><div class="f06-card" id="f06-c2"><div class="f06-win"><img id="f06-i2" src="assets/img/v-palm.webp" alt="Conference room"></div><div class="f06-cap">Conference rooms</div></div></div>
-        <div class="f06-slot" id="f06-s3"><div class="f06-card" id="f06-c3"><div class="f06-win"><img id="f06-i3" src="assets/img/v-victoria.webp" alt="Ballroom"><img id="f06-i4" src="assets/img/v-speke-ballroom.webp" alt="Ballroom"></div><div class="f06-cap">Ballrooms</div></div></div>
+        <div class="f06-slot" id="f06-s1"><div class="f06-card" id="f06-c1"><div class="f06-win"><div class="f06-seq" id="f06-i1" role="img" aria-label="Boardroom"></div></div><div class="f06-cap">Boardrooms</div></div></div>
+        <div class="f06-slot" id="f06-s2"><div class="f06-card" id="f06-c2"><div class="f06-win"><div class="f06-seq" id="f06-i2" role="img" aria-label="Conference room"></div></div><div class="f06-cap">Conference rooms</div></div></div>
+        <div class="f06-slot" id="f06-s3"><div class="f06-card" id="f06-c3"><div class="f06-win"><div class="f06-seq" id="f06-i3" role="img" aria-label="Ballroom"></div><div class="f06-seq" id="f06-i4" role="img" aria-label="Ballroom"></div></div><div class="f06-cap">Ballrooms</div></div></div>
       </div>
       <div id="f06-dots"></div>
       <div id="f06-num2">
@@ -94,6 +95,27 @@
   }
   gsap.set("#f06-dots", { opacity: 1 });
   gsap.set(".f06-dot", { opacity: 0 });
+
+
+  // ---- the client's Convention Centre film as stepped image sequences (15 fps, deterministic) ----
+  function seq(box, name, n, t0) {
+    var host = document.getElementById(box), ids = [];
+    for (var q = 0; q < n; q++) {
+      var im = document.createElement("img");
+      var nn = ("00" + q).slice(-3);
+      im.src = "assets/seq/" + name + "-" + nn + ".jpg"; im.alt = ""; im.id = box + "-" + q;
+      im.style.opacity = q === 0 ? "1" : "0";
+      host.appendChild(im); ids.push("#" + box + "-" + q);
+    }
+    for (var r = 1; r < n; r++) {
+      tl.set(ids[r - 1], { opacity: 0 }, t0 + r / 15);
+      tl.set(ids[r], { opacity: 1 }, t0 + r / 15);
+    }
+  }
+  seq("f06-i1", "c1", 52, 1.84);
+  seq("f06-i2", "c2", 43, 2.42);
+  seq("f06-i3", "c3a", 20, 2.92);
+  seq("f06-i4", "c3b", 23, 3.75);
 
   // ---- 0.00: the gold line opens into the maroon ground ----
   tl.to("#f06-maroon", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "expo.out" }, 0);
