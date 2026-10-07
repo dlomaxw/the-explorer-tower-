@@ -403,6 +403,15 @@ export const media = {
     kind: "render",
     category: "amenities",
   },
+  yogaStudio: {
+    src: "/media/amenities/yoga-studio.webp",
+    width: 1920,
+    height: 1080,
+    alt: "The yoga and floor exercise studio, a timber-floored room with rows of black mats laid out and full-height glazing along one side.",
+    caption: "Yoga and floor exercise studio",
+    kind: "render",
+    category: "amenities",
+  },
   skyPoolFacade: {
     src: "/media/amenities/sky-pool-facade.png",
     ...INT,
@@ -932,6 +941,7 @@ export const amenities: readonly Amenity[] = [
     name: "Yoga and floor exercise studio",
     description:
       "A dedicated studio for yoga and floor work, apart from the main gym floor.",
+    media: media.yogaStudio,
   },
   {
     name: "Bar and lounge",
@@ -1252,6 +1262,7 @@ export const galleryItems: readonly Media[] = (() => {
     media.meetingRoom,
     media.sauna,
     media.steamRoom,
+    media.yogaStudio,
     media.playground,
     media.gateDetail,
     media.gatedEntrance,
