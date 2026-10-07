@@ -1,0 +1,129 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-bg)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f01-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:rgba(0,0,0,1)}
+#f01-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%;overflow:hidden}
+#f01-vid{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;transform-origin:50% 45%}
+#f01-veil{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-secondary);opacity:0}
+#f01-shade{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 30%,color-mix(in srgb,var(--mk-secondary) 55%,transparent) 62%,var(--mk-secondary) 100%)}
+#f01-titles{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.f01-block{position:absolute;left:60px;width:960px;text-align:center}
+.f01-disp{font-family:var(--mk-font-display);font-weight:800;font-size:136px;line-height:1.02;letter-spacing:-0.03em;color:var(--mk-bg);text-shadow:0 6px 30px rgba(0,0,0,.45)}
+.f01-line{display:block;white-space:nowrap}
+.f01-mask{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .14em;margin:0 -.06em -.14em}
+.f01-w{display:inline-block;opacity:0;will-change:transform}
+#f01-t1{top:262px;height:290px}
+#f01-t2{top:556px;height:290px}
+#f01-hair{position:absolute;left:0;top:520px;width:1080px;height:6px;background:var(--mk-accent);transform-origin:0 50%;transform:scaleX(0)}
+#f01-gold{position:absolute;left:60px;top:892px;width:960px;text-align:center}
+#f01-goldtxt{font-family:var(--mk-font-display);font-weight:700;font-size:92px;line-height:1.1;letter-spacing:-0.02em;color:var(--mk-bg);white-space:nowrap;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+.f01-gw{position:relative;display:inline-block;margin:0 .13em}
+.f01-gbox{position:absolute;left:-.12em;right:-.12em;top:.1em;bottom:.02em;background:var(--mk-accent);border-radius:8px;transform-origin:0 50%;transform:scaleX(0)}
+.f01-gt{position:relative;display:inline-block;opacity:0}
+#f01-ul{position:absolute;left:300px;top:1012px;width:480px;height:4px;background:var(--mk-accent);transform-origin:50% 50%;transform:scaleX(0)}
+#f01-cardwrap{position:absolute;left:160px;top:1070px;width:760px;height:340px;perspective:1400px;opacity:0}
+#f01-ring{position:absolute;left:-14px;top:-14px;width:788px;height:368px;border:4px solid var(--mk-accent);border-radius:30px;opacity:0}
+#f01-card{position:absolute;left:0;top:0;width:760px;height:340px;background:var(--mk-bg);border-radius:var(--mk-radius);box-shadow:0 40px 90px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+#f01-logo{width:342px;height:auto;display:block}
+#f01-tag{font-family:var(--mk-font-body);font-weight:700;font-size:24px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-primary);white-space:nowrap}
+</style>
+
+<div id="root" data-composition-id="01-welcome" data-start="0" data-duration="6.2" data-width="1080" data-height="1920">
+  <div id="f01-ground" class="clip" data-start="0" data-duration="6.2" data-track-index="0"></div>
+  <div id="f01-cam">
+    <video id="f01-vid" class="clip" src="assets/media/hero-properties-mobile.mp4" data-start="0" data-duration="6.2" data-track-index="1" muted playsinline></video>
+    <div id="f01-veil"></div>
+    <div id="f01-shade"></div>
+    <div id="f01-titles">
+      <div id="f01-t1" class="f01-block f01-disp">
+        <span class="f01-line"><span class="f01-mask"><span class="f01-w" id="f01-w1">Distinctive</span></span></span>
+        <span class="f01-line"><span class="f01-mask"><span class="f01-w" id="f01-w2">Places</span></span></span>
+      </div>
+      <div id="f01-hair"></div>
+      <div id="f01-t2" class="f01-block f01-disp">
+        <span class="f01-line"><span class="f01-mask"><span class="f01-w" id="f01-w3">Across</span></span></span>
+        <span class="f01-line"><span class="f01-mask"><span class="f01-w" id="f01-w4">Uganda.</span></span></span>
+      </div>
+      <div id="f01-gold"><div id="f01-goldtxt">
+        <span class="f01-gw"><span class="f01-gt" id="f01-g1">One</span></span><span class="f01-gw"><i class="f01-gbox" id="f01-gbox"></i><span class="f01-gt" id="f01-g2">Warm</span></span><span class="f01-gw"><span class="f01-gt" id="f01-g3">Welcome.</span></span>
+      </div></div>
+      <div id="f01-ul"></div>
+    </div>
+    <div id="f01-cardwrap">
+      <div id="f01-ring"></div>
+      <div id="f01-card">
+        <img id="f01-logo" src="assets/img/logo-source.png" alt="Speke Group">
+        <div id="f01-tag">Hotels · Apartments · Resorts</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var E = MK.ease;
+
+  gsap.set(["#f01-w1", "#f01-w2", "#f01-w3", "#f01-w4"], { opacity: 0, yPercent: 115 });
+  gsap.set(["#f01-g1", "#f01-g2", "#f01-g3"], { opacity: 0, y: 40 });
+  gsap.set("#f01-cardwrap", { opacity: 0 });
+  gsap.set("#f01-card", { transformPerspective: 1400, transformOrigin: "50% 100%", rotationX: 8, y: 160 });
+
+  // ground -> footage (slow push 1.00 -> 1.08), veil keeps the type legible
+  tl.fromTo("#f01-vid", { opacity: 0, scale: 1.0 }, { opacity: 1, scale: 1.0, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
+  tl.to("#f01-vid", { scale: 1.08, duration: 6.2, ease: "none" }, 0);
+  tl.fromTo("#f01-veil", { opacity: 0 }, { opacity: 0.3, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
+  tl.fromTo("#f01-shade", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out", immediateRender: false }, 0.1);
+
+  // titles parallax (faster than footage)
+  tl.fromTo("#f01-titles", { y: 0 }, { y: -26, duration: 5.6, ease: "none", immediateRender: false }, 0);
+
+  // gold hairline
+  tl.fromTo("#f01-hair", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: E.out, immediateRender: false }, 0.1);
+
+  // display words on their cues
+  function rise(sel, at) {
+    tl.fromTo(sel, { yPercent: 115, opacity: 0, filter: "blur(12px)" },
+      { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: E.out, immediateRender: false }, at);
+  }
+  rise("#f01-w1", 0.05);
+  rise("#f01-w2", 0.60);
+  rise("#f01-w3", 1.16);
+  rise("#f01-w4", 1.64);
+
+  // gold line: One Warm Welcome, warm in the gold box
+  function up(sel, at) {
+    tl.fromTo(sel, { y: 40, opacity: 0, filter: "blur(10px)" },
+      { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: E.out, immediateRender: false }, at);
+  }
+  up("#f01-g1", 2.80);
+  tl.fromTo("#f01-gbox", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power3.out", immediateRender: false }, 3.0);
+  up("#f01-g2", 3.04);
+  tl.to("#f01-g2", { color: "var(--mk-on-accent)", duration: 0.1, ease: "none" }, 3.2);
+  up("#f01-g3", 3.62);
+  tl.fromTo("#f01-ul", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: E.out, immediateRender: false }, 3.7);
+
+  // logo card slides up in 3D
+  tl.fromTo("#f01-cardwrap", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, 4.55);
+  tl.to("#f01-card", { y: 0, rotationX: 0, duration: 0.8, ease: E.out }, 4.6);
+  tl.to("#f01-card", { y: -10, duration: 0.9, ease: "sine.inOut" }, 5.4);
+  // glow once (gold ring pulse)
+  tl.fromTo("#f01-ring", { opacity: 0.9, scale: 0.96 }, { opacity: 0, scale: 1.1, duration: 0.55, ease: "power2.out", immediateRender: false }, 5.5);
+
+  // exits and the maroon veil close = handoff
+  tl.to(["#f01-t1", "#f01-t2", "#f01-gold", "#f01-ul", "#f01-hair"], { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: E.exit, stagger: 0.03 }, 5.7);
+  tl.to("#f01-cardwrap", { opacity: 0, y: -30, duration: 0.22, ease: E.exit }, 5.78);
+  tl.to("#f01-veil", { opacity: 0.9, duration: 0.45, ease: "power2.inOut" }, 5.7);
+  tl.to("#f01-shade", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 5.7);
+
+  window.__timelines["01-welcome"] = tl;
+})();
+</script>
+</template>
