@@ -385,6 +385,15 @@ export const media = {
     kind: "render",
     category: "amenities",
   },
+  gateDetail: {
+    src: "/media/amenities/gate-detail.webp",
+    width: 1920,
+    height: 1080,
+    alt: "Close-up of the vehicle gate, the Explorer goat-and-hill mark cut into a brass screen of vertical slats, with the travertine building behind.",
+    caption: "The gate, with the Explorer mark",
+    kind: "render",
+    category: "amenities",
+  },
   skyPoolFacade: {
     src: "/media/amenities/sky-pool-facade.png",
     ...INT,
@@ -890,7 +899,7 @@ export const amenities: readonly Amenity[] = [
     name: "Swimming pool and sunken lounge",
     description:
       "A pool on the first-floor wellness level with a sunken lounge beside it, shared by every residence. The pools suspended higher in the facade are private to the two penthouses.",
-    media: media.skyPoolTerrace,
+    media: media.poolAndGym,
   },
   {
     name: "Gym",
@@ -960,6 +969,12 @@ export const amenities: readonly Amenity[] = [
     name: "Covered arrival",
     description:
       "A sheltered drop-off beneath the podium, leading directly to the residents' lobby.",
+  },
+  {
+    name: "Gated entrance and security office",
+    description:
+      "A gated vehicle entrance carrying the Explorer mark in a brass screen, with a security office on the ground floor.",
+    media: media.gateDetail,
   },
   {
     name: "Resident parking",
@@ -1207,6 +1222,23 @@ export const galleryItems: readonly Media[] = (() => {
     media.skyPoolTerrace,
     media.skyPoolFacade,
     ...residences.flatMap((residence) => residence.gallery),
+    // The amenity renders. Without these the gallery showed none of the rooms
+    // the Amenities page lists. Exteriors from the newer set are deliberately
+    // not added: the site keeps its existing facade treatment.
+    media.poolAndGym,
+    media.poolTerraceDay,
+    media.poolFromGarden,
+    media.lobbyLounge,
+    media.reception,
+    media.residentsLounge,
+    media.diningHall,
+    media.mediaRoom,
+    media.conferenceRoom,
+    media.meetingRoom,
+    media.sauna,
+    media.playground,
+    media.gateDetail,
+    media.gatedEntrance,
   ];
 
   const seen = new Set<string>();
