@@ -4,14 +4,14 @@
 #root *{box-sizing:border-box;margin:0;padding:0}
 #f04-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-secondary)}
 #f04-vid{position:absolute;left:-180px;top:0;width:1440px;height:1920px;object-fit:cover;transform-origin:50% 50%}
-#f04-veil{position:absolute;left:0;top:760px;width:1080px;height:1160px;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--mk-secondary) 78%,transparent) 38%,var(--mk-secondary) 100%)}
+#f04-veil{position:absolute;left:0;top:520px;width:1080px;height:1400px;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--mk-secondary) 70%,transparent) 30%,color-mix(in srgb,var(--mk-secondary) 90%,transparent) 55%,var(--mk-secondary) 100%)}
 #f04-top{position:absolute;left:0;top:0;width:1080px;height:420px;background:linear-gradient(180deg,color-mix(in srgb,var(--mk-secondary) 55%,transparent) 0%,transparent 100%)}
 #f04-fg{position:absolute;left:0;top:0;width:1080px;height:1920px}
 #f04-chip{position:absolute;left:60px;top:150px;font-size:38px;padding:.5em 1.05em .5em .8em;gap:.55em;background:var(--mk-bg);transform-origin:0 50%}
 #f04-chip .mk-icon{width:40px;height:40px;color:var(--mk-primary)}
 #f04-card{position:absolute;left:380px;top:330px;width:640px;height:320px;border-radius:22px;overflow:hidden;background:var(--mk-bg);padding:10px;box-shadow:0 40px 90px rgba(0,0,0,.45);border:2px solid var(--mk-accent)}
 #f04-card img{display:block;width:100%;height:100%;object-fit:cover;border-radius:14px;transform-origin:50% 50%}
-#f04-eyebrow{position:absolute;left:0;top:716px;width:1080px;text-align:center;font-family:var(--mk-font-body);font-weight:700;font-size:30px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-accent);text-shadow:0 2px 14px rgba(0,0,0,.5)}
+#f04-eyebrow{position:absolute;left:0;top:716px;width:1080px;text-align:center;font-family:var(--mk-font-body);font-weight:700;font-size:30px;letter-spacing:.22em;text-transform:uppercase;color:var(--mk-bg);text-shadow:0 2px 14px rgba(0,0,0,.5)}
 #f04-title{position:absolute;left:0;top:780px;width:1080px;text-align:center;font-family:var(--mk-font-display);font-weight:800;font-size:104px;line-height:112px;letter-spacing:-.03em;color:var(--mk-on-primary);text-shadow:0 4px 30px rgba(0,0,0,.45)}
 #f04-title .ln{display:block;height:112px;white-space:nowrap}
 #f04-title .w{display:inline-block;opacity:0}
@@ -27,7 +27,7 @@
 
 <div id="root" data-composition-id="04-marina" data-start="0" data-duration="6.2" data-width="1080" data-height="1920">
   <div id="f04-ground" class="clip" data-start="0" data-duration="6.2" data-track-index="0"></div>
-  <video id="f04-vid" class="clip mk-video" src="assets/media/hero-paradise-mobile.mp4" data-start="0" data-duration="6.2" data-track-index="1" muted playsinline></video>
+  <video id="f04-vid" class="clip mk-video" src="assets/media/hero-paradise-mobile.mp4" data-start="0" data-duration="6.2" data-media-start="0.5" data-track-index="1" muted playsinline></video>
   <div id="f04-top"></div>
   <div id="f04-veil"></div>
   <div id="f04-fg">

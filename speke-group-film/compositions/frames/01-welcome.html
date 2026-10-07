@@ -14,8 +14,8 @@
 .f01-line{display:block;white-space:nowrap}
 .f01-mask{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .14em;margin:0 -.06em -.14em}
 .f01-w{display:inline-block;opacity:0;will-change:transform}
-#f01-t1{top:262px;height:290px}
-#f01-t2{top:556px;height:290px}
+#f01-t1{top:228px;height:290px}
+#f01-t2{top:560px;height:290px}
 #f01-hair{position:absolute;left:0;top:520px;width:1080px;height:6px;background:var(--mk-accent);transform-origin:0 50%;transform:scaleX(0)}
 #f01-gold{position:absolute;left:60px;top:892px;width:960px;text-align:center}
 #f01-goldtxt{font-family:var(--mk-font-display);font-weight:700;font-size:92px;line-height:1.1;letter-spacing:-0.02em;color:var(--mk-bg);white-space:nowrap;text-shadow:0 4px 24px rgba(0,0,0,.45)}
@@ -77,9 +77,9 @@
   gsap.set("#f01-card", { transformPerspective: 1400, transformOrigin: "50% 100%", rotationX: 8, y: 160 });
 
   // ground -> footage (slow push 1.00 -> 1.08), veil keeps the type legible
-  tl.fromTo("#f01-vid", { opacity: 0, scale: 1.0 }, { opacity: 1, scale: 1.0, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
+  tl.fromTo("#f01-vid", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
   tl.to("#f01-vid", { scale: 1.08, duration: 6.2, ease: "none" }, 0);
-  tl.fromTo("#f01-veil", { opacity: 0 }, { opacity: 0.3, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
+  tl.fromTo("#f01-veil", { opacity: 0 }, { opacity: 0.4, duration: 0.5, ease: "power2.out", immediateRender: false }, 0);
   tl.fromTo("#f01-shade", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out", immediateRender: false }, 0.1);
 
   // titles parallax (faster than footage)
@@ -106,7 +106,7 @@
   up("#f01-g1", 2.80);
   tl.fromTo("#f01-gbox", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power3.out", immediateRender: false }, 3.0);
   up("#f01-g2", 3.04);
-  tl.to("#f01-g2", { color: "var(--mk-on-accent)", duration: 0.1, ease: "none" }, 3.2);
+  tl.to("#f01-g2", { color: "rgba(0,0,0,1)", duration: 0.1, ease: "none" }, 3.2);
   up("#f01-g3", 3.62);
   tl.fromTo("#f01-ul", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: E.out, immediateRender: false }, 3.7);
 

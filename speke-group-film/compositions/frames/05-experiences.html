@@ -1,0 +1,165 @@
+<template>
+<style>
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;font-family:var(--mk-font-body);color:var(--mk-ink)}
+#root *{box-sizing:border-box;margin:0;padding:0}
+#f05-ground{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--mk-bg)}
+#f05-cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 900px;perspective:1900px;perspective-origin:540px 900px}
+#f05-stack{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-style:preserve-3d;transform-origin:540px 900px}
+.f05-t{position:absolute;left:180px;top:640px;width:720px;height:520px;opacity:0;transform-origin:50% 50%}
+.f05-in{position:absolute;left:0;top:0;width:720px;height:520px;border-radius:22px;overflow:hidden;background:var(--mk-surface);box-shadow:0 34px 70px rgba(0,0,0,.24),0 6px 16px rgba(0,0,0,.14);transform-origin:50% 50%}
+.f05-hd{position:absolute;left:0;top:0;width:720px;height:124px;display:flex;align-items:center;gap:26px;padding:0 34px;background:var(--mk-surface);border-bottom:4px solid var(--mk-accent)}
+.f05-ic{width:84px;height:84px;border-radius:42px;background:var(--mk-primary);color:var(--mk-accent);display:flex;align-items:center;justify-content:center;flex:none}
+.f05-lb{font-family:var(--mk-font-display);font-weight:800;font-size:54px;line-height:60px;letter-spacing:-.01em;color:var(--mk-primary);white-space:nowrap}
+.f05-ph{position:absolute;left:0;top:124px;width:720px;height:396px;overflow:hidden}
+.f05-ph img{position:absolute;left:0;top:0;width:720px;height:396px;object-fit:cover;transform-origin:50% 50%}
+.f05-veil{position:absolute;left:0;bottom:0;width:720px;height:190px;background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.62));opacity:0}
+.f05-live{position:absolute;left:34px;bottom:34px;font-family:var(--mk-font-body);font-weight:700;font-size:26px;line-height:30px;letter-spacing:.22em;color:var(--mk-bg);opacity:0}
+.f05-wave{position:absolute;right:34px;bottom:26px;width:330px;height:96px;display:flex;align-items:flex-end;justify-content:space-between}
+.f05-bar{width:12px;height:96px;border-radius:6px;background:var(--mk-accent);transform-origin:50% 100%;opacity:0}
+.f05-dot{position:absolute;top:1318px;width:16px;height:16px;border-radius:8px;background:var(--mk-accent);opacity:0}
+#f05-line{position:absolute;left:0;top:957px;width:1080px;height:6px;background:var(--mk-accent);opacity:0;transform-origin:50% 50%}
+.f05-sub{position:absolute;left:0;top:1450px;width:1080px;height:190px;padding:0 60px;display:flex;align-items:center;justify-content:center;font-family:var(--mk-font-display);font-size:56px;line-height:68px;font-weight:600}
+.f05-sub .mk-sub{font-size:56px;line-height:68px;font-family:var(--mk-font-display)}
+</style>
+
+<div id="root" data-composition-id="05-experiences" data-start="0" data-duration="6" data-width="1080" data-height="1920">
+  <div id="f05-ground" class="clip" data-start="0" data-duration="6" data-track-index="0"></div>
+  <div id="f05-cam">
+    <div id="f05-stack">
+      <div class="f05-t" id="f05-t1"><div class="f05-in" id="f05-t1-in"><div class="f05-hd"><span class="f05-ic" id="f05-t1-ic"></span><span class="f05-lb">Spa</span></div><div class="f05-ph"><img id="f05-t1-img" src="assets/img/l-spa.webp" alt="" style="object-position:50% 28%"></div></div></div>
+      <div class="f05-t" id="f05-t2"><div class="f05-in" id="f05-t2-in"><div class="f05-hd"><span class="f05-ic" id="f05-t2-ic"></span><span class="f05-lb">Gym</span></div><div class="f05-ph"><img id="f05-t2-img" src="assets/img/l-gym.webp" alt=""></div></div></div>
+      <div class="f05-t" id="f05-t3"><div class="f05-in" id="f05-t3-in"><div class="f05-hd"><span class="f05-ic" id="f05-t3-ic"></span><span class="f05-lb">Pools</span></div><div class="f05-ph"><img id="f05-t3-img" src="assets/img/l-pools.webp" alt=""></div></div></div>
+      <div class="f05-t" id="f05-t4"><div class="f05-in" id="f05-t4-in"><div class="f05-hd"><span class="f05-ic" id="f05-t4-ic"></span><span class="f05-lb">Equestrian</span></div><div class="f05-ph"><img id="f05-t4-img" src="assets/img/l-equestrian.webp" alt=""></div></div></div>
+      <div class="f05-t" id="f05-t5"><div class="f05-in" id="f05-t5-in"><div class="f05-hd"><span class="f05-ic" id="f05-t5-ic"></span><span class="f05-lb">Lakeside Sundays</span></div><div class="f05-ph"><img id="f05-t5-img" src="assets/img/l-lakeside.webp" alt=""><div class="f05-veil" id="f05-veil"></div><div class="f05-live" id="f05-live">LIVE JAZZ</div><div class="f05-wave" id="f05-wave"></div></div></div></div>
+    </div>
+  </div>
+  <div class="f05-dot" id="f05-d1" style="left:432px"></div>
+  <div class="f05-dot" id="f05-d2" style="left:486px"></div>
+  <div class="f05-dot" id="f05-d3" style="left:532px"></div>
+  <div class="f05-dot" id="f05-d4" style="left:578px"></div>
+  <div class="f05-dot" id="f05-d5" style="left:632px"></div>
+  <div id="f05-line"></div>
+  <div id="f05-sub1" class="f05-sub mk-root"></div>
+  <div id="f05-sub2" class="f05-sub mk-root"></div>
+  <div id="f05-sub3" class="f05-sub mk-root"></div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/icons.js"></script>
+<script src="assets/vendor/motion-kit.js"></script>
+<script>
+(function () {
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused: true });
+  var qs = MK.qs;
+  var D = 6;
+
+  // custom icons on the 24 grid (spa lotus, dumbbell, pool, horseshoe, music note)
+  MK_ICONS.f05spa = ['<path d="M12 3.5c2.6 2.8 3.4 5.6 0 9.6-3.4-4-2.6-6.8 0-9.6z"/>', '<path d="M4 8.5c0 4.2 3 7.4 8 7.4"/>', '<path d="M20 8.5c0 4.2-3 7.4-8 7.4"/>', '<path d="M6 20h12"/>'];
+  MK_ICONS.f05gym = ['<path d="M7 7v10"/>', '<path d="M3.5 9.5v5"/>', '<path d="M17 7v10"/>', '<path d="M20.5 9.5v5"/>', '<path d="M7 12h10"/>'];
+  MK_ICONS.f05pool = ['<path d="M15 3v8"/>', '<path d="M19 3v8"/>', '<path d="M15 5.5h4"/>', '<path d="M15 8.5h4"/>', '<path d="M3 14c2-2 3.5-2 5.5 0s3.5 2 5.5 0 3.5-2 5.5 0"/>', '<path d="M3 19c2-2 3.5-2 5.5 0s3.5 2 5.5 0 3.5-2 5.5 0"/>'];
+  MK_ICONS.f05horse = ['<path d="M7 21c-2.2-2.2-3.2-5-3.2-8.5a8.2 8.2 0 0 1 16.4 0c0 3.5-1 6.3-3.2 8.5"/>', '<path d="M7 21h3"/>', '<path d="M14 21h3"/>', '<circle cx="5.6" cy="11.5" r=".6"/>', '<circle cx="18.4" cy="11.5" r=".6"/>', '<circle cx="12" cy="4.9" r=".6"/>'];
+  MK_ICONS.f05jazz = ['<path d="M9 17.5V5.5l10-2v12"/>', '<circle cx="6.5" cy="17.5" r="2.5"/>', '<circle cx="16.5" cy="15.5" r="2.5"/>'];
+  var icons = ["f05spa", "f05gym", "f05pool", "f05horse", "f05jazz"];
+  for (var n = 0; n < 5; n++) MK.putIcon("#f05-t" + (n + 1) + "-ic", icons[n], { size: 52, stroke: 2 });
+
+  // wave bars for the jazz tile
+  var wave = qs("#f05-wave"), bars = [], b;
+  for (b = 0; b < 14; b++) { var d = document.createElement("div"); d.className = "f05-bar"; d.id = "f05-bar" + b; wave.appendChild(d); bars.push(d); }
+
+  // stack geometry
+  var AT = [0.25, 1.15, 1.88, 2.68, 3.72];
+  var FS = [1.05, 1.05, 1.05, 1.05, 1.15];
+  var LV = [null,
+    { y: -165, scale: 0.95, x: -26, rotationZ: -1.5, z: -50 },
+    { y: -290, scale: 0.90, x: 22, rotationZ: 1.2, z: -100 },
+    { y: -410, scale: 0.85, x: -30, rotationZ: -1.8, z: -150 },
+    { y: -535, scale: 0.80, x: 20, rotationZ: 1.4, z: -200 }];
+  function state(i, k) { // tile i, level k (0 = front)
+    if (k === 0) return { y: 0, scale: FS[i], x: 0, rotationZ: 0, z: 0 };
+    var l = LV[k]; return { y: l.y, scale: l.scale, x: l.x, rotationZ: l.rotationZ, z: l.z };
+  }
+  function withDur(o, dur, ease) { var r = {}; for (var key in o) r[key] = o[key]; r.duration = dur; r.ease = ease; r.immediateRender = false; r.opacity = 1; return r; }
+
+  gsap.set(".f05-t", { transformPerspective: 1900 });
+  var hide = ["#f05-d1", "#f05-d2", "#f05-d3", "#f05-d4", "#f05-d5", "#f05-line"];
+  MK.hide(hide);
+
+  var i, j;
+  for (i = 0; i < 5; i++) {
+    var ta = AT[i], T = "#f05-t" + (i + 1), TI = T + "-in", IMG = T + "-img";
+    gsap.set(T, { zIndex: 10 + i });
+    // arrival: slides in with a 3D turn, settles sharp
+    var from = { opacity: 0, y: 150, scale: FS[i] - 0.12, x: 0, rotationZ: 0, z: 0 };
+    var to = state(i, 0); to.opacity = 1; to.duration = 0.7; to.ease = MK.ease.out; to.immediateRender = false;
+    tl.fromTo(T, from, to, ta);
+    tl.fromTo(TI, { opacity: 0, rotationY: 22, x: 80, filter: "blur(12px)", transformPerspective: 1400 },
+      { opacity: 1, rotationY: 0, x: 0, filter: "blur(0px)", duration: 0.7, ease: MK.ease.out, immediateRender: false }, ta);
+    // icon draws on, tile pops
+    MK.drawIcon(tl, "#f05-t" + (i + 1) + "-ic", ta + 0.18, { tile: "#f05-t" + (i + 1) + "-ic", dur: 0.55 });
+    // photo ken-burns (slow drift)
+    var kbEnd = (i < 4) ? AT[i + 1] + 1.4 : 5.5;
+    tl.fromTo(IMG, { scale: 1 }, { scale: 1.09, duration: kbEnd - ta, ease: "none", immediateRender: false }, ta);
+    // while in front: slow turn (living layer)
+    var frontEnd = (i < 4) ? AT[i + 1] : 5.4;
+    tl.fromTo(TI, { rotationY: 0 }, { rotationY: -4, duration: frontEnd - (ta + 0.7), ease: "none", immediateRender: false }, ta + 0.7);
+    // later tiles push this one back in the stack
+    for (j = i + 1; j < 5; j++) {
+      var k = j - i;
+      tl.fromTo(T, state(i, k - 1), withDur(state(i, k), 0.65, MK.ease.out), AT[j]);
+    }
+    // progress dots
+    var D_ = "#f05-d" + (i + 1);
+    tl.fromTo(D_, { opacity: 0, scaleX: 0.4 }, { opacity: 1, scaleX: 3.2, duration: 0.5, ease: MK.ease.out, immediateRender: false }, ta + 0.05);
+    if (i < 4) tl.fromTo(D_, { scaleX: 3.2, opacity: 1 }, { scaleX: 1, opacity: 0.5, duration: 0.4, ease: MK.ease.out, immediateRender: false }, AT[i + 1] + 0.05);
+  }
+  // dots leave before the drop
+  tl.to(["#f05-d1", "#f05-d2", "#f05-d3", "#f05-d4", "#f05-d5"], { opacity: 0, duration: 0.22, ease: "power2.in", stagger: 0.03, immediateRender: false }, 5.1);
+
+  // camera: slow z drift over the whole stack (living layer) + a gentle sway of the stack
+  tl.fromTo("#f05-cam", { scale: 1 }, { scale: 1.045, duration: 5.4, ease: "none", immediateRender: false }, 0.1);
+  tl.fromTo("#f05-stack", { rotationY: 3 }, { rotationY: -4, duration: 5.3, ease: "none", immediateRender: false }, 0.1);
+
+  // jazz tile: veil, label, sound-wave line
+  tl.fromTo("#f05-veil", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 4.05);
+  tl.fromTo("#f05-live", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: MK.ease.out, immediateRender: false }, 4.25);
+  for (b = 0; b < 14; b++) {
+    var bid = "#f05-bar" + b, t0 = 4.2 + b * 0.03;
+    var lo = 0.22 + 0.12 * Math.abs(Math.sin(b * 1.7 + 0.4));
+    tl.fromTo(bid, { opacity: 0, scaleY: 0.08 }, { opacity: 1, scaleY: lo, duration: 0.35, ease: MK.ease.out, immediateRender: false }, t0);
+    var t = 4.6, step = 0.2 + (b % 4) * 0.03, m = 0;
+    while (t < 5.38) {
+      var v = 0.18 + 0.4 * Math.abs(Math.sin(b * 2.3 + m * 1.9 + 1.1));
+      tl.to(bid, { scaleY: v, duration: step, ease: "sine.inOut" }, t);
+      t += step; m++;
+    }
+    var t2 = 5.38; m = 0; step = 0.16 + (b % 3) * 0.025;
+    while (t2 < 5.8) {
+      var v2 = 0.35 + 0.65 * Math.abs(Math.sin(b * 1.3 + m * 2.1 + 0.5));
+      tl.to(bid, { scaleY: v2, duration: step, ease: "sine.inOut" }, t2);
+      t2 += step; m++;
+    }
+  }
+  // jazz punch: the front tile breathes once on the word
+  tl.fromTo("#f05-t5-in", { scale: 1 }, { scale: 1.03, duration: 0.22, ease: MK.ease.out, immediateRender: false }, 5.37);
+  tl.to("#f05-t5-in", { scale: 1, duration: 0.2, ease: "power2.inOut" }, 5.6);
+
+  // handoff: older tiles drop first, the front tile last; the gold line draws across y 960
+  var dropAt = [5.1, 5.18, 5.26, 5.34, 5.48];
+  for (i = 4; i >= 0; i--) {
+    var order = 4 - i; // k-level -> older tiles earlier
+    var T2 = "#f05-t" + (i + 1);
+    var d0 = (i === 4) ? 5.48 : 5.1 + (i * 0.08);
+    tl.to(T2, { y: "+=1300", opacity: 0, rotationZ: (i % 2 ? 4 : -4), duration: 0.4, ease: "power2.in" }, d0);
+  }
+  tl.fromTo("#f05-line", { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.42, ease: MK.ease.out, immediateRender: false }, 5.45);
+
+  // subtitle (the voice)
+  MK.subtitle(tl, "#f05-sub1", [["Spas.", 0.31], ["Gyms.", 1.22, true], ["Pools.", 1.95]], { out: 2.55 });
+  MK.subtitle(tl, "#f05-sub2", [["Horse", 2.75], ["riding.", 3.04, true]], { out: 3.65 });
+  MK.subtitle(tl, "#f05-sub3", [["Lakeside", 3.79], ["Sundays", 4.33], ["with", 4.87], ["live", 5.04], ["jazz.", 5.40, true]], { out: D - 0.12 });
+
+  window.__timelines["05-experiences"] = tl;
+})();
+</script>
+</template>
