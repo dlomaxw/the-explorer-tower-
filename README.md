@@ -423,3 +423,32 @@ The Vercel address is already indexed. After the switch, add
 `https://www.explorertower.ug/sitemap.xml`. The canonical tags will do most of
 the work, but the sooner the new host is submitted the less time the old one
 spends competing with it.
+
+---
+
+## Console access
+
+The console is at `/admin/login`. There is no self-service password reset and no
+email recovery: passwords are stored as one-way scrypt hashes, so a lost one
+cannot be read back by anybody, and the only way back into an account is to
+replace its password.
+
+```bash
+node tools/set-admin-password.mjs --email you@example.com
+```
+
+It asks for the new password at a hidden prompt, asks again to confirm, then
+changes only that account's password and signs out its open sessions. It reads
+the Cloudflare credentials from `site/.env.local` and hashes exactly as the login
+form does. Add `--dry-run` to rehearse it without writing anything. If the email
+does not exist it lists the accounts that do.
+
+To add people, sign in as a system administrator and use **Users** in the console.
+The first-run page at `/admin/setup` is only reachable while the user table is
+empty, so it is closed on the live site.
+
+One thing to know about local development: with the Cloudflare credentials in
+`.env.local`, `npm run dev` talks to the **live** database, not a local copy, and
+anything you create is real. Set `DATA_DRIVER=sqlite` to develop against a local
+file instead. The two accounts on the live database were made that way, on
+8 September.
